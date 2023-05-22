@@ -1,0 +1,22 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>Luthetus</PageTitle>
+
+<div class="page @AppOptionsService.ThemeCssClassString"
+     style="@AppOptionsService.FontSizeCssStyleString  @AppOptionsService.FontFamilyCssStyleString">
+    
+    <Luthetus.Common.RazorLib.LuthetusCommonInitializer />
+    <Luthetus.TextEditor.RazorLib.LuthetusTextEditorInitializer />
+    
+    <div class="sidebar">
+        <NavMenu/>
+    </div>
+
+    <main>
+        <TopRow OpenSettingsDialogOnClick="OpenSettingsDialogOnClick"/>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

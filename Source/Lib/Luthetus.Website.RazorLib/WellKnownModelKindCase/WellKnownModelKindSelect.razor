@@ -1,0 +1,16 @@
+﻿@using Luthetus.TextEditor.RazorLib.Model
+
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@{ var localWellKnownModelKindState = WellKnownModelKindStateWrap.Value; }
+
+<select @onchange="OnSelectedWellKnownModelKindChanged">
+    @foreach (var wellKnownModelKind in Enum.GetNames<WellKnownModelKind>())
+    {
+        var isSelected = CheckIsWellKnownModelKindSelected(wellKnownModelKind, localWellKnownModelKindState);
+        
+        <option selected="@isSelected">
+            @wellKnownModelKind
+        </option>
+    }
+</select>

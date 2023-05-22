@@ -1,0 +1,15 @@
+﻿@page "/"
+@using Luthetus.TextEditor.RazorLib.ViewModel
+@using Luthetus.Website.RazorLib.WellKnownModelKindCase
+@inherits SingleComponentPage
+
+<h3>
+    Text Editor Demo
+    
+    <WellKnownModelKindSelect/>
+</h3>
+
+<hr/>
+
+<TextEditorViewModelDisplay TextEditorViewModelKey="TextEditorDemoViewModelKey"
+                            WrapperStyleCssString="@CssStyleTextEditorViewModelDisplay"/>

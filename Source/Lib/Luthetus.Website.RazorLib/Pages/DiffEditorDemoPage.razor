@@ -1,0 +1,15 @@
+﻿@page "/diffEditorDemo"
+@using Luthetus.TextEditor.RazorLib.Diff
+@using Luthetus.Website.RazorLib.WellKnownModelKindCase
+@inherits SingleComponentPage
+
+<h3>
+    Diff Editor Demo
+    
+    <WellKnownModelKindSelect/>
+</h3>
+
+<hr/>
+
+<TextEditorDiffDisplay TextEditorDiffKey="DiffEditorDemoDiffModelKey"
+                       CssStyleString="@CssStyleTextEditorViewModelDisplay"/>
