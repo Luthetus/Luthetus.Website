@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BlazorShowcase.RazorLib\BlazorShowcase.RazorLib.csproj" />
+      <ProjectReference Include="..\..\Lib\Luthetus.Website.RazorLib\Luthetus.Website.RazorLib.csproj" />
     </ItemGroup>
 
 </Project>

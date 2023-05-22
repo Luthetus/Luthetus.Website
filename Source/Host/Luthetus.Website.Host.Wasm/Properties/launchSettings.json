@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "BlazorShowcase.Host.Wasm": {
+    "Luthetus.Website.Host.Wasm": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

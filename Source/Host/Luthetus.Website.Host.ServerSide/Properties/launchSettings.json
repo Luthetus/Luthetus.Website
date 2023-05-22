@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "BlazorShowcase.Host.ServerSide": {
+    "Luthetus.Website.Host.ServerSide": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

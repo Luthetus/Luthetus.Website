@@ -1,5 +1,5 @@
 ﻿.top-row {
-    border-bottom: 1px solid var(--bcrl_primary-border-color);
+    border-bottom: 1px solid var(--luth_primary-border-color);
     justify-content: flex-end;
     height: 3.5rem;
     display: flex;

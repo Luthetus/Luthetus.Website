@@ -64,13 +64,13 @@ a, .btn-link {
     }
     
 main {
-    background-color: var(--bcrl_primary-background-color);
-    color: var(--bcrl_primary-foreground-color);
+    background-color: var(--luth_primary-background-color);
+    color: var(--luth_primary-foreground-color);
 }
 
 div.top-row {
-    background-color: var(--bcrl_tertiary-background-color);
-    color: var(--bcrl_tertiary-foreground-color);
+    background-color: var(--luth_tertiary-background-color);
+    color: var(--luth_tertiary-foreground-color);
 }
 
 .bsrl_settings {
@@ -79,7 +79,7 @@ div.top-row {
 
 .bsrl_settings-scope-border {
     padding: 0 !important;
-    background-color: var(--bcrl_primary-border-color);
+    background-color: var(--luth_primary-border-color);
     opacity: 0.7;
     position: absolute;
     left: 0;
@@ -90,7 +90,7 @@ div.top-row {
 }
 
 .bsrl_settings-scope-title {
-    color: var(--bcrl_primary-emphasis-foreground-color);
+    color: var(--luth_primary-emphasis-foreground-color);
 }
 
 .bsrl_settings-scope-body {
