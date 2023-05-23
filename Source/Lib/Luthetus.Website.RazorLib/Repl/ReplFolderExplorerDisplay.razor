@@ -1,4 +1,10 @@
-﻿<div class="luth_web_repl-folder-explorer"
+﻿@using Luthetus.Ide.ClassLib.Context
+@using Luthetus.Ide.ClassLib.Store.FolderExplorerCase
+@using Luthetus.Common.RazorLib.Dropdown
+@using Luthetus.Common.RazorLib.TreeView
+@using Luthetus.Common.RazorLib.TreeView.Displays
+
+<div class="luth_web_repl-folder-explorer"
      style="@ElementDimensions.StyleString">
 
     @if (ReplState.RootDirectory is null)
@@ -10,8 +16,19 @@
     }
     else
     {
-        <div>
-            RootDirectory is initialized
-        </div>
+        <CascadingValue Name="OffsetPerDepthInPixels" Value="OffsetPerDepthInPixels">
+            <TreeViewStateDisplay TreeViewStateKey="ReplTreeViewStateKey"
+                                    CssStyleString="height: 100%;"
+                                    OnContextMenuFunc="OnTreeViewContextMenuFunc"
+                                    TreeViewKeyboardEventHandler="new(TreeViewService)"
+                                    TreeViewMouseEventHandler="new(TreeViewService)" />
+        </CascadingValue>
+
+        <DropdownDisplay DropdownKey="ReplContextMenu.ContextMenuEventDropdownKey"
+                         DropdownPositionKind="DropdownPositionKind.Unset"
+                         CssStyleString="@ReplContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
+
+            <ReplContextMenu TreeViewCommandParameter="_mostRecentTreeViewCommandParameter"/>
+        </DropdownDisplay>
     }
 </div>

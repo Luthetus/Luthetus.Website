@@ -5,15 +5,24 @@
 
 <div class="luth_web_repl-container">
     
-    @{ var replState = ReplStateWrap.Value; }
+    @{ 
+        var replState = ReplStateWrap.Value;
+        var appOptionsState = AppOptionsStateWrap.Value;
+    }
 
     <CascadingValue Value="replState">
-        <ReplFolderExplorerDisplay ElementDimensions="_folderExplorerElementDimensions" />
+        <CascadingValue Value="appOptionsState">
+            <CascadingValue Value="ReplTextEditorGroupKey">
+                <CascadingValue Value="ReplTreeViewStateKey">
+                    <ReplFolderExplorerDisplay ElementDimensions="_folderExplorerElementDimensions" />
 
-        <ResizableColumn LeftElementDimensions="_folderExplorerElementDimensions"
-                         RightElementDimensions="_textEditorGroupElementDimensions"
-                         ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
+                    <ResizableColumn LeftElementDimensions="_folderExplorerElementDimensions"
+                                     RightElementDimensions="_textEditorGroupElementDimensions"
+                                     ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
 
-        <ReplTextEditorGroupDisplay ElementDimensions="_textEditorGroupElementDimensions" />
+                    <ReplTextEditorGroupDisplay ElementDimensions="_textEditorGroupElementDimensions" />
+                </CascadingValue>
+            </CascadingValue>
+        </CascadingValue>
     </CascadingValue>
 </div>
