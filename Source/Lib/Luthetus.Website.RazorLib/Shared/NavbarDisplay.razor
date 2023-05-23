@@ -1,0 +1,43 @@
+﻿@using Luthetus.Common.RazorLib.Store.ApplicationOptions;
+@using Luthetus.Website.RazorLib.SearchBar;
+
+<div class="luth_web_navbar">
+    @{
+        var appOptionsState = AppOptionsService.AppOptionsStateWrap.Value;
+
+        var iconSizeInPixels = appOptionsState.Options.IconSizeInPixels ??
+            AppOptionsState.DEFAULT_ICON_SIZE_IN_PIXELS;
+
+        var luthetusCommonIconSizeOverrideAsDouble = iconSizeInPixels *
+            ICON_SIZE_MULTIPLIER;
+
+        var luthetusCommonIconSizeOverrideAsInt = (int)luthetusCommonIconSizeOverrideAsDouble;
+    }
+
+    <CascadingValue Name="LuthetusCommonIconWidthOverride" Value="luthetusCommonIconSizeOverrideAsInt">
+        <CascadingValue Name="LuthetusCommonIconHeightOverride" Value="luthetusCommonIconSizeOverrideAsInt">
+            <div class="luth_web_navbar-left-content">
+                <div class="luth_web_navbar-brand">
+                    <a class="luth_web_link"
+                       href="/">
+                        <Luthetus.Common.RazorLib.Icons.Codicon.IconCSharpClass />
+                    </a>
+                </div>
+
+                <SearchBarDisplay/>
+            </div>
+
+            <div class="luth_web_navbar-right-content">
+                <a class="luth_web_link"
+                   href="/">
+                    <Luthetus.Common.RazorLib.Icons.Codicon.IconFolder />
+                </a>
+
+                <button class="luth_button"
+                        @onclick="OpenSettingsDialogAction.Invoke">
+                    <Luthetus.Common.RazorLib.Icons.Codicon.IconSettingsGear />
+                </button>
+            </div>
+        </CascadingValue>
+    </CascadingValue>
+</div>

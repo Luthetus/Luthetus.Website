@@ -1,0 +1,12 @@
+﻿@using Luthetus.Common.RazorLib.Dropdown
+
+<div class="luth_web_search-bar">
+    <input class="luth_input"
+           @bind="SearchQuery"
+           @onfocusin="HandleInputOnFocusIn"
+           @onfocusout="HandleInputOnFocusOut" />
+
+    <DropdownDisplay DropdownKey="SearchBarDropdownKey">
+        Aaaa
+    </DropdownDisplay>
+</div>

@@ -1,0 +1,7 @@
+.luth_web_search-bar {
+    position: relative;
+}
+
+    .luth_web_search-bar ::deep .luth_dropdown-display {
+        width: 100%;
+    }

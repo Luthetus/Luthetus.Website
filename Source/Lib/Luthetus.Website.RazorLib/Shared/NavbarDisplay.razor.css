@@ -1,0 +1,17 @@
+.luth_web_navbar {
+    height: var(--luth_web_navbar-height);
+    background-color: var(--luth_tertiary-background-color);
+    color: var(--luth_tertiary-foreground-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.luth_web_navbar-left-content {
+    display: flex;
+    align-items: center;
+}
+
+.luth_web_navbar-right-content {
+    display: flex;
+    align-items: center;
+}

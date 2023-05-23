@@ -2,21 +2,15 @@
 
 <PageTitle>Luthetus</PageTitle>
 
-<div class="page @AppOptionsService.ThemeCssClassString"
-     style="@AppOptionsService.FontSizeCssStyleString  @AppOptionsService.FontFamilyCssStyleString">
+<div class="luth_web_layout @AppOptionsService.ThemeCssClassString"
+     style="@AppOptionsService.FontSizeCssStyleString @AppOptionsService.FontFamilyCssStyleString">
     
     <Luthetus.Common.RazorLib.LuthetusCommonInitializer />
     <Luthetus.TextEditor.RazorLib.LuthetusTextEditorInitializer />
-    
-    <div class="sidebar">
-        <NavMenu/>
+
+    <NavbarDisplay OpenSettingsDialogAction="OpenSettingsDialogOnClick" />
+
+    <div class="luth_web_body">
+        @Body
     </div>
-
-    <main>
-        <TopRow OpenSettingsDialogOnClick="OpenSettingsDialogOnClick"/>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
 </div>
