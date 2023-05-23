@@ -17,6 +17,7 @@ using Luthetus.Ide.RazorLib.NuGet;
 using Luthetus.Ide.RazorLib.Git;
 using Luthetus.Ide.RazorLib.CSharpProjectForm;
 using Luthetus.Ide.RazorLib.InputFile;
+using Luthetus.Ide.ClassLib.Menu;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -89,6 +90,8 @@ public static class ServiceCollectionExtensions
                 typeof(TreeViewCSharpProjectToProjectReferenceDisplay),
                 typeof(TreeViewSolutionFolderDisplay));
         });
+
+        services.AddScoped<ICommonMenuOptionsFactory, CommonMenuOptionsFactory>();
 
         return services.AddFluxor(options =>
            options.ScanAssemblies(
