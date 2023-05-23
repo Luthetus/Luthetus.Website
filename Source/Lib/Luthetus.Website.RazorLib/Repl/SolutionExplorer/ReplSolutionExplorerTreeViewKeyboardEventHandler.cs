@@ -1,11 +1,18 @@
 ﻿using Luthetus.Common.RazorLib.BackgroundTaskCase;
+using Luthetus.Common.RazorLib.ComponentRenderers.Types;
 using Luthetus.Common.RazorLib.Keyboard;
+using Luthetus.Common.RazorLib.Menu;
+using Luthetus.Common.RazorLib.Notification;
+using Luthetus.Common.RazorLib.Store.NotificationCase;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.Events;
+using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
+using Luthetus.Ide.ClassLib.Menu;
+using Luthetus.Ide.ClassLib.Namespaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
@@ -16,14 +23,17 @@ namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
 {
     private readonly TextEditorGroupKey _replTextEditorGroupKey;
+    private readonly ICommonMenuOptionsFactory _commonMenuOptionsFactory;
     private readonly ILuthetusIdeComponentRenderers _luthetusIdeComponentRenderers;
     private readonly IFileSystemProvider _fileSystemProvider;
     private readonly IDispatcher _dispatcher;
+    private readonly ITreeViewService _treeViewService;
     private readonly ITextEditorService _textEditorService;
     private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
     public ReplSolutionExplorerTreeViewKeyboardEventHandler(
         TextEditorGroupKey replTextEditorGroupKey,
+        ICommonMenuOptionsFactory commonMenuOptionsFactory,
         ILuthetusIdeComponentRenderers luthetusIdeComponentRenderers,
         IFileSystemProvider fileSystemProvider,
         IDispatcher dispatcher,
@@ -33,9 +43,11 @@ public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
         : base(treeViewService)
     {
         _replTextEditorGroupKey = replTextEditorGroupKey;
+        _commonMenuOptionsFactory = commonMenuOptionsFactory;
         _luthetusIdeComponentRenderers = luthetusIdeComponentRenderers;
         _fileSystemProvider = fileSystemProvider;
         _dispatcher = dispatcher;
+        _treeViewService = treeViewService;
         _textEditorService = textEditorService;
         _backgroundTaskQueue = backgroundTaskQueue;
     }
@@ -72,14 +84,14 @@ public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
         var activeNode = treeViewCommandParameter.TreeViewState.ActiveNode;
 
         if (activeNode is null ||
-            activeNode is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePathPath ||
-            treeViewAbsoluteFilePathPath.Item is null)
+            activeNode is not TreeViewNamespacePath treeViewNamespacePath ||
+            treeViewNamespacePath.Item is null)
         {
             return;
         }
 
         await EditorState.OpenInEditorAsync(
-            treeViewAbsoluteFilePathPath.Item,
+            treeViewNamespacePath.Item.AbsoluteFilePath,
             shouldSetFocusToEditor,
             _dispatcher,
             _textEditorService,

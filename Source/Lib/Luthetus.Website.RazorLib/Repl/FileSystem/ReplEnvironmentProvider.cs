@@ -29,7 +29,7 @@ public class ReplEnvironmentProvider : IEnvironmentProvider
     }
 
     public char DirectorySeparatorChar => '/';
-    public char AltDirectorySeparatorChar => '/';
+    public char AltDirectorySeparatorChar => '\\';
 
     public string GetRandomFileName()
     {

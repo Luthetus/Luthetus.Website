@@ -45,16 +45,16 @@ public class ReplSolutionExplorerTreeViewMouseEventHandler : TreeViewMouseEventH
         _ = base.OnDoubleClickAsync(treeViewCommandParameter);
 
         if (treeViewCommandParameter.TargetNode
-            is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePath)
+            is not TreeViewNamespacePath treeViewNamespacePath)
         {
             return false;
         }
 
-        if (treeViewAbsoluteFilePath.Item is null)
+        if (treeViewNamespacePath.Item is null)
             return false;
 
         await EditorState.OpenInEditorAsync(
-            treeViewAbsoluteFilePath.Item,
+            treeViewNamespacePath.Item.AbsoluteFilePath,
             true,
             _dispatcher,
             _textEditorService,

@@ -18,6 +18,7 @@ using Luthetus.Ide.RazorLib.CSharpProjectForm;
 using Luthetus.Ide.RazorLib.InputFile;
 using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
+using Luthetus.Ide.ClassLib.FileTemplates;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -92,6 +93,7 @@ public static class ServiceCollectionExtensions
         });
 
         services.AddScoped<ICommonMenuOptionsFactory, CommonMenuOptionsFactory>();
+        services.AddScoped<IFileTemplateProvider, FileTemplateProvider>();
 
         return services.AddFluxor(options =>
            options.ScanAssemblies(

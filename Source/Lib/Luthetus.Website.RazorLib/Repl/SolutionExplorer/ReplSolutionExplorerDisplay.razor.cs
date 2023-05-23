@@ -19,6 +19,7 @@ using Luthetus.Ide.ClassLib.DotNet;
 using Luthetus.Ide.ClassLib.Namespaces;
 using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Website.RazorLib.Repl.FolderExplorer;
+using Luthetus.Ide.ClassLib.Menu;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
@@ -38,6 +39,8 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
     [Inject]
     private IBackgroundTaskQueue BackgroundTaskQueue { get; set; } = null!;
+    [Inject]
+    private ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
@@ -64,6 +67,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     {
         _treeViewKeyboardEventHandler = new ReplSolutionExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
+            CommonMenuOptionsFactory,
             LuthetusIdeComponentRenderers,
             FileSystemProvider,
             Dispatcher,
