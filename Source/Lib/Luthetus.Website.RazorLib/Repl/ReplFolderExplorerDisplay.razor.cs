@@ -92,7 +92,9 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
             new ReplState.NextInstanceAction(inReplState =>
                 new ReplState(
                     EnvironmentProvider.RootDirectoryAbsoluteFilePath,
-                    inReplState.Files)));
+                    inReplState.Files,
+                    inReplState.FolderExplorerElementDimensions,
+                    inReplState.TextEditorGroupElementDimensions)));
 
         if (!TreeViewService.TryGetTreeViewState(
                 ReplTreeViewStateKey,

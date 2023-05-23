@@ -14,13 +14,13 @@
         <CascadingValue Value="appOptionsState">
             <CascadingValue Value="ReplTextEditorGroupKey">
                 <CascadingValue Value="ReplTreeViewStateKey">
-                    <ReplFolderExplorerDisplay ElementDimensions="_folderExplorerElementDimensions" />
+                    <ReplFolderExplorerDisplay ElementDimensions="replState.FolderExplorerElementDimensions" />
 
-                    <ResizableColumn LeftElementDimensions="_folderExplorerElementDimensions"
-                                     RightElementDimensions="_textEditorGroupElementDimensions"
+                    <ResizableColumn LeftElementDimensions="replState.FolderExplorerElementDimensions"
+                                     RightElementDimensions="replState.TextEditorGroupElementDimensions"
                                      ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
 
-                    <ReplTextEditorGroupDisplay ElementDimensions="_textEditorGroupElementDimensions" />
+                    <ReplTextEditorGroupDisplay ElementDimensions="replState.TextEditorGroupElementDimensions" />
                 </CascadingValue>
             </CascadingValue>
         </CascadingValue>

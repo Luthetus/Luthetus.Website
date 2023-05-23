@@ -23,55 +23,9 @@ public partial class ReplContainerDisplay : FluxorComponent
     private static readonly TextEditorGroupKey ReplTextEditorGroupKey = TextEditorGroupKey.NewTextEditorGroupKey();
     private static readonly TreeViewStateKey ReplTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
 
-    private ElementDimensions _folderExplorerElementDimensions = new();
-    private ElementDimensions _textEditorGroupElementDimensions = new();
-
     protected override void OnInitialized()
     {
         TextEditorService.Group.Register(ReplTextEditorGroupKey);
-
-        // Initialize _folderExplorerElementDimensions
-        {
-            var folderExplorerWidth = _folderExplorerElementDimensions.DimensionAttributes
-                .Single(da => da.DimensionAttributeKind == DimensionAttributeKind.Width);
-
-            folderExplorerWidth.DimensionUnits.AddRange(new[]
-            {
-                new DimensionUnit
-                {
-                    Value = 50,
-                    DimensionUnitKind = DimensionUnitKind.Percentage
-                },
-                new DimensionUnit
-                {
-                    Value = ResizableRow.RESIZE_HANDLE_HEIGHT_IN_PIXELS / 2,
-                    DimensionUnitKind = DimensionUnitKind.Pixels,
-                    DimensionOperatorKind = DimensionOperatorKind.Subtract
-                }
-            });
-        }
-
-        // Initialize _textEditorGroupElementDimensions
-        {
-            var textEditorGroupWidth = _textEditorGroupElementDimensions.DimensionAttributes
-                .Single(da => da.DimensionAttributeKind == DimensionAttributeKind.Width);
-
-            textEditorGroupWidth.DimensionUnits.AddRange(new[]
-            {
-                new DimensionUnit
-                {
-                    Value = 50,
-                    DimensionUnitKind = DimensionUnitKind.Percentage
-                },
-                new DimensionUnit
-                {
-                    Value = ResizableRow.RESIZE_HANDLE_HEIGHT_IN_PIXELS / 2,
-                    DimensionUnitKind = DimensionUnitKind.Pixels,
-                    DimensionOperatorKind = DimensionOperatorKind.Subtract
-                }
-            });
-        }
-
 
         base.OnInitialized();
     }

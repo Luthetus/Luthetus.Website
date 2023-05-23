@@ -49,7 +49,9 @@ public class ReplFileHandler : IFileHandler
 
                     return new ReplState(
                         inReplState.RootDirectory,
-                        outFiles);
+                        outFiles,
+                        inReplState.FolderExplorerElementDimensions,
+                        inReplState.TextEditorGroupElementDimensions);
                 }));
 
         return Task.CompletedTask;
@@ -140,7 +142,9 @@ public class ReplFileHandler : IFileHandler
 
                     return new ReplState(
                         inReplState.RootDirectory,
-                        nextFiles);
+                        nextFiles,
+                        inReplState.FolderExplorerElementDimensions,
+                        inReplState.TextEditorGroupElementDimensions);
                 }));
 
         return Task.CompletedTask;
