@@ -38,13 +38,14 @@ public static class ServiceCollectionExtensions
         // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
 
-        services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         services.AddSingleton<IEnvironmentProvider, ReplEnvironmentProvider>();
+        services.AddSingleton<IFileSystemProvider, ReplFileSystemProvider>();
 
-        services.AddHostedService<QueuedHostedService>();
-
+        services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
 
+        services.AddHostedService<QueuedHostedService>();
+        
         services.AddLuthetusTextEditor(options => options with
         {
             InitializeFluxor = shouldInitializeFluxor,

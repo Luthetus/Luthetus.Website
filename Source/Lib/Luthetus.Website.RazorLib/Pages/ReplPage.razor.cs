@@ -1,11 +1,7 @@
 ﻿using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.Common.RazorLib.Options;
-using Luthetus.Common.RazorLib.Resize;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
-using Luthetus.TextEditor.RazorLib;
-using Luthetus.TextEditor.RazorLib.Group;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
 
 namespace Luthetus.Website.RazorLib.Pages;
 

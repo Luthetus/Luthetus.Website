@@ -3,7 +3,8 @@
 
     @if (ReplState.RootDirectory is null)
     {
-        <button class="luth_button">
+        <button class="luth_button"
+                @onclick="InitializeRootDirectoryOnClick">
             Initialize RootDirectory
         </button>
     }
