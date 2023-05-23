@@ -11,9 +11,9 @@ using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
 using Luthetus.TextEditor.RazorLib.Group;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
-public class ReplTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
+public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
 {
     private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly ILuthetusIdeComponentRenderers _luthetusIdeComponentRenderers;
@@ -22,7 +22,7 @@ public class ReplTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
     private readonly ITextEditorService _textEditorService;
     private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
-    public ReplTreeViewKeyboardEventHandler(
+    public ReplSolutionExplorerTreeViewKeyboardEventHandler(
         TextEditorGroupKey replTextEditorGroupKey,
         ILuthetusIdeComponentRenderers luthetusIdeComponentRenderers,
         IFileSystemProvider fileSystemProvider,

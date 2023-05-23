@@ -15,10 +15,14 @@ using System.Collections.Immutable;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.Common.RazorLib.BackgroundTaskCase;
+using Luthetus.Ide.ClassLib.DotNet;
+using Luthetus.Ide.ClassLib.Namespaces;
+using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
+using Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
-public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
+public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
 {
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;
@@ -41,8 +45,8 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     public AppOptionsState AppOptionsState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public TextEditorGroupKey ReplTextEditorGroupKey { get; set; } = null!;
-    [CascadingParameter, EditorRequired]
-    public TreeViewStateKey ReplTreeViewStateKey { get; set; } = null!;
+    [CascadingParameter(Name="ReplSolutionExplorerTreeViewStateKey"), EditorRequired]
+    public TreeViewStateKey ReplSolutionExplorerTreeViewStateKey { get; set; } = null!;
     
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
@@ -58,7 +62,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
 
     protected override void OnInitialized()
     {
-        _treeViewKeyboardEventHandler = new ReplTreeViewKeyboardEventHandler(
+        _treeViewKeyboardEventHandler = new ReplSolutionExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
             LuthetusIdeComponentRenderers,
             FileSystemProvider,
@@ -67,7 +71,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
             TextEditorService,
             BackgroundTaskQueue);
 
-        _treeViewMouseEventHandler = new ReplTreeViewMouseEventHandler(
+        _treeViewMouseEventHandler = new ReplSolutionExplorerTreeViewMouseEventHandler(
             ReplTextEditorGroupKey,
             Dispatcher,
             TextEditorService,
@@ -86,30 +90,51 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
         await InvokeAsync(StateHasChanged);
     }
 
-    private void InitializeRootDirectoryOnClick()
+    private async Task InitializeSolutionExplorerOnClickAsync()
     {
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplState.INITAL_DOT_NET_SOLUTION_ABSOLUTE_FILE_PATH,
+            ReplState.INITIAL_DOT_NET_SOLUTION_CONTENTS);
+
+        var dotNetSolutionAbsoluteFilePath = new AbsoluteFilePath(
+            ReplState.INITAL_DOT_NET_SOLUTION_ABSOLUTE_FILE_PATH,
+            false,
+            EnvironmentProvider);
+
+        var dotNetSolutionNamespacePath = new NamespacePath(
+            string.Empty,
+            dotNetSolutionAbsoluteFilePath);
+
+        var dotNetSolution = DotNetSolutionParser.Parse(
+            ReplState.INITIAL_DOT_NET_SOLUTION_CONTENTS,
+            dotNetSolutionNamespacePath,
+            EnvironmentProvider);
+
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>
                 new ReplState(
-                    EnvironmentProvider.RootDirectoryAbsoluteFilePath,
+                    inReplState.RootDirectory,
+                    dotNetSolution,
                     inReplState.Files,
-                    inReplState.FolderExplorerElementDimensions,
+                    inReplState.ViewExplorerElementDimensions,
                     inReplState.TextEditorGroupElementDimensions)));
 
         if (!TreeViewService.TryGetTreeViewState(
-                ReplTreeViewStateKey,
+                ReplSolutionExplorerTreeViewStateKey,
                 out _))
         {
-            var rootTreeViewNode = new TreeViewAbsoluteFilePath(
-                EnvironmentProvider.RootDirectoryAbsoluteFilePath,
+            var rootTreeViewNode = new TreeViewSolution(
+                dotNetSolution,
                 LuthetusIdeComponentRenderers,
                 FileSystemProvider,
                 EnvironmentProvider,
                 true,
                 true);
 
+            await rootTreeViewNode.LoadChildrenAsync();
+
             var treeViewState = new TreeViewState(
-                ReplTreeViewStateKey,
+                ReplSolutionExplorerTreeViewStateKey,
                 rootTreeViewNode,
                 rootTreeViewNode,
                 ImmutableList<TreeViewNoType>.Empty);
@@ -124,7 +149,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
 
         Dispatcher.Dispatch(
             new DropdownsState.AddActiveAction(
-                ReplContextMenu.ContextMenuEventDropdownKey));
+                ReplSolutionExplorerContextMenu.ContextMenuEventDropdownKey));
 
         await InvokeAsync(StateHasChanged);
     }

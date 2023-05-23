@@ -1,4 +1,4 @@
-﻿namespace Luthetus.Website.RazorLib.Repl;
+﻿namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplFile
 {

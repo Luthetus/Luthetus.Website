@@ -10,9 +10,9 @@ using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
 using Luthetus.TextEditor.RazorLib.Group;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
-public class ReplTreeViewMouseEventHandler : TreeViewMouseEventHandler
+public class ReplFolderExplorerTreeViewMouseEventHandler : TreeViewMouseEventHandler
 {
     private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly IDispatcher _dispatcher;
@@ -21,7 +21,7 @@ public class ReplTreeViewMouseEventHandler : TreeViewMouseEventHandler
     private readonly IFileSystemProvider _fileSystemProvider;
     private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
-    public ReplTreeViewMouseEventHandler(
+    public ReplFolderExplorerTreeViewMouseEventHandler(
         TextEditorGroupKey replTextEditorGroupKey,
         IDispatcher dispatcher,
         ITextEditorService textEditorService,

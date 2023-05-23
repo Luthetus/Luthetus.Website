@@ -4,7 +4,7 @@ using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
 using Microsoft.AspNetCore.Components;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.TextEditor;
 
 public partial class ReplTextEditorGroupDisplay : ComponentBase
 {

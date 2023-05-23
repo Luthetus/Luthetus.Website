@@ -7,28 +7,28 @@
 <div class="luth_web_repl-folder-explorer"
      style="@ElementDimensions.StyleString">
 
-    @if (ReplState.RootDirectory is null)
+    @if (ReplState.DotNetSolution is null)
     {
         <button class="luth_button"
-                @onclick="InitializeRootDirectoryOnClick">
-            Initialize RootDirectory
+                @onclick="InitializeSolutionExplorerOnClickAsync">
+            Initialize Solution Explorer
         </button>
     }
     else
     {
         <CascadingValue Name="OffsetPerDepthInPixels" Value="OffsetPerDepthInPixels">
-            <TreeViewStateDisplay TreeViewStateKey="ReplTreeViewStateKey"
+            <TreeViewStateDisplay TreeViewStateKey="ReplSolutionExplorerTreeViewStateKey"
                                     CssStyleString="height: 100%;"
                                     OnContextMenuFunc="OnTreeViewContextMenuFunc"
                                     TreeViewKeyboardEventHandler="_treeViewKeyboardEventHandler"
                                     TreeViewMouseEventHandler="_treeViewMouseEventHandler" />
         </CascadingValue>
 
-        <DropdownDisplay DropdownKey="ReplContextMenu.ContextMenuEventDropdownKey"
+        <DropdownDisplay DropdownKey="ReplSolutionExplorerContextMenu.ContextMenuEventDropdownKey"
                          DropdownPositionKind="DropdownPositionKind.Unset"
-                         CssStyleString="@ReplContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
+                     CssStyleString="@ReplSolutionExplorerContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
 
-            <ReplContextMenu TreeViewCommandParameter="_mostRecentTreeViewCommandParameter"/>
+            <ReplSolutionExplorerContextMenu TreeViewCommandParameter="_mostRecentTreeViewCommandParameter" />
         </DropdownDisplay>
     }
 </div>

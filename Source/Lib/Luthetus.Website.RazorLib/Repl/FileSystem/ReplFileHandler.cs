@@ -3,7 +3,7 @@ using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
 using System.Collections.Immutable;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplFileHandler : IFileHandler
 {
@@ -12,7 +12,7 @@ public class ReplFileHandler : IFileHandler
     private readonly IDispatcher _dispatcher;
 
     public ReplFileHandler(
-        IEnvironmentProvider environmentProvider, 
+        IEnvironmentProvider environmentProvider,
         IState<ReplState> replStateWrap,
         IDispatcher dispatcher)
     {
@@ -26,7 +26,7 @@ public class ReplFileHandler : IFileHandler
         CancellationToken cancellationToken = default)
     {
         var replState = _replStateWrap.Value;
-        
+
         return Task.FromResult(replState.Files.Any(
             f => f.AbsoluteFilePathString == absoluteFilePathString));
     }
@@ -49,8 +49,9 @@ public class ReplFileHandler : IFileHandler
 
                     return new ReplState(
                         inReplState.RootDirectory,
+                        inReplState.DotNetSolution,
                         outFiles,
-                        inReplState.FolderExplorerElementDimensions,
+                        inReplState.ViewExplorerElementDimensions,
                         inReplState.TextEditorGroupElementDimensions);
                 }));
 
@@ -142,8 +143,9 @@ public class ReplFileHandler : IFileHandler
 
                     return new ReplState(
                         inReplState.RootDirectory,
+                        inReplState.DotNetSolution,
                         nextFiles,
-                        inReplState.FolderExplorerElementDimensions,
+                        inReplState.ViewExplorerElementDimensions,
                         inReplState.TextEditorGroupElementDimensions);
                 }));
 

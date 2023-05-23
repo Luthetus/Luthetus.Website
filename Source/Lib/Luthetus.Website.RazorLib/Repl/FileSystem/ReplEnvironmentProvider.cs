@@ -1,7 +1,7 @@
 ﻿using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplEnvironmentProvider : IEnvironmentProvider
 {

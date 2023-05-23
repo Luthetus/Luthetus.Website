@@ -4,15 +4,32 @@
 
 <div class="luth_web_repl">
 
-    @{ var appOptionsState = AppOptionsService.AppOptionsStateWrap.Value; }
+    @{
+        var appOptionsState = AppOptionsService.AppOptionsStateWrap.Value;
+
+        var renderBatchActiveRadioButtonIndex = ActiveRadioButtonIndex;
+    }
 
     <div class="luth_web_repl-title"
          style="@GetTitleCssStyleString(appOptionsState)">
-        Repl Title
+        Choose View:
+
+        <button class="luth_button @GetIsActiveCssClass(0, renderBatchActiveRadioButtonIndex)"
+                @onclick="() => SetActiveRadioButtonIndexOnClick(0)">
+            Solution
+        </button>
+
+        <button class="luth_button @GetIsActiveCssClass(1, renderBatchActiveRadioButtonIndex)"
+                @onclick="() => SetActiveRadioButtonIndexOnClick(1)">
+            Folder
+        </button>
     </div>
     
     <div class="luth_web_repl-body"
          style="@GetBodyCssStyleString(appOptionsState)">
-        <ReplContainerDisplay/>
+
+        <CascadingValue Value="CascadeChosenView(renderBatchActiveRadioButtonIndex)">
+             <ReplContainerDisplay/>
+         </CascadingValue>
     </div>
 </div>

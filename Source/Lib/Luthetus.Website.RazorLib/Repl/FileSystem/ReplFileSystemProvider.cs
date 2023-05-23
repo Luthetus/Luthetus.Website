@@ -2,7 +2,7 @@
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplFileSystemProvider : IFileSystemProvider
 {

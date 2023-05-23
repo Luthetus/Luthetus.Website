@@ -1,5 +1,8 @@
 ﻿@using Fluxor.Blazor.Web.Components;
 @using Luthetus.Common.RazorLib.Resize
+@using Luthetus.Website.RazorLib.Repl.FolderExplorer
+@using Luthetus.Website.RazorLib.Repl.SolutionExplorer
+@using Luthetus.Website.RazorLib.Repl.TextEditor
 
 @inherits FluxorComponent
 
@@ -13,14 +16,25 @@
     <CascadingValue Value="replState">
         <CascadingValue Value="appOptionsState">
             <CascadingValue Value="ReplTextEditorGroupKey">
-                <CascadingValue Value="ReplTreeViewStateKey">
-                    <ReplFolderExplorerDisplay ElementDimensions="replState.FolderExplorerElementDimensions" />
+                <CascadingValue Name="ReplFolderExplorerTreeViewStateKey" Value="ReplFolderExplorerTreeViewStateKey">
+                    <CascadingValue Name="ReplSolutionExplorerTreeViewStateKey" Value="ReplSolutionExplorerTreeViewStateKey">
 
-                    <ResizableColumn LeftElementDimensions="replState.FolderExplorerElementDimensions"
-                                     RightElementDimensions="replState.TextEditorGroupElementDimensions"
-                                     ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
+                        @switch (ViewKind)
+                        {
+                            case Pages.ReplPage.ViewKind.Solution:
+                                <ReplSolutionExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
+                                break;
+                            case Pages.ReplPage.ViewKind.Folder:
+                                <ReplFolderExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
+                                break;
+                        }                    
 
-                    <ReplTextEditorGroupDisplay ElementDimensions="replState.TextEditorGroupElementDimensions" />
+                        <ResizableColumn LeftElementDimensions="replState.ViewExplorerElementDimensions"
+                                         RightElementDimensions="replState.TextEditorGroupElementDimensions"
+                                         ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
+
+                        <ReplTextEditorGroupDisplay ElementDimensions="replState.TextEditorGroupElementDimensions" />
+                    </CascadingValue>
                 </CascadingValue>
             </CascadingValue>
         </CascadingValue>

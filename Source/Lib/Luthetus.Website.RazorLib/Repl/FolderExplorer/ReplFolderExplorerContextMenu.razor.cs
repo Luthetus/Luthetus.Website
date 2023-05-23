@@ -11,9 +11,9 @@ using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.Ide.RazorLib.FolderExplorer;
 using System.Collections.Immutable;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
-public partial class ReplContextMenu : ComponentBase
+public partial class ReplFolderExplorerContextMenu : ComponentBase
 {
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;

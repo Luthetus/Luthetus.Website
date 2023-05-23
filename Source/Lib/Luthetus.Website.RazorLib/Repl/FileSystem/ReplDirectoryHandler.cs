@@ -2,7 +2,7 @@
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
 
-namespace Luthetus.Website.RazorLib.Repl;
+namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplDirectoryHandler : IDirectoryHandler
 {
@@ -56,8 +56,9 @@ public class ReplDirectoryHandler : IDirectoryHandler
 
                     return new ReplState(
                         inReplState.RootDirectory,
+                        inReplState.DotNetSolution,
                         outFiles,
-                        inReplState.FolderExplorerElementDimensions,
+                        inReplState.ViewExplorerElementDimensions,
                         inReplState.TextEditorGroupElementDimensions);
                 }));
 
@@ -86,8 +87,9 @@ public class ReplDirectoryHandler : IDirectoryHandler
 
                     return new ReplState(
                         inReplState.RootDirectory,
+                        inReplState.DotNetSolution,
                         outFiles,
-                        inReplState.FolderExplorerElementDimensions,
+                        inReplState.ViewExplorerElementDimensions,
                         inReplState.TextEditorGroupElementDimensions);
                 }));
 
@@ -179,7 +181,7 @@ public class ReplDirectoryHandler : IDirectoryHandler
         var files = await GetFilesAsync(
             absoluteFilePathString,
             cancellationToken);
-        
+
         return directories.Union(files);
     }
 }

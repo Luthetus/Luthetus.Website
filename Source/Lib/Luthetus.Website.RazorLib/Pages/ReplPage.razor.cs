@@ -15,9 +15,11 @@ public partial class ReplPage : ComponentBase
     /// <br/><br/>
     /// The height insurance in pixels is to reduce likely hood that the height for the text node is larger than that of the div itself. If a more accurate measurement of the div's height is taken then perhaps this constant would not be necessary.
     /// </summary>
-    private const int HEIGHT_INSURANCE_IN_PIXELS = 15;
+    private const int HEIGHT_INSURANCE_IN_PIXELS = 20;
     
     private const int HEIGHT_OF_TITLE_DIV_BORDER_BOTTOM_IN_PIXELS = 4;
+
+    private int ActiveRadioButtonIndex = 0;
 
     /// <summary>
     /// TODO: Measure the true height of the title div? FontSize doesn't necessary result in the same height value.
@@ -46,5 +48,38 @@ public partial class ReplPage : ComponentBase
             .ToCssValue();
 
         return $"height: calc(100% - {totalHeightOfTitleDivCssValue}px);";
+    }
+
+    private string GetIsActiveCssClass(
+        int radioButtonIndex,
+        int renderBatchActiveRadioButtonIndex)
+    {
+        return radioButtonIndex == renderBatchActiveRadioButtonIndex
+            ? "luth_active"
+            : string.Empty;
+    }
+    
+    /// <summary>
+    /// I feel as though all logic regarding choosing a view is pretty hacky and gross. I've been programming for like 9 hours straight? I don't know I'm exhausted and sorry for how this is written. But, I still think I'm writing productive code so I'll try and continue working.
+    /// </summary>
+    private ViewKind CascadeChosenView(
+        int renderBatchActiveRadioButtonIndex)
+    {
+        if (renderBatchActiveRadioButtonIndex == 0)
+            return ViewKind.Solution;
+        else
+            return ViewKind.Folder;
+    }
+    
+    private void SetActiveRadioButtonIndexOnClick(
+        int radioButtonIndex)
+    {
+        ActiveRadioButtonIndex = radioButtonIndex;
+    }
+
+    public enum ViewKind
+    {
+        Solution,
+        Folder
     }
 }
