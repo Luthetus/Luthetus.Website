@@ -13,6 +13,8 @@ using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
 using System.Collections.Immutable;
 using Luthetus.Common.RazorLib.TreeView.Events;
+using Luthetus.TextEditor.RazorLib;
+using Luthetus.Common.RazorLib.BackgroundTaskCase;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
@@ -27,7 +29,11 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
     [Inject]
+    private ITextEditorService TextEditorService { get; set; } = null!;
+    [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
+    [Inject]
+    private IBackgroundTaskQueue BackgroundTaskQueue { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
@@ -53,10 +59,22 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     protected override void OnInitialized()
     {
         _treeViewKeyboardEventHandler = new ReplTreeViewKeyboardEventHandler(
-            TreeViewService);
+            ReplTextEditorGroupKey,
+            LuthetusIdeComponentRenderers,
+            FileSystemProvider,
+            Dispatcher,
+            TreeViewService,
+            TextEditorService,
+            BackgroundTaskQueue);
 
-        _treeViewMouseEventHandler = new TreeViewMouseEventHandler(
-            TreeViewService);
+        _treeViewMouseEventHandler = new ReplTreeViewMouseEventHandler(
+            ReplTextEditorGroupKey,
+            Dispatcher,
+            TextEditorService,
+            LuthetusIdeComponentRenderers,
+            FileSystemProvider,
+            TreeViewService,
+            BackgroundTaskQueue);
 
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 

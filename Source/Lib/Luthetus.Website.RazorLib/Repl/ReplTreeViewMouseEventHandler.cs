@@ -8,11 +8,13 @@ using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
+using Luthetus.TextEditor.RazorLib.Group;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
 public class ReplTreeViewMouseEventHandler : TreeViewMouseEventHandler
 {
+    private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly IDispatcher _dispatcher;
     private readonly ITextEditorService _textEditorService;
     private readonly ILuthetusIdeComponentRenderers _luthetusIdeComponentRenderers;
@@ -20,6 +22,7 @@ public class ReplTreeViewMouseEventHandler : TreeViewMouseEventHandler
     private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
     public ReplTreeViewMouseEventHandler(
+        TextEditorGroupKey replTextEditorGroupKey,
         IDispatcher dispatcher,
         ITextEditorService textEditorService,
         ILuthetusIdeComponentRenderers luthetusIdeComponentRenderers,
@@ -28,6 +31,7 @@ public class ReplTreeViewMouseEventHandler : TreeViewMouseEventHandler
         IBackgroundTaskQueue backgroundTaskQueue)
         : base(treeViewService)
     {
+        _replTextEditorGroupKey = replTextEditorGroupKey;
         _dispatcher = dispatcher;
         _textEditorService = textEditorService;
         _luthetusIdeComponentRenderers = luthetusIdeComponentRenderers;
@@ -56,7 +60,8 @@ public class ReplTreeViewMouseEventHandler : TreeViewMouseEventHandler
             _textEditorService,
             _luthetusIdeComponentRenderers,
             _fileSystemProvider,
-            _backgroundTaskQueue);
+            _backgroundTaskQueue,
+            _replTextEditorGroupKey);
 
         return true;
     }

@@ -6,16 +6,16 @@ using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
-using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
-using Luthetus.Ide.ClassLib.Store.TerminalCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
+using Luthetus.TextEditor.RazorLib.Group;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
 public class ReplTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
 {
+    private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly ILuthetusIdeComponentRenderers _luthetusIdeComponentRenderers;
     private readonly IFileSystemProvider _fileSystemProvider;
     private readonly IDispatcher _dispatcher;
@@ -23,6 +23,7 @@ public class ReplTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
     private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
     public ReplTreeViewKeyboardEventHandler(
+        TextEditorGroupKey replTextEditorGroupKey,
         ILuthetusIdeComponentRenderers luthetusIdeComponentRenderers,
         IFileSystemProvider fileSystemProvider,
         IDispatcher dispatcher,
@@ -31,6 +32,7 @@ public class ReplTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
         IBackgroundTaskQueue backgroundTaskQueue)
         : base(treeViewService)
     {
+        _replTextEditorGroupKey = replTextEditorGroupKey;
         _luthetusIdeComponentRenderers = luthetusIdeComponentRenderers;
         _fileSystemProvider = fileSystemProvider;
         _dispatcher = dispatcher;
@@ -83,6 +85,7 @@ public class ReplTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
             _textEditorService,
             _luthetusIdeComponentRenderers,
             _fileSystemProvider,
-            _backgroundTaskQueue);
+            _backgroundTaskQueue,
+            _replTextEditorGroupKey);
     }
 }
