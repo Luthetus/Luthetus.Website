@@ -10,7 +10,14 @@ public partial class ReplState
 {
     private ReplState()
     {
-        Files = ImmutableList<ReplFile>.Empty;
+        Files = new ReplFile[]
+        {
+            new ReplFile(
+                string.Empty,
+                "/",
+                DateTime.UtcNow)
+        }
+        .ToImmutableList();
     }
 
     public ReplState(

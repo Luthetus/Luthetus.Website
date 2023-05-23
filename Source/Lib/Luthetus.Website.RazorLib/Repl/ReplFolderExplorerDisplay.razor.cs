@@ -71,7 +71,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
             new ReplState.NextInstanceAction(inReplState =>
                 new ReplState(
                     EnvironmentProvider.RootDirectoryAbsoluteFilePath,
-                    ImmutableList<ReplFile>.Empty)));
+                    inReplState.Files)));
 
         if (!TreeViewService.TryGetTreeViewState(
                 ReplTreeViewStateKey,
