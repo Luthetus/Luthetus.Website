@@ -52,8 +52,11 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
 
     protected override void OnInitialized()
     {
-        _treeViewKeyboardEventHandler = new(TreeViewService);
-        _treeViewMouseEventHandler = new(TreeViewService);
+        _treeViewKeyboardEventHandler = new ReplTreeViewKeyboardEventHandler(
+            TreeViewService);
+
+        _treeViewMouseEventHandler = new TreeViewMouseEventHandler(
+            TreeViewService);
 
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 

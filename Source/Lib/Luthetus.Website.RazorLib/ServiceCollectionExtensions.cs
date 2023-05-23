@@ -68,11 +68,11 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<ILuthetusIdeComponentRenderers>(serviceProvider =>
         {
-            var blazorCommonComponentRenderers = serviceProvider
+            var luthetusCommonComponentRenderers = serviceProvider
                 .GetRequiredService<ILuthetusCommonComponentRenderers>();
 
             return new LuthetusIdeComponentRenderers(
-                blazorCommonComponentRenderers,
+                luthetusCommonComponentRenderers,
                 typeof(BooleanPromptOrCancelDisplay),
                 typeof(FileFormDisplay),
                 typeof(DeleteFileFormDisplay),

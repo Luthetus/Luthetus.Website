@@ -1,10 +1,6 @@
 ﻿using Fluxor;
-using Luthetus.Common.RazorLib.Store.AccountCase;
-using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
-using Microsoft.VisualBasic;
-using System.Collections.Immutable;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
@@ -116,14 +112,16 @@ public class ReplDirectoryHandler : IDirectoryHandler
 
         var childrenFromAllGenerations = replState.Files.Where(
             f => f.AbsoluteFilePathString.StartsWith(absoluteFilePathString) &&
-                 f.AbsoluteFilePathString != absoluteFilePathString);
+                 f.AbsoluteFilePathString != absoluteFilePathString)
+            .ToArray();
 
         var directChildren = childrenFromAllGenerations.Where(
             f =>
             {
-                var withoutParentPrefix = 
+                var withoutParentPrefix = new string(
                     f.AbsoluteFilePathString
-                    .Replace(absoluteFilePathString, string.Empty);
+                        .Skip(absoluteFilePathString.Length)
+                        .ToArray());
 
                 return withoutParentPrefix.EndsWith("/") &&
                        withoutParentPrefix.Count(x => x == '/') == 1;
@@ -153,9 +151,10 @@ public class ReplDirectoryHandler : IDirectoryHandler
         var directChildren = childrenFromAllGenerations.Where(
             f =>
             {
-                var withoutParentPrefix =
+                var withoutParentPrefix = new string(
                     f.AbsoluteFilePathString
-                    .Replace(absoluteFilePathString, string.Empty);
+                        .Skip(absoluteFilePathString.Length)
+                        .ToArray());
 
                 return withoutParentPrefix.Count(x => x == '/') == 0;
             })
@@ -173,7 +172,7 @@ public class ReplDirectoryHandler : IDirectoryHandler
             absoluteFilePathString,
             cancellationToken);
 
-        var files = await GetDirectoriesAsync(
+        var files = await GetFilesAsync(
             absoluteFilePathString,
             cancellationToken);
         
