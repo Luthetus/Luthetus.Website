@@ -20,11 +20,13 @@ public class ReplFileSystemProvider : IFileSystemProvider
         _dispatcher = dispatcher;
 
         File = new ReplFileHandler(
+            this,
             _environmentProvider,
             _replStateWrap,
             _dispatcher);
 
         Directory = new ReplDirectoryHandler(
+            this,
             _environmentProvider,
             _replStateWrap,
             _dispatcher);

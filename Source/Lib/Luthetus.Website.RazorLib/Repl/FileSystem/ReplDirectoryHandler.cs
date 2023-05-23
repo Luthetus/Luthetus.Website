@@ -6,15 +6,18 @@ namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplDirectoryHandler : IDirectoryHandler
 {
+    private readonly ReplFileSystemProvider _replFileSystemProvider;
     private readonly IEnvironmentProvider _environmentProvider;
     private readonly IState<ReplState> _replStateWrap;
     private readonly IDispatcher _dispatcher;
 
     public ReplDirectoryHandler(
+        ReplFileSystemProvider replFileSystemProvider,
         IEnvironmentProvider environmentProvider,
         IState<ReplState> replStateWrap,
         IDispatcher dispatcher)
     {
+        _replFileSystemProvider = replFileSystemProvider;
         _environmentProvider = environmentProvider;
         _replStateWrap = replStateWrap;
         _dispatcher = dispatcher;

@@ -2,20 +2,24 @@
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
 using System.Collections.Immutable;
+using System.Text;
 
 namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 
 public class ReplFileHandler : IFileHandler
 {
+    private readonly ReplFileSystemProvider _replFileSystemProvider;
     private readonly IEnvironmentProvider _environmentProvider;
     private readonly IState<ReplState> _replStateWrap;
     private readonly IDispatcher _dispatcher;
 
     public ReplFileHandler(
+        ReplFileSystemProvider replFileSystemProvider,
         IEnvironmentProvider environmentProvider,
         IState<ReplState> replStateWrap,
         IDispatcher dispatcher)
     {
+        _replFileSystemProvider = replFileSystemProvider;
         _environmentProvider = environmentProvider;
         _replStateWrap = replStateWrap;
         _dispatcher = dispatcher;
@@ -117,6 +121,28 @@ public class ReplFileHandler : IFileHandler
 
         var existingFile = replState.Files.FirstOrDefault(
             f => f.AbsoluteFilePathString == absoluteFilePathString);
+
+        // Ensure Parent Directories Exist
+        {
+            var parentDirectories = absoluteFilePathString
+                .Split("/")
+                // The root directory splits into string.Empty
+                .Skip(1)
+                // Skip the file being written to itself
+                .SkipLast(1)
+                .ToArray();
+            
+            var directoryPathBuilder = new StringBuilder("/");
+
+            for (int i = 0; i < parentDirectories.Length; i++)
+            {
+                directoryPathBuilder.Append(parentDirectories[i]);
+                directoryPathBuilder.Append("/");
+
+                _replFileSystemProvider.Directory.CreateDirectoryAsync(
+                    directoryPathBuilder.ToString());
+            }
+        }
 
         _dispatcher.Dispatch(
             new ReplState.NextInstanceAction(

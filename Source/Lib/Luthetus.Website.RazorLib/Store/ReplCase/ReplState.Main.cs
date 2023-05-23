@@ -114,4 +114,17 @@ Global
 	EndGlobalSection
 EndGlobal
 ";
+
+    public static readonly string INITAL_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH = @"/BlazorCrudApp.ServerSide/BlazorCrudApp.ServerSide.csproj";
+    
+    public static readonly string INITAL_C_SHARP_PROJECT_CONTENTS = @"<Project Sdk=""Microsoft.NET.Sdk.Web"">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
+";
 }

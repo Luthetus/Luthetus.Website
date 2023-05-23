@@ -96,6 +96,10 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             ReplState.INITAL_DOT_NET_SOLUTION_ABSOLUTE_FILE_PATH,
             ReplState.INITIAL_DOT_NET_SOLUTION_CONTENTS);
 
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplState.INITAL_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
+            ReplState.INITAL_C_SHARP_PROJECT_CONTENTS);
+
         var dotNetSolutionAbsoluteFilePath = new AbsoluteFilePath(
             ReplState.INITAL_DOT_NET_SOLUTION_ABSOLUTE_FILE_PATH,
             false,
