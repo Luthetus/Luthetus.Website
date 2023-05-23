@@ -1,0 +1,19 @@
+﻿@using Fluxor.Blazor.Web.Components;
+@using Luthetus.Common.RazorLib.Resize
+
+@inherits FluxorComponent
+
+<div class="luth_web_repl-container">
+    
+    @{ var replState = ReplStateWrap.Value; }
+
+    <CascadingValue Value="replState">
+        <ReplFolderExplorerDisplay ElementDimensions="_folderExplorerElementDimensions" />
+
+        <ResizableColumn LeftElementDimensions="_folderExplorerElementDimensions"
+                         RightElementDimensions="_textEditorGroupElementDimensions"
+                         ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
+
+        <ReplTextEditorGroupDisplay ElementDimensions="_textEditorGroupElementDimensions" />
+    </CascadingValue>
+</div>

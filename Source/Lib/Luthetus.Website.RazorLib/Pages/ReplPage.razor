@@ -1,0 +1,18 @@
+﻿@page "/repl"
+
+@using Luthetus.Website.RazorLib.Repl
+
+<div class="luth_web_repl">
+
+    @{ var appOptionsState = AppOptionsService.AppOptionsStateWrap.Value; }
+
+    <div class="luth_web_repl-title"
+         style="@GetTitleCssStyleString(appOptionsState)">
+        Repl Title
+    </div>
+    
+    <div class="luth_web_repl-body"
+         style="@GetBodyCssStyleString(appOptionsState)">
+        <ReplContainerDisplay/>
+    </div>
+</div>

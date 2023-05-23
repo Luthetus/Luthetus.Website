@@ -7,6 +7,8 @@ using Luthetus.TextEditor.RazorLib;
 using Luthetus.Website.RazorLib.Settings;
 using Fluxor;
 using Microsoft.Extensions.DependencyInjection;
+using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
+using Luthetus.Website.RazorLib.Repl;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -37,9 +39,11 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
 
         services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
-        services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
+        services.AddSingleton<IEnvironmentProvider, ReplEnvironmentProvider>();
 
         services.AddHostedService<QueuedHostedService>();
+
+        services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
 
         services.AddLuthetusTextEditor(options => options with
         {

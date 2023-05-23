@@ -1,12 +1,12 @@
-﻿using Luthetus.Common.RazorLib.Dialog;
+﻿using Fluxor.Blazor.Web.Components;
+using Luthetus.Common.RazorLib.Dialog;
 using Luthetus.Common.RazorLib.Options;
-using Luthetus.TextEditor.RazorLib;
 using Luthetus.Website.RazorLib.Settings;
 using Microsoft.AspNetCore.Components;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
-public partial class MainLayout : LayoutComponentBase, IDisposable
+public partial class MainLayout : FluxorLayout, IDisposable
 {
     [Inject]
     private IAppOptionsService AppOptionsService { get; set; } = null!;
