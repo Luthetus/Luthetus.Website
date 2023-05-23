@@ -10,8 +10,9 @@ using Luthetus.Common.RazorLib.Store.DropdownCase;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Luthetus.Common.RazorLib.ComponentRenderers;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
+using System.Collections.Immutable;
+using Luthetus.Common.RazorLib.TreeView.Events;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
@@ -42,12 +43,18 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
 
     private ITreeViewCommandParameter? _mostRecentTreeViewCommandParameter;
 
+    private TreeViewKeyboardEventHandler _treeViewKeyboardEventHandler = null!;
+    private TreeViewMouseEventHandler _treeViewMouseEventHandler = null!;
+
     private int OffsetPerDepthInPixels => (int)Math.Ceiling(
         AppOptionsState.Options.IconSizeInPixels.GetValueOrDefault() *
         (2.0 / 3.0));
 
     protected override void OnInitialized()
     {
+        _treeViewKeyboardEventHandler = new(TreeViewService);
+        _treeViewMouseEventHandler = new(TreeViewService);
+
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 
         base.OnInitialized();
@@ -62,7 +69,9 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     {
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>
-                new ReplState(EnvironmentProvider.RootDirectoryAbsoluteFilePath)));
+                new ReplState(
+                    EnvironmentProvider.RootDirectoryAbsoluteFilePath,
+                    ImmutableList<ReplFile>.Empty)));
 
         if (!TreeViewService.TryGetTreeViewState(
                 ReplTreeViewStateKey,
@@ -80,7 +89,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
                 ReplTreeViewStateKey,
                 rootTreeViewNode,
                 rootTreeViewNode,
-                System.Collections.Immutable.ImmutableList<TreeViewNoType>.Empty);
+                ImmutableList<TreeViewNoType>.Empty);
 
             TreeViewService.RegisterTreeViewState(treeViewState);
         }

@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Components;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
-public partial class MainLayout : FluxorLayout, IDisposable
+public partial class MainLayout : FluxorLayout
 {
     [Inject]
     private IAppOptionsService AppOptionsService { get; set; } = null!;
     [Inject]
     private IDialogService DialogService { get; set; } = null!;
+
+    private bool _disposed;
 
     protected override void OnInitialized()
     {
@@ -38,8 +40,20 @@ public partial class MainLayout : FluxorLayout, IDisposable
         });
     }
 
-    public void Dispose()
+    protected override void Dispose(bool disposing)
     {
-        AppOptionsService.AppOptionsStateWrap.StateChanged -= AppOptionsStateWrapOnStateChanged;
+        if (_disposed)
+        {
+            return;
+        }
+
+        if (disposing)
+        {
+            _disposed = true;
+
+            AppOptionsService.AppOptionsStateWrap.StateChanged -= AppOptionsStateWrapOnStateChanged;
+        }
+
+        base.Dispose(disposing);
     }
 }

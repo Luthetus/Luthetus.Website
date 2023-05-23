@@ -6,9 +6,7 @@ using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Ide.ClassLib.Menu;
 using Fluxor;
-using Luthetus.Common.RazorLib.ComponentRenderers;
 using Luthetus.Common.RazorLib.TreeView;
-using Luthetus.Ide.ClassLib.Store.TerminalCase;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.Ide.RazorLib.FolderExplorer;
 using System.Collections.Immutable;
@@ -21,8 +19,6 @@ public partial class ReplContextMenu : ComponentBase
     private IDispatcher Dispatcher { get; set; } = null!;
     [Inject]
     private ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
-    [Inject]
-    private ILuthetusCommonComponentRenderers LuthetusCommonComponentRenderers { get; set; } = null!;
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
 
