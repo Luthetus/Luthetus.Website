@@ -20,8 +20,8 @@ public partial class ReplContainerDisplay : FluxorComponent
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
 
-    private readonly TextEditorGroupKey ReplTextEditorGroupKey = TextEditorGroupKey.NewTextEditorGroupKey();
-    private readonly TreeViewStateKey ReplTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
+    private static readonly TextEditorGroupKey ReplTextEditorGroupKey = TextEditorGroupKey.NewTextEditorGroupKey();
+    private static readonly TreeViewStateKey ReplTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
 
     private ElementDimensions _folderExplorerElementDimensions = new();
     private ElementDimensions _textEditorGroupElementDimensions = new();

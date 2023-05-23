@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.ClassLib\Luthetus.Ide.ClassLib.csproj" />
+      <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.RazorLib\Luthetus.Ide.RazorLib.csproj" />
       <ProjectReference Include="..\..\..\..\Luthetus.TextEditor\Source\Lib\Luthetus.TextEditor.RazorLib\Luthetus.TextEditor.RazorLib.csproj" />
     </ItemGroup>
 

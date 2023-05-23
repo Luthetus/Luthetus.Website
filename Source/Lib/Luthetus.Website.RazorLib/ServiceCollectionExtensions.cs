@@ -9,6 +9,14 @@ using Fluxor;
 using Microsoft.Extensions.DependencyInjection;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Repl;
+using Luthetus.Ide.ClassLib.ComponentRenderers;
+using Luthetus.Ide.RazorLib.FormsGeneric;
+using Luthetus.Ide.RazorLib.File;
+using Luthetus.Ide.RazorLib.TreeViewImplementations;
+using Luthetus.Ide.RazorLib.NuGet;
+using Luthetus.Ide.RazorLib.Git;
+using Luthetus.Ide.RazorLib.CSharpProjectForm;
+using Luthetus.Ide.RazorLib.InputFile;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -24,14 +32,14 @@ public static class ServiceCollectionExtensions
             typeof(TreeViewPropertiesDisplay),
             typeof(TreeViewInterfaceImplementationDisplay),
             typeof(TreeViewFieldsDisplay),
-            typeof(TreeViewExceptionDisplay),
+            typeof(Common.RazorLib.WatchWindow.TreeViewDisplays.TreeViewExceptionDisplay),
             typeof(TreeViewEnumerableDisplay));
 
         var commonRendererTypes = new LuthetusCommonComponentRenderers(
             typeof(BackgroundTaskDisplay),
             typeof(CommonErrorNotificationDisplay),
             typeof(CommonInformativeNotificationDisplay),
-            typeof(TreeViewExceptionDisplay),
+            typeof(Common.RazorLib.WatchWindow.TreeViewDisplays.TreeViewExceptionDisplay),
             typeof(TreeViewMissingRendererFallbackDisplay),
             watchWindowTreeViewRenderers);
 
@@ -55,6 +63,31 @@ public static class ServiceCollectionExtensions
             {
                 InitializeFluxor = shouldInitializeFluxor
             },
+        });
+
+        services.AddScoped<ILuthetusIdeComponentRenderers>(serviceProvider =>
+        {
+            var blazorCommonComponentRenderers = serviceProvider
+                .GetRequiredService<ILuthetusCommonComponentRenderers>();
+
+            return new LuthetusIdeComponentRenderers(
+                blazorCommonComponentRenderers,
+                typeof(BooleanPromptOrCancelDisplay),
+                typeof(FileFormDisplay),
+                typeof(DeleteFileFormDisplay),
+                typeof(TreeViewNamespacePathDisplay),
+                typeof(TreeViewAbsoluteFilePathDisplay),
+                typeof(TreeViewGitFileDisplay),
+                typeof(NuGetPackageManager),
+                typeof(GitChangesDisplay),
+                typeof(RemoveCSharpProjectFromSolutionDisplay),
+                typeof(InputFileDisplay),
+                typeof(TreeViewCSharpProjectDependenciesDisplay),
+                typeof(TreeViewCSharpProjectNugetPackageReferencesDisplay),
+                typeof(TreeViewCSharpProjectToProjectReferencesDisplay),
+                typeof(TreeViewLightWeightNugetPackageRecordDisplay),
+                typeof(TreeViewCSharpProjectToProjectReferenceDisplay),
+                typeof(TreeViewSolutionFolderDisplay));
         });
 
         return services.AddFluxor(options =>

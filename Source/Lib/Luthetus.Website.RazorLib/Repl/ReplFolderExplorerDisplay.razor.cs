@@ -9,17 +9,24 @@ using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.Common.RazorLib.Store.DropdownCase;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView;
+using Luthetus.Ide.ClassLib.TreeViewImplementations;
+using Luthetus.Common.RazorLib.ComponentRenderers;
+using Luthetus.Ide.ClassLib.ComponentRenderers;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
-public partial class ReplFolderExplorerDisplay : ComponentBase
+public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
 {
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;
     [Inject]
     private IEnvironmentProvider EnvironmentProvider { get; set; } = null!;
     [Inject]
+    private IFileSystemProvider FileSystemProvider { get; set; } = null!;
+    [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
+    [Inject]
+    private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
@@ -39,11 +46,44 @@ public partial class ReplFolderExplorerDisplay : ComponentBase
         AppOptionsState.Options.IconSizeInPixels.GetValueOrDefault() *
         (2.0 / 3.0));
 
+    protected override void OnInitialized()
+    {
+        TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
+
+        base.OnInitialized();
+    }
+
+    private async void TreeViewStateContainerWrap_StateChanged(object? sender, EventArgs e)
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
     private void InitializeRootDirectoryOnClick()
     {
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>
                 new ReplState(EnvironmentProvider.RootDirectoryAbsoluteFilePath)));
+
+        if (!TreeViewService.TryGetTreeViewState(
+                ReplTreeViewStateKey,
+                out _))
+        {
+            var rootTreeViewNode = new TreeViewAbsoluteFilePath(
+                EnvironmentProvider.RootDirectoryAbsoluteFilePath,
+                LuthetusIdeComponentRenderers,
+                FileSystemProvider,
+                EnvironmentProvider,
+                true,
+                true);
+
+            var treeViewState = new TreeViewState(
+                ReplTreeViewStateKey,
+                rootTreeViewNode,
+                rootTreeViewNode,
+                System.Collections.Immutable.ImmutableList<TreeViewNoType>.Empty);
+
+            TreeViewService.RegisterTreeViewState(treeViewState);
+        }
     }
 
     private async Task OnTreeViewContextMenuFunc(ITreeViewCommandParameter treeViewCommandParameter)
@@ -55,5 +95,10 @@ public partial class ReplFolderExplorerDisplay : ComponentBase
                 ReplContextMenu.ContextMenuEventDropdownKey));
 
         await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        TreeViewService.TreeViewStateContainerWrap.StateChanged -= TreeViewStateContainerWrap_StateChanged;
     }
 }
