@@ -24,7 +24,7 @@ public partial class ReplContainerDisplay : FluxorComponent
     [CascadingParameter]
     private ReplPage.ViewKind ViewKind { get; set; }
 
-    private static readonly TextEditorGroupKey ReplTextEditorGroupKey = TextEditorGroupKey.NewTextEditorGroupKey();
+    public static readonly TextEditorGroupKey ReplTextEditorGroupKey = TextEditorGroupKey.NewTextEditorGroupKey();
     private static readonly TreeViewStateKey ReplFolderExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
     private static readonly TreeViewStateKey ReplSolutionExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
 

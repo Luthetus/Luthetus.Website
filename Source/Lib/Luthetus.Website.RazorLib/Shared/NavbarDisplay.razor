@@ -1,4 +1,5 @@
-﻿@using Luthetus.Common.RazorLib.Store.ApplicationOptions;
+﻿@using Luthetus.Common.RazorLib.Icons.Codicon
+@using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 @using Luthetus.Website.RazorLib.SearchBar;
 
 <div class="luth_web_navbar">
@@ -41,6 +42,11 @@
                 <button class="luth_button"
                         @onclick="OpenSettingsDialogAction.Invoke">
                     <Luthetus.Common.RazorLib.Icons.Codicon.IconSettingsGear />
+                </button>
+                
+                <button class="luth_button"
+                        @onclick="BuildAndRunOnClick">
+                    <IconStartWithoutDebugging />
                 </button>
             </div>
         </CascadingValue>
