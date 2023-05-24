@@ -1,6 +1,4 @@
 using Fluxor.Blazor.Web.Components;
-using Luthetus.Common.RazorLib.Dimensions;
-using Luthetus.Common.RazorLib.Resize;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;

@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Luthetus.Common.RazorLib.Options;
 using Luthetus.Common.RazorLib.Notification;
-using Luthetus.TextEditor.RazorLib;
-using Luthetus.Website.RazorLib.Repl;
 using Luthetus.Common.RazorLib.ComponentRenderers;
 using Luthetus.Common.RazorLib.ComponentRenderers.Types;
 using Fluxor;
