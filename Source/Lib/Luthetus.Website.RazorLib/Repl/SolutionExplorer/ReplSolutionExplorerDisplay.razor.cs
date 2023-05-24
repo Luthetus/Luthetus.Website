@@ -96,16 +96,56 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
 
     private async Task InitializeSolutionExplorerOnClickAsync()
     {
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplState.INITAL_DOT_NET_SOLUTION_ABSOLUTE_FILE_PATH,
-            ReplState.INITIAL_DOT_NET_SOLUTION_CONTENTS);
+        // WriteAllTextAsync
+        {
+            // AppCss
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.APP_CSS_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.APP_CSS_CONTENTS);
 
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplState.INITAL_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
-            ReplState.INITAL_C_SHARP_PROJECT_CONTENTS);
+            // AppRazor
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
+
+            // Csproj
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.C_SHARP_PROJECT_CONTENTS);
+
+            // Imports
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.IMPORTS_RAZOR_FILE_CONTENTS);
+
+            // IndexHtml
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.INDEX_HTML_FILE_CONTENTS);
+
+            // IndexRazor
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.INDEX_RAZOR_FILE_CONTENTS);
+
+            // MainLayout
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
+
+            // Program
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.PROGRAM_CS_FILE_CONTENTS);
+
+            // Sln
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.SLN_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.SLN_CONTENTS);
+        }
 
         var dotNetSolutionAbsoluteFilePath = new AbsoluteFilePath(
-            ReplState.INITAL_DOT_NET_SOLUTION_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.SLN_ABSOLUTE_FILE_PATH,
             false,
             EnvironmentProvider);
 
@@ -114,7 +154,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             dotNetSolutionAbsoluteFilePath);
 
         var dotNetSolution = DotNetSolutionParser.Parse(
-            ReplState.INITIAL_DOT_NET_SOLUTION_CONTENTS,
+            ReplStateFacts.SLN_CONTENTS,
             dotNetSolutionNamespacePath,
             EnvironmentProvider);
 
