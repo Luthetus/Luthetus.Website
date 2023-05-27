@@ -66,6 +66,10 @@ jobs:
         - name: Change base-tag in index.html from / to Luthetus.Website
           run: sed -i 's/<base href="\/" \/>/<base href="\/Luthetus.Website\/" \/>/g' dist/Web/wwwroot/index.html
           
+        # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+        - name: Add .nojekyll file
+          run: touch dist/Web/wwwroot/.nojekyll
+          
         - name: Commit wwwroot to GitHub Pages
           uses: JamesIves/github-pages-deploy-action@3.7.1
           with:
