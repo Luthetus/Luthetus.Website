@@ -11,11 +11,33 @@ on:
       
 jobs:
   deploy-to-github-pages:
-  # use ubuntu-latest image to run steps on
+    # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
     steps:
         # uses GitHub's checkout action to checkout code form the main branch
         - uses: actions/checkout@v2
+        
+        # Luthetus/Luthetus.Common
+        - name: Copy files from Luthetus/Luthetus.Common
+        - uses: actions/checkout@v2
+          with:
+            repository: Luthetus/Luthetus.Common
+            path: ./Luthetus.Common
+            
+        # Luthetus/Luthetus.TextEditor
+        - name: Copy files from Luthetus/Luthetus.TextEditor
+        - uses: actions/checkout@v2
+          with:
+            repository: Luthetus/Luthetus.TextEditor
+            path: ./Luthetus.TextEditor
+            
+        # Luthetus/Luthetus.Ide
+        - name: Copy files from Luthetus/Luthetus.Ide
+        - uses: actions/checkout@v2
+          with:
+            repository: Luthetus/Luthetus.Ide
+            path: ./Luthetus.Ide
+        
         # sets up .NET Core SDK 6.0.x
         - name: Setup .NET Core SDK
           uses: actions/setup-dotnet@v1
