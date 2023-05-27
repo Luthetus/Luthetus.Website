@@ -1,0 +1,53 @@
+/* _content/Luthetus.Website.RazorLib/Pages/ReplPage.razor.rz.scp.css */
+.luth_web_repl[b-ae1ti9x2sk] {
+    height: 100%;
+}
+
+.luth_web_repl-title[b-ae1ti9x2sk] {
+    display: flex;
+}
+
+.luth_web_repl-title button[b-ae1ti9x2sk] {
+    margin-left: 8px;
+}
+/* _content/Luthetus.Website.RazorLib/Repl/ReplContainerDisplay.razor.rz.scp.css */
+.luth_web_repl-container[b-1w8fr1nd9u] {
+    height: 100%;
+    display: flex;
+}
+/* _content/Luthetus.Website.RazorLib/SearchBar/SearchBarDisplay.razor.rz.scp.css */
+.luth_web_search-bar[b-egyu934j23] {
+    position: relative;
+}
+
+    .luth_web_search-bar[b-egyu934j23]  .luth_dropdown-display {
+        width: 100%;
+    }
+/* _content/Luthetus.Website.RazorLib/Shared/MainLayout.razor.rz.scp.css */
+.luth_web_layout[b-y5qr9u6cu0] {
+    height: 100vh;
+}
+
+.luth_web_body[b-y5qr9u6cu0] {
+    height: calc(100% - var(--luth_web_navbar-height));
+    background-color: var(--luth_primary-background-color);
+    color: var(--luth_primary-foreground-color);
+}
+/* _content/Luthetus.Website.RazorLib/Shared/NavbarDisplay.razor.rz.scp.css */
+.luth_web_navbar[b-upfxxoph79] {
+    height: var(--luth_web_navbar-height);
+    background-color: var(--luth_tertiary-background-color);
+    color: var(--luth_tertiary-foreground-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.luth_web_navbar-left-content[b-upfxxoph79] {
+    display: flex;
+    align-items: center;
+}
+
+.luth_web_navbar-right-content[b-upfxxoph79] {
+    display: flex;
+    align-items: center;
+}
