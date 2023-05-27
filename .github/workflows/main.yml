@@ -28,7 +28,7 @@ jobs:
         - name: Publish .NET Core Project
           run: dotnet publish Source/Host/Luthetus.Website.Host.Wasm/Luthetus.Website.Host.Wasm.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
         - name: Commit wwwroot to GitHub Pages
-          uses: Luthetus/github-pages-deploy-action@3.7.1
+          uses: JamesIves/github-pages-deploy-action@3.7.1
           with:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             BRANCH: gh-pages
