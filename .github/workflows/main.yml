@@ -61,6 +61,11 @@ jobs:
         # Publishes Blazor project to the release-folder
         - name: Publish .NET Core Project
           run: dotnet publish Source/Host/Luthetus.Website.Host.Wasm/Luthetus.Website.Host.Wasm.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+          
+        # changes the base-tag in index.html from '/' to 'Luthetus.Website' to match GitHub Pages repository subdirectory
+        - name: Change base-tag in index.html from / to Luthetus.Website
+          run: sed -i 's/<base href="\/" \/>/<base href="\/Luthetus.Website\/" \/>/g' dist/Web/wwwroot/index.html
+          
         - name: Commit wwwroot to GitHub Pages
           uses: JamesIves/github-pages-deploy-action@3.7.1
           with:
