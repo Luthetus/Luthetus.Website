@@ -25,7 +25,10 @@ jobs:
             # Repository name
             repository: Luthetus.Common
             
-        - name: Clone Luthetus.TextEditor
+        - name: Move Luthetus.Common
+          run: mv Luthetus.Common ../
+            
+        - name: Clone Luthetus/Luthetus.TextEditor
           uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
             # Repository Owner
@@ -33,13 +36,19 @@ jobs:
             # Repository name
             repository: Luthetus.TextEditor
             
-        - name: Clone Luthetus.Ide
+        - name: Move Luthetus.TextEditor
+          run: mv Luthetus.TextEditor ../
+            
+        - name: Clone Luthetus/Luthetus.Ide
           uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
             # Repository Owner
             owner: Luthetus
             # Repository name
             repository: Luthetus.Ide
+            
+        - name: Move Luthetus.Ide
+          run: mv Luthetus.Ide ../
         
         # sets up .NET Core SDK 6.0.x
         - name: Setup .NET Core SDK
