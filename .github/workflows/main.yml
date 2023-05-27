@@ -17,26 +17,29 @@ jobs:
         # uses GitHub's checkout action to checkout code form the main branch
         - uses: actions/checkout@v2
         
-        # Luthetus/Luthetus.Common
-        - name: Copy files from Luthetus/Luthetus.Common
-          uses: actions/checkout@v2
+        - name: Clone Luthetus/Luthetus.Common
+          uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
-            repository: Luthetus/Luthetus.Common
-            path: ./Luthetus.Common
+            # Repository Owner
+            owner: Luthetus
+            # Repository name
+            repository: Luthetus.Common
             
-        # Luthetus/Luthetus.TextEditor
-        - name: Copy files from Luthetus/Luthetus.TextEditor
-          uses: actions/checkout@v2
+        - name: Clone Luthetus.TextEditor
+          uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
-            repository: Luthetus/Luthetus.TextEditor
-            path: ./Luthetus.TextEditor
+            # Repository Owner
+            owner: Luthetus
+            # Repository name
+            repository: Luthetus.TextEditor
             
-        # Luthetus/Luthetus.Ide
-        - name: Copy files from Luthetus/Luthetus.Ide
-          uses: actions/checkout@v2
+        - name: Clone Luthetus.Ide
+          uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
-            repository: Luthetus/Luthetus.Ide
-            path: ./Luthetus.Ide
+            # Repository Owner
+            owner: Luthetus
+            # Repository name
+            repository: Luthetus.Ide
         
         # sets up .NET Core SDK 6.0.x
         - name: Setup .NET Core SDK
