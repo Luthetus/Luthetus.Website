@@ -1,0 +1,35 @@
+name: github pages
+
+# Run workflow on every push to the master branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      
+jobs:
+  deploy-to-github-pages:
+  # use ubuntu-latest image to run steps on
+    runs-on: ubuntu-latest
+    steps:
+        # uses GitHub's checkout action to checkout code form the main branch
+        - uses: actions/checkout@v2
+        # sets up .NET Core SDK 6.0.x
+        - name: Setup .NET Core SDK
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 6.0.x
+        # Install dotnet wasm buildtools workload
+        - name: Install .NET WASM Build Tools
+          run: dotnet workload install wasm-tools
+        # Publishes Blazor project to the release-folder
+        - name: Publish .NET Core Project
+          run: dotnet publish Source/Host/Luthetus.Website.Host.Wasm/Luthetus.Website.Host.Wasm.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+        - name: Commit wwwroot to GitHub Pages
+          uses: Luthetus/github-pages-deploy-action@3.7.1
+          with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BRANCH: gh-pages
+            FOLDER: dist/Web/wwwroot
