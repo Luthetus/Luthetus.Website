@@ -111,6 +111,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.C_SHARP_PROJECT_CONTENTS);
+            
+            // HelloWorld
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.HELLO_WORLD_CS_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.HELLO_WORLD_CS_FILE_CONTENTS);
 
             // Imports
             await FileSystemProvider.File.WriteAllTextAsync(
