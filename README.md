@@ -4,4 +4,4 @@
 ![Example GIF](./Images/Rewrite/introductoryGifLuthetusWebsite.gif)
 
 ## Demo:
-https://luthetus.github.io/
+https://luthetus.github.io/Luthetus.Website/
