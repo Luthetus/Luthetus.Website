@@ -19,7 +19,7 @@ using Luthetus.Ide.RazorLib.InputFile;
 using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
-using System.Reflection.PortableExecutable;
+using Luthetus.Website.RazorLib.Repl.Run;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -45,7 +45,8 @@ public static class ServiceCollectionExtensions
             typeof(CommonInformativeNotificationDisplay),
             typeof(Common.RazorLib.WatchWindow.TreeViewDisplays.TreeViewExceptionDisplay),
             typeof(TreeViewMissingRendererFallbackDisplay),
-            watchWindowTreeViewRenderers);
+            watchWindowTreeViewRenderers,
+            typeof(RunFileDisplay));
 
         // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
