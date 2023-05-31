@@ -17,5 +17,10 @@ public partial class ReplStateFacts
 	{
 		_count++;
 	}
+	
+	public class MyClass
+	{
+		
+	}
 }";
 }
