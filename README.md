@@ -7,4 +7,7 @@
 https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
-(2023-05-30) Parser improvements for "var contextual keyword"
+(2023-05-30) 
+- Parser improvements for "var contextual keyword"
+- Parser improvements for "variable symbol identification"
+- ![Example GIF](./Images/Rewrite/conditionalVarProgress.gif)
