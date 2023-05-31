@@ -11,3 +11,4 @@ https://luthetus.github.io/Luthetus.Website/
 - Parser improvements for "var contextual keyword"
 - Parser improvements for "variable symbol identification"
 - ![Example GIF](./Images/Rewrite/conditionalVarProgress.gif)
+- BackgroundTaskQueueSingleThreaded was added for the WASM host. This fixes a lot that broke when going from ServerSide to a WASM host. An example being, creation of new files.
