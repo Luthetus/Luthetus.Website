@@ -106,6 +106,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
+            
+            // CounterTest
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.COUNTER_TEST_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.COUNTER_TEST_RAZOR_FILE_CONTENTS);
 
             // Csproj
             await FileSystemProvider.File.WriteAllTextAsync(
