@@ -19,12 +19,14 @@ using Luthetus.Ide.RazorLib.InputFile;
 using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
+using System.Reflection.PortableExecutable;
 
 namespace Luthetus.Website.RazorLib;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddLuthetusWebsiteServices(this IServiceCollection services)
+    public static IServiceCollection AddLuthetusWebsiteServices(
+        this IServiceCollection services)
     {
         var shouldInitializeFluxor = false;
 
@@ -53,8 +55,6 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
-
-        services.AddHostedService<QueuedHostedService>();
         
         services.AddLuthetusTextEditor(options => options with
         {
