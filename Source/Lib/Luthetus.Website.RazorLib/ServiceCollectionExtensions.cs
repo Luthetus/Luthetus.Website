@@ -19,7 +19,6 @@ using Luthetus.Ide.RazorLib.InputFile;
 using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
-using System.Reflection.PortableExecutable;
 using Luthetus.Website.RazorLib.Repl.Run;
 
 namespace Luthetus.Website.RazorLib;
