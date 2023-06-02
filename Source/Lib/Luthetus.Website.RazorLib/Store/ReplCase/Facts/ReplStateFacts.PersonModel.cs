@@ -6,7 +6,7 @@ public partial class ReplStateFacts
 
     public static readonly string PERSON_MODEL_CONTENTS = @"namespace BlazorWasmApp.PersonCase;
 
-public class PersonModel
+public class PersonModel : IPersonModel
 {
 	public PersonModel()
 	{

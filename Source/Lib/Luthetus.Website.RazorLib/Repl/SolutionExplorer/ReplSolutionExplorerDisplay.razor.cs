@@ -127,6 +127,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.INDEX_RAZOR_FILE_CONTENTS);
+            
+            // IndexRazor
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.IPERSON_MODEL_CONTENTS);
 
             // MainLayout
             await FileSystemProvider.File.WriteAllTextAsync(
