@@ -60,21 +60,13 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     {
         _treeViewKeyboardEventHandler = new ReplFolderExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
             Dispatcher,
-            TreeViewService,
-            TextEditorService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         _treeViewMouseEventHandler = new ReplFolderExplorerTreeViewMouseEventHandler(
             ReplTextEditorGroupKey,
             Dispatcher,
-            TextEditorService,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
-            TreeViewService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 

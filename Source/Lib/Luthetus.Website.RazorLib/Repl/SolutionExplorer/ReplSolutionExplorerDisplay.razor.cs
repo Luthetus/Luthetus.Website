@@ -20,6 +20,9 @@ using Luthetus.Ide.ClassLib.Namespaces;
 using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Store.ReplCase;
+using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Implementations;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Keys;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
@@ -67,22 +70,13 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     {
         _treeViewKeyboardEventHandler = new ReplSolutionExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
-            CommonMenuOptionsFactory,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
             Dispatcher,
-            TreeViewService,
-            TextEditorService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         _treeViewMouseEventHandler = new ReplSolutionExplorerTreeViewMouseEventHandler(
             ReplTextEditorGroupKey,
             Dispatcher,
-            TextEditorService,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
-            TreeViewService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 
@@ -167,6 +161,15 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             ReplStateFacts.SLN_CONTENTS,
             dotNetSolutionNamespacePath,
             EnvironmentProvider);
+
+        var dotNetSolutionSemanticContext = new DotNetSolutionSemanticContext(
+            DotNetSolutionKey.NewSolutionKey(),
+            dotNetSolution,
+            ImmutableDictionary<DotNetProjectKey, DotNetProjectSemanticContext>.Empty);
+
+        Dispatcher.Dispatch(
+            new SemanticContextState.SetDotNetSolutionSemanticContextAction(
+                dotNetSolutionSemanticContext));
 
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>
