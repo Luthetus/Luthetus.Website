@@ -100,6 +100,7 @@ public static class ServiceCollectionExtensions
            options.ScanAssemblies(
                typeof(ServiceCollectionExtensions).Assembly,
                typeof(Luthetus.Common.RazorLib.ServiceCollectionExtensions).Assembly,
-               typeof(Luthetus.TextEditor.RazorLib.ServiceCollectionExtensions).Assembly));
+               typeof(Luthetus.TextEditor.RazorLib.ServiceCollectionExtensions).Assembly,
+               typeof(Luthetus.Ide.ClassLib.ServiceCollectionExtensions).Assembly));
     }
 }

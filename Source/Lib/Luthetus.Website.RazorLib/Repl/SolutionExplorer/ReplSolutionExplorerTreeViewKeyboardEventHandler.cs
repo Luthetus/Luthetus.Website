@@ -49,7 +49,7 @@ public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
         return false;
     }
 
-    private async Task InvokeOpenInEditorAsync(
+    private Task InvokeOpenInEditorAsync(
         ITreeViewCommandParameter treeViewCommandParameter,
         bool shouldSetFocusToEditor)
     {
@@ -59,12 +59,14 @@ public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
             activeNode is not TreeViewNamespacePath treeViewNamespacePath ||
             treeViewNamespacePath.Item is null)
         {
-            return;
+            return Task.CompletedTask;
         }
 
         _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
             treeViewNamespacePath.Item.AbsoluteFilePath,
             shouldSetFocusToEditor,
             _replTextEditorGroupKey));
+
+        return Task.CompletedTask;
     }
 }
