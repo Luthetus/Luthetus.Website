@@ -8,6 +8,10 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-01) 
+- C# go-to definition has been started. More needs done here, for example cross file goto-definition logic.
+- ![Example GIF](./Images/Rewrite/gotoDefinition.gif)
+
 ### (2023-05-31) 
 - Logic added for recognizing Razor attribute directives. Such as @onclick.
 - Logic to recognize variables. This logic is currently limited to the variable being declared inside the .razor file.
