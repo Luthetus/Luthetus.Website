@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
-using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+using Luthetus.Website.RazorLib.Store.ReplCase;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;

@@ -1,7 +1,7 @@
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.TextEditor.RazorLib.Group;
-using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+using Luthetus.Website.RazorLib.Store.ReplCase;
 using Microsoft.AspNetCore.Components;
 
 namespace Luthetus.Website.RazorLib.Repl.TextEditor;

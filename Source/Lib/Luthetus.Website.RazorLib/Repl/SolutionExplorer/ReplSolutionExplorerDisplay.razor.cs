@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
-using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+using Luthetus.Website.RazorLib.Store.ReplCase.Facts;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
@@ -19,6 +19,7 @@ using Luthetus.Ide.ClassLib.DotNet;
 using Luthetus.Ide.ClassLib.Namespaces;
 using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.Menu;
+using Luthetus.Website.RazorLib.Store.ReplCase;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
@@ -106,21 +107,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
-            
-            // CounterTest
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.COUNTER_TEST_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.COUNTER_TEST_RAZOR_FILE_CONTENTS);
 
             // Csproj
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.C_SHARP_PROJECT_CONTENTS);
-            
-            // HelloWorld
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.HELLO_WORLD_CS_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.HELLO_WORLD_CS_FILE_CONTENTS);
 
             // Imports
             await FileSystemProvider.File.WriteAllTextAsync(
@@ -141,6 +132,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
+
+            // PersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.PERSON_MODEL_CONTENTS);
 
             // Program
             await FileSystemProvider.File.WriteAllTextAsync(
