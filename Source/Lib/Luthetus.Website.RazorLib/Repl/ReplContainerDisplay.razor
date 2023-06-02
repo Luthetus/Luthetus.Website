@@ -1,5 +1,6 @@
 ﻿@using Fluxor.Blazor.Web.Components;
 @using Luthetus.Common.RazorLib.Resize
+@using Luthetus.Ide.ClassLib.Store.EditorCase;
 @using Luthetus.Website.RazorLib.Repl.FolderExplorer
 @using Luthetus.Website.RazorLib.Repl.SolutionExplorer
 @using Luthetus.Website.RazorLib.Repl.TextEditor
@@ -15,7 +16,7 @@
 
     <CascadingValue Value="replState">
         <CascadingValue Value="appOptionsState">
-            <CascadingValue Value="ReplTextEditorGroupKey">
+            <CascadingValue Value="EditorState.EditorTextEditorGroupKey">
                 <CascadingValue Name="ReplFolderExplorerTreeViewStateKey" Value="ReplFolderExplorerTreeViewStateKey">
                     <CascadingValue Name="ReplSolutionExplorerTreeViewStateKey" Value="ReplSolutionExplorerTreeViewStateKey">
 

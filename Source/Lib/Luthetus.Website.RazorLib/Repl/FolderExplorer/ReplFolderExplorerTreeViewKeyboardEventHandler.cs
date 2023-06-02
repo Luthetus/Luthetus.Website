@@ -1,11 +1,7 @@
-﻿using Luthetus.Common.RazorLib.BackgroundTaskCase;
-using Luthetus.Common.RazorLib.Keyboard;
+﻿using Luthetus.Common.RazorLib.Keyboard;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.Events;
-using Luthetus.TextEditor.RazorLib;
-using Luthetus.Ide.ClassLib.ComponentRenderers;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
@@ -16,28 +12,16 @@ namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 public class ReplFolderExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
 {
     private readonly TextEditorGroupKey _replTextEditorGroupKey;
-    private readonly ILuthetusIdeComponentRenderers _luthetusIdeComponentRenderers;
-    private readonly IFileSystemProvider _fileSystemProvider;
     private readonly IDispatcher _dispatcher;
-    private readonly ITextEditorService _textEditorService;
-    private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
     public ReplFolderExplorerTreeViewKeyboardEventHandler(
         TextEditorGroupKey replTextEditorGroupKey,
-        ILuthetusIdeComponentRenderers luthetusIdeComponentRenderers,
-        IFileSystemProvider fileSystemProvider,
         IDispatcher dispatcher,
-        ITreeViewService treeViewService,
-        ITextEditorService textEditorService,
-        IBackgroundTaskQueue backgroundTaskQueue)
+        ITreeViewService treeViewService)
         : base(treeViewService)
     {
         _replTextEditorGroupKey = replTextEditorGroupKey;
-        _luthetusIdeComponentRenderers = luthetusIdeComponentRenderers;
-        _fileSystemProvider = fileSystemProvider;
         _dispatcher = dispatcher;
-        _textEditorService = textEditorService;
-        _backgroundTaskQueue = backgroundTaskQueue;
     }
 
     public override async Task<bool> OnKeyDownAsync(
@@ -65,7 +49,7 @@ public class ReplFolderExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEv
         return false;
     }
 
-    private async Task InvokeOpenInEditorAsync(
+    private Task InvokeOpenInEditorAsync(
         ITreeViewCommandParameter treeViewCommandParameter,
         bool shouldSetFocusToEditor)
     {
@@ -75,17 +59,14 @@ public class ReplFolderExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEv
             activeNode is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePathPath ||
             treeViewAbsoluteFilePathPath.Item is null)
         {
-            return;
+            return Task.CompletedTask;
         }
 
-        await EditorState.OpenInEditorAsync(
+        _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
             treeViewAbsoluteFilePathPath.Item,
             shouldSetFocusToEditor,
-            _dispatcher,
-            _textEditorService,
-            _luthetusIdeComponentRenderers,
-            _fileSystemProvider,
-            _backgroundTaskQueue,
-            _replTextEditorGroupKey);
+            _replTextEditorGroupKey));
+
+        return Task.CompletedTask;
     }
 }

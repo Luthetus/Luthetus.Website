@@ -8,6 +8,12 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-02) 
+- .razor file go-to definition has been started.
+- ![Example GIF](./Images/Rewrite/gotoDefinitionRazor.gif)
+- Input file dialog
+- ![Example GIF](./Images/Rewrite/inputFile.gif)
+
 ### (2023-06-01) 
 - C# go-to definition has been started. More needs done here, for example cross file goto-definition logic.
 - ![Example GIF](./Images/Rewrite/gotoDefinition.gif)

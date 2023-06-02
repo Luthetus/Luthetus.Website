@@ -33,11 +33,6 @@
                    href="repl">
                     REPL
                 </a>
-                
-                <a class="luth_web_link"
-                   href="/">
-                    <Luthetus.Common.RazorLib.Icons.Codicon.IconFolder />
-                </a>
 
                 <button class="luth_button"
                         @onclick="OpenSettingsDialogAction.Invoke">
@@ -45,8 +40,8 @@
                 </button>
                 
                 <button class="luth_button"
-                        @onclick="BuildAndRunOnClick">
-                    <IconStartWithoutDebugging />
+                        @onclick="ShowInputFileDialogOnClick">
+                    <IconFolder />
                 </button>
             </div>
         </CascadingValue>

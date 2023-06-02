@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
-using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+using Luthetus.Website.RazorLib.Store.ReplCase.Facts;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
@@ -19,6 +19,10 @@ using Luthetus.Ide.ClassLib.DotNet;
 using Luthetus.Ide.ClassLib.Namespaces;
 using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.Menu;
+using Luthetus.Website.RazorLib.Store.ReplCase;
+using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Implementations;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Keys;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
@@ -33,13 +37,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
     [Inject]
-    private ITextEditorService TextEditorService { get; set; } = null!;
-    [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
-    [Inject]
-    private IBackgroundTaskQueue BackgroundTaskQueue { get; set; } = null!;
-    [Inject]
-    private ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
@@ -66,22 +64,13 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     {
         _treeViewKeyboardEventHandler = new ReplSolutionExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
-            CommonMenuOptionsFactory,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
             Dispatcher,
-            TreeViewService,
-            TextEditorService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         _treeViewMouseEventHandler = new ReplSolutionExplorerTreeViewMouseEventHandler(
             ReplTextEditorGroupKey,
             Dispatcher,
-            TextEditorService,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
-            TreeViewService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 
@@ -109,18 +98,13 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             
             // CounterTest
             await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.COUNTER_TEST_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.COUNTER_TEST_RAZOR_FILE_CONTENTS);
+                ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.COUNTER_TEST_CONTENTS);
 
             // Csproj
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.C_SHARP_PROJECT_CONTENTS);
-            
-            // HelloWorld
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.HELLO_WORLD_CS_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.HELLO_WORLD_CS_FILE_CONTENTS);
 
             // Imports
             await FileSystemProvider.File.WriteAllTextAsync(
@@ -136,11 +120,21 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.INDEX_RAZOR_FILE_CONTENTS);
+            
+            // IPersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.IPERSON_MODEL_CONTENTS);
 
             // MainLayout
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
+
+            // PersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.PERSON_MODEL_CONTENTS);
 
             // Program
             await FileSystemProvider.File.WriteAllTextAsync(
@@ -166,6 +160,15 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             ReplStateFacts.SLN_CONTENTS,
             dotNetSolutionNamespacePath,
             EnvironmentProvider);
+
+        var dotNetSolutionSemanticContext = new DotNetSolutionSemanticContext(
+            DotNetSolutionKey.NewSolutionKey(),
+            dotNetSolution,
+            ImmutableDictionary<DotNetProjectKey, DotNetProjectSemanticContext>.Empty);
+
+        Dispatcher.Dispatch(
+            new SemanticContextState.SetDotNetSolutionSemanticContextAction(
+                dotNetSolutionSemanticContext));
 
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>

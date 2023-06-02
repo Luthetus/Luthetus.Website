@@ -22,13 +22,7 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
     [Inject]
     private Luthetus.Ide.ClassLib.Menu.ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
     [Inject]
-    private ILuthetusCommonComponentRenderers LuthetusCommonComponentRenderers { get; set; } = null!;
-    [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
-    [Inject]
-    private IFileSystemProvider FileSystemProvider { get; set; } = null!;
-    [Inject]
-    private IEnvironmentProvider EnvironmentProvider { get; set; } = null!;
 
     [CascadingParameter(Name="ReplSolutionExplorerTreeViewStateKey"), EditorRequired]
     public TreeViewStateKey ReplSolutionExplorerTreeViewStateKey { get; set; } = null!;

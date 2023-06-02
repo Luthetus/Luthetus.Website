@@ -6,7 +6,7 @@ using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
 using System.Collections.Immutable;
 
-namespace Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+namespace Luthetus.Website.RazorLib.Store.ReplCase;
 
 [FeatureState]
 public partial class ReplState

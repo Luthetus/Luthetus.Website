@@ -1,10 +1,6 @@
-﻿using Luthetus.Common.RazorLib.BackgroundTaskCase;
-using Luthetus.Common.RazorLib.TreeView;
+﻿using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.Events;
-using Luthetus.TextEditor.RazorLib;
-using Luthetus.Ide.ClassLib.ComponentRenderers;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
@@ -16,30 +12,18 @@ public class ReplFolderExplorerTreeViewMouseEventHandler : TreeViewMouseEventHan
 {
     private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly IDispatcher _dispatcher;
-    private readonly ITextEditorService _textEditorService;
-    private readonly ILuthetusIdeComponentRenderers _luthetusIdeComponentRenderers;
-    private readonly IFileSystemProvider _fileSystemProvider;
-    private readonly IBackgroundTaskQueue _backgroundTaskQueue;
 
     public ReplFolderExplorerTreeViewMouseEventHandler(
         TextEditorGroupKey replTextEditorGroupKey,
         IDispatcher dispatcher,
-        ITextEditorService textEditorService,
-        ILuthetusIdeComponentRenderers luthetusIdeComponentRenderers,
-        IFileSystemProvider fileSystemProvider,
-        ITreeViewService treeViewService,
-        IBackgroundTaskQueue backgroundTaskQueue)
+        ITreeViewService treeViewService)
         : base(treeViewService)
     {
         _replTextEditorGroupKey = replTextEditorGroupKey;
         _dispatcher = dispatcher;
-        _textEditorService = textEditorService;
-        _luthetusIdeComponentRenderers = luthetusIdeComponentRenderers;
-        _fileSystemProvider = fileSystemProvider;
-        _backgroundTaskQueue = backgroundTaskQueue;
     }
 
-    public override async Task<bool> OnDoubleClickAsync(
+    public override Task<bool> OnDoubleClickAsync(
         ITreeViewCommandParameter treeViewCommandParameter)
     {
         _ = base.OnDoubleClickAsync(treeViewCommandParameter);
@@ -47,22 +31,17 @@ public class ReplFolderExplorerTreeViewMouseEventHandler : TreeViewMouseEventHan
         if (treeViewCommandParameter.TargetNode
             is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePath)
         {
-            return false;
+            return Task.FromResult(false);
         }
 
         if (treeViewAbsoluteFilePath.Item is null)
-            return false;
+            return Task.FromResult(false);
 
-        await EditorState.OpenInEditorAsync(
+        _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
             treeViewAbsoluteFilePath.Item,
             true,
-            _dispatcher,
-            _textEditorService,
-            _luthetusIdeComponentRenderers,
-            _fileSystemProvider,
-            _backgroundTaskQueue,
-            _replTextEditorGroupKey);
+            _replTextEditorGroupKey));
 
-        return true;
+        return Task.FromResult(true);
     }
 }

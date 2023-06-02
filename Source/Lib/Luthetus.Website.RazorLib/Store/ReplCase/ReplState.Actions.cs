@@ -1,4 +1,4 @@
-﻿namespace Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+﻿namespace Luthetus.Website.RazorLib.Store.ReplCase;
 
 public partial class ReplState
 {

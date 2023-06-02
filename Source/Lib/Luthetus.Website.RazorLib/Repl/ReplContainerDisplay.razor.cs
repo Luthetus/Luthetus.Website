@@ -3,10 +3,11 @@ using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Fluxor;
-using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+using Luthetus.Website.RazorLib.Store.ReplCase;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.Website.RazorLib.Pages;
+using Luthetus.Ide.ClassLib.Store.EditorCase;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
@@ -22,13 +23,12 @@ public partial class ReplContainerDisplay : FluxorComponent
     [CascadingParameter]
     private ReplPage.ViewKind ViewKind { get; set; }
 
-    public static readonly TextEditorGroupKey ReplTextEditorGroupKey = TextEditorGroupKey.NewTextEditorGroupKey();
     private static readonly TreeViewStateKey ReplFolderExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
     private static readonly TreeViewStateKey ReplSolutionExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
 
     protected override void OnInitialized()
     {
-        TextEditorService.Group.Register(ReplTextEditorGroupKey);
+        TextEditorService.Group.Register(EditorState.EditorTextEditorGroupKey);
 
         base.OnInitialized();
     }

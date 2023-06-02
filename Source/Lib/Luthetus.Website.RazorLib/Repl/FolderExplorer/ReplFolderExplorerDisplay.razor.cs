@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
-using Luthetus.Website.RazorLib.Store.InMemoryFileSystemCase;
+using Luthetus.Website.RazorLib.Store.ReplCase;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
@@ -29,11 +29,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
     [Inject]
-    private ITextEditorService TextEditorService { get; set; } = null!;
-    [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
-    [Inject]
-    private IBackgroundTaskQueue BackgroundTaskQueue { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
@@ -60,21 +56,13 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     {
         _treeViewKeyboardEventHandler = new ReplFolderExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
             Dispatcher,
-            TreeViewService,
-            TextEditorService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         _treeViewMouseEventHandler = new ReplFolderExplorerTreeViewMouseEventHandler(
             ReplTextEditorGroupKey,
             Dispatcher,
-            TextEditorService,
-            LuthetusIdeComponentRenderers,
-            FileSystemProvider,
-            TreeViewService,
-            BackgroundTaskQueue);
+            TreeViewService);
 
         TreeViewService.TreeViewStateContainerWrap.StateChanged += TreeViewStateContainerWrap_StateChanged;
 
