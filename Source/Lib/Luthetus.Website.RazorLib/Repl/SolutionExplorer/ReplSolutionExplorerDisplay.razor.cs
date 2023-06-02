@@ -95,6 +95,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
+            
+            // CounterTest
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.COUNTER_TEST_CONTENTS);
 
             // Csproj
             await FileSystemProvider.File.WriteAllTextAsync(
@@ -116,7 +121,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
                 ReplStateFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.INDEX_RAZOR_FILE_CONTENTS);
             
-            // IndexRazor
+            // IPersonModel
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.IPERSON_MODEL_CONTENTS);
