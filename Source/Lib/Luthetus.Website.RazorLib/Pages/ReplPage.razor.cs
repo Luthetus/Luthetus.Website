@@ -67,10 +67,12 @@ public partial class ReplPage : ComponentBase
     {
         if (renderBatchActiveRadioButtonIndex == 0)
             return ViewKind.Solution;
-        else
+        else if (renderBatchActiveRadioButtonIndex == 1)
             return ViewKind.Folder;
+        else
+            return ViewKind.Semantic;
     }
-    
+
     private void SetActiveRadioButtonIndexOnClick(
         int radioButtonIndex)
     {
@@ -80,6 +82,7 @@ public partial class ReplPage : ComponentBase
     public enum ViewKind
     {
         Solution,
-        Folder
+        Folder,
+        Semantic,
     }
 }

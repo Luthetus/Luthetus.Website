@@ -24,6 +24,11 @@
                 @onclick="() => SetActiveRadioButtonIndexOnClick(1)">
             Folder
         </button>
+        
+        <button class="luth_button @GetIsActiveCssClass(2, renderBatchActiveRadioButtonIndex)"
+                @onclick="() => SetActiveRadioButtonIndexOnClick(2)">
+            Semantic
+        </button>
     </div>
     
     <div class="luth_web_repl-body"
