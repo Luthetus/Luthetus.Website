@@ -14,7 +14,7 @@ using System.Collections.Immutable;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Website.RazorLib.Store.ReplCase;
 using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
-using Luthetus.Ide.ClassLib.TreeViewImplementations.SemanticContext;
+using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.DotNetSolutionCase;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
