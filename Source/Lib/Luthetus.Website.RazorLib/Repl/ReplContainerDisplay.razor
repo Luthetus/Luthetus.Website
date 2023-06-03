@@ -3,6 +3,7 @@
 @using Luthetus.Ide.ClassLib.Store.EditorCase;
 @using Luthetus.Website.RazorLib.Repl.FolderExplorer
 @using Luthetus.Website.RazorLib.Repl.SolutionExplorer
+@using Luthetus.Website.RazorLib.Repl.SemanticExplorer
 @using Luthetus.Website.RazorLib.Repl.TextEditor
 
 @inherits FluxorComponent
@@ -19,22 +20,27 @@
             <CascadingValue Value="EditorState.EditorTextEditorGroupKey">
                 <CascadingValue Name="ReplFolderExplorerTreeViewStateKey" Value="ReplFolderExplorerTreeViewStateKey">
                     <CascadingValue Name="ReplSolutionExplorerTreeViewStateKey" Value="ReplSolutionExplorerTreeViewStateKey">
+                        <CascadingValue Name="ReplSemanticExplorerTreeViewStateKey" Value="ReplSemanticExplorerTreeViewStateKey">
 
-                        @switch (ViewKind)
-                        {
-                            case Pages.ReplPage.ViewKind.Solution:
-                                <ReplSolutionExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
-                                break;
-                            case Pages.ReplPage.ViewKind.Folder:
-                                <ReplFolderExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
-                                break;
-                        }                    
+                            @switch (ViewKind)
+                            {
+                                case Pages.ReplPage.ViewKind.Solution:
+                                    <ReplSolutionExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
+                                    break;
+                                case Pages.ReplPage.ViewKind.Folder:
+                                    <ReplFolderExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
+                                    break;
+                                case Pages.ReplPage.ViewKind.Semantic:
+                                    <ReplSemanticExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
+                                    break;
+                            }                    
 
-                        <ResizableColumn LeftElementDimensions="replState.ViewExplorerElementDimensions"
-                                         RightElementDimensions="replState.TextEditorGroupElementDimensions"
-                                         ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
+                            <ResizableColumn LeftElementDimensions="replState.ViewExplorerElementDimensions"
+                                             RightElementDimensions="replState.TextEditorGroupElementDimensions"
+                                             ReRenderFuncAsync="async () => await InvokeAsync(StateHasChanged)" />
 
-                        <ReplTextEditorGroupDisplay ElementDimensions="replState.TextEditorGroupElementDimensions" />
+                            <ReplTextEditorGroupDisplay ElementDimensions="replState.TextEditorGroupElementDimensions" />
+                        </CascadingValue>
                     </CascadingValue>
                 </CascadingValue>
             </CascadingValue>

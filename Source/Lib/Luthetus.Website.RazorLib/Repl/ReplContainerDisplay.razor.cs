@@ -25,6 +25,7 @@ public partial class ReplContainerDisplay : FluxorComponent
 
     private static readonly TreeViewStateKey ReplFolderExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
     private static readonly TreeViewStateKey ReplSolutionExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
+    private static readonly TreeViewStateKey ReplSemanticExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
 
     protected override void OnInitialized()
     {
