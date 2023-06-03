@@ -8,6 +8,10 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-03) 
+- Cross file go-to definition has been started.
+- ![Example GIF](./Images/Rewrite/crossFileGotoDefinition.gif)
+
 ### (2023-06-02) 
 - .razor file go-to definition has been started.
 - ![Example GIF](./Images/Rewrite/gotoDefinitionRazor.gif)
