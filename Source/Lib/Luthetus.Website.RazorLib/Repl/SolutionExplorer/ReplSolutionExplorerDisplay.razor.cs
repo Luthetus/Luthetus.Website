@@ -163,8 +163,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
 
         var dotNetSolutionSemanticContext = new DotNetSolutionSemanticContext(
             DotNetSolutionKey.NewSolutionKey(),
-            dotNetSolution,
-            ImmutableDictionary<DotNetProjectKey, DotNetProjectSemanticContext>.Empty);
+            dotNetSolution);
 
         Dispatcher.Dispatch(
             new SemanticContextState.SetDotNetSolutionSemanticContextAction(
