@@ -95,11 +95,13 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
-            
-            // CounterTest
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.COUNTER_TEST_CONTENTS);
+
+            // TODO: (2023-06-03) Decide whether to delete CounterTest considering I'm adding "PersonDisplay" markup and codebehind
+            //
+            //// CounterTest
+            //await FileSystemProvider.File.WriteAllTextAsync(
+            //    ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+            //    ReplStateFacts.COUNTER_TEST_CONTENTS);
 
             // Csproj
             await FileSystemProvider.File.WriteAllTextAsync(
@@ -130,6 +132,16 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
+
+            // PersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
+
+            // PersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
 
             // PersonModel
             await FileSystemProvider.File.WriteAllTextAsync(

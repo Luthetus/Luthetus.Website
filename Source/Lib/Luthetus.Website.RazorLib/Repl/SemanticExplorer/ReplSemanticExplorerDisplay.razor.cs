@@ -15,6 +15,7 @@ using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Website.RazorLib.Store.ReplCase;
 using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.DotNetSolutionCase;
+using Luthetus.TextEditor.RazorLib;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
@@ -28,6 +29,8 @@ public partial class ReplSemanticExplorerDisplay : ComponentBase, IDisposable
     private IFileSystemProvider FileSystemProvider { get; set; } = null!;
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
+    [Inject]
+    private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
     [Inject]
@@ -60,11 +63,15 @@ public partial class ReplSemanticExplorerDisplay : ComponentBase, IDisposable
     {
         _treeViewKeyboardEventHandler = new ReplSemanticExplorerTreeViewKeyboardEventHandler(
             ReplTextEditorGroupKey,
+            TextEditorService,
+            EnvironmentProvider,
             Dispatcher,
             TreeViewService);
 
         _treeViewMouseEventHandler = new ReplSemanticExplorerTreeViewMouseEventHandler(
             ReplTextEditorGroupKey,
+            TextEditorService,
+            EnvironmentProvider,
             Dispatcher,
             TreeViewService);
 

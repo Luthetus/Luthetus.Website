@@ -8,6 +8,10 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-04) 
+- Semantic Explorer
+- ![Example GIF](./Images/Rewrite/semanticExplorer.gif)
+
 ### (2023-06-03) 
 - Cross file go-to definition has been started.
 - ![Example GIF](./Images/Rewrite/crossFileGotoDefinition.gif)
