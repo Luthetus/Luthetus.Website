@@ -1,11 +1,9 @@
 using Fluxor;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
-using Luthetus.Ide.ClassLib.CompilerServices.Common.Symbols;
 using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
-using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.TextEditor.RazorLib.Semantics;

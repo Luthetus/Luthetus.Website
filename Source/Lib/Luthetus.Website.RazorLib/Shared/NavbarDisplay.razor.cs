@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using Luthetus.Common.RazorLib.Options;
-using Luthetus.Common.RazorLib.Dialog;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Fluxor;
 

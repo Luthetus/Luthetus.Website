@@ -13,8 +13,6 @@ using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
 using System.Collections.Immutable;
 using Luthetus.Common.RazorLib.TreeView.Events;
-using Luthetus.TextEditor.RazorLib;
-using Luthetus.Common.RazorLib.BackgroundTaskCase;
 
 namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
