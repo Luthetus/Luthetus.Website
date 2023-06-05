@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
 using Luthetus.Common.RazorLib.Dimensions;
-using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;

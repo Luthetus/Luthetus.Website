@@ -5,7 +5,6 @@ using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
-using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
