@@ -69,71 +69,13 @@ public class ReplSemanticExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
         if (activeNode is null)
             return Task.CompletedTask;
 
-        TextEditorTextSpan textSpan;
-
-        if (activeNode is TreeViewISyntax treeViewISyntax)
-        {
-            if (treeViewISyntax.Item is ISyntaxNode syntaxNode)
-            {
-                var childToken = syntaxNode.Children.FirstOrDefault(x => x is ISyntaxToken);
-
-                if (childToken is null)
-                    return Task.CompletedTask;
-
-                textSpan = ((ISyntaxToken)childToken).TextSpan;
-            }
-            else if (treeViewISyntax.Item is ISyntaxToken syntaxToken)
-            {
-                textSpan = syntaxToken.TextSpan;
-            }
-            else
-            {
-                return Task.CompletedTask;
-            }
-        }
-        else if (activeNode is TreeViewSyntaxTokenText treeViewSyntaxTokenText &&
-                 treeViewSyntaxTokenText.Item is not null)
-        {
-            textSpan = treeViewSyntaxTokenText.Item.TextSpan;
-        }
-        else if (activeNode is TreeViewBoundClassDeclarationNode treeViewBoundClassDeclarationNode &&
-                 treeViewBoundClassDeclarationNode.Item is not null)
-        {
-            textSpan = treeViewBoundClassDeclarationNode.Item.IdentifierToken.TextSpan;
-        }
-        else
-        {
-            return Task.CompletedTask;
-        }
-
-        var model = _textEditorService.Model.FindOrDefaultByResourceUri(
-            textSpan.ResourceUri);
-
-        if (model is null)
-            return Task.CompletedTask;
-
-        var viewModels = _textEditorService.Model.GetViewModelsOrEmpty(model.ModelKey);
-
-        if (!viewModels.Any())
-            return Task.CompletedTask;
-
-        var viewModel = viewModels[0];
-
-        var rowInformation = model.FindRowInformation(
-            textSpan.StartingIndexInclusive);
-
-        viewModel.PrimaryCursor.IndexCoordinates =
-            (rowInformation.rowIndex,
-                textSpan.StartingIndexInclusive - rowInformation.rowStartPositionIndex);
-
-        _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
-            new AbsoluteFilePath(
-                textSpan.ResourceUri.Value,
-                false,
-                _environmentProvider),
+        ReplSemanticExplorerHelper.OpenInEditor(
             shouldSetFocusToEditor,
-            ReplFacts.TextEditorGroupKeys.GroupKey));
-
+            activeNode,
+            _textEditorService,
+            _dispatcher,
+            _environmentProvider);
+        
         return Task.CompletedTask;
     }
 }
