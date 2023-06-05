@@ -13,6 +13,7 @@ using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
 using System.Collections.Immutable;
 using Luthetus.Common.RazorLib.TreeView.Events;
+using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
@@ -33,10 +34,6 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     public ReplState ReplState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public AppOptionsState AppOptionsState { get; set; } = null!;
-    [CascadingParameter, EditorRequired]
-    public TextEditorGroupKey ReplTextEditorGroupKey { get; set; } = null!;
-    [CascadingParameter(Name="ReplFolderExplorerTreeViewStateKey"), EditorRequired]
-    public TreeViewStateKey ReplFolderExplorerTreeViewStateKey { get; set; } = null!;
     
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
@@ -53,12 +50,10 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     protected override void OnInitialized()
     {
         _treeViewKeyboardEventHandler = new ReplFolderExplorerTreeViewKeyboardEventHandler(
-            ReplTextEditorGroupKey,
             Dispatcher,
             TreeViewService);
 
         _treeViewMouseEventHandler = new ReplFolderExplorerTreeViewMouseEventHandler(
-            ReplTextEditorGroupKey,
             Dispatcher,
             TreeViewService);
 
@@ -84,7 +79,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
                     inReplState.TextEditorGroupElementDimensions)));
 
         if (!TreeViewService.TryGetTreeViewState(
-                ReplFolderExplorerTreeViewStateKey,
+                ReplFacts.TreeViewStateKeys.FolderExplorer,
                 out _))
         {
             var rootTreeViewNode = new TreeViewAbsoluteFilePath(
@@ -98,7 +93,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
             await rootTreeViewNode.LoadChildrenAsync();
 
             var treeViewState = new TreeViewState(
-                ReplFolderExplorerTreeViewStateKey,
+                ReplFacts.TreeViewStateKeys.FolderExplorer,
                 rootTreeViewNode,
                 rootTreeViewNode,
                 ImmutableList<TreeViewNoType>.Empty);

@@ -36,8 +36,7 @@ public partial class SearchBarDisplay : ComponentBase, IDisposable
 
     private void HandleInputOnFocusOut()
     {
-        // TODO: Uncomment "RemoveActiveDropdownKey". Temporaily commenting it out so I can work on the CSS
-        // DropdownService.RemoveActiveDropdownKey(SearchBarDropdownKey);
+        DropdownService.RemoveActiveDropdownKey(SearchBarDropdownKey);
     }
 
     public void Dispose()

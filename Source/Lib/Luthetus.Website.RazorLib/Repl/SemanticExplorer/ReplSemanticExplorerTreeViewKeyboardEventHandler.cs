@@ -13,25 +13,23 @@ using Luthetus.Ide.ClassLib.CompilerServices.Common.Syntax;
 using Luthetus.TextEditor.RazorLib.Lexing;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.SyntaxTokenTextCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.BoundClassDeclarationNodeCase;
+using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
 public class ReplSemanticExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
 {
-    private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly ITextEditorService _textEditorService;
     private readonly IEnvironmentProvider _environmentProvider;
     private readonly IDispatcher _dispatcher;
 
     public ReplSemanticExplorerTreeViewKeyboardEventHandler(
-        TextEditorGroupKey replTextEditorGroupKey,
         ITextEditorService textEditorService,
         IEnvironmentProvider environmentProvider,
         IDispatcher dispatcher,
         ITreeViewService treeViewService)
         : base(treeViewService)
     {
-        _replTextEditorGroupKey = replTextEditorGroupKey;
         _textEditorService = textEditorService;
         _environmentProvider = environmentProvider;
         _dispatcher = dispatcher;
@@ -134,7 +132,7 @@ public class ReplSemanticExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
                 false,
                 _environmentProvider),
             shouldSetFocusToEditor,
-            _replTextEditorGroupKey));
+            ReplFacts.TextEditorGroupKeys.GroupKey));
 
         return Task.CompletedTask;
     }

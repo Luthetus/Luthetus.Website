@@ -11,6 +11,7 @@ using System.Collections.Immutable;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.FileConstants;
 using Luthetus.Ide.ClassLib.Namespaces;
+using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
@@ -22,9 +23,6 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
     private Luthetus.Ide.ClassLib.Menu.ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
-
-    [CascadingParameter(Name="ReplSolutionExplorerTreeViewStateKey"), EditorRequired]
-    public TreeViewStateKey ReplSolutionExplorerTreeViewStateKey { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public ITreeViewCommandParameter TreeViewCommandParameter { get; set; } = null!;
@@ -205,11 +203,11 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
         await treeViewModel.LoadChildrenAsync();
 
         TreeViewService.ReRenderNode(
-            ReplSolutionExplorerTreeViewStateKey,
+            ReplFacts.TreeViewStateKeys.SolutionExplorer,
             treeViewModel);
 
         TreeViewService.MoveUp(
-            ReplSolutionExplorerTreeViewStateKey,
+            ReplFacts.TreeViewStateKeys.SolutionExplorer,
             false);
     }
 

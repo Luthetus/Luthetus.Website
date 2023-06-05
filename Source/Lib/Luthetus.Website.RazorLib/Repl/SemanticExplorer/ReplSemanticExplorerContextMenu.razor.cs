@@ -18,9 +18,6 @@ public partial class ReplSemanticExplorerContextMenu : ComponentBase
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
 
-    [CascadingParameter(Name="ReplSemanticExplorerTreeViewStateKey"), EditorRequired]
-    public TreeViewStateKey ReplSemanticExplorerTreeViewStateKey { get; set; } = null!;
-
     [Parameter, EditorRequired]
     public ITreeViewCommandParameter TreeViewCommandParameter { get; set; } = null!;
 

@@ -7,6 +7,8 @@ using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.Website.RazorLib.Pages;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
+using Luthetus.Website.RazorLib.Facts;
+using Luthetus.Website.RazorLib.ViewCase;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
@@ -20,15 +22,11 @@ public partial class ReplContainerDisplay : FluxorComponent
     private ITextEditorService TextEditorService { get; set; } = null!;
     
     [CascadingParameter]
-    private ReplPage.ViewKind ViewKind { get; set; }
-
-    private static readonly TreeViewStateKey ReplFolderExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
-    private static readonly TreeViewStateKey ReplSolutionExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
-    private static readonly TreeViewStateKey ReplSemanticExplorerTreeViewStateKey = TreeViewStateKey.NewTreeViewStateKey();
+    private ViewKind ViewKind { get; set; }
 
     protected override void OnInitialized()
     {
-        TextEditorService.Group.Register(EditorState.EditorTextEditorGroupKey);
+        TextEditorService.Group.Register(ReplFacts.TextEditorGroupKeys.GroupKey);
 
         base.OnInitialized();
     }

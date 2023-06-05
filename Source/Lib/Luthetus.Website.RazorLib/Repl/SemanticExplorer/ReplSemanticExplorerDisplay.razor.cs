@@ -15,6 +15,7 @@ using Luthetus.Website.RazorLib.Store.ReplCase;
 using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.DotNetSolutionCase;
 using Luthetus.TextEditor.RazorLib;
+using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
@@ -39,10 +40,6 @@ public partial class ReplSemanticExplorerDisplay : ComponentBase, IDisposable
     public ReplState ReplState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public AppOptionsState AppOptionsState { get; set; } = null!;
-    [CascadingParameter, EditorRequired]
-    public TextEditorGroupKey ReplTextEditorGroupKey { get; set; } = null!;
-    [CascadingParameter(Name = "ReplSemanticExplorerTreeViewStateKey"), EditorRequired]
-    public TreeViewStateKey ReplSemanticExplorerTreeViewStateKey { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
@@ -61,14 +58,12 @@ public partial class ReplSemanticExplorerDisplay : ComponentBase, IDisposable
     protected override void OnInitialized()
     {
         _treeViewKeyboardEventHandler = new ReplSemanticExplorerTreeViewKeyboardEventHandler(
-            ReplTextEditorGroupKey,
             TextEditorService,
             EnvironmentProvider,
             Dispatcher,
             TreeViewService);
 
         _treeViewMouseEventHandler = new ReplSemanticExplorerTreeViewMouseEventHandler(
-            ReplTextEditorGroupKey,
             TextEditorService,
             EnvironmentProvider,
             Dispatcher,
@@ -95,7 +90,7 @@ public partial class ReplSemanticExplorerDisplay : ComponentBase, IDisposable
         var semanticContextState = SemanticContextStateWrap.Value;
 
         if (!TreeViewService.TryGetTreeViewState(
-                ReplSemanticExplorerTreeViewStateKey,
+                ReplFacts.TreeViewStateKeys.SemanticExplorer,
                 out _))
         {
             var rootTreeViewNode = new TreeViewDotNetSolutionSemanticContext(
@@ -109,7 +104,7 @@ public partial class ReplSemanticExplorerDisplay : ComponentBase, IDisposable
             await rootTreeViewNode.LoadChildrenAsync();
 
             var treeViewState = new TreeViewState(
-                ReplSemanticExplorerTreeViewStateKey,
+                ReplFacts.TreeViewStateKeys.SemanticExplorer,
                 rootTreeViewNode,
                 rootTreeViewNode,
                 ImmutableList<TreeViewNoType>.Empty);

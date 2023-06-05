@@ -40,10 +40,6 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     public ReplState ReplState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public AppOptionsState AppOptionsState { get; set; } = null!;
-    [CascadingParameter, EditorRequired]
-    public TextEditorGroupKey ReplTextEditorGroupKey { get; set; } = null!;
-    [CascadingParameter(Name="ReplSolutionExplorerTreeViewStateKey"), EditorRequired]
-    public TreeViewStateKey ReplSolutionExplorerTreeViewStateKey { get; set; } = null!;
     
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
@@ -60,12 +56,10 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     protected override void OnInitialized()
     {
         _treeViewKeyboardEventHandler = new ReplSolutionExplorerTreeViewKeyboardEventHandler(
-            ReplTextEditorGroupKey,
             Dispatcher,
             TreeViewService);
 
         _treeViewMouseEventHandler = new ReplSolutionExplorerTreeViewMouseEventHandler(
-            ReplTextEditorGroupKey,
             Dispatcher,
             TreeViewService);
 
@@ -77,148 +71,6 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     private async void TreeViewStateContainerWrap_StateChanged(object? sender, EventArgs e)
     {
         await InvokeAsync(StateHasChanged);
-    }
-
-    private async Task InitializeSolutionExplorerOnClickAsync()
-    {
-        // WriteAllTextAsync
-        {
-            // AppCss
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.APP_CSS_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.APP_CSS_CONTENTS);
-
-            // AppRazor
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
-
-            // TODO: (2023-06-03) Decide whether to delete CounterTest considering I'm adding "PersonDisplay" markup and codebehind
-            //
-            //// CounterTest
-            //await FileSystemProvider.File.WriteAllTextAsync(
-            //    ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
-            //    ReplStateFacts.COUNTER_TEST_CONTENTS);
-
-            // Csproj
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.C_SHARP_PROJECT_CONTENTS);
-
-            // Imports
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.IMPORTS_RAZOR_FILE_CONTENTS);
-
-            // IndexHtml
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.INDEX_HTML_FILE_CONTENTS);
-
-            // IndexRazor
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.INDEX_RAZOR_FILE_CONTENTS);
-            
-            // IPersonModel
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.IPERSON_MODEL_CONTENTS);
-            
-            // IPersonRepository
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.IPERSON_REPOSITORY_CONTENTS);
-
-            // MainLayout
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
-
-            // PersonDisplayMarkup
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
-
-            // PersonDisplayCodebehind
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
-
-            // PersonModel
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.PERSON_MODEL_CONTENTS);
-            
-            // PersonRepository
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.PERSON_REPOSITORY_CONTENTS);
-
-            // Program
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.PROGRAM_CS_FILE_CONTENTS);
-
-            // Sln
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ReplStateFacts.SLN_ABSOLUTE_FILE_PATH,
-                ReplStateFacts.SLN_CONTENTS);
-        }
-
-        var dotNetSolutionAbsoluteFilePath = new AbsoluteFilePath(
-            ReplStateFacts.SLN_ABSOLUTE_FILE_PATH,
-            false,
-            EnvironmentProvider);
-
-        var dotNetSolutionNamespacePath = new NamespacePath(
-            string.Empty,
-            dotNetSolutionAbsoluteFilePath);
-
-        var dotNetSolution = DotNetSolutionParser.Parse(
-            ReplStateFacts.SLN_CONTENTS,
-            dotNetSolutionNamespacePath,
-            EnvironmentProvider);
-
-        var dotNetSolutionSemanticContext = new DotNetSolutionSemanticContext(
-            DotNetSolutionKey.NewSolutionKey(),
-            dotNetSolution);
-
-        Dispatcher.Dispatch(
-            new SemanticContextState.SetDotNetSolutionSemanticContextAction(
-                dotNetSolutionSemanticContext));
-
-        Dispatcher.Dispatch(
-            new ReplState.NextInstanceAction(inReplState =>
-                new ReplState(
-                    inReplState.RootDirectory,
-                    dotNetSolution,
-                    inReplState.Files,
-                    inReplState.ViewExplorerElementDimensions,
-                    inReplState.TextEditorGroupElementDimensions)));
-
-        if (!TreeViewService.TryGetTreeViewState(
-                ReplSolutionExplorerTreeViewStateKey,
-                out _))
-        {
-            var rootTreeViewNode = new TreeViewSolution(
-                dotNetSolution,
-                LuthetusIdeComponentRenderers,
-                FileSystemProvider,
-                EnvironmentProvider,
-                true,
-                true);
-
-            await rootTreeViewNode.LoadChildrenAsync();
-
-            var treeViewState = new TreeViewState(
-                ReplSolutionExplorerTreeViewStateKey,
-                rootTreeViewNode,
-                rootTreeViewNode,
-                ImmutableList<TreeViewNoType>.Empty);
-
-            TreeViewService.RegisterTreeViewState(treeViewState);
-        }
     }
 
     private async Task OnTreeViewContextMenuFunc(ITreeViewCommandParameter treeViewCommandParameter)

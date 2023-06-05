@@ -7,6 +7,7 @@ using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.TextEditor.RazorLib.Group;
 using Luthetus.TextEditor.RazorLib.Semantics;
+using Luthetus.Website.RazorLib.Facts;
 using Luthetus.Website.RazorLib.Store.ReplCase;
 using Microsoft.AspNetCore.Components;
 
@@ -25,8 +26,6 @@ public partial class ReplTextEditorGroupDisplay : ComponentBase
     public ReplState ReplState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public AppOptionsState AppOptionsState { get; set; } = null!;
-    [CascadingParameter, EditorRequired]
-    public TextEditorGroupKey ReplTextEditorGroupKey { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
@@ -59,6 +58,6 @@ public partial class ReplTextEditorGroupDisplay : ComponentBase
                 false,
                 EnvironmentProvider),
             true,
-            ReplTextEditorGroupKey));
+            ReplFacts.TextEditorGroupKeys.GroupKey));
     }
 }

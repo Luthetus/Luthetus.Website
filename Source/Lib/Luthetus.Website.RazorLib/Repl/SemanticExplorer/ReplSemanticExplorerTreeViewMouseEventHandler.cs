@@ -12,25 +12,23 @@ using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.ISyntaxCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.BoundClassDeclarationNodeCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.SyntaxTokenTextCase;
 using Luthetus.TextEditor.RazorLib.Lexing;
+using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
 public class ReplSemanticExplorerTreeViewMouseEventHandler : TreeViewMouseEventHandler
 {
-    private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly ITextEditorService _textEditorService;
     private readonly IEnvironmentProvider _environmentProvider;
     private readonly IDispatcher _dispatcher;
 
     public ReplSemanticExplorerTreeViewMouseEventHandler(
-        TextEditorGroupKey replTextEditorGroupKey,
         ITextEditorService textEditorService,
         IEnvironmentProvider environmentProvider,
         IDispatcher dispatcher,
         ITreeViewService treeViewService)
         : base(treeViewService)
     {
-        _replTextEditorGroupKey = replTextEditorGroupKey;
         _textEditorService = textEditorService;
         _environmentProvider = environmentProvider;
         _dispatcher = dispatcher;
@@ -109,7 +107,7 @@ public class ReplSemanticExplorerTreeViewMouseEventHandler : TreeViewMouseEventH
                 false,
                 _environmentProvider),
             true,
-            _replTextEditorGroupKey));
+            ReplFacts.TextEditorGroupKeys.GroupKey));
 
         return Task.FromResult(true);
     }
