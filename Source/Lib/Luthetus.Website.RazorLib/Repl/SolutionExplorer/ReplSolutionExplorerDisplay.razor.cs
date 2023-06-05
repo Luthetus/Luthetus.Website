@@ -124,18 +124,23 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.IPERSON_MODEL_CONTENTS);
+            
+            // IPersonRepository
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.IPERSON_REPOSITORY_CONTENTS);
 
             // MainLayout
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
 
-            // PersonModel
+            // PersonDisplayMarkup
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
 
-            // PersonModel
+            // PersonDisplayCodebehind
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
@@ -144,6 +149,11 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
             await FileSystemProvider.File.WriteAllTextAsync(
                 ReplStateFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
                 ReplStateFacts.PERSON_MODEL_CONTENTS);
+            
+            // PersonRepository
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ReplStateFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
+                ReplStateFacts.PERSON_REPOSITORY_CONTENTS);
 
             // Program
             await FileSystemProvider.File.WriteAllTextAsync(
