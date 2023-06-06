@@ -8,6 +8,12 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-05) 
+-Prefer Diagnostics over symbols for mouse hover tooltip (if they overlap).
+-Parser improvements.
+-Out of date Symbols are removed.
+- ![Example GIF](./Images/Rewrite/preferDiagnostics.gif)
+
 ### (2023-06-04) 
 - Semantic Explorer
 - ![Example GIF](./Images/Rewrite/semanticExplorer.gif)
