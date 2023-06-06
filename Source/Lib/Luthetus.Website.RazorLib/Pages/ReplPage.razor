@@ -2,39 +2,46 @@
 @page "/repl"
 
 @using Luthetus.Website.RazorLib.Repl
+@using Luthetus.Website.RazorLib.ViewCase;
 
 <div class="luth_web_repl">
 
     @{
         var appOptionsState = AppOptionsService.AppOptionsStateWrap.Value;
-
-        var renderBatchActiveRadioButtonIndex = ActiveRadioButtonIndex;
+        var renderBatchActiveViewKind = ActiveViewKind;
     }
 
     <div class="luth_web_repl-title"
          style="@GetTitleCssStyleString(appOptionsState)">
         Choose View:
 
-        <button class="luth_button @GetIsActiveCssClass(0, renderBatchActiveRadioButtonIndex)"
-                @onclick="() => SetActiveRadioButtonIndexOnClick(0)">
-            Solution
-        </button>
+        @{ var viewKindEnums = Enum.GetValues<ViewKind>(); }
 
-        <button class="luth_button @GetIsActiveCssClass(1, renderBatchActiveRadioButtonIndex)"
-                @onclick="() => SetActiveRadioButtonIndexOnClick(1)">
-            Folder
-        </button>
-        
-        <button class="luth_button @GetIsActiveCssClass(2, renderBatchActiveRadioButtonIndex)"
-                @onclick="() => SetActiveRadioButtonIndexOnClick(2)">
-            Semantic
-        </button>
+        @foreach (var viewKindEnum in viewKindEnums)
+        {
+            <button class="luth_button @GetIsActiveCssClass(viewKindEnum, renderBatchActiveViewKind)"
+                @onclick="() => SetActiveviewKindOnClick(viewKindEnum)">
+
+                @switch (viewKindEnum)
+                {
+                    case ViewKind.Solution:
+                        @: Solution
+                        break;
+                    case ViewKind.Folder:
+                        @: Folder
+                        break;
+                    case ViewKind.Semantic:
+                        @: Semantic
+                        break;
+                }
+            </button>
+        }
     </div>
     
     <div class="luth_web_repl-body"
          style="@GetBodyCssStyleString(appOptionsState)">
 
-        <CascadingValue Value="CascadeChosenView(renderBatchActiveRadioButtonIndex)">
+        <CascadingValue Value="renderBatchActiveViewKind">
              <ReplContainerDisplay/>
          </CascadingValue>
     </div>

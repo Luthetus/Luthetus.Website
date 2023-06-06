@@ -5,22 +5,19 @@ using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Fluxor;
-using Luthetus.TextEditor.RazorLib.Group;
+using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
 public class ReplFolderExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEventHandler
 {
-    private readonly TextEditorGroupKey _replTextEditorGroupKey;
     private readonly IDispatcher _dispatcher;
 
     public ReplFolderExplorerTreeViewKeyboardEventHandler(
-        TextEditorGroupKey replTextEditorGroupKey,
         IDispatcher dispatcher,
         ITreeViewService treeViewService)
         : base(treeViewService)
     {
-        _replTextEditorGroupKey = replTextEditorGroupKey;
         _dispatcher = dispatcher;
     }
 
@@ -65,7 +62,7 @@ public class ReplFolderExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEv
         _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
             treeViewAbsoluteFilePathPath.Item,
             shouldSetFocusToEditor,
-            _replTextEditorGroupKey));
+            ReplFacts.TextEditorGroupKeys.GroupKey));
 
         return Task.CompletedTask;
     }

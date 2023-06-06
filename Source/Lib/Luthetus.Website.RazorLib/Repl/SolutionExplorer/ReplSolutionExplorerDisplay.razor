@@ -3,30 +3,31 @@
 @using Luthetus.Common.RazorLib.Dropdown
 @using Luthetus.Common.RazorLib.TreeView
 @using Luthetus.Common.RazorLib.TreeView.Displays
+@using Luthetus.Website.RazorLib.Facts
 
 <div class="luth_web_repl-folder-explorer"
      style="@ElementDimensions.StyleString">
 
     @if (ReplState.DotNetSolution is null)
     {
-        <button class="luth_button"
-                @onclick="InitializeSolutionExplorerOnClickAsync">
-            Initialize Solution Explorer
-        </button>
+        <div>
+            <Luthetus.Common.RazorLib.Icons.IconLoading />
+            Loading...
+        </div>
     }
     else
     {
         <CascadingValue Name="OffsetPerDepthInPixels" Value="OffsetPerDepthInPixels">
-            <TreeViewStateDisplay TreeViewStateKey="ReplSolutionExplorerTreeViewStateKey"
-                                    CssStyleString="height: 100%;"
-                                    OnContextMenuFunc="OnTreeViewContextMenuFunc"
-                                    TreeViewKeyboardEventHandler="_treeViewKeyboardEventHandler"
-                                    TreeViewMouseEventHandler="_treeViewMouseEventHandler" />
+            <TreeViewStateDisplay TreeViewStateKey="ReplFacts.TreeViewStateKeys.SolutionExplorer"
+                                  CssStyleString="height: 100%;"
+                                  OnContextMenuFunc="OnTreeViewContextMenuFunc"
+                                  TreeViewKeyboardEventHandler="_treeViewKeyboardEventHandler"
+                                  TreeViewMouseEventHandler="_treeViewMouseEventHandler" />
         </CascadingValue>
 
         <DropdownDisplay DropdownKey="ReplSolutionExplorerContextMenu.ContextMenuEventDropdownKey"
                          DropdownPositionKind="DropdownPositionKind.Unset"
-                     CssStyleString="@ReplSolutionExplorerContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
+                         CssStyleString="@ReplSolutionExplorerContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
 
             <ReplSolutionExplorerContextMenu TreeViewCommandParameter="_mostRecentTreeViewCommandParameter" />
         </DropdownDisplay>

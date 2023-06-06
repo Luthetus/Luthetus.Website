@@ -5,7 +5,6 @@ using Luthetus.Common.RazorLib.Menu;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Fluxor;
 using Luthetus.Common.RazorLib.TreeView;
-using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
@@ -17,9 +16,6 @@ public partial class ReplSemanticExplorerContextMenu : ComponentBase
     private Luthetus.Ide.ClassLib.Menu.ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
-
-    [CascadingParameter(Name="ReplSemanticExplorerTreeViewStateKey"), EditorRequired]
-    public TreeViewStateKey ReplSemanticExplorerTreeViewStateKey { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public ITreeViewCommandParameter TreeViewCommandParameter { get; set; } = null!;

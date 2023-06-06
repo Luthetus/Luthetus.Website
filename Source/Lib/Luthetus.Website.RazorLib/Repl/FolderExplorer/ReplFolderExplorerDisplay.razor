@@ -3,6 +3,7 @@
 @using Luthetus.Common.RazorLib.Dropdown
 @using Luthetus.Common.RazorLib.TreeView
 @using Luthetus.Common.RazorLib.TreeView.Displays
+@using Luthetus.Website.RazorLib.Facts
 
 <div class="luth_web_repl-folder-explorer"
      style="@ElementDimensions.StyleString">
@@ -17,16 +18,16 @@
     else
     {
         <CascadingValue Name="OffsetPerDepthInPixels" Value="OffsetPerDepthInPixels">
-            <TreeViewStateDisplay TreeViewStateKey="ReplFolderExplorerTreeViewStateKey"
-                                    CssStyleString="height: 100%;"
-                                    OnContextMenuFunc="OnTreeViewContextMenuFunc"
-                                    TreeViewKeyboardEventHandler="_treeViewKeyboardEventHandler"
-                                    TreeViewMouseEventHandler="_treeViewMouseEventHandler" />
+            <TreeViewStateDisplay TreeViewStateKey="ReplFacts.TreeViewStateKeys.FolderExplorer"
+                                  CssStyleString="height: 100%;"
+                                  OnContextMenuFunc="OnTreeViewContextMenuFunc"
+                                  TreeViewKeyboardEventHandler="_treeViewKeyboardEventHandler"
+                                  TreeViewMouseEventHandler="_treeViewMouseEventHandler" />
         </CascadingValue>
 
         <DropdownDisplay DropdownKey="ReplFolderExplorerContextMenu.ContextMenuEventDropdownKey"
                          DropdownPositionKind="DropdownPositionKind.Unset"
-                     CssStyleString="@ReplFolderExplorerContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
+                         CssStyleString="@ReplFolderExplorerContextMenu.GetContextMenuCssStyleString(_mostRecentTreeViewCommandParameter)">
 
             <ReplFolderExplorerContextMenu TreeViewCommandParameter="_mostRecentTreeViewCommandParameter" />
         </DropdownDisplay>
