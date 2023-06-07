@@ -51,7 +51,7 @@ public static class ReplSemanticExplorerHelper
         else if (activeNode is TreeViewBoundClassDeclarationNode treeViewBoundClassDeclarationNode &&
                  treeViewBoundClassDeclarationNode.Item is not null)
         {
-            textSpan = treeViewBoundClassDeclarationNode.Item.IdentifierToken.TextSpan;
+            textSpan = treeViewBoundClassDeclarationNode.Item.TypeClauseToken.TextSpan;
         }
         else
         {
