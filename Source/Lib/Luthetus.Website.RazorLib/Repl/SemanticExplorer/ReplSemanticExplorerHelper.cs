@@ -4,7 +4,7 @@ using Luthetus.Ide.ClassLib.CompilerServices.Common.Syntax;
 using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
 using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
-using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.BoundClassDeclarationNodeCase;
+using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.BoundClassDefinitionNodeCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.ISyntaxCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.SyntaxTokenTextCase;
 using Luthetus.TextEditor.RazorLib;
@@ -48,10 +48,10 @@ public static class ReplSemanticExplorerHelper
         {
             textSpan = treeViewSyntaxTokenText.Item.TextSpan;
         }
-        else if (activeNode is TreeViewBoundClassDeclarationNode treeViewBoundClassDeclarationNode &&
-                 treeViewBoundClassDeclarationNode.Item is not null)
+        else if (activeNode is TreeViewBoundClassDefinitionNode treeViewBoundClassDefinitionNode &&
+                 treeViewBoundClassDefinitionNode.Item is not null)
         {
-            textSpan = treeViewBoundClassDeclarationNode.Item.TypeClauseToken.TextSpan;
+            textSpan = treeViewBoundClassDefinitionNode.Item.TypeClauseToken.TextSpan;
         }
         else
         {
