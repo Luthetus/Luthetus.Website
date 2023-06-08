@@ -20,6 +20,7 @@ using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
 using Luthetus.Website.RazorLib.Repl.Run;
+using Luthetus.Ide.RazorLib.ParserTaskCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -85,6 +86,7 @@ public static class ServiceCollectionExtensions
                 typeof(GitChangesDisplay),
                 typeof(RemoveCSharpProjectFromSolutionDisplay),
                 typeof(InputFileDisplay),
+                typeof(ParserTaskDisplay),
                 typeof(TreeViewCSharpProjectDependenciesDisplay),
                 typeof(TreeViewCSharpProjectNugetPackageReferencesDisplay),
                 typeof(TreeViewCSharpProjectToProjectReferencesDisplay),
