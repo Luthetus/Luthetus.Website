@@ -59,8 +59,8 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
 
-        services.AddSingleton<IParserTaskQueue, ParserTaskQueue>();
-        services.AddSingleton<IParserTaskMonitor, ParserTaskMonitor>();
+        services.AddScoped<IParserTaskQueue, ParserTaskQueue>();
+        services.AddScoped<IParserTaskMonitor, ParserTaskMonitor>();
 
         services.AddLuthetusTextEditor(options => options with
         {
