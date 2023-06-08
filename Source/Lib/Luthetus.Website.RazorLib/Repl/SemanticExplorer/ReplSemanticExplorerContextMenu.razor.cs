@@ -10,13 +10,6 @@ namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
 
 public partial class ReplSemanticExplorerContextMenu : ComponentBase
 {
-    [Inject]
-    private IDispatcher Dispatcher { get; set; } = null!;
-    [Inject]
-    private Luthetus.Ide.ClassLib.Menu.ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
-    [Inject]
-    private ITreeViewService TreeViewService { get; set; } = null!;
-
     [Parameter, EditorRequired]
     public ITreeViewCommandParameter TreeViewCommandParameter { get; set; } = null!;
 

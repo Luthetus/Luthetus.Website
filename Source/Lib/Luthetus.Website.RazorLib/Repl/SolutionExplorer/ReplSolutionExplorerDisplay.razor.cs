@@ -17,13 +17,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;
     [Inject]
-    private IEnvironmentProvider EnvironmentProvider { get; set; } = null!;
-    [Inject]
-    private IFileSystemProvider FileSystemProvider { get; set; } = null!;
-    [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
-    [Inject]
-    private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
