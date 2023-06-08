@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
 using Luthetus.Common.RazorLib.Dimensions;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Common.RazorLib.Store.DropdownCase;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView;
-using Luthetus.Ide.ClassLib.ComponentRenderers;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Website.RazorLib.Store.ReplCase;
 
