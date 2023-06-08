@@ -21,6 +21,7 @@ using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
 using Luthetus.Website.RazorLib.Repl.Run;
 using Luthetus.Ide.RazorLib.ParserTaskCase;
+using Luthetus.Ide.ClassLib.CompilerServices.ParserTaskCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -57,7 +58,10 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
         services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
-        
+
+        services.AddSingleton<IParserTaskQueue, ParserTaskQueue>();
+        services.AddSingleton<IParserTaskMonitor, ParserTaskMonitor>();
+
         services.AddLuthetusTextEditor(options => options with
         {
             InitializeFluxor = shouldInitializeFluxor,
