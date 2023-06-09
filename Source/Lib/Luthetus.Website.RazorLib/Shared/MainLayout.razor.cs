@@ -262,6 +262,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 decorationMapper,
                 semanticModel,
                 null,
+                new(),
                 TextEditorModelKey.NewTextEditorModelKey()
             );
 
