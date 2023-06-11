@@ -23,6 +23,7 @@ using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
 using Luthetus.Ide.ClassLib.CompilerServices.HostedServiceCase;
 using Luthetus.Ide.ClassLib.FileSystem.HostedServiceCase;
 using Luthetus.Ide.RazorLib.HostedServiceCase;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -59,6 +60,9 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<ICommonBackgroundTaskQueue, CommonBackgroundTaskQueue>();
         services.AddSingleton<ICommonBackgroundTaskMonitor, CommonBackgroundTaskMonitor>();
+        
+        services.AddSingleton<ITextEditorBackgroundTaskQueue, TextEditorBackgroundTaskQueue>();
+        services.AddSingleton<ITextEditorBackgroundTaskMonitor, TextEditorBackgroundTaskMonitor>();
 
         services.AddScoped<IFileSystemBackgroundTaskQueue, FileSystemBackgroundTaskQueue>();
         services.AddScoped<IFileSystemBackgroundTaskMonitor, FileSystemBackgroundTaskMonitor>();
