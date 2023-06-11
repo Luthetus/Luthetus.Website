@@ -8,6 +8,9 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-11) 
+-Many code optimizations were made to allow for the IDE repository run better.
+
 ### (2023-06-05) 
 -Prefer Diagnostics over symbols for mouse hover tooltip (if they overlap).
 -Parser improvements.
