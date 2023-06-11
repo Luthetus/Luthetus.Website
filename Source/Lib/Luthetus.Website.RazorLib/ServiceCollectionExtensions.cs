@@ -1,5 +1,4 @@
-﻿using Luthetus.Common.RazorLib.BackgroundTaskCase;
-using Luthetus.Common.RazorLib.ComponentRenderers;
+﻿using Luthetus.Common.RazorLib.ComponentRenderers;
 using Luthetus.Common.RazorLib.Notification;
 using Luthetus.Common.RazorLib.WatchWindow;
 using Luthetus.Common.RazorLib.WatchWindow.TreeViewDisplays;
@@ -20,6 +19,10 @@ using Luthetus.Ide.ClassLib.Menu;
 using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
 using Luthetus.Website.RazorLib.Repl.Run;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
+using Luthetus.Ide.ClassLib.CompilerServices.HostedServiceCase;
+using Luthetus.Ide.ClassLib.FileSystem.HostedServiceCase;
+using Luthetus.Ide.RazorLib.HostedServiceCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -40,7 +43,7 @@ public static class ServiceCollectionExtensions
             typeof(TreeViewEnumerableDisplay));
 
         var commonRendererTypes = new LuthetusCommonComponentRenderers(
-            typeof(BackgroundTaskDisplay),
+            typeof(CommonBackgroundTaskDisplay),
             typeof(CommonErrorNotificationDisplay),
             typeof(CommonInformativeNotificationDisplay),
             typeof(Common.RazorLib.WatchWindow.TreeViewDisplays.TreeViewExceptionDisplay),
@@ -54,9 +57,15 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IEnvironmentProvider, ReplEnvironmentProvider>();
         services.AddScoped<IFileSystemProvider, ReplFileSystemProvider>();
 
-        services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
-        services.AddSingleton<IBackgroundTaskMonitor, BackgroundTaskMonitor>();
-        
+        services.AddSingleton<ICommonBackgroundTaskQueue, CommonBackgroundTaskQueue>();
+        services.AddSingleton<ICommonBackgroundTaskMonitor, CommonBackgroundTaskMonitor>();
+
+        services.AddScoped<IFileSystemBackgroundTaskQueue, FileSystemBackgroundTaskQueue>();
+        services.AddScoped<IFileSystemBackgroundTaskMonitor, FileSystemBackgroundTaskMonitor>();
+
+        services.AddScoped<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueue>();
+        services.AddScoped<ICompilerServiceBackgroundTaskMonitor, CompilerServiceBackgroundTaskMonitor>();
+
         services.AddLuthetusTextEditor(options => options with
         {
             InitializeFluxor = shouldInitializeFluxor,
@@ -85,6 +94,8 @@ public static class ServiceCollectionExtensions
                 typeof(GitChangesDisplay),
                 typeof(RemoveCSharpProjectFromSolutionDisplay),
                 typeof(InputFileDisplay),
+                typeof(CompilerServiceBackgroundTaskDisplay),
+                typeof(FileSystemBackgroundTaskDisplay),
                 typeof(TreeViewCSharpProjectDependenciesDisplay),
                 typeof(TreeViewCSharpProjectNugetPackageReferencesDisplay),
                 typeof(TreeViewCSharpProjectToProjectReferencesDisplay),

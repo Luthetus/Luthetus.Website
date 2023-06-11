@@ -1,6 +1,9 @@
-﻿namespace Luthetus.Common.RazorLib.BackgroundTaskCase;
+﻿using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
 
-public class BackgroundTaskQueueSingleThreaded : IBackgroundTaskQueue
+namespace Luthetus.Common.RazorLib.BackgroundTaskCase;
+
+public class BackgroundTaskQueueSingleThreaded : ICommonBackgroundTaskQueue
 {
     public void QueueBackgroundWorkItem(
         IBackgroundTask backgroundTask)

@@ -47,8 +47,6 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     [Inject]
     private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
 
-    private bool _disposed;
-
     protected override void OnInitialized()
     {
         AppOptionsService.AppOptionsStateWrap.StateChanged += AppOptionsStateWrapOnStateChanged;
@@ -264,6 +262,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 decorationMapper,
                 semanticModel,
                 null,
+                new(),
                 TextEditorModelKey.NewTextEditorModelKey()
             );
 

@@ -8,7 +8,6 @@ using Luthetus.Ide.ClassLib.Menu;
 using Fluxor;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
-using Luthetus.Ide.RazorLib.FolderExplorer;
 using System.Collections.Immutable;
 
 namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
@@ -117,11 +116,11 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
         await treeViewModel.LoadChildrenAsync();
 
         TreeViewService.ReRenderNode(
-            FolderExplorerDisplay.TreeViewFolderExplorerContentStateKey,
+            Facts.ReplFacts.TreeViewStateKeys.FolderExplorer,
             treeViewModel);
 
         TreeViewService.MoveUp(
-            FolderExplorerDisplay.TreeViewFolderExplorerContentStateKey,
+            Facts.ReplFacts.TreeViewStateKeys.FolderExplorer,
             false);
     }
 

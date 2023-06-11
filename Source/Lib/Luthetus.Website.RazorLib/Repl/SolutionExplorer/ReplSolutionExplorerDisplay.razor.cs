@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Components;
 using Fluxor;
 using Luthetus.Common.RazorLib.Dimensions;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Common.RazorLib.Store.DropdownCase;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView;
-using Luthetus.Ide.ClassLib.ComponentRenderers;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Website.RazorLib.Store.ReplCase;
 
@@ -17,13 +15,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;
     [Inject]
-    private IEnvironmentProvider EnvironmentProvider { get; set; } = null!;
-    [Inject]
-    private IFileSystemProvider FileSystemProvider { get; set; } = null!;
-    [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
-    [Inject]
-    private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
