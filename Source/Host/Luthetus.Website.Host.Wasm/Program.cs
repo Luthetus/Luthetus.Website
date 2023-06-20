@@ -13,6 +13,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddLuthetusWebsiteServices();
 
+builder.Services.AddSingleton<CommonQueuedHostedService>();
+builder.Services.AddSingleton<TextEditorQueuedHostedService>();
+
 builder.Services.AddSingleton<ICommonBackgroundTaskQueue, CommonBackgroundTaskQueueSingleThreaded>();
 builder.Services.AddSingleton<ITextEditorBackgroundTaskQueue, TextEditorBackgroundTaskQueueSingleThreaded>();
 
