@@ -8,6 +8,9 @@ https://luthetus.github.io/Luthetus.Website/
 
 ## Recent Changes:
 
+### (2023-06-19) 
+-DisplayTracker.cs (namespace: Luthetus.TextEditor.RazorLib.ViewModel). This tracks whether the ViewModel is currently rendered and is expected to be a great improvement to performance.
+
 ### (2023-06-11) 
 -Many code optimizations were made to allow for the IDE repository run better.
 
