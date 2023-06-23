@@ -16,6 +16,13 @@ public partial class NavbarDisplay : ComponentBase
     public Action OpenSettingsDialogAction { get; set; } = null!;
 
     private const double ICON_SIZE_MULTIPLIER = 1.5;
+    private const int NAVBAR_HEIGHT_IN_PIXELS = 64;
+
+    private string NavbarIsCollapsedCssClassString => _navbarIsCollapsed
+        ? "luth_web_navbar_collapsed"
+        : string.Empty;
+
+    private bool _navbarIsCollapsed = true;
 
     private void ShowInputFileDialogOnClick()
     {

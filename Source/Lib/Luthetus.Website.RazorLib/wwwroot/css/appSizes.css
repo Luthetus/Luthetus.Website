@@ -1,4 +1,6 @@
 ﻿:root {
     --bsrl_top-row-height: 56px;
     --luth_web_navbar-height: 64px;
+    --luth_web_navbar-search-input-height: 250px;
+    --luth_web_navbar-z-index: 9999;
 }
