@@ -8,6 +8,7 @@ using Luthetus.Ide.RazorLib;
 using Luthetus.TextEditor.RazorLib.HostedServiceCase;
 using Microsoft.Extensions.DependencyInjection;
 using Photino.Blazor;
+using Luthetus.Website.RazorLib;
 
 namespace Luthetus.Website.Host.Photino
 {
@@ -21,7 +22,7 @@ namespace Luthetus.Website.Host.Photino
             appBuilder.Services
                 .AddLogging();
 
-            appBuilder.Services.AddLuthetusIdeRazorLibServices(true);
+            appBuilder.Services.AddLuthetusWebsiteServices();
 
             // The code:
             //     builder.Services.AddHostedService<QueuedHostedService>();
@@ -30,8 +31,6 @@ namespace Luthetus.Website.Host.Photino
             // So manual starting of the service is done.
             appBuilder.Services.AddSingleton<CommonQueuedHostedService>();
             appBuilder.Services.AddSingleton<TextEditorQueuedHostedService>();
-            appBuilder.Services.AddSingleton<FileSystemQueuedHostedService>();
-            appBuilder.Services.AddSingleton<CompilerServiceQueuedHostedService>();
 
             appBuilder.RootComponents.Add<App>("app");
 
@@ -41,15 +40,11 @@ namespace Luthetus.Website.Host.Photino
 
             var commonQueuedHostedService = app.Services.GetRequiredService<CommonQueuedHostedService>();
             var textEditorQueuedHostedService = app.Services.GetRequiredService<TextEditorQueuedHostedService>();
-            var fileSystemQueuedHostedService = app.Services.GetRequiredService<FileSystemQueuedHostedService>();
-            var compilerServiceQueuedHostedService = app.Services.GetRequiredService<CompilerServiceQueuedHostedService>();
 
             var cancellationToken = backgroundTasksCancellationTokenSource.Token;
 
             _ = Task.Run(async () => await commonQueuedHostedService.StartAsync(cancellationToken));
             _ = Task.Run(async () => await textEditorQueuedHostedService.StartAsync(cancellationToken));
-            _ = Task.Run(async () => await fileSystemQueuedHostedService.StartAsync(cancellationToken));
-            _ = Task.Run(async () => await compilerServiceQueuedHostedService.StartAsync(cancellationToken));
 
             // customize window
             app.MainWindow
