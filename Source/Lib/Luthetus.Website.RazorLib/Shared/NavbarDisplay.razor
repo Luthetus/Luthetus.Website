@@ -1,6 +1,13 @@
 ﻿@using Luthetus.Common.RazorLib.Icons.Codicon
+@using Luthetus.Common.RazorLib.OutOfBoundsClick
 @using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 @using Luthetus.Website.RazorLib.SearchBar;
+
+@if (!_navbarIsCollapsed)
+{
+    <OutOfBoundsClickDisplay ZIndex="NAVBAR_Z_INDEX"
+                             OnClickCallback="SetNavbarIsCollapsedToTrue" />
+}
 
 <div class="luth_web_navbar">
     @{
