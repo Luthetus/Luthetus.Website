@@ -32,8 +32,6 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddLuthetusWebsiteServices(
         this IServiceCollection services)
     {
-        var shouldInitializeFluxor = false;
-
         var watchWindowTreeViewRenderers = new WatchWindowTreeViewRenderers(
             typeof(TreeViewTextDisplay),
             typeof(TreeViewReflectionDisplay),
@@ -72,13 +70,8 @@ public static class ServiceCollectionExtensions
 
         services.AddLuthetusTextEditor(options => options with
         {
-            InitializeFluxor = shouldInitializeFluxor,
             SettingsComponentRendererType = typeof(SettingsDisplay),
             SettingsDialogComponentIsResizable = true,
-            LuthetusCommonOptions = (options.LuthetusCommonOptions ?? new()) with
-            {
-                InitializeFluxor = shouldInitializeFluxor
-            },
         });
 
         services.AddScoped<ILuthetusIdeComponentRenderers>(serviceProvider =>
@@ -114,8 +107,8 @@ public static class ServiceCollectionExtensions
         return services.AddFluxor(options =>
            options.ScanAssemblies(
                typeof(ServiceCollectionExtensions).Assembly,
-               typeof(Luthetus.Common.RazorLib.ServiceCollectionExtensions).Assembly,
-               typeof(Luthetus.TextEditor.RazorLib.ServiceCollectionExtensions).Assembly,
+               typeof(Luthetus.Common.RazorLib.LuthetusCommonOptions).Assembly,
+               typeof(Luthetus.TextEditor.RazorLib.LuthetusTextEditorOptions).Assembly,
                typeof(Luthetus.Ide.ClassLib.ServiceCollectionExtensions).Assembly));
     }
 }
