@@ -68,10 +68,26 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueue>();
         services.AddScoped<ICompilerServiceBackgroundTaskMonitor, CompilerServiceBackgroundTaskMonitor>();
 
-        services.AddLuthetusTextEditor(options => options with
+        services.AddLuthetusTextEditor(options => 
         {
-            SettingsComponentRendererType = typeof(SettingsDisplay),
-            SettingsDialogComponentIsResizable = true,
+            var heightOfNavbarInPixels = 64;
+
+            var luthetusCommonOptions = options.LuthetusCommonOptions ?? new();
+
+            luthetusCommonOptions = luthetusCommonOptions with
+            {
+                DialogServiceOptions = luthetusCommonOptions.DialogServiceOptions with
+                {
+                    IsMaximizedStyleCssString = $"width: 100vw; height: calc(100vh - {heightOfNavbarInPixels}px); left: 0; top: {heightOfNavbarInPixels}px;"
+                }
+            };
+
+            return options with
+            {
+                SettingsComponentRendererType = typeof(SettingsDisplay),
+                SettingsDialogComponentIsResizable = true,
+                LuthetusCommonOptions = luthetusCommonOptions
+            };
         });
 
         services.AddScoped<ILuthetusIdeComponentRenderers>(serviceProvider =>
