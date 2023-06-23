@@ -3,15 +3,18 @@ using Luthetus.Common.RazorLib.Options;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Fluxor;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.Routing;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
-public partial class NavbarDisplay : ComponentBase
+public partial class NavbarDisplay : ComponentBase, IDisposable
 {
     [Inject]
     private IAppOptionsService AppOptionsService { get; set; } = null!;
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public Action OpenSettingsDialogAction { get; set; } = null!;
@@ -26,6 +29,18 @@ public partial class NavbarDisplay : ComponentBase
 
     private bool _navbarIsCollapsed = true;
 
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += NavigationManager_LocationChanged;
+
+        base.OnInitialized();
+    }
+
+    private async void NavigationManager_LocationChanged(object? sender, LocationChangedEventArgs locationChangedEventArgs)
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
     private void ShowInputFileDialogOnClick()
     {
         Dispatcher.Dispatch(new EditorState.ShowInputFileAction());
@@ -34,5 +49,21 @@ public partial class NavbarDisplay : ComponentBase
     private void SetNavbarIsCollapsedToTrue(MouseEventArgs mouseEventArgs)
     {
         _navbarIsCollapsed = true;
+    }
+
+    /// <summary>
+    /// TODO: Don't specify the href twice. Once for the a tag and then once for this method invocation.
+    /// </summary>
+    private string GetLinkIsActiveCssClassString(string href)
+    {
+        if (NavigationManager.Uri.Replace(NavigationManager.BaseUri, string.Empty).Contains(href))
+            return "luth_active";
+
+        return string.Empty;
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= NavigationManager_LocationChanged;
     }
 }

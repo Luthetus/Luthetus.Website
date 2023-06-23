@@ -51,11 +51,15 @@
     height: var(--luth_web_navbar-height);
 }
 
-    .luth_web_navbar-brand .luth_web_link {
+    .luth_web_navbar-brand .luth_link {
         width: 100%;
         height: 100%;
         display: flex;
     }
+
+.luth_link.luth_active {
+    color: #c032e8;
+}
 
 @media (max-width: 700px) {
     .luth_web_navbar {
@@ -98,13 +102,15 @@
         width: 100%;
     }
 
+    .luth_web_navbar-flex-content-end {
+        /* The search bar is not a 'luth_web_navbar-item' as of this comment (2023-06-23). Therefore it lacks spacing beneath it. */
+        padding-top: 10px;
+    }
+        
         .luth_web_navbar-flex-content-end .luth_web_navbar-item {
             width: 100%;
             display: flex;
             justify-content: center;
+            margin-bottom: 10px;
         }
-
-            .luth_web_navbar-flex-content-end .luth_web_navbar-item:hover {
-                background-color: var(--luth_button-hover-background-color);
-            }
 }

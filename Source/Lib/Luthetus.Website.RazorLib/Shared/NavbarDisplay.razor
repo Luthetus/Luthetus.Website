@@ -26,7 +26,7 @@
         <CascadingValue Name="LuthetusCommonIconHeightOverride" Value="luthetusCommonIconSizeOverrideAsInt">
             <div class="luth_web_navbar-main">
                 <div class="luth_web_navbar-brand">
-                    <a class="luth_web_link"
+                    <a class="luth_link @GetLinkIsActiveCssClassString("")"
                        href="/">
 
                         <CascadingValue Name="LuthetusCommonIconWidthOverride" Value="NAVBAR_HEIGHT_IN_PIXELS">
@@ -51,22 +51,22 @@
                 <div class="luth_web_navbar-flex-content-end"
                      @onclick="SetNavbarIsCollapsedToTrue">
 
-                    <a class="luth_web_link luth_web_navbar-item"
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("repl")"
                        href="repl">
                         REPL
                     </a>
 
-                    <a class="luth_web_link luth_web_navbar-item"
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("common")"
                        href="common">
                         Common
                     </a>
 
-                    <a class="luth_web_link luth_web_navbar-item"
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("textEditor")"
                        href="textEditor">
                         Text Editor
                     </a>
 
-                    <a class="luth_web_link luth_web_navbar-item"
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("ide")"
                        href="ide">
                         IDE
                     </a>
