@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Components;
 using Luthetus.Common.RazorLib.Options;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Fluxor;
-using Luthetus.Common.RazorLib.Store.DropdownCase;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace Luthetus.Website.RazorLib.Shared;
