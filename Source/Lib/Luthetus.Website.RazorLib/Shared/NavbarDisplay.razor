@@ -48,33 +48,35 @@
                     <SearchBarDisplay />
                 </div>
 
-                <div class="luth_web_navbar-flex-content-end">
-                    <a class="luth_web_link"
+                <div class="luth_web_navbar-flex-content-end"
+                     @onclick="SetNavbarIsCollapsedToTrue">
+
+                    <a class="luth_web_link luth_web_navbar-item"
                        href="repl">
                         REPL
                     </a>
 
-                    <a class="luth_web_link"
-                       href="repl">
+                    <a class="luth_web_link luth_web_navbar-item"
+                       href="common">
                         Common
                     </a>
 
-                    <a class="luth_web_link"
-                       href="repl">
+                    <a class="luth_web_link luth_web_navbar-item"
+                       href="textEditor">
                         Text Editor
                     </a>
 
-                    <a class="luth_web_link"
-                       href="repl">
+                    <a class="luth_web_link luth_web_navbar-item"
+                       href="ide">
                         IDE
                     </a>
 
-                    <button class="luth_button"
+                    <button class="luth_button luth_web_navbar-item"
                             @onclick="OpenSettingsDialogAction.Invoke">
                         <IconSettingsGear />
                     </button>
 
-                    <button class="luth_button"
+                    <button class="luth_button luth_web_navbar-item"
                             @onclick="ShowInputFileDialogOnClick">
                         <IconFolder />
                     </button>
