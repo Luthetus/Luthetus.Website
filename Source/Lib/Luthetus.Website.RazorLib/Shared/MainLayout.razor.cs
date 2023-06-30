@@ -20,7 +20,6 @@ using Fluxor;
 using Luthetus.Website.RazorLib.Facts;
 using Luthetus.Ide.ClassLib.FileConstants;
 using Luthetus.TextEditor.RazorLib.Lexing;
-using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
 
@@ -237,30 +236,16 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             var content = await FileSystemProvider.File.ReadAllTextAsync(
                 file);
 
-            var lexer = ExtensionNoPeriodFacts.GetLexer(
-                resourceUri,
-                absoluteFilePath.ExtensionNoPeriod);
-
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
                 absoluteFilePath.ExtensionNoPeriod);
-
-            var semanticModel = ExtensionNoPeriodFacts.GetSemanticModel(
-                absoluteFilePath.ExtensionNoPeriod,
-                EditorState.SharedBinder);
-
-            SemanticContextStateWrap.Value.DotNetSolutionSemanticContext.SemanticModelMap
-                .Add(
-                    resourceUri,
-                    semanticModel);
-
+            
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
                 absoluteFilePath.ExtensionNoPeriod,
                 content,
-                lexer,
+                null,
                 decorationMapper,
-                semanticModel,
                 null,
                 new(),
                 TextEditorModelKey.NewTextEditorModelKey()
