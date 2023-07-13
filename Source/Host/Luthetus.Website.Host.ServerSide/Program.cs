@@ -1,6 +1,9 @@
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
-using Luthetus.TextEditor.RazorLib.HostedServiceCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase.CompilerServiceCase;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
 using Luthetus.Website.RazorLib;
+using System.Reflection.PortableExecutable;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +13,11 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddLuthetusWebsiteServices();
 
+builder.Services.AddSingleton<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueue>();
+
 builder.Services.AddHostedService<CommonQueuedHostedService>();
 builder.Services.AddHostedService<TextEditorQueuedHostedService>();
+builder.Services.AddHostedService<CompilerServiceQueuedHostedService>();
 
 var app = builder.Build();
 

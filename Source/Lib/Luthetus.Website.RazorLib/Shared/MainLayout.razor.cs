@@ -22,6 +22,7 @@ using Luthetus.Ide.ClassLib.FileConstants;
 using Luthetus.TextEditor.RazorLib.Lexing;
 using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -43,6 +44,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
+    [Inject]
+    private TextEditorXmlCompilerService TextEditorXmlCompilerService { get; set; } = null!;
     [Inject]
     private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
 
@@ -236,6 +239,10 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             var content = await FileSystemProvider.File.ReadAllTextAsync(
                 file);
 
+            var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
+                absoluteFilePath.ExtensionNoPeriod,
+                TextEditorXmlCompilerService);
+
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
                 absoluteFilePath.ExtensionNoPeriod);
             
@@ -244,12 +251,14 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 fileLastWriteTime,
                 absoluteFilePath.ExtensionNoPeriod,
                 content,
-                null,
+                compilerService,
                 decorationMapper,
                 null,
                 new(),
                 TextEditorModelKey.NewTextEditorModelKey()
             );
+
+            textEditorModel.CompilerService.RegisterModel(textEditorModel);
 
             TextEditorService.Model.RegisterCustom(textEditorModel);
             

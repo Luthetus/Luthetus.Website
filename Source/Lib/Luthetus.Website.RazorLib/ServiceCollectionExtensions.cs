@@ -20,10 +20,12 @@ using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Ide.ClassLib.FileTemplates;
 using Luthetus.Website.RazorLib.Repl.Run;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
-using Luthetus.Ide.ClassLib.CompilerServices.HostedServiceCase;
 using Luthetus.Ide.ClassLib.FileSystem.HostedServiceCase;
 using Luthetus.Ide.RazorLib.HostedServiceCase;
-using Luthetus.TextEditor.RazorLib.HostedServiceCase;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase.CompilerServiceCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
+using System.Reflection.PortableExecutable;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -48,7 +50,10 @@ public static class ServiceCollectionExtensions
             typeof(Common.RazorLib.WatchWindow.TreeViewDisplays.TreeViewExceptionDisplay),
             typeof(TreeViewMissingRendererFallbackDisplay),
             watchWindowTreeViewRenderers,
-            typeof(RunFileDisplay));
+        typeof(RunFileDisplay),
+            typeof(CompilerServiceBackgroundTaskDisplay));
+
+        services.AddScoped<TextEditorXmlCompilerService>();
 
         // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
@@ -65,8 +70,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IFileSystemBackgroundTaskQueue, FileSystemBackgroundTaskQueue>();
         services.AddScoped<IFileSystemBackgroundTaskMonitor, FileSystemBackgroundTaskMonitor>();
 
-        services.AddScoped<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueue>();
-        services.AddScoped<ICompilerServiceBackgroundTaskMonitor, CompilerServiceBackgroundTaskMonitor>();
+        services.AddSingleton<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueue>();
+        services.AddSingleton<ICompilerServiceBackgroundTaskMonitor, CompilerServiceBackgroundTaskMonitor>();
 
         services.AddLuthetusTextEditor(options => 
         {
