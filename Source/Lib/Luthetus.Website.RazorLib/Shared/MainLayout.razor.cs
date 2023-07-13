@@ -22,8 +22,9 @@ using Luthetus.Ide.ClassLib.FileConstants;
 using Luthetus.TextEditor.RazorLib.Lexing;
 using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
-using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
 using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.NewInterfaceCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase.XmlCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -46,9 +47,11 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
     [Inject]
-    private TextEditorXmlCompilerService TextEditorXmlCompilerService { get; set; } = null!;
+    private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
     private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
     [Inject]
     private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
 
@@ -244,8 +247,9 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
             var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
                 absoluteFilePath.ExtensionNoPeriod,
-                TextEditorXmlCompilerService,
-                CSharpCompilerService);
+                XmlCompilerService,
+                CSharpCompilerService,
+                CssCompilerService);
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
                 absoluteFilePath.ExtensionNoPeriod);
