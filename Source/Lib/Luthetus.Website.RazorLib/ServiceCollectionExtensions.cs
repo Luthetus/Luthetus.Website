@@ -28,6 +28,7 @@ using System.Reflection.PortableExecutable;
 using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.NewInterfaceCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.XmlCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsonCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -58,6 +59,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<TextEditorXmlCompilerService>();
         services.AddScoped<CSharpCompilerService>();
         services.AddScoped<TextEditorCssCompilerService>();
+        services.AddScoped<TextEditorJsonCompilerService>();
 
         // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);

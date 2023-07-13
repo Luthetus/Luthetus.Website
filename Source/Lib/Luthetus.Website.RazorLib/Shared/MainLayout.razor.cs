@@ -25,6 +25,7 @@ using Luthetus.TextEditor.RazorLib;
 using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.NewInterfaceCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.XmlCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsonCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -52,6 +53,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
     [Inject]
     private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorJsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
     private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
 
@@ -249,7 +252,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 absoluteFilePath.ExtensionNoPeriod,
                 XmlCompilerService,
                 CSharpCompilerService,
-                CssCompilerService);
+                CssCompilerService,
+                JsonCompilerService);
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
                 absoluteFilePath.ExtensionNoPeriod);
