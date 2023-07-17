@@ -27,6 +27,7 @@ using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsonCase;
 using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.CompilerServiceCase;
 using Luthetus.Ide.ClassLib.CompilerServices.Languages.Razor.CompilerServiceCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -56,6 +57,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private RazorCompilerService RazorCompilerService { get; set; } = null!;
     [Inject]
     private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorJsCompilerService JsCompilerService { get; set; } = null!;
     [Inject]
     private TextEditorJsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
@@ -88,6 +91,11 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_CSS_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_CSS_CONTENTS);
+        
+        // AppJs
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.APP_JS_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.APP_JS_CONTENTS);
 
         // AppRazor
         await FileSystemProvider.File.WriteAllTextAsync(
@@ -123,6 +131,11 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
             ReplStateFacts.IPERSON_REPOSITORY_CONTENTS);
+        
+        // LaunchSettingsJson
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
 
         // MainLayout
         await FileSystemProvider.File.WriteAllTextAsync(
@@ -257,6 +270,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 CSharpCompilerService,
                 RazorCompilerService,
                 CssCompilerService,
+                JsCompilerService,
                 JsonCompilerService);
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
