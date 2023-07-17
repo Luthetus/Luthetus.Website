@@ -22,10 +22,11 @@ using Luthetus.Ide.ClassLib.FileConstants;
 using Luthetus.TextEditor.RazorLib.Lexing;
 using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.NewInterfaceCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.XmlCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsonCase;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.CompilerServiceCase;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.Razor.CompilerServiceCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -51,6 +52,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
     private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
+    [Inject]
+    private RazorCompilerService RazorCompilerService { get; set; } = null!;
     [Inject]
     private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
     [Inject]
@@ -252,6 +255,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 absoluteFilePath.ExtensionNoPeriod,
                 XmlCompilerService,
                 CSharpCompilerService,
+                RazorCompilerService,
                 CssCompilerService,
                 JsonCompilerService);
 

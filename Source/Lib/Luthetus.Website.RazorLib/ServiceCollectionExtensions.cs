@@ -24,10 +24,12 @@ using Luthetus.Ide.ClassLib.FileSystem.HostedServiceCase;
 using Luthetus.Ide.RazorLib.HostedServiceCase;
 using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
 using Luthetus.TextEditor.RazorLib.HostedServiceCase.CompilerServiceCase;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.NewInterfaceCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.XmlCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsonCase;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.CompilerServiceCase;
+using Luthetus.Ide.ClassLib.CompilerServices.Languages.Razor.CompilerServiceCase;
+using System.Reflection.PortableExecutable;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -57,6 +59,7 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<TextEditorXmlCompilerService>();
         services.AddScoped<CSharpCompilerService>();
+        services.AddScoped<RazorCompilerService>();
         services.AddScoped<TextEditorCssCompilerService>();
         services.AddScoped<TextEditorJsonCompilerService>();
 
