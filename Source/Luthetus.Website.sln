@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.TextEditor.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.Website.Visualizations", "Lib\Luthetus.Website.Visualizations\Luthetus.Website.Visualizations.csproj", "{5B032103-B75E-49F7-8B47-3BA19AF947FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.Website.Host.Photino", "Host\Luthetus.Website.Host.Photino\Luthetus.Website.Host.Photino.csproj", "{CBF0F6EB-45B6-402E-9A7D-4C2DBB986B8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.Website.Host.Photino", "Host\Luthetus.Website.Host.Photino\Luthetus.Website.Host.Photino.csproj", "{CBF0F6EB-45B6-402E-9A7D-4C2DBB986B8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{00917FBC-A62D-4399-A2C9-2873135D9286}"
 EndProject
