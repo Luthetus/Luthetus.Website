@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/_Imports.razor";
-    
+
     public static readonly string IMPORTS_RAZOR_FILE_CONTENTS = @"@using System.Net.Http
 @using System.Net.Http.Json
 @using Microsoft.AspNetCore.Components.Routing

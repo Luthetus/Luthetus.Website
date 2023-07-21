@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string APP_CSS_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/wwwroot/css/app.css";
-    
+
     public static readonly string APP_CSS_CONTENTS = @"h1:focus {
     outline: none;
 }

@@ -12,7 +12,7 @@ public partial class ReplContainerDisplay : FluxorComponent
     private IState<AppOptionsState> AppOptionsStateWrap { get; set; } = null!;
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
-    
+
     [CascadingParameter]
     private ViewKind ViewKind { get; set; }
 

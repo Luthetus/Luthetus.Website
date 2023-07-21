@@ -44,7 +44,7 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<ICommonBackgroundTaskQueue, CommonBackgroundTaskQueue>();
         services.AddSingleton<ICommonBackgroundTaskMonitor, CommonBackgroundTaskMonitor>();
-        
+
         services.AddSingleton<ITextEditorBackgroundTaskQueue, TextEditorBackgroundTaskQueue>();
         services.AddSingleton<ITextEditorBackgroundTaskMonitor, TextEditorBackgroundTaskMonitor>();
 
@@ -54,7 +54,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueue>();
         services.AddSingleton<ICompilerServiceBackgroundTaskMonitor, CompilerServiceBackgroundTaskMonitor>();
 
-        services.AddLuthetusTextEditor(options => 
+        services.AddLuthetusTextEditor(options =>
         {
             var heightOfNavbarInPixels = 64;
 

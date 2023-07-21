@@ -127,7 +127,7 @@ public class ReplFileHandler : IFileHandler
                 // Skip the file being written to itself
                 .SkipLast(1)
                 .ToArray();
-            
+
             var directoryPathBuilder = new StringBuilder("/");
 
             for (int i = 0; i < parentDirectories.Length; i++)

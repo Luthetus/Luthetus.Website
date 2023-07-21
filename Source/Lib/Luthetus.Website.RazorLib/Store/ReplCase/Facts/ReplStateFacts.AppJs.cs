@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string APP_JS_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/wwwroot/js/app.js";
-    
+
     public static readonly string APP_JS_CONTENTS = @"window.luthetusCommon = {
     localStorageSetItem: function (key, value) {
         localStorage.setItem(key, value);

@@ -19,7 +19,7 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         if (treeViewCommandParameter.TargetNode is null)
             return MenuRecord.Empty;
-        
+
         var menuOptionRecords = new List<MenuOptionRecord>();
 
         var treeViewModel = treeViewCommandParameter.TargetNode;
@@ -54,13 +54,13 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-            CommonMenuOptionsFactory.NewEmptyFile(
-                treeViewModel.Item,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-            CommonMenuOptionsFactory.NewDirectory(
-                treeViewModel.Item,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-        };
+        CommonMenuOptionsFactory.NewEmptyFile(
+            treeViewModel.Item,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+        CommonMenuOptionsFactory.NewDirectory(
+            treeViewModel.Item,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+    };
     }
 
     private MenuOptionRecord[] GetFileMenuOptions(
@@ -69,20 +69,20 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-            CommonMenuOptionsFactory.DeleteFile(
-                treeViewModel.Item,
-                async () =>
-                {
-                    await ReloadTreeViewModel(parentTreeViewModel);
-                }),
-            CommonMenuOptionsFactory.RenameFile(
-                treeViewModel.Item,
-                Dispatcher,
-                async ()  =>
-                {
-                    await ReloadTreeViewModel(parentTreeViewModel);
-                }),
-        };
+        CommonMenuOptionsFactory.DeleteFile(
+            treeViewModel.Item,
+            async () =>
+            {
+                await ReloadTreeViewModel(parentTreeViewModel);
+            }),
+        CommonMenuOptionsFactory.RenameFile(
+            treeViewModel.Item,
+            Dispatcher,
+            async ()  =>
+            {
+                await ReloadTreeViewModel(parentTreeViewModel);
+            }),
+    };
     }
 
     /// <summary>

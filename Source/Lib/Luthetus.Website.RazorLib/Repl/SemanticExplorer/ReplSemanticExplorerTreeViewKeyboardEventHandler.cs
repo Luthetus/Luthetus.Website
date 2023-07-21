@@ -58,7 +58,7 @@ public class ReplSemanticExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
             _textEditorService,
             _dispatcher,
             _environmentProvider);
-        
+
         return Task.CompletedTask;
     }
 }

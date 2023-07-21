@@ -114,16 +114,16 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
 
         return new[]
         {
-            CommonMenuOptionsFactory.NewEmptyFile(
-                parentDirectory,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-            CommonMenuOptionsFactory.NewTemplatedFile(
-                new NamespacePath(treeViewModel.Item.Namespace, parentDirectory),
-                async () => await ReloadTreeViewModel(treeViewModel)),
-            CommonMenuOptionsFactory.NewDirectory(
-                parentDirectory,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-        };
+        CommonMenuOptionsFactory.NewEmptyFile(
+            parentDirectory,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+        CommonMenuOptionsFactory.NewTemplatedFile(
+            new NamespacePath(treeViewModel.Item.Namespace, parentDirectory),
+            async () => await ReloadTreeViewModel(treeViewModel)),
+        CommonMenuOptionsFactory.NewDirectory(
+            parentDirectory,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+    };
     }
 
     private MenuOptionRecord[] GetCSharpProjectToProjectReferenceMenuOptions(
@@ -137,16 +137,16 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-            CommonMenuOptionsFactory.NewEmptyFile(
-                treeViewModel.Item.AbsoluteFilePath,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-            CommonMenuOptionsFactory.NewTemplatedFile(
-                treeViewModel.Item,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-            CommonMenuOptionsFactory.NewDirectory(
-                treeViewModel.Item.AbsoluteFilePath,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-        };
+        CommonMenuOptionsFactory.NewEmptyFile(
+            treeViewModel.Item.AbsoluteFilePath,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+        CommonMenuOptionsFactory.NewTemplatedFile(
+            treeViewModel.Item,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+        CommonMenuOptionsFactory.NewDirectory(
+            treeViewModel.Item.AbsoluteFilePath,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+    };
     }
 
     private MenuOptionRecord[] GetFileMenuOptions(
@@ -155,20 +155,20 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-            CommonMenuOptionsFactory.DeleteFile(
-                treeViewModel.Item.AbsoluteFilePath,
-                async () =>
-                {
-                    await ReloadTreeViewModel(parentTreeViewModel);
-                }),
-            CommonMenuOptionsFactory.RenameFile(
-                treeViewModel.Item.AbsoluteFilePath,
-                Dispatcher,
-                async ()  =>
-                {
-                    await ReloadTreeViewModel(parentTreeViewModel);
-                }),
-        };
+        CommonMenuOptionsFactory.DeleteFile(
+            treeViewModel.Item.AbsoluteFilePath,
+            async () =>
+            {
+                await ReloadTreeViewModel(parentTreeViewModel);
+            }),
+        CommonMenuOptionsFactory.RenameFile(
+            treeViewModel.Item.AbsoluteFilePath,
+            Dispatcher,
+            async ()  =>
+            {
+                await ReloadTreeViewModel(parentTreeViewModel);
+            }),
+    };
     }
 
     /// <summary>

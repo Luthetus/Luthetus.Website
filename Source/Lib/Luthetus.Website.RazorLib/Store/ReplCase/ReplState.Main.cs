@@ -9,10 +9,10 @@ public partial class ReplState
     {
         Files = new ReplFile[]
         {
-            new ReplFile(
-                string.Empty,
-                "/",
-                DateTime.UtcNow)
+        new ReplFile(
+            string.Empty,
+            "/",
+            DateTime.UtcNow)
         }
         .ToImmutableList();
 
@@ -25,18 +25,18 @@ public partial class ReplState
 
             folderExplorerWidth.DimensionUnits.AddRange(new[]
             {
-                new DimensionUnit
-                {
-                    Value = 35,
-                    DimensionUnitKind = DimensionUnitKind.Percentage
-                },
-                new DimensionUnit
-                {
-                    Value = ResizableRow.RESIZE_HANDLE_HEIGHT_IN_PIXELS / 2,
-                    DimensionUnitKind = DimensionUnitKind.Pixels,
-                    DimensionOperatorKind = DimensionOperatorKind.Subtract
-                }
-            });
+            new DimensionUnit
+            {
+                Value = 35,
+                DimensionUnitKind = DimensionUnitKind.Percentage
+            },
+            new DimensionUnit
+            {
+                Value = ResizableRow.RESIZE_HANDLE_HEIGHT_IN_PIXELS / 2,
+                DimensionUnitKind = DimensionUnitKind.Pixels,
+                DimensionOperatorKind = DimensionOperatorKind.Subtract
+            }
+        });
         }
 
         // Initialize TextEditorGroupElementDimensions
@@ -48,18 +48,18 @@ public partial class ReplState
 
             textEditorGroupWidth.DimensionUnits.AddRange(new[]
             {
-                new DimensionUnit
-                {
-                    Value = 65,
-                    DimensionUnitKind = DimensionUnitKind.Percentage
-                },
-                new DimensionUnit
-                {
-                    Value = ResizableRow.RESIZE_HANDLE_HEIGHT_IN_PIXELS / 2,
-                    DimensionUnitKind = DimensionUnitKind.Pixels,
-                    DimensionOperatorKind = DimensionOperatorKind.Subtract
-                }
-            });
+            new DimensionUnit
+            {
+                Value = 65,
+                DimensionUnitKind = DimensionUnitKind.Percentage
+            },
+            new DimensionUnit
+            {
+                Value = ResizableRow.RESIZE_HANDLE_HEIGHT_IN_PIXELS / 2,
+                DimensionUnitKind = DimensionUnitKind.Pixels,
+                DimensionOperatorKind = DimensionOperatorKind.Subtract
+            }
+        });
         }
     }
 

@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string APP_RAZOR_FILE_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/App.razor";
-    
+
     public static readonly string APP_RAZOR_FILE_CONTENTS = @"<Router AppAssembly=""@typeof(App).Assembly"">
     <Found Context=""routeData"">
         <RouteView RouteData=""@routeData"" DefaultLayout=""@typeof(MainLayout)"" />

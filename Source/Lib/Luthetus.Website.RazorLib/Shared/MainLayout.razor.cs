@@ -67,7 +67,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_CSS_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_CSS_CONTENTS);
-        
+
         // AppJs
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_JS_ABSOLUTE_FILE_PATH,
@@ -77,12 +77,12 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
-        
+
         // AppTs
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_TS_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_TS_CONTENTS);
-        
+
         // CounterTest
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
@@ -117,7 +117,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
             ReplStateFacts.IPERSON_REPOSITORY_CONTENTS);
-        
+
         // LaunchSettingsJson
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
@@ -262,7 +262,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
                 absoluteFilePath.ExtensionNoPeriod);
-            
+
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
@@ -278,7 +278,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             textEditorModel.CompilerService.RegisterModel(textEditorModel);
 
             TextEditorService.Model.RegisterCustom(textEditorModel);
-            
+
             await textEditorModel.ApplySyntaxHighlightingAsync();
         }
     }

@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string APP_TS_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/wwwroot/ts/app.ts";
-    
+
     public static readonly string APP_TS_CONTENTS = @"interface User {
   name: string;
   id: number;

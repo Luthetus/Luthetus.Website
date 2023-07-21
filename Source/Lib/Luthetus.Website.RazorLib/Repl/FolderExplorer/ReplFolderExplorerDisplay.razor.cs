@@ -20,7 +20,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     public ReplState ReplState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public AppOptionsState AppOptionsState { get; set; } = null!;
-    
+
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
 

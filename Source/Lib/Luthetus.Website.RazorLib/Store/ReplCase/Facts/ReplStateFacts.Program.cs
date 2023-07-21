@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/Program.cs";
-    
+
     public static readonly string PROGRAM_CS_FILE_CONTENTS = @"using BlazorWasmApp;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
