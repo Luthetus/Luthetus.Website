@@ -1,8 +1,4 @@
-﻿using Luthetus.Common.RazorLib.Dimensions;
-using Luthetus.Common.RazorLib.Options;
-using Luthetus.Common.RazorLib.Store.ApplicationOptions;
-using Luthetus.Website.RazorLib.ViewCase;
-using Microsoft.AspNetCore.Components;
+﻿using Luthetus.Website.RazorLib.ViewCase;
 
 namespace Luthetus.Website.RazorLib.Pages;
 

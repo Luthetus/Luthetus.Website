@@ -1,34 +1,7 @@
-﻿using Luthetus.Common.RazorLib.Dialog;
-using Luthetus.Common.RazorLib.Options;
-using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
-using Luthetus.Common.RazorLib.TreeView;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Implementations;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Keys;
-using Luthetus.Ide.ClassLib.ComponentRenderers;
-using Luthetus.Ide.ClassLib.DotNet;
-using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
-using Luthetus.Ide.ClassLib.Namespaces;
-using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
-using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Luthetus.Website.RazorLib.Settings;
+﻿using Luthetus.Website.RazorLib.Settings;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts;
 using Luthetus.Website.RazorLib.Store.ReplCase;
-using Microsoft.AspNetCore.Components;
-using System.Collections.Immutable;
-using Fluxor;
 using Luthetus.Website.RazorLib.Facts;
-using Luthetus.Ide.ClassLib.FileConstants;
-using Luthetus.TextEditor.RazorLib.Lexing;
-using Luthetus.TextEditor.RazorLib.Model;
-using Luthetus.TextEditor.RazorLib;
-using Luthetus.TextEditor.RazorLib.CompilerServiceCase.XmlCase;
-using Luthetus.TextEditor.RazorLib.CompilerServiceCase.CssCase;
-using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JsonCase;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.CompilerServiceCase;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.Razor.CompilerServiceCase;
-using Luthetus.TextEditor.RazorLib.CompilerServiceCase.JavaScriptCase;
-using Luthetus.TextEditor.RazorLib.CompilerServiceCase.TypeScriptCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -109,6 +82,11 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_TS_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_TS_CONTENTS);
+        
+        // CounterTest
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.COUNTER_TEST_CONTENTS);
 
         // Csproj
         await FileSystemProvider.File.WriteAllTextAsync(

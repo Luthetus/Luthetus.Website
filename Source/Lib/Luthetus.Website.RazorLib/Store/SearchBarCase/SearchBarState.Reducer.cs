@@ -1,6 +1,4 @@
-﻿using Fluxor;
-
-namespace Luthetus.Website.RazorLib.Store.SearchBarCase;
+﻿namespace Luthetus.Website.RazorLib.Store.SearchBarCase;
 
 public partial class SearchBarState
 {

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
-using Microsoft.Extensions.DependencyInjection;
-using Photino.Blazor;
-using Luthetus.Website.RazorLib;
-using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
-using Luthetus.TextEditor.RazorLib.HostedServiceCase.CompilerServiceCase;
-
-namespace Luthetus.Website.Host.Photino
+﻿namespace Luthetus.Website.Host.Photino
 {
     class Program
     {
