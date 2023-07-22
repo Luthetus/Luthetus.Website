@@ -38,7 +38,18 @@ jobs:
             
         - name: Move Luthetus.TextEditor
           run: mv Luthetus.TextEditor ../
+
+        - name: Clone Luthetus/Luthetus.CompilerServices
+          uses: GuillaumeFalourd/clone-github-repo-action@v2
+          with:
+            # Repository Owner
+            owner: Luthetus
+            # Repository name
+            repository: Luthetus.CompilerServices
             
+        - name: Move Luthetus.CompilerServices
+          run: mv Luthetus.CompilerServices ../
+
         - name: Clone Luthetus/Luthetus.Ide
           uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
