@@ -62,7 +62,7 @@ public class ReplFileHandler : IFileHandler
         return Task.CompletedTask;
     }
 
-    public async Task CopyAsync(
+    public Task CopyAsync(
         string sourceAbsoluteFilePathString,
         string destinationAbsoluteFilePathString,
         CancellationToken cancellationToken = default)
@@ -72,7 +72,7 @@ public class ReplFileHandler : IFileHandler
         throw new NotImplementedException();
     }
 
-    public async Task MoveAsync(
+    public Task MoveAsync(
         string sourceAbsoluteFilePathString,
         string destinationAbsoluteFilePathString,
         CancellationToken cancellationToken = default)
