@@ -41,8 +41,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{00917FBC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Luthetus.CompilerServices", "Luthetus.CompilerServices", "{6F8067B0-4451-43B2-AF2F-ABFE4099B89E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Common", "..\..\Luthetus.CompilerServices\Common\Source\Luthetus.CompilerServices.Common.csproj", "{525871D5-A889-4C6B-9006-089D878C5448}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.CSharp", "..\..\Luthetus.CompilerServices\Languages\CSharp\Source\Luthetus.CompilerServices.Lang.CSharp.csproj", "{35F3FF01-C104-421B-B96E-770F5D74578A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.Css", "..\..\Luthetus.CompilerServices\Languages\Css\Source\Luthetus.CompilerServices.Lang.Css.csproj", "{5D70B486-A869-4F76-B0DB-93D112320EDC}"
@@ -95,9 +93,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{222DA4F3-F758-4918-A191-D45CE9794AB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.FSharp", "..\..\Luthetus.CompilerServices\Languages\FSharp\Source\Luthetus.CompilerServices.Lang.FSharp.csproj", "{49D6742A-8E66-463E-8142-24314AF35BCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.FSharp", "..\..\Luthetus.CompilerServices\Languages\FSharp\Source\Luthetus.CompilerServices.Lang.FSharp.csproj", "{49D6742A-8E66-463E-8142-24314AF35BCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.FSharp.Tests", "..\..\Luthetus.CompilerServices\Languages\FSharp\Tests\Luthetus.CompilerServices.Lang.FSharp.Tests.csproj", "{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.FSharp.Tests", "..\..\Luthetus.CompilerServices\Languages\FSharp\Tests\Luthetus.CompilerServices.Lang.FSharp.Tests.csproj", "{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,10 +155,6 @@ Global
 		{CBF0F6EB-45B6-402E-9A7D-4C2DBB986B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBF0F6EB-45B6-402E-9A7D-4C2DBB986B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBF0F6EB-45B6-402E-9A7D-4C2DBB986B8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{525871D5-A889-4C6B-9006-089D878C5448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{525871D5-A889-4C6B-9006-089D878C5448}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{525871D5-A889-4C6B-9006-089D878C5448}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{525871D5-A889-4C6B-9006-089D878C5448}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35F3FF01-C104-421B-B96E-770F5D74578A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35F3FF01-C104-421B-B96E-770F5D74578A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F3FF01-C104-421B-B96E-770F5D74578A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -254,7 +248,6 @@ Global
 		{EA9824AA-EEEF-443E-9090-8191BF2C40E9} = {30DFD93C-D447-4D6F-9E34-2BC967366924}
 		{CBF0F6EB-45B6-402E-9A7D-4C2DBB986B8D} = {00917FBC-A62D-4399-A2C9-2873135D9286}
 		{6F8067B0-4451-43B2-AF2F-ABFE4099B89E} = {787162B5-FB72-4655-B103-969ABD7A8261}
-		{525871D5-A889-4C6B-9006-089D878C5448} = {6F8067B0-4451-43B2-AF2F-ABFE4099B89E}
 		{35F3FF01-C104-421B-B96E-770F5D74578A} = {561458A6-0211-4BFD-B5BA-B40271E6755C}
 		{5D70B486-A869-4F76-B0DB-93D112320EDC} = {B59671B9-BC93-4FD8-A252-DABB0E5BA339}
 		{32A5BBA1-A2F5-47A4-8A5D-B7E44A34F1BB} = {6F8067B0-4451-43B2-AF2F-ABFE4099B89E}
