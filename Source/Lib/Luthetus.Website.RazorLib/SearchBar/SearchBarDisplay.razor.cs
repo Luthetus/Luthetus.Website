@@ -16,7 +16,7 @@ public partial class SearchBarDisplay : ComponentBase, IDisposable
 
     private readonly DropdownKey SearchBarDropdownKey = DropdownKey.NewDropdownKey();
 
-    private string SearchQuery 
+    private string SearchQuery
     {
         get => SearchBarStateWrap.Value.SearchQuery;
         set

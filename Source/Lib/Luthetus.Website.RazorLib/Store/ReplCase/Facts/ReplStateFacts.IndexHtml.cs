@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string INDEX_HTML_FILE_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/wwwroot/index.html";
-    
+
     public static readonly string INDEX_HTML_FILE_CONTENTS = @"<!DOCTYPE html>
 <html lang=""en"">
 

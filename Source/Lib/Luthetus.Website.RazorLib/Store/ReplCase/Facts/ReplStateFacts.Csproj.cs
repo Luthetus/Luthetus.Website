@@ -3,7 +3,7 @@
 public partial class ReplStateFacts
 {
     public static readonly string C_SHARP_PROJECT_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/BlazorWasmApp.csproj";
-    
+
     public static readonly string C_SHARP_PROJECT_CONTENTS = @"<Project Sdk=""Microsoft.NET.Sdk.BlazorWebAssembly"">
 
   <PropertyGroup>

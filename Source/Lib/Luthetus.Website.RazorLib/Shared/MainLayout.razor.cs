@@ -1,28 +1,34 @@
-﻿using Luthetus.Common.RazorLib.Dialog;
-using Luthetus.Common.RazorLib.Options;
-using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
-using Luthetus.Common.RazorLib.TreeView;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Implementations;
-using Luthetus.Ide.ClassLib.CompilerServices.Languages.CSharp.SemanticContextCase.Keys;
-using Luthetus.Ide.ClassLib.ComponentRenderers;
-using Luthetus.Ide.ClassLib.DotNet;
-using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
-using Luthetus.Ide.ClassLib.Namespaces;
-using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
-using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Luthetus.Website.RazorLib.Settings;
+﻿using Luthetus.Website.RazorLib.Settings;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts;
 using Luthetus.Website.RazorLib.Store.ReplCase;
-using Microsoft.AspNetCore.Components;
-using System.Collections.Immutable;
-using Fluxor;
 using Luthetus.Website.RazorLib.Facts;
-using Luthetus.Ide.ClassLib.FileConstants;
-using Luthetus.TextEditor.RazorLib.Lexing;
-using Luthetus.Ide.ClassLib.Store.EditorCase;
-using Luthetus.TextEditor.RazorLib.Model;
+using Microsoft.AspNetCore.Components;
+using Luthetus.Common.RazorLib.Options;
+using Luthetus.Common.RazorLib.Dialog;
+using Fluxor;
+using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.TextEditor.RazorLib;
+using Luthetus.Ide.ClassLib.ComponentRenderers;
+using Luthetus.CompilerServices.Lang.Xml;
+using Luthetus.CompilerServices.Lang.CSharp.CompilerServiceCase;
+using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
+using Luthetus.CompilerServices.Lang.Css;
+using Luthetus.CompilerServices.Lang.JavaScript;
+using Luthetus.CompilerServices.Lang.TypeScript;
+using Luthetus.CompilerServices.Lang.Json;
+using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
+using Luthetus.CompilerServices.Lang.DotNet;
+using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Implementations;
+using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Keys;
+using Luthetus.Ide.ClassLib.TreeViewImplementations;
+using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
+using System.Collections.Immutable;
+using Luthetus.TextEditor.RazorLib.Lexing;
+using Luthetus.Ide.ClassLib.FileConstants;
+using Luthetus.TextEditor.RazorLib.Model;
+using Luthetus.Common.RazorLib.FileSystem.Interfaces;
+using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
+using Luthetus.Common.RazorLib.Namespaces;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -44,6 +50,20 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
+    [Inject]
+    private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
+    [Inject]
+    private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
+    [Inject]
+    private RazorCompilerService RazorCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorJavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorTypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
+    [Inject]
+    private TextEditorJsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
     private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
 
@@ -75,10 +95,25 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             ReplStateFacts.APP_CSS_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_CSS_CONTENTS);
 
+        // AppJs
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.APP_JS_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.APP_JS_CONTENTS);
+
         // AppRazor
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
             ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
+
+        // AppTs
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.APP_TS_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.APP_TS_CONTENTS);
+
+        // CounterTest
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.COUNTER_TEST_CONTENTS);
 
         // Csproj
         await FileSystemProvider.File.WriteAllTextAsync(
@@ -109,6 +144,11 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         await FileSystemProvider.File.WriteAllTextAsync(
             ReplStateFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
             ReplStateFacts.IPERSON_REPOSITORY_CONTENTS);
+
+        // LaunchSettingsJson
+        await FileSystemProvider.File.WriteAllTextAsync(
+            ReplStateFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
+            ReplStateFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
 
         // MainLayout
         await FileSystemProvider.File.WriteAllTextAsync(
@@ -237,37 +277,35 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             var content = await FileSystemProvider.File.ReadAllTextAsync(
                 file);
 
-            var lexer = ExtensionNoPeriodFacts.GetLexer(
-                resourceUri,
-                absoluteFilePath.ExtensionNoPeriod);
+            var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
+                absoluteFilePath.ExtensionNoPeriod,
+                XmlCompilerService,
+                CSharpCompilerService,
+                RazorCompilerService,
+                CssCompilerService,
+                JavaScriptCompilerService,
+                TypeScriptCompilerService,
+                JsonCompilerService);
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
                 absoluteFilePath.ExtensionNoPeriod);
-
-            var semanticModel = ExtensionNoPeriodFacts.GetSemanticModel(
-                absoluteFilePath.ExtensionNoPeriod,
-                EditorState.SharedBinder);
-
-            SemanticContextStateWrap.Value.DotNetSolutionSemanticContext.SemanticModelMap
-                .Add(
-                    resourceUri,
-                    semanticModel);
 
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
                 absoluteFilePath.ExtensionNoPeriod,
                 content,
-                lexer,
+                compilerService,
                 decorationMapper,
-                semanticModel,
                 null,
                 new(),
                 TextEditorModelKey.NewTextEditorModelKey()
             );
 
+            textEditorModel.CompilerService.RegisterModel(textEditorModel);
+
             TextEditorService.Model.RegisterCustom(textEditorModel);
-            
+
             await textEditorModel.ApplySyntaxHighlightingAsync();
         }
     }

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Fluxor;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.Common.RazorLib.Dropdown;
 using Luthetus.Common.RazorLib.Menu;
-using Luthetus.Common.RazorLib.TreeView.Commands;
-using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Luthetus.Ide.ClassLib.Menu;
-using Fluxor;
 using Luthetus.Common.RazorLib.TreeView;
+using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
+using Luthetus.Ide.ClassLib.Menu;
+using Luthetus.Ide.ClassLib.TreeViewImplementations;
+using Microsoft.AspNetCore.Components;
 using System.Collections.Immutable;
 
 namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
@@ -31,7 +31,7 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         if (treeViewCommandParameter.TargetNode is null)
             return MenuRecord.Empty;
-        
+
         var menuOptionRecords = new List<MenuOptionRecord>();
 
         var treeViewModel = treeViewCommandParameter.TargetNode;
@@ -39,8 +39,7 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
 
         var parentTreeViewAbsoluteFilePath = parentTreeViewModel as TreeViewAbsoluteFilePath;
 
-        if (treeViewModel is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePath ||
-            treeViewAbsoluteFilePath.Item is null)
+        if (treeViewModel is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePath)
         {
             return MenuRecord.Empty;
         }
@@ -66,13 +65,13 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-            CommonMenuOptionsFactory.NewEmptyFile(
-                treeViewModel.Item,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-            CommonMenuOptionsFactory.NewDirectory(
-                treeViewModel.Item,
-                async () => await ReloadTreeViewModel(treeViewModel)),
-        };
+        CommonMenuOptionsFactory.NewEmptyFile(
+            treeViewModel.Item,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+        CommonMenuOptionsFactory.NewDirectory(
+            treeViewModel.Item,
+            async () => await ReloadTreeViewModel(treeViewModel)),
+    };
     }
 
     private MenuOptionRecord[] GetFileMenuOptions(
@@ -81,20 +80,20 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-            CommonMenuOptionsFactory.DeleteFile(
-                treeViewModel.Item,
-                async () =>
-                {
-                    await ReloadTreeViewModel(parentTreeViewModel);
-                }),
-            CommonMenuOptionsFactory.RenameFile(
-                treeViewModel.Item,
-                Dispatcher,
-                async ()  =>
-                {
-                    await ReloadTreeViewModel(parentTreeViewModel);
-                }),
-        };
+        CommonMenuOptionsFactory.DeleteFile(
+            treeViewModel.Item,
+            async () =>
+            {
+                await ReloadTreeViewModel(parentTreeViewModel);
+            }),
+        CommonMenuOptionsFactory.RenameFile(
+            treeViewModel.Item,
+            Dispatcher,
+            async ()  =>
+            {
+                await ReloadTreeViewModel(parentTreeViewModel);
+            }),
+    };
     }
 
     /// <summary>

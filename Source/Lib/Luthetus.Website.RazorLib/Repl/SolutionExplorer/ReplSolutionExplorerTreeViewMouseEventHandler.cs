@@ -1,9 +1,9 @@
-﻿using Luthetus.Common.RazorLib.TreeView;
+﻿using Fluxor;
+using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Fluxor;
 using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
@@ -30,9 +30,6 @@ public class ReplSolutionExplorerTreeViewMouseEventHandler : TreeViewMouseEventH
         {
             return Task.FromResult(false);
         }
-
-        if (treeViewNamespacePath.Item is null)
-            return Task.FromResult(false);
 
         _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
             treeViewNamespacePath.Item.AbsoluteFilePath,

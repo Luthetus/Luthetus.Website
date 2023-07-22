@@ -1,10 +1,10 @@
-﻿using Luthetus.Common.RazorLib.Keyboard;
+﻿using Fluxor;
+using Luthetus.Common.RazorLib.Keyboard;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Fluxor;
 using Luthetus.Website.RazorLib.Facts;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
@@ -53,8 +53,7 @@ public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
         var activeNode = treeViewCommandParameter.TreeViewState.ActiveNode;
 
         if (activeNode is null ||
-            activeNode is not TreeViewNamespacePath treeViewNamespacePath ||
-            treeViewNamespacePath.Item is null)
+            activeNode is not TreeViewNamespacePath treeViewNamespacePath)
         {
             return Task.CompletedTask;
         }

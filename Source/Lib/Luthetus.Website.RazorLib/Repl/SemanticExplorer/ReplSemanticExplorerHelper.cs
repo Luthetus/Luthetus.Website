@@ -1,13 +1,13 @@
 ﻿using Fluxor;
+using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
+using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
-using Luthetus.Ide.ClassLib.CompilerServices.Common.Syntax;
-using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.BoundClassDefinitionNodeCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.ISyntaxCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.SyntaxTokenTextCase;
 using Luthetus.TextEditor.RazorLib;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase.Syntax;
 using Luthetus.TextEditor.RazorLib.Lexing;
 
 namespace Luthetus.Website.RazorLib.Repl.SemanticExplorer;
@@ -43,13 +43,11 @@ public static class ReplSemanticExplorerHelper
                 return;
             }
         }
-        else if (activeNode is TreeViewSyntaxTokenText treeViewSyntaxTokenText &&
-                 treeViewSyntaxTokenText.Item is not null)
+        else if (activeNode is TreeViewSyntaxTokenText treeViewSyntaxTokenText)
         {
             textSpan = treeViewSyntaxTokenText.Item.TextSpan;
         }
-        else if (activeNode is TreeViewBoundClassDefinitionNode treeViewBoundClassDefinitionNode &&
-                 treeViewBoundClassDefinitionNode.Item is not null)
+        else if (activeNode is TreeViewBoundClassDefinitionNode treeViewBoundClassDefinitionNode)
         {
             textSpan = treeViewBoundClassDefinitionNode.Item.TypeClauseToken.TextSpan;
         }

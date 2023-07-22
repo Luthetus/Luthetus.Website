@@ -1,5 +1,5 @@
 ﻿using Fluxor;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
+using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Website.RazorLib.Store.ReplCase;
 using System.Collections.Immutable;
 using System.Text;
@@ -62,7 +62,7 @@ public class ReplFileHandler : IFileHandler
         return Task.CompletedTask;
     }
 
-    public async Task CopyAsync(
+    public Task CopyAsync(
         string sourceAbsoluteFilePathString,
         string destinationAbsoluteFilePathString,
         CancellationToken cancellationToken = default)
@@ -72,7 +72,7 @@ public class ReplFileHandler : IFileHandler
         throw new NotImplementedException();
     }
 
-    public async Task MoveAsync(
+    public Task MoveAsync(
         string sourceAbsoluteFilePathString,
         string destinationAbsoluteFilePathString,
         CancellationToken cancellationToken = default)
@@ -131,7 +131,7 @@ public class ReplFileHandler : IFileHandler
                 // Skip the file being written to itself
                 .SkipLast(1)
                 .ToArray();
-            
+
             var directoryPathBuilder = new StringBuilder("/");
 
             for (int i = 0; i < parentDirectories.Length; i++)

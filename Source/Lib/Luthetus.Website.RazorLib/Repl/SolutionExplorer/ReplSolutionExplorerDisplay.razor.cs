@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Components;
 using Fluxor;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Common.RazorLib.Store.DropdownCase;
-using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView;
+using Luthetus.Common.RazorLib.TreeView.Commands;
 using Luthetus.Common.RazorLib.TreeView.Events;
 using Luthetus.Website.RazorLib.Store.ReplCase;
+using Microsoft.AspNetCore.Components;
 
 namespace Luthetus.Website.RazorLib.Repl.SolutionExplorer;
 
@@ -21,7 +21,7 @@ public partial class ReplSolutionExplorerDisplay : ComponentBase, IDisposable
     public ReplState ReplState { get; set; } = null!;
     [CascadingParameter, EditorRequired]
     public AppOptionsState AppOptionsState { get; set; } = null!;
-    
+
     [Parameter, EditorRequired]
     public ElementDimensions ElementDimensions { get; set; } = null!;
 

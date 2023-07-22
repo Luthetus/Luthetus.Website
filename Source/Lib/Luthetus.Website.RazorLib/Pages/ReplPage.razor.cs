@@ -13,7 +13,7 @@ public partial class ReplPage : ComponentBase
 
     /// <summary>TODO: Measure the true height of the title div? FontSize doesn't necessary result in the same height value.<br/><br/>The height insurance in pixels is to reduce likely hood that the height for the text node is larger than that of the div itself. If a more accurate measurement of the div's height is taken then perhaps this constant would not be necessary.</summary>
     private const int HEIGHT_INSURANCE_IN_PIXELS = 20;
-    
+
     private const int HEIGHT_OF_TITLE_DIV_BORDER_BOTTOM_IN_PIXELS = 4;
 
     private ViewKind ActiveViewKind = 0;
@@ -35,7 +35,7 @@ public partial class ReplPage : ComponentBase
         return $"height: {heightOfTitleDivWithoutBorderCssValue}px;" +
             $" border-bottom: {HEIGHT_OF_TITLE_DIV_BORDER_BOTTOM_IN_PIXELS}px solid var(--luth_primary-border-color);";
     }
-    
+
     private string GetBodyCssStyleString(AppOptionsState appOptionsState)
     {
         var totalHeightOfTitleDivCssValue = (GetHeightOfTitleDivWithoutBorder(appOptionsState) +

@@ -1,5 +1,5 @@
-﻿using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
+﻿using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
+using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 
 namespace Luthetus.Website.RazorLib.Repl.FileSystem;
 

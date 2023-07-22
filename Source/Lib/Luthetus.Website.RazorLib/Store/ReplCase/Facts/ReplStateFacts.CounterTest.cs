@@ -24,4 +24,3 @@ public partial class ReplStateFacts
 	}
 }";
 }
-

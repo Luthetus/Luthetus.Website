@@ -1,6 +1,13 @@
 ﻿@using Luthetus.Common.RazorLib.Icons.Codicon
+@using Luthetus.Common.RazorLib.OutOfBoundsClick
 @using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 @using Luthetus.Website.RazorLib.SearchBar;
+
+@if (!_navbarIsCollapsed)
+{
+    <OutOfBoundsClickDisplay ZIndex="NAVBAR_Z_INDEX"
+                             OnClickCallback="SetNavbarIsCollapsedToTrue" />
+}
 
 <div class="luth_web_navbar">
     @{
@@ -17,32 +24,63 @@
 
     <CascadingValue Name="LuthetusCommonIconWidthOverride" Value="luthetusCommonIconSizeOverrideAsInt">
         <CascadingValue Name="LuthetusCommonIconHeightOverride" Value="luthetusCommonIconSizeOverrideAsInt">
-            <div class="luth_web_navbar-left-content">
+            <div class="luth_web_navbar-main">
                 <div class="luth_web_navbar-brand">
-                    <a class="luth_web_link"
+                    <a class="luth_link @GetLinkIsActiveCssClassString("")"
                        href="/">
-                        <Luthetus.Common.RazorLib.Icons.Codicon.IconCSharpClass />
+
+                        <CascadingValue Name="LuthetusCommonIconWidthOverride" Value="NAVBAR_HEIGHT_IN_PIXELS">
+                            <CascadingValue Name="LuthetusCommonIconHeightOverride" Value="NAVBAR_HEIGHT_IN_PIXELS">
+                                <IconCSharpClass />
+                            </CascadingValue>
+                        </CascadingValue>
                     </a>
                 </div>
 
-                <SearchBarDisplay/>
+                <button class="luth_button luth_web_navbar-menu-button"
+                        @onclick="() => _navbarIsCollapsed = !_navbarIsCollapsed">
+                    <IconMenu />
+                </button>
             </div>
 
-            <div class="luth_web_navbar-right-content">
-                <a class="luth_web_link"
-                   href="repl">
-                    REPL
-                </a>
+            <div class="luth_web_navbar-flex-content @NavbarIsCollapsedCssClassString">
+                <div class="luth_web_navbar-flex-content-start">
+                    <SearchBarDisplay />
+                </div>
 
-                <button class="luth_button"
-                        @onclick="OpenSettingsDialogAction.Invoke">
-                    <Luthetus.Common.RazorLib.Icons.Codicon.IconSettingsGear />
-                </button>
-                
-                <button class="luth_button"
-                        @onclick="ShowInputFileDialogOnClick">
-                    <IconFolder />
-                </button>
+                <div class="luth_web_navbar-flex-content-end"
+                     @onclick="SetNavbarIsCollapsedToTrue">
+
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("repl")"
+                       href="repl">
+                        REPL
+                    </a>
+
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("common")"
+                       href="common">
+                        Common
+                    </a>
+
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("textEditor")"
+                       href="textEditor">
+                        Text Editor
+                    </a>
+
+                    <a class="luth_link luth_web_navbar-item @GetLinkIsActiveCssClassString("ide")"
+                       href="ide">
+                        IDE
+                    </a>
+
+                    <button class="luth_button luth_web_navbar-item"
+                            @onclick="OpenSettingsDialogAction.Invoke">
+                        <IconSettingsGear />
+                    </button>
+
+                    <button class="luth_button luth_web_navbar-item"
+                            @onclick="ShowInputFileDialogOnClick">
+                        <IconFolder />
+                    </button>
+                </div>
             </div>
         </CascadingValue>
     </CascadingValue>

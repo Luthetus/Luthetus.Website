@@ -5,3 +5,7 @@
     .luth_web_search-bar ::deep .luth_dropdown-display {
         width: 100%;
     }
+
+.luth_input {
+    width: 100%;
+}

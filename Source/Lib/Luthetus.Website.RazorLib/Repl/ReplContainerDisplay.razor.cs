@@ -1,11 +1,11 @@
-using Fluxor.Blazor.Web.Components;
-using Luthetus.TextEditor.RazorLib;
-using Microsoft.AspNetCore.Components;
-using Fluxor;
 using Luthetus.Website.RazorLib.Store.ReplCase;
-using Luthetus.Common.RazorLib.Store.ApplicationOptions;
 using Luthetus.Website.RazorLib.Facts;
 using Luthetus.Website.RazorLib.ViewCase;
+using Fluxor.Blazor.Web.Components;
+using Fluxor;
+using Microsoft.AspNetCore.Components;
+using Luthetus.Common.RazorLib.Store.ApplicationOptions;
+using Luthetus.TextEditor.RazorLib;
 
 namespace Luthetus.Website.RazorLib.Repl;
 
@@ -17,7 +17,7 @@ public partial class ReplContainerDisplay : FluxorComponent
     private IState<AppOptionsState> AppOptionsStateWrap { get; set; } = null!;
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
-    
+
     [CascadingParameter]
     private ViewKind ViewKind { get; set; }
 

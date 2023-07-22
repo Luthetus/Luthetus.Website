@@ -8,4 +8,3 @@ public partial class ReplStateFacts
 	@PersonModel.DisplayName
 </div>";
 }
-
