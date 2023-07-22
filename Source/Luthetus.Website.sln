@@ -97,6 +97,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.FSharp.Tests", "..\..\Luthetus.CompilerServices\Languages\FSharp\Tests\Luthetus.CompilerServices.Lang.FSharp.Tests.csproj", "{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNet", "DotNet", "{F80D9DB1-47A6-434A-930F-13066EA5562B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.DotNet", "..\..\Luthetus.CompilerServices\Languages\DotNet\Source\Luthetus.CompilerServices.Lang.DotNet.csproj", "{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.DotNet.Tests", "..\..\Luthetus.CompilerServices\Languages\DotNet\Tests\Luthetus.CompilerServices.Lang.DotNet.Tests.csproj", "{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +233,14 @@ Global
 		{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,6 +290,9 @@ Global
 		{222DA4F3-F758-4918-A191-D45CE9794AB1} = {32A5BBA1-A2F5-47A4-8A5D-B7E44A34F1BB}
 		{49D6742A-8E66-463E-8142-24314AF35BCA} = {222DA4F3-F758-4918-A191-D45CE9794AB1}
 		{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E} = {222DA4F3-F758-4918-A191-D45CE9794AB1}
+		{F80D9DB1-47A6-434A-930F-13066EA5562B} = {32A5BBA1-A2F5-47A4-8A5D-B7E44A34F1BB}
+		{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6} = {F80D9DB1-47A6-434A-930F-13066EA5562B}
+		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7} = {F80D9DB1-47A6-434A-930F-13066EA5562B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3961EDD1-F3EE-4A37-A5E9-7E5CE258F968}
