@@ -1,4 +1,6 @@
-﻿namespace Luthetus.Website.RazorLib.Facts;
+﻿using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
+
+namespace Luthetus.Website.RazorLib.Facts;
 
 public static partial class ReplFacts
 {

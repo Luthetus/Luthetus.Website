@@ -1,3 +1,10 @@
+using Fluxor;
+using Luthetus.Common.RazorLib.Options;
+using Luthetus.Ide.ClassLib.Store.EditorCase;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Components.Web;
+
 namespace Luthetus.Website.RazorLib.Shared;
 
 public partial class NavbarDisplay : ComponentBase, IDisposable

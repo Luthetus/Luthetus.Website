@@ -1,4 +1,6 @@
-﻿namespace Luthetus.Website.RazorLib.Store.ReplCase;
+﻿using Fluxor;
+
+namespace Luthetus.Website.RazorLib.Store.ReplCase;
 
 public partial class ReplState
 {

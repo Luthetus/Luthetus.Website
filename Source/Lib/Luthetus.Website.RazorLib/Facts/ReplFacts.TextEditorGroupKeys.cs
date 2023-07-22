@@ -1,4 +1,7 @@
-﻿namespace Luthetus.Website.RazorLib.Facts;
+﻿using Luthetus.Ide.ClassLib.Store.EditorCase;
+using Luthetus.TextEditor.RazorLib.Group;
+
+namespace Luthetus.Website.RazorLib.Facts;
 
 public static partial class ReplFacts
 {
