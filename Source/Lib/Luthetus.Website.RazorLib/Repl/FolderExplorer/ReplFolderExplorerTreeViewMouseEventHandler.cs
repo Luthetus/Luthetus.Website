@@ -31,9 +31,6 @@ public class ReplFolderExplorerTreeViewMouseEventHandler : TreeViewMouseEventHan
             return Task.FromResult(false);
         }
 
-        if (treeViewAbsoluteFilePath.Item is null)
-            return Task.FromResult(false);
-
         _dispatcher.Dispatch(new EditorState.OpenInEditorAction(
             treeViewAbsoluteFilePath.Item,
             true,

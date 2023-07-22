@@ -53,8 +53,7 @@ public class ReplFolderExplorerTreeViewKeyboardEventHandler : TreeViewKeyboardEv
         var activeNode = treeViewCommandParameter.TreeViewState.ActiveNode;
 
         if (activeNode is null ||
-            activeNode is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePathPath ||
-            treeViewAbsoluteFilePathPath.Item is null)
+            activeNode is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePathPath)
         {
             return Task.CompletedTask;
         }

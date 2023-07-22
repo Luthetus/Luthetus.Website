@@ -43,13 +43,11 @@ public static class ReplSemanticExplorerHelper
                 return;
             }
         }
-        else if (activeNode is TreeViewSyntaxTokenText treeViewSyntaxTokenText &&
-                 treeViewSyntaxTokenText.Item is not null)
+        else if (activeNode is TreeViewSyntaxTokenText treeViewSyntaxTokenText)
         {
             textSpan = treeViewSyntaxTokenText.Item.TextSpan;
         }
-        else if (activeNode is TreeViewBoundClassDefinitionNode treeViewBoundClassDefinitionNode &&
-                 treeViewBoundClassDefinitionNode.Item is not null)
+        else if (activeNode is TreeViewBoundClassDefinitionNode treeViewBoundClassDefinitionNode)
         {
             textSpan = treeViewBoundClassDefinitionNode.Item.TypeClauseToken.TextSpan;
         }

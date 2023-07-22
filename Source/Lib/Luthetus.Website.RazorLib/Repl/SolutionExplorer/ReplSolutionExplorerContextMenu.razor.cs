@@ -95,9 +95,6 @@ public partial class ReplSolutionExplorerContextMenu : ComponentBase
     private MenuOptionRecord[] GetDotNetSolutionMenuOptions(
         TreeViewSolution treeViewSolution)
     {
-        if (treeViewSolution.Item is null)
-            return Array.Empty<MenuOptionRecord>();
-
         return Array.Empty<MenuOptionRecord>();
     }
 

@@ -53,8 +53,7 @@ public class ReplSolutionExplorerTreeViewKeyboardEventHandler : TreeViewKeyboard
         var activeNode = treeViewCommandParameter.TreeViewState.ActiveNode;
 
         if (activeNode is null ||
-            activeNode is not TreeViewNamespacePath treeViewNamespacePath ||
-            treeViewNamespacePath.Item is null)
+            activeNode is not TreeViewNamespacePath treeViewNamespacePath)
         {
             return Task.CompletedTask;
         }

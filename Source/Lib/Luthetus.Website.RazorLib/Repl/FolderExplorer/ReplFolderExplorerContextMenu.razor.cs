@@ -39,8 +39,7 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
 
         var parentTreeViewAbsoluteFilePath = parentTreeViewModel as TreeViewAbsoluteFilePath;
 
-        if (treeViewModel is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePath ||
-            treeViewAbsoluteFilePath.Item is null)
+        if (treeViewModel is not TreeViewAbsoluteFilePath treeViewAbsoluteFilePath)
         {
             return MenuRecord.Empty;
         }
