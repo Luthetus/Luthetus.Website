@@ -1,7 +1,7 @@
 ﻿using Fluxor;
+using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
+using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
-using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.BoundClassDefinitionNodeCase;
 using Luthetus.Ide.RazorLib.TreeViewImplementations.SemanticContext.ISyntaxCase;

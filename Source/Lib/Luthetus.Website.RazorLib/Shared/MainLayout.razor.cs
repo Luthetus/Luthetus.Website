@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Components;
 using Luthetus.Common.RazorLib.Options;
 using Luthetus.Common.RazorLib.Dialog;
 using Fluxor;
-using Luthetus.Ide.ClassLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
@@ -18,8 +17,6 @@ using Luthetus.CompilerServices.Lang.JavaScript;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Json;
 using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
-using Luthetus.Ide.ClassLib.FileSystem.Classes.FilePath;
-using Luthetus.Ide.ClassLib.Namespaces;
 using Luthetus.CompilerServices.Lang.DotNet;
 using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Implementations;
 using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Keys;
@@ -29,6 +26,9 @@ using System.Collections.Immutable;
 using Luthetus.TextEditor.RazorLib.Lexing;
 using Luthetus.Ide.ClassLib.FileConstants;
 using Luthetus.TextEditor.RazorLib.Model;
+using Luthetus.Common.RazorLib.FileSystem.Interfaces;
+using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
+using Luthetus.Common.RazorLib.Namespaces;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
