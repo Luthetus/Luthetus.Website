@@ -111,6 +111,21 @@
     border-left: 2px solid var(--luth_primary-border-color);
 }
 
+.luth_link {
+    color: var(--luth_link-foreground-color);
+    text-decoration: none;
+}
+
+.luth_link:hover {
+    color: var(--luth_link-hover-foreground-color);
+    box-shadow: 0 0 2px var(--luth_primary-overlay-box-shadow-color);
+}
+
+.luth_link:focus {
+    color: var(--luth_link-hover-foreground-color);
+    box-shadow: 0 0 2px var(--luth_primary-overlay-box-shadow-color);
+}
+
 em.luth_em {
     color: var(--luth_primary-emphasis-foreground-color);
     font-style: normal;
@@ -351,6 +366,8 @@ ul.luth_indent-child-content {
     --luth_button-disabled-background-color: #4a5a71;
     --luth_button-disabled-hover-background-color: #97a3b4;
     --luth_primary-hover-background-color: #2d568b;
+    --luth_link-foreground-color: #1778e1;
+    --luth_link-hover-foreground-color: #e49021;
     --luth_tree-view-expansion-chevron-color: currentColor;
     --luth_tree-view-children-border-color: currentColor;
 }
@@ -427,6 +444,8 @@ ul.luth_indent-child-content {
     --luth_button-disabled-foreground-color: #000000;
     --luth_button-disabled-background-color: #d7dde6;
     --luth_button-disabled-hover-background-color: #eceff7;
+    --luth_link-foreground-color: red;
+    --luth_link-hover-foreground-color: red;
     --luth_tree-view-expansion-chevron-color: currentColor;
     --luth_tree-view-children-border-color: currentColor;
 }
