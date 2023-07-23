@@ -31,6 +31,7 @@ using Luthetus.Ide.ClassLib.FileTemplates;
 using Luthetus.Ide.ClassLib.Menu;
 using Fluxor;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
+using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -59,6 +60,7 @@ public static class ServiceCollectionExtensions
             typeof(CompilerServiceBackgroundTaskDisplay));
 
         services.AddScoped<TextEditorXmlCompilerService>();
+        services.AddScoped<DotNetSolutionCompilerService>();
         services.AddScoped<CSharpCompilerService>();
         services.AddScoped<RazorCompilerService>();
         services.AddScoped<TextEditorCssCompilerService>();

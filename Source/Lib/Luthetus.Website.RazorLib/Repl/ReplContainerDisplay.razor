@@ -3,7 +3,6 @@
 @using Luthetus.Ide.ClassLib.Store.EditorCase;
 @using Luthetus.Website.RazorLib.Repl.FolderExplorer
 @using Luthetus.Website.RazorLib.Repl.SolutionExplorer
-@using Luthetus.Website.RazorLib.Repl.SemanticExplorer
 @using Luthetus.Website.RazorLib.Repl.TextEditor
 @using Luthetus.Website.RazorLib.ViewCase
 
@@ -24,9 +23,6 @@
                     break;
                 case ViewKind.Folder:
                     <ReplFolderExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
-                    break;
-                case ViewKind.Semantic:
-                    <ReplSemanticExplorerDisplay ElementDimensions="replState.ViewExplorerElementDimensions" />
                     break;
             }                    
 

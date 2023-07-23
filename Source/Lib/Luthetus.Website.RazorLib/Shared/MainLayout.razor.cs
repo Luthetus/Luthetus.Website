@@ -16,10 +16,6 @@ using Luthetus.CompilerServices.Lang.Css;
 using Luthetus.CompilerServices.Lang.JavaScript;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Json;
-using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
-using Luthetus.CompilerServices.Lang.DotNet;
-using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Implementations;
-using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Keys;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using System.Collections.Immutable;
@@ -29,6 +25,8 @@ using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
 using Luthetus.Common.RazorLib.Namespaces;
+using Luthetus.CompilerServices.Lang.DotNetSolution;
+using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -53,6 +51,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     [Inject]
     private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
+    private DotNetSolutionCompilerService DotNetCompilerService { get; set; } = null!;
+    [Inject]
     private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
     [Inject]
     private RazorCompilerService RazorCompilerService { get; set; } = null!;
@@ -64,8 +64,6 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private TextEditorTypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
     [Inject]
     private TextEditorJsonCompilerService JsonCompilerService { get; set; } = null!;
-    [Inject]
-    private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
 
     protected override void OnInitialized()
     {
@@ -202,14 +200,6 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             dotNetSolutionNamespacePath,
             EnvironmentProvider);
 
-        var dotNetSolutionSemanticContext = new DotNetSolutionSemanticContext(
-            DotNetSolutionKey.NewSolutionKey(),
-            dotNetSolution);
-
-        Dispatcher.Dispatch(
-            new SemanticContextState.SetDotNetSolutionSemanticContextAction(
-                dotNetSolutionSemanticContext));
-
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>
                 new ReplState(
@@ -280,6 +270,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
                 absoluteFilePath.ExtensionNoPeriod,
                 XmlCompilerService,
+                DotNetCompilerService,
                 CSharpCompilerService,
                 RazorCompilerService,
                 CssCompilerService,
