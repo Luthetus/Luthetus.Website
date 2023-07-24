@@ -105,9 +105,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharpProject", "CSharpProject", "{21D4714C-77BE-4EF7-8D52-F6E10D63B92E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.CSharpProject", "..\..\Luthetus.CompilerServices\Languages\CSharpProject\Source\Luthetus.CompilerServices.Lang.CSharpProject.csproj", "{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.CSharpProject", "..\..\Luthetus.CompilerServices\Languages\CSharpProject\Source\Luthetus.CompilerServices.Lang.CSharpProject.csproj", "{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.CSharpProject.Tests", "..\..\Luthetus.CompilerServices\Languages\CSharpProject\Tests\Luthetus.CompilerServices.Lang.CSharpProject.Tests.csproj", "{0276A92A-C717-4B32-97F9-3344262717FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.CSharpProject.Tests", "..\..\Luthetus.CompilerServices\Languages\CSharpProject\Tests\Luthetus.CompilerServices.Lang.CSharpProject.Tests.csproj", "{0276A92A-C717-4B32-97F9-3344262717FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
