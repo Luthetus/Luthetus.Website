@@ -27,6 +27,7 @@ using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
 using Luthetus.Common.RazorLib.Namespaces;
 using Luthetus.CompilerServices.Lang.DotNetSolution;
 using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
+using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -52,6 +53,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
     private DotNetSolutionCompilerService DotNetCompilerService { get; set; } = null!;
+    [Inject]
+    private CSharpProjectCompilerService CSharpProjectCompilerService { get; set; } = null!;
     [Inject]
     private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
     [Inject]
@@ -271,6 +274,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 absoluteFilePath.ExtensionNoPeriod,
                 XmlCompilerService,
                 DotNetCompilerService,
+                CSharpProjectCompilerService,
                 CSharpCompilerService,
                 RazorCompilerService,
                 CssCompilerService,
