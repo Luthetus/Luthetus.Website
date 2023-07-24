@@ -1,10 +1,10 @@
-﻿namespace Luthetus.Website.RazorLib.Store.ReplCase.Facts;
+﻿namespace Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
 
-public partial class ReplStateFacts
+public partial class BlazorWasmAppFacts
 {
-    public static readonly string C_SHARP_PROJECT_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/BlazorWasmApp.csproj";
+    public static readonly string BLAZOR_WASM_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/BlazorWasmApp.csproj";
 
-    public static readonly string C_SHARP_PROJECT_CONTENTS = @"<Project Sdk=""Microsoft.NET.Sdk.BlazorWebAssembly"">
+    public static readonly string BLAZOR_WASM_APP_C_SHARP_PROJECT_CONTENTS = @"<Project Sdk=""Microsoft.NET.Sdk.BlazorWebAssembly"">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>

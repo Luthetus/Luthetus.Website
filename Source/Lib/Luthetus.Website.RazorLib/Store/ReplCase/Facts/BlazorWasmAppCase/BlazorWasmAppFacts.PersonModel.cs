@@ -1,6 +1,6 @@
-﻿namespace Luthetus.Website.RazorLib.Store.ReplCase.Facts;
+﻿namespace Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
 
-public partial class ReplStateFacts
+public partial class BlazorWasmAppFacts
 {
     public static readonly string PERSON_MODEL_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/PersonCase/PersonModel.cs";
 

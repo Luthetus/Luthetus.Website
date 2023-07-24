@@ -1,6 +1,6 @@
-﻿namespace Luthetus.Website.RazorLib.Store.ReplCase.Facts;
+﻿namespace Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
 
-public partial class ReplStateFacts
+public partial class BlazorWasmAppFacts
 {
     public static readonly string APP_TS_ABSOLUTE_FILE_PATH = @"/BlazorWasmApp/wwwroot/ts/app.ts";
 
