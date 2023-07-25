@@ -52,7 +52,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
     [Inject]
-    private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
+    private XmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
     private DotNetSolutionCompilerService DotNetCompilerService { get; set; } = null!;
     [Inject]
@@ -62,13 +62,13 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     [Inject]
     private RazorCompilerService RazorCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
+    private CssCompilerService CssCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorJavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
+    private JavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorTypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
+    private TypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorJsonCompilerService JsonCompilerService { get; set; } = null!;
+    private JsonCompilerService JsonCompilerService { get; set; } = null!;
 
     protected override void OnInitialized()
     {

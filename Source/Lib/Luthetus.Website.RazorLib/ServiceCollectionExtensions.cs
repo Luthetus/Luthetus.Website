@@ -61,15 +61,15 @@ public static class ServiceCollectionExtensions
         typeof(RunFileDisplay),
             typeof(CompilerServiceBackgroundTaskDisplay));
 
-        services.AddScoped<TextEditorXmlCompilerService>();
+        services.AddScoped<XmlCompilerService>();
         services.AddScoped<DotNetSolutionCompilerService>();
         services.AddScoped<CSharpProjectCompilerService>();
         services.AddScoped<CSharpCompilerService>();
         services.AddScoped<RazorCompilerService>();
-        services.AddScoped<TextEditorCssCompilerService>();
-        services.AddScoped<TextEditorJavaScriptCompilerService>();
-        services.AddScoped<TextEditorTypeScriptCompilerService>();
-        services.AddScoped<TextEditorJsonCompilerService>();
+        services.AddScoped<CssCompilerService>();
+        services.AddScoped<JavaScriptCompilerService>();
+        services.AddScoped<TypeScriptCompilerService>();
+        services.AddScoped<JsonCompilerService>();
 
         // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
