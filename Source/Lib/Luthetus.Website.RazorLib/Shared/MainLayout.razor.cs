@@ -30,6 +30,7 @@ using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts.ConsoleAppCase;
+using Luthetus.CompilerServices.Lang.FSharp;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -63,6 +64,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private RazorCompilerService RazorCompilerService { get; set; } = null!;
     [Inject]
     private CssCompilerService CssCompilerService { get; set; } = null!;
+    [Inject]
+    private FSharpCompilerService FSharpCompilerService { get; set; } = null!;
     [Inject]
     private JavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
     [Inject]
@@ -296,6 +299,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 CSharpCompilerService,
                 RazorCompilerService,
                 CssCompilerService,
+                FSharpCompilerService,
                 JavaScriptCompilerService,
                 TypeScriptCompilerService,
                 JsonCompilerService);

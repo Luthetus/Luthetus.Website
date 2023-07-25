@@ -34,6 +34,7 @@ using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
 using System.Reflection.PortableExecutable;
+using Luthetus.CompilerServices.Lang.FSharp;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -67,6 +68,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<CSharpCompilerService>();
         services.AddScoped<RazorCompilerService>();
         services.AddScoped<CssCompilerService>();
+        services.AddScoped<FSharpCompilerService>();
         services.AddScoped<JavaScriptCompilerService>();
         services.AddScoped<TypeScriptCompilerService>();
         services.AddScoped<JsonCompilerService>();
