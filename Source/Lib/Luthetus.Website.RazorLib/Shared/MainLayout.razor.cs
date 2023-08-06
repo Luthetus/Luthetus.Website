@@ -96,98 +96,98 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
     private async Task WriteFileSystemInMemoryAsync()
     {
-        // BlazorWasmAppFacts
-        {
-            // AppCss
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_CSS_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_CSS_CONTENTS);
+        //// BlazorWasmAppFacts
+        //{
+        //    // AppCss
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.APP_CSS_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.APP_CSS_CONTENTS);
 
-            // AppJs
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_JS_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_JS_CONTENTS);
+        //    // AppJs
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.APP_JS_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.APP_JS_CONTENTS);
 
-            // AppRazor
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_RAZOR_FILE_CONTENTS);
+        //    // AppRazor
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.APP_RAZOR_FILE_CONTENTS);
 
-            // AppTs
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_TS_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_TS_CONTENTS);
+        //    // AppTs
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.APP_TS_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.APP_TS_CONTENTS);
 
-            // CounterTest
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.COUNTER_TEST_CONTENTS);
+        //    // CounterTest
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.COUNTER_TEST_CONTENTS);
 
-            // Csproj
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_CONTENTS);
+        //    // Csproj
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_CONTENTS);
 
-            // Imports
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_CONTENTS);
+        //    // Imports
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_CONTENTS);
 
-            // IndexHtml
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.INDEX_HTML_FILE_CONTENTS);
+        //    // IndexHtml
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.INDEX_HTML_FILE_CONTENTS);
 
-            // IndexRazor
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.INDEX_RAZOR_FILE_CONTENTS);
+        //    // IndexRazor
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.INDEX_RAZOR_FILE_CONTENTS);
 
-            // IPersonModel
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.IPERSON_MODEL_CONTENTS);
+        //    // IPersonModel
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.IPERSON_MODEL_CONTENTS);
 
-            // IPersonRepository
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.IPERSON_REPOSITORY_CONTENTS);
+        //    // IPersonRepository
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.IPERSON_REPOSITORY_CONTENTS);
 
-            // LaunchSettingsJson
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
+        //    // LaunchSettingsJson
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
 
-            // MainLayout
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
+        //    // MainLayout
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
 
-            // PersonDisplayMarkup
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
+        //    // PersonDisplayMarkup
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
 
-            // PersonDisplayCodebehind
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
+        //    // PersonDisplayCodebehind
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
 
-            // PersonModel
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_MODEL_CONTENTS);
+        //    // PersonModel
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.PERSON_MODEL_CONTENTS);
 
-            // PersonRepository
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_REPOSITORY_CONTENTS);
+        //    // PersonRepository
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.PERSON_REPOSITORY_CONTENTS);
 
-            // Program
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PROGRAM_CS_FILE_CONTENTS);
-        }
+        //    // Program
+        //    await FileSystemProvider.File.WriteAllTextAsync(
+        //        BlazorWasmAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
+        //        BlazorWasmAppFacts.PROGRAM_CS_FILE_CONTENTS);
+        //}
 
         // ConsoleAppFacts
         {

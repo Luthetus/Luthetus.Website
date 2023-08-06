@@ -4,7 +4,15 @@ public partial class ConsoleAppFacts
 {
     public static readonly string PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH = @"/ConsoleApp/Program.cs";
 
-    public static readonly string PROGRAM_CS_FILE_CONTENTS = @"// See https://aka.ms/new-console-template for more information
-Console.WriteLine(""Hello, World!"");
-";
+    public static readonly string PROGRAM_CS_FILE_CONTENTS = @"// Hello World! program
+namespace HelloWorld
+{
+    class Hello 
+    {         
+        static void Main(string[] args)
+        {
+            System.Console.WriteLine(""Hello World!"");
+        }
+    }
+}";
 }
