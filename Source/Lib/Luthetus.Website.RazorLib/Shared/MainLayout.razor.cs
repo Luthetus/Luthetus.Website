@@ -16,10 +16,6 @@ using Luthetus.CompilerServices.Lang.Css;
 using Luthetus.CompilerServices.Lang.JavaScript;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Json;
-using Luthetus.Ide.ClassLib.Store.SemanticContextCase;
-using Luthetus.CompilerServices.Lang.DotNet;
-using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Implementations;
-using Luthetus.CompilerServices.Lang.CSharp.SemanticContextCase.Keys;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using System.Collections.Immutable;
@@ -29,6 +25,12 @@ using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
 using Luthetus.Common.RazorLib.Namespaces;
+using Luthetus.CompilerServices.Lang.DotNetSolution;
+using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
+using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
+using Luthetus.Website.RazorLib.Store.ReplCase.Facts.ConsoleAppCase;
+using Luthetus.CompilerServices.Lang.FSharp;
+using Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -51,21 +53,25 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
     [Inject]
-    private TextEditorXmlCompilerService XmlCompilerService { get; set; } = null!;
+    private XmlCompilerService XmlCompilerService { get; set; } = null!;
+    [Inject]
+    private DotNetSolutionCompilerService DotNetCompilerService { get; set; } = null!;
+    [Inject]
+    private CSharpProjectCompilerService CSharpProjectCompilerService { get; set; } = null!;
     [Inject]
     private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
     [Inject]
     private RazorCompilerService RazorCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorCssCompilerService CssCompilerService { get; set; } = null!;
+    private CssCompilerService CssCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorJavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
+    private FSharpCompilerService FSharpCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorTypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
+    private JavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
     [Inject]
-    private TextEditorJsonCompilerService JsonCompilerService { get; set; } = null!;
+    private TypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
     [Inject]
-    private IState<SemanticContextState> SemanticContextStateWrap { get; set; } = null!;
+    private JsonCompilerService JsonCompilerService { get; set; } = null!;
 
     protected override void OnInitialized()
     {
@@ -90,95 +96,111 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
     private async Task WriteFileSystemInMemoryAsync()
     {
-        // AppCss
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.APP_CSS_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.APP_CSS_CONTENTS);
+        // BlazorWasmAppFacts
+        {
+            // AppCss
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.APP_CSS_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.APP_CSS_CONTENTS);
 
-        // AppJs
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.APP_JS_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.APP_JS_CONTENTS);
+            // AppJs
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.APP_JS_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.APP_JS_CONTENTS);
 
-        // AppRazor
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.APP_RAZOR_FILE_CONTENTS);
+            // AppRazor
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.APP_RAZOR_FILE_CONTENTS);
 
-        // AppTs
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.APP_TS_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.APP_TS_CONTENTS);
+            // AppTs
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.APP_TS_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.APP_TS_CONTENTS);
 
-        // CounterTest
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.COUNTER_TEST_CONTENTS);
+            // CounterTest
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.COUNTER_TEST_CONTENTS);
 
-        // Csproj
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.C_SHARP_PROJECT_CONTENTS);
+            // Csproj
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_CONTENTS);
 
-        // Imports
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.IMPORTS_RAZOR_FILE_CONTENTS);
+            // Imports
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_CONTENTS);
 
-        // IndexHtml
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.INDEX_HTML_FILE_CONTENTS);
+            // IndexHtml
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.INDEX_HTML_FILE_CONTENTS);
 
-        // IndexRazor
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.INDEX_RAZOR_FILE_CONTENTS);
+            // IndexRazor
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.INDEX_RAZOR_FILE_CONTENTS);
 
-        // IPersonModel
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.IPERSON_MODEL_CONTENTS);
+            // IPersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.IPERSON_MODEL_CONTENTS);
 
-        // IPersonRepository
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.IPERSON_REPOSITORY_CONTENTS);
+            // IPersonRepository
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.IPERSON_REPOSITORY_CONTENTS);
 
-        // LaunchSettingsJson
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
+            // LaunchSettingsJson
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
 
-        // MainLayout
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
+            // MainLayout
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
 
-        // PersonDisplayMarkup
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
+            // PersonDisplayMarkup
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
 
-        // PersonDisplayCodebehind
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
+            // PersonDisplayCodebehind
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
 
-        // PersonModel
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.PERSON_MODEL_CONTENTS);
+            // PersonModel
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.PERSON_MODEL_CONTENTS);
 
-        // PersonRepository
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.PERSON_REPOSITORY_CONTENTS);
+            // PersonRepository
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.PERSON_REPOSITORY_CONTENTS);
 
-        // Program
-        await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.PROGRAM_CS_FILE_CONTENTS);
+            // Program
+            await FileSystemProvider.File.WriteAllTextAsync(
+                BlazorWasmAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
+                BlazorWasmAppFacts.PROGRAM_CS_FILE_CONTENTS);
+        }
+
+        // ConsoleAppFacts
+        {
+            // Csproj
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ConsoleAppFacts.CONSOLE_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
+                ConsoleAppFacts.CONSOLE_APP_C_SHARP_PROJECT_CONTENTS);
+
+            // Program
+            await FileSystemProvider.File.WriteAllTextAsync(
+                ConsoleAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
+                ConsoleAppFacts.PROGRAM_CS_FILE_CONTENTS);
+        }
 
         // Sln
         await FileSystemProvider.File.WriteAllTextAsync(
@@ -201,14 +223,6 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             ReplStateFacts.SLN_CONTENTS,
             dotNetSolutionNamespacePath,
             EnvironmentProvider);
-
-        var dotNetSolutionSemanticContext = new DotNetSolutionSemanticContext(
-            DotNetSolutionKey.NewSolutionKey(),
-            dotNetSolution);
-
-        Dispatcher.Dispatch(
-            new SemanticContextState.SetDotNetSolutionSemanticContextAction(
-                dotNetSolutionSemanticContext));
 
         Dispatcher.Dispatch(
             new ReplState.NextInstanceAction(inReplState =>
@@ -280,9 +294,12 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
                 absoluteFilePath.ExtensionNoPeriod,
                 XmlCompilerService,
+                DotNetCompilerService,
+                CSharpProjectCompilerService,
                 CSharpCompilerService,
                 RazorCompilerService,
                 CssCompilerService,
+                FSharpCompilerService,
                 JavaScriptCompilerService,
                 TypeScriptCompilerService,
                 JsonCompilerService);

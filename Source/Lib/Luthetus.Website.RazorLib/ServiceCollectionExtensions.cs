@@ -31,6 +31,9 @@ using Luthetus.Ide.ClassLib.FileTemplates;
 using Luthetus.Ide.ClassLib.Menu;
 using Fluxor;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
+using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
+using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
+using Luthetus.CompilerServices.Lang.FSharp;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -58,13 +61,16 @@ public static class ServiceCollectionExtensions
         typeof(RunFileDisplay),
             typeof(CompilerServiceBackgroundTaskDisplay));
 
-        services.AddScoped<TextEditorXmlCompilerService>();
+        services.AddScoped<XmlCompilerService>();
+        services.AddScoped<DotNetSolutionCompilerService>();
+        services.AddScoped<CSharpProjectCompilerService>();
         services.AddScoped<CSharpCompilerService>();
         services.AddScoped<RazorCompilerService>();
-        services.AddScoped<TextEditorCssCompilerService>();
-        services.AddScoped<TextEditorJavaScriptCompilerService>();
-        services.AddScoped<TextEditorTypeScriptCompilerService>();
-        services.AddScoped<TextEditorJsonCompilerService>();
+        services.AddScoped<CssCompilerService>();
+        services.AddScoped<FSharpCompilerService>();
+        services.AddScoped<JavaScriptCompilerService>();
+        services.AddScoped<TypeScriptCompilerService>();
+        services.AddScoped<JsonCompilerService>();
 
         // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
         services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);

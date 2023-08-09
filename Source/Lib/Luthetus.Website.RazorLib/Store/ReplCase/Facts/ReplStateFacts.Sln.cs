@@ -11,6 +11,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project(""{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"") = ""BlazorWasmApp"", ""BlazorWasmApp\BlazorWasmApp.csproj"", ""{A41C752D-A976-4337-8865-7EA232E0AE7E}""
 EndProject
+Project(""{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"") = ""ConsoleApp"", ""ConsoleApp\ConsoleApp.csproj"", ""{C48B3C8D-E112-4110-B3F0-DE6177B7AE14}""
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A41C752D-A976-4337-8865-7EA232E0AE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41C752D-A976-4337-8865-7EA232E0AE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41C752D-A976-4337-8865-7EA232E0AE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48B3C8D-E112-4110-B3F0-DE6177B7AE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48B3C8D-E112-4110-B3F0-DE6177B7AE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48B3C8D-E112-4110-B3F0-DE6177B7AE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48B3C8D-E112-4110-B3F0-DE6177B7AE14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

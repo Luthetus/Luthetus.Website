@@ -4,5 +4,4 @@ public enum ViewKind
 {
     Solution,
     Folder,
-    Semantic,
 }

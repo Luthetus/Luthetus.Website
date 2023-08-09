@@ -97,11 +97,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.FSharp.Tests", "..\..\Luthetus.CompilerServices\Languages\FSharp\Tests\Luthetus.CompilerServices.Lang.FSharp.Tests.csproj", "{3AB61E6F-4CA7-4E43-AC7F-691CCBA1981E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNet", "DotNet", "{F80D9DB1-47A6-434A-930F-13066EA5562B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetSolution", "DotNetSolution", "{F80D9DB1-47A6-434A-930F-13066EA5562B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.DotNet", "..\..\Luthetus.CompilerServices\Languages\DotNet\Source\Luthetus.CompilerServices.Lang.DotNet.csproj", "{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.DotNetSolution", "..\..\Luthetus.CompilerServices\Languages\DotNetSolution\Source\Luthetus.CompilerServices.Lang.DotNetSolution.csproj", "{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.CompilerServices.Lang.DotNet.Tests", "..\..\Luthetus.CompilerServices\Languages\DotNet\Tests\Luthetus.CompilerServices.Lang.DotNet.Tests.csproj", "{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.DotNetSolution.Tests", "..\..\Luthetus.CompilerServices\Languages\DotNetSolution\Tests\Luthetus.CompilerServices.Lang.DotNetSolution.Tests.csproj", "{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharpProject", "CSharpProject", "{21D4714C-77BE-4EF7-8D52-F6E10D63B92E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.CSharpProject", "..\..\Luthetus.CompilerServices\Languages\CSharpProject\Source\Luthetus.CompilerServices.Lang.CSharpProject.csproj", "{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.CSharpProject.Tests", "..\..\Luthetus.CompilerServices\Languages\CSharpProject\Tests\Luthetus.CompilerServices.Lang.CSharpProject.Tests.csproj", "{0276A92A-C717-4B32-97F9-3344262717FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -241,6 +247,14 @@ Global
 		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0276A92A-C717-4B32-97F9-3344262717FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0276A92A-C717-4B32-97F9-3344262717FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0276A92A-C717-4B32-97F9-3344262717FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0276A92A-C717-4B32-97F9-3344262717FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -293,6 +307,9 @@ Global
 		{F80D9DB1-47A6-434A-930F-13066EA5562B} = {32A5BBA1-A2F5-47A4-8A5D-B7E44A34F1BB}
 		{6C2F5AB1-1850-4229-9CA0-AA93D4FCA9D6} = {F80D9DB1-47A6-434A-930F-13066EA5562B}
 		{4FDC84E5-266F-4D48-9B13-6FC91E9B51A7} = {F80D9DB1-47A6-434A-930F-13066EA5562B}
+		{21D4714C-77BE-4EF7-8D52-F6E10D63B92E} = {32A5BBA1-A2F5-47A4-8A5D-B7E44A34F1BB}
+		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02} = {21D4714C-77BE-4EF7-8D52-F6E10D63B92E}
+		{0276A92A-C717-4B32-97F9-3344262717FD} = {21D4714C-77BE-4EF7-8D52-F6E10D63B92E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3961EDD1-F3EE-4A37-A5E9-7E5CE258F968}
