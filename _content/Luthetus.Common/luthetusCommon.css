@@ -295,11 +295,11 @@ ul.luth_indent-child-content {
 :root {
     /* Colors (dark-theme) */
 
-    --luth_primary-foreground-color: rgb(225, 225, 225);
+    --luth_primary-foreground-color: rgb(220, 220, 220);
     --luth_primary-background-color: #201c1c;
-    --luth_secondary-foreground-color: rgb(225, 225, 225);
+    --luth_secondary-foreground-color: rgb(220, 220, 220);
     --luth_secondary-background-color: #2d2d2d;
-    --luth_tertiary-foreground-color: rgb(225, 225, 225);
+    --luth_tertiary-foreground-color: rgb(220, 220, 220);
     --luth_tertiary-background-color: #403c3c;
     --luth_primary-general-use-color: blue;
     --luth_secondary-general-use-color: gray;
