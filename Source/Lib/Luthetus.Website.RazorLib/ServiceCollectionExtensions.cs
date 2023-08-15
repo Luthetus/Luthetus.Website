@@ -134,7 +134,7 @@ public static class ServiceCollectionExtensions
                 typeof(TreeViewCSharpProjectDependenciesDisplay),
                 typeof(TreeViewCSharpProjectNugetPackageReferencesDisplay),
                 typeof(TreeViewCSharpProjectToProjectReferencesDisplay),
-                typeof(TreeViewLightWeightNugetPackageRecordDisplay),
+                typeof(TreeViewCSharpProjectNugetPackageReferenceDisplay),
                 typeof(TreeViewCSharpProjectToProjectReferenceDisplay),
                 typeof(TreeViewSolutionFolderDisplay));
         });
