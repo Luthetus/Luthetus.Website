@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Luthetus.Website.RazorLib.NotificationsCase;
 
-public partial class NotificationsDisplay : FluxorComponent
+public partial class NotificationsViewDisplay : FluxorComponent
 {
     [Inject]
     private IState<NotificationRecordsCollection> NotificationRecordsCollectionWrap { get; set; } = null!;
