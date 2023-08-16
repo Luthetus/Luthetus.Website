@@ -1,0 +1,17 @@
+﻿@using Fluxor.Blazor.Web.Components;
+@using Luthetus.Common.RazorLib.Icons.Codicon
+@using Luthetus.Website.RazorLib.IconBadgeCase
+@inherits FluxorComponent
+
+@{
+    var notificationRecordsCollection = NotificationRecordsCollectionWrap.Value;
+}
+
+<div class="luth_web_notifications-interactive-icon">
+
+    <IconBell/>
+
+    <IconBadgeDisplay>
+        @notificationRecordsCollection.Notifications.Count
+    </IconBadgeDisplay>
+</div>

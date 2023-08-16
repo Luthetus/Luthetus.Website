@@ -31,6 +31,8 @@ using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts.ConsoleAppCase;
 using Luthetus.CompilerServices.Lang.FSharp;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -52,6 +54,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
+    [Inject]
+    private ICommonBackgroundTaskQueue CommonBackgroundTaskQueue { get; set; } = null!;
     [Inject]
     private XmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
@@ -84,11 +88,23 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     {
         if (firstRender)
         {
-            await WriteFileSystemInMemoryAsync();
+            var backgroundTask = new BackgroundTask(
+                async cancellationToken =>
+                {
+                    await WriteFileSystemInMemoryAsync();
 
-            await InitializeDotNetSolutionAndExplorerAsync();
+                    await InitializeDotNetSolutionAndExplorerAsync();
 
-            await ParseSolutionAsync();
+                    await ParseSolutionAsync();
+                },
+                "Parsing Solution",
+                string.Empty,
+                true,
+                _ => Task.CompletedTask,
+                Dispatcher,
+                CancellationToken.None);
+
+            CommonBackgroundTaskQueue.QueueBackgroundWorkItem(backgroundTask);
         }
 
         await base.OnAfterRenderAsync(firstRender);
@@ -252,6 +268,12 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 rootTreeViewNode,
                 rootTreeViewNode,
                 ImmutableList<TreeViewNoType>.Empty);
+
+            foreach (var child in rootTreeViewNode.Children)
+            {
+                await child.LoadChildrenAsync();
+                child.IsExpanded = true;
+            }
 
             TreeViewService.RegisterTreeViewState(treeViewState);
         }
