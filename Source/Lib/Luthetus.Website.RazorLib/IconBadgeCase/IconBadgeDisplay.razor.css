@@ -1,0 +1,6 @@
+.luth_web_icon-badge {
+    position: absolute;
+    top: 0;
+    line-height: 0.6;
+    color: var(--luth_link-foreground-color);
+}

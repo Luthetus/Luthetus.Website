@@ -1,6 +1,7 @@
 ﻿@using Luthetus.Common.RazorLib.Icons.Codicon
 @using Luthetus.Common.RazorLib.OutOfBoundsClick
 @using Luthetus.Common.RazorLib.Store.ApplicationOptions;
+@using Luthetus.Website.RazorLib.NotificationsCase
 @using Luthetus.Website.RazorLib.SearchBar;
 
 @if (!_navbarIsCollapsed)
@@ -71,12 +72,17 @@
                         IDE
                     </a>
 
-                    <button class="luth_button luth_web_navbar-item"
+                    <NotificationsInteractiveIconDisplay CssClassString="luth_button luth_link luth_web_navbar-item"
+                                                         CssStyleString="background-color: transparent; color: var(--luth_icon-folder-font-color);" />
+                    
+                    <button class="luth_button luth_link luth_web_navbar-item"
+                            style="background-color: transparent; color: var(--luth_icon-folder-font-color);"
                             @onclick="OpenSettingsDialogAction.Invoke">
                         <IconSettingsGear />
                     </button>
 
-                    <button class="luth_button luth_web_navbar-item"
+                    <button class="luth_button luth_link luth_web_navbar-item"
+                            style="background-color: transparent;"
                             @onclick="ShowInputFileDialogOnClick">
                         <IconFolder />
                     </button>
