@@ -20,11 +20,13 @@ public partial class IconBadgeDisplay : FluxorComponent
 
     private string GetStyleString(AppOptionsState localAppOptionsState)
     {
+        var minimumBadgeSize = 1.5;
+
         var iconSizeInPixels = localAppOptionsState.Options.IconSizeInPixels ??
             AppOptionsState.DEFAULT_ICON_SIZE_IN_PIXELS;
 
         var badgeSizeInPixels = iconSizeInPixels / 3.0;
-        badgeSizeInPixels = Math.Max(1.5, badgeSizeInPixels);
+        badgeSizeInPixels = Math.Max(minimumBadgeSize, badgeSizeInPixels);
 
         var badgeSizeInPixelsCssValue = badgeSizeInPixels.ToCssValue();
 
@@ -38,7 +40,10 @@ public partial class IconBadgeDisplay : FluxorComponent
                 .ToString()
                 .ToLower();
 
-            horizontalStyle = $"{horizontalPropertyName}: {0}px;";
+            var rightInPixels = badgeSizeInPixels - minimumBadgeSize;
+            var rightInPixelsCssValue = rightInPixels.ToCssValue();
+
+            horizontalStyle = $"{horizontalPropertyName}: {rightInPixelsCssValue}px;";
         }
         
         string verticalStyle;

@@ -7,11 +7,12 @@
     var notificationRecordsCollection = NotificationRecordsCollectionWrap.Value;
 }
 
-<div class="luth_web_notifications-interactive-icon">
+<button class="luth_web_notifications-interactive-icon @CssClassString"
+        style="@CssStyleString">
 
     <IconBell/>
 
     <IconBadgeDisplay>
         @notificationRecordsCollection.Notifications.Count
     </IconBadgeDisplay>
-</div>
+</button>
