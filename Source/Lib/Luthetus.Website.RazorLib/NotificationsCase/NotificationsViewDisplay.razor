@@ -42,22 +42,32 @@
 
         @{
             var entriesToRender = ImmutableList<NotificationRecord>.Empty;
+            var clearOnClick = new Action(() => { });
 
             switch (_chosenNotificationsViewKind)
             {
                 case NotificationsViewKind.Notifications:
                     entriesToRender = notificationRecordsCollection.Notifications;
+                    clearOnClick = Clear;
                     break;
                 case NotificationsViewKind.Read:
                     entriesToRender = notificationRecordsCollection.ReadNotifications;
+                    clearOnClick = ClearRead;
                     break;
                 case NotificationsViewKind.Deleted:
                     entriesToRender = notificationRecordsCollection.DeletedNotifications;
+                    clearOnClick = ClearDeleted;
                     break;
                 case NotificationsViewKind.Archived:
                     entriesToRender = notificationRecordsCollection.ArchivedNotifications;
+                    clearOnClick = ClearArchived;
                     break;
             }
+
+            <button class="luth_button"
+                    @onclick="clearOnClick">
+                Clear @_chosenNotificationsViewKind
+            </button>
 
             foreach (var entry in entriesToRender)
             {

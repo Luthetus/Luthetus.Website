@@ -9,6 +9,8 @@ public partial class NotificationsViewDisplay : FluxorComponent
 {
     [Inject]
     private IState<NotificationRecordsCollection> NotificationRecordsCollectionWrap { get; set; } = null!;
+    [Inject]
+    private IDispatcher Dispatcher { get; set; } = null!;
 
     private NotificationsViewKind _chosenNotificationsViewKind = NotificationsViewKind.Notifications;
 
@@ -19,5 +21,25 @@ public partial class NotificationsViewDisplay : FluxorComponent
         return chosenNotificationsViewKind == iterationNotificationsViewKind
             ? "luth_active"
             : string.Empty;
+    }
+
+    private void Clear()
+    {
+        Dispatcher.Dispatch(new NotificationRecordsCollection.ClearAction());
+    }
+
+    private void ClearRead()
+    {
+        Dispatcher.Dispatch(new NotificationRecordsCollection.ClearReadAction());
+    }
+
+    private void ClearDeleted()
+    {
+        Dispatcher.Dispatch(new NotificationRecordsCollection.ClearDeletedAction());
+    }
+
+    private void ClearArchived()
+    {
+        Dispatcher.Dispatch(new NotificationRecordsCollection.ClearArchivedAction());
     }
 }
