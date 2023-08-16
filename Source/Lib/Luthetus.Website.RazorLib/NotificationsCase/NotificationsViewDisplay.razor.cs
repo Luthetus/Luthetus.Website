@@ -9,4 +9,15 @@ public partial class NotificationsViewDisplay : FluxorComponent
 {
     [Inject]
     private IState<NotificationRecordsCollection> NotificationRecordsCollectionWrap { get; set; } = null!;
+
+    private NotificationsViewKind _chosenNotificationsViewKind = NotificationsViewKind.Notifications;
+
+    private string GetIsActiveCssClass(
+        NotificationsViewKind chosenNotificationsViewKind,
+        NotificationsViewKind iterationNotificationsViewKind)
+    {
+        return chosenNotificationsViewKind == iterationNotificationsViewKind
+            ? "luth_active"
+            : string.Empty;
+    }
 }

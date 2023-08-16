@@ -1,10 +1,73 @@
 ﻿@using Fluxor.Blazor.Web.Components;
+@using Luthetus.Common.RazorLib.Notification;
+@using System.Collections.Immutable;
 @inherits FluxorComponent
 
 @{
     var notificationRecordsCollection = NotificationRecordsCollectionWrap.Value;
 }
 
-<div class="luth_web_notifications-interactive-icon">
-    Aaa
+<div class="luth_web_notifications-view">
+    <div class="luth_web_notifications-view-tabs">
+        @foreach (var notificationsViewKind in Enum.GetValues<NotificationsViewKind>())
+        {
+            <button class="luth_web_notifications-view-tab-entry luth_button @GetIsActiveCssClass(_chosenNotificationsViewKind, notificationsViewKind)"
+                    @onclick="() => _chosenNotificationsViewKind = notificationsViewKind">
+                @notificationsViewKind
+
+                <span class="luth_web_notifications-view-tab-entry-count">
+                    (<!--
+                    -->@switch (notificationsViewKind)
+                    {
+                        case NotificationsViewKind.Notifications:
+                            @: @notificationRecordsCollection.Notifications.Count
+                            break;
+                        case NotificationsViewKind.Read:
+                            @: @notificationRecordsCollection.ReadNotifications.Count
+                            break;
+                        case NotificationsViewKind.Deleted:
+                            @: @notificationRecordsCollection.DeletedNotifications.Count
+                            break;
+                        case NotificationsViewKind.Archived:
+                            @: @notificationRecordsCollection.ArchivedNotifications.Count
+                            break;
+                    }<!--
+                    -->)
+                </span>
+            </button>
+        }
+    </div>
+
+    <div class="luth_web_notifications-view-body">
+
+        @{
+            var entriesToRender = ImmutableList<NotificationRecord>.Empty;
+
+            switch (_chosenNotificationsViewKind)
+            {
+                case NotificationsViewKind.Notifications:
+                    entriesToRender = notificationRecordsCollection.Notifications;
+                    break;
+                case NotificationsViewKind.Read:
+                    entriesToRender = notificationRecordsCollection.ReadNotifications;
+                    break;
+                case NotificationsViewKind.Deleted:
+                    entriesToRender = notificationRecordsCollection.DeletedNotifications;
+                    break;
+                case NotificationsViewKind.Archived:
+                    entriesToRender = notificationRecordsCollection.ArchivedNotifications;
+                    break;
+            }
+
+            foreach (var entry in entriesToRender)
+            {
+                <div class="luth_web_notifications-view-body-entry">
+                    <CascadingValue Value="entry">
+                        <DynamicComponent Type="entry.RendererType"
+                                          Parameters="entry.Parameters" />
+                    </CascadingValue>
+                </div>
+            }
+        }
+    </div>
 </div>
