@@ -58,7 +58,7 @@ public static class ServiceCollectionExtensions
             typeof(Common.RazorLib.WatchWindow.TreeViewDisplays.TreeViewExceptionDisplay),
             typeof(TreeViewMissingRendererFallbackDisplay),
             watchWindowTreeViewRenderers,
-        typeof(RunFileDisplay),
+            typeof(RunFileDisplay),
             typeof(CompilerServiceBackgroundTaskDisplay));
 
         services.AddScoped<XmlCompilerService>();
