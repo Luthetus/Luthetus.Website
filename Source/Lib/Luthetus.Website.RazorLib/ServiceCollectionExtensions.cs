@@ -61,6 +61,9 @@ public static class ServiceCollectionExtensions
             typeof(RunFileDisplay),
             typeof(CompilerServiceBackgroundTaskDisplay));
 
+        // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
+        services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
+
         services.AddScoped<XmlCompilerService>();
         services.AddScoped<DotNetSolutionCompilerService>();
         services.AddScoped<CSharpProjectCompilerService>();
@@ -71,9 +74,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<JavaScriptCompilerService>();
         services.AddScoped<TypeScriptCompilerService>();
         services.AddScoped<JsonCompilerService>();
-
-        // TODO: Move registration of "ILuthetusCommonComponentRenderers" to LuthetusCommon
-        services.AddSingleton<ILuthetusCommonComponentRenderers>(_ => commonRendererTypes);
 
         services.AddScoped<IEnvironmentProvider, ReplEnvironmentProvider>();
         services.AddScoped<IFileSystemProvider, ReplFileSystemProvider>();
