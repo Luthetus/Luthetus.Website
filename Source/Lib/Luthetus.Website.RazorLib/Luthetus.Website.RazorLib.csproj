@@ -14,13 +14,13 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.14" />
         <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.0.2" />
+      <PackageReference Include="Luthetus.TextEditor" Version="1.2.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Luthetus.CompilerServices\Source\DotNetSolution\Source\Luthetus.CompilerServices.Lang.DotNetSolution.csproj" />
       <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.ClassLib\Luthetus.Ide.ClassLib.csproj" />
       <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.RazorLib\Luthetus.Ide.RazorLib.csproj" />
-      <ProjectReference Include="..\..\..\..\Luthetus.TextEditor\Source\Lib\Luthetus.TextEditor.RazorLib\Luthetus.TextEditor.RazorLib.csproj" />
     </ItemGroup>
 
 </Project>
