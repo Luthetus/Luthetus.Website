@@ -17,7 +17,7 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     [Inject]
     private IDispatcher Dispatcher { get; set; } = null!;
     [Inject]
-    private ICommonMenuOptionsFactory CommonMenuOptionsFactory { get; set; } = null!;
+    private IMenuOptionsFactory MenuOptionsFactory { get; set; } = null!;
     [Inject]
     private ITreeViewService TreeViewService { get; set; } = null!;
 
@@ -65,10 +65,10 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-        CommonMenuOptionsFactory.NewEmptyFile(
+        MenuOptionsFactory.NewEmptyFile(
             treeViewModel.Item,
             async () => await ReloadTreeViewModel(treeViewModel)),
-        CommonMenuOptionsFactory.NewDirectory(
+        MenuOptionsFactory.NewDirectory(
             treeViewModel.Item,
             async () => await ReloadTreeViewModel(treeViewModel)),
     };
@@ -80,13 +80,13 @@ public partial class ReplFolderExplorerContextMenu : ComponentBase
     {
         return new[]
         {
-        CommonMenuOptionsFactory.DeleteFile(
+        MenuOptionsFactory.DeleteFile(
             treeViewModel.Item,
             async () =>
             {
                 await ReloadTreeViewModel(parentTreeViewModel);
             }),
-        CommonMenuOptionsFactory.RenameFile(
+        MenuOptionsFactory.RenameFile(
             treeViewModel.Item,
             Dispatcher,
             async ()  =>
