@@ -32,6 +32,7 @@ using Luthetus.Website.RazorLib.Facts;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Immutable;
 using Luthetus.Ide.ClassLib.Store.DotNetSolutionCase;
+using Luthetus.Ide.ClassLib.Store.EditorCase;
 
 namespace Luthetus.Ide.Wasm;
 
@@ -86,6 +87,16 @@ public partial class App : ComponentBase
                     InitializeDotNetSolutionAndExplorer();
 
                     await ParseSolutionAsync();
+
+                    // Display a file from the get-go so the user is less confused on what the website is.
+                    var absoluteFilePath = new AbsoluteFilePath(
+                        BlazorWasmAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
+                        false,
+                        EnvironmentProvider);
+
+                    Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
+                        absoluteFilePath,
+                        false));
                 },
                 "Parsing Solution",
                 string.Empty,
