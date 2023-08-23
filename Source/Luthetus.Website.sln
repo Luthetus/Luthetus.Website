@@ -107,6 +107,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.Lang.CSharpProject.Tests", "..\..\Luthetus.CompilerServices\Source\CSharpProject\Tests\Luthetus.CompilerServices.Lang.CSharpProject.Tests.csproj", "{0276A92A-C717-4B32-97F9-3344262717FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.TextEditor.BlazorTests", "..\..\Luthetus.TextEditor\Source\Tests\Luthetus.TextEditor.BlazorTests\Luthetus.TextEditor.BlazorTests.csproj", "{53472029-5017-4DD8-B77A-78E5C4B93B75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -253,6 +255,10 @@ Global
 		{0276A92A-C717-4B32-97F9-3344262717FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0276A92A-C717-4B32-97F9-3344262717FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0276A92A-C717-4B32-97F9-3344262717FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -307,6 +313,7 @@ Global
 		{21D4714C-77BE-4EF7-8D52-F6E10D63B92E} = {6F8067B0-4451-43B2-AF2F-ABFE4099B89E}
 		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02} = {21D4714C-77BE-4EF7-8D52-F6E10D63B92E}
 		{0276A92A-C717-4B32-97F9-3344262717FD} = {21D4714C-77BE-4EF7-8D52-F6E10D63B92E}
+		{53472029-5017-4DD8-B77A-78E5C4B93B75} = {30DFD93C-D447-4D6F-9E34-2BC967366924}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3961EDD1-F3EE-4A37-A5E9-7E5CE258F968}
