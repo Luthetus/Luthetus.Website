@@ -109,7 +109,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.CompilerServices.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.TextEditor.BlazorTests", "..\..\Luthetus.TextEditor\Source\Tests\Luthetus.TextEditor.BlazorTests\Luthetus.TextEditor.BlazorTests.csproj", "{53472029-5017-4DD8-B77A-78E5C4B93B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.Ide.Wasm", "..\..\Luthetus.Ide\Source\Host\Luthetus.Ide.Wasm\Luthetus.Ide.Wasm.csproj", "{7CAB4E31-7186-45F9-83C4-6BD478A5B97B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.Ide.Wasm", "Host\Luthetus.Ide.Wasm\Luthetus.Ide.Wasm.csproj", "{13403AD5-D5E0-4E7F-ADB7-A1473458513B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -261,10 +261,10 @@ Global
 		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53472029-5017-4DD8-B77A-78E5C4B93B75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CAB4E31-7186-45F9-83C4-6BD478A5B97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CAB4E31-7186-45F9-83C4-6BD478A5B97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CAB4E31-7186-45F9-83C4-6BD478A5B97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CAB4E31-7186-45F9-83C4-6BD478A5B97B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13403AD5-D5E0-4E7F-ADB7-A1473458513B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13403AD5-D5E0-4E7F-ADB7-A1473458513B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13403AD5-D5E0-4E7F-ADB7-A1473458513B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13403AD5-D5E0-4E7F-ADB7-A1473458513B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -320,7 +320,7 @@ Global
 		{9B8C6875-CAE1-464C-B02A-C48DBE3A5C02} = {21D4714C-77BE-4EF7-8D52-F6E10D63B92E}
 		{0276A92A-C717-4B32-97F9-3344262717FD} = {21D4714C-77BE-4EF7-8D52-F6E10D63B92E}
 		{53472029-5017-4DD8-B77A-78E5C4B93B75} = {30DFD93C-D447-4D6F-9E34-2BC967366924}
-		{7CAB4E31-7186-45F9-83C4-6BD478A5B97B} = {68F343ED-2E47-4AEA-930D-445C83B08D9A}
+		{13403AD5-D5E0-4E7F-ADB7-A1473458513B} = {00917FBC-A62D-4399-A2C9-2873135D9286}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3961EDD1-F3EE-4A37-A5E9-7E5CE258F968}
