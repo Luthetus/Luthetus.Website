@@ -33,6 +33,7 @@ using Luthetus.CompilerServices.Lang.FSharp;
 using Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
+using Luthetus.Common.RazorLib.ComponentRenderers;
 
 namespace Luthetus.Website.RazorLib.Shared;
 
@@ -54,6 +55,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
+    [Inject]
+    private ILuthetusCommonComponentRenderers LuthetusCommonComponentRenderers { get; set; } = null!;
     [Inject]
     private ICommonBackgroundTaskQueue CommonBackgroundTaskQueue { get; set; } = null!;
     [Inject]
@@ -256,6 +259,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             var rootTreeViewNode = new TreeViewSolution(
                 dotNetSolution,
                 LuthetusIdeComponentRenderers,
+                LuthetusCommonComponentRenderers,
                 FileSystemProvider,
                 EnvironmentProvider,
                 true,

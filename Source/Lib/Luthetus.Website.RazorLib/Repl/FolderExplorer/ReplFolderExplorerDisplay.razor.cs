@@ -13,6 +13,7 @@ using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.Common.RazorLib.Store.DropdownCase;
 using Luthetus.Ide.ClassLib.TreeViewImplementations;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
+using Luthetus.Common.RazorLib.ComponentRenderers;
 
 namespace Luthetus.Website.RazorLib.Repl.FolderExplorer;
 
@@ -28,6 +29,8 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
     private ITreeViewService TreeViewService { get; set; } = null!;
     [Inject]
     private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
+    [Inject]
+    private ILuthetusCommonComponentRenderers LuthetusCommonComponentRenderers { get; set; } = null!;
 
     [CascadingParameter, EditorRequired]
     public ReplState ReplState { get; set; } = null!;
@@ -84,6 +87,7 @@ public partial class ReplFolderExplorerDisplay : ComponentBase, IDisposable
             var rootTreeViewNode = new TreeViewAbsoluteFilePath(
                 EnvironmentProvider.RootDirectoryAbsoluteFilePath,
                 LuthetusIdeComponentRenderers,
+                LuthetusCommonComponentRenderers,
                 FileSystemProvider,
                 EnvironmentProvider,
                 true,
