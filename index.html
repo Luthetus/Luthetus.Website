@@ -4,16 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Luthetus.Website.Host.Wasm</title>
+    <title>Luthetus.Ide.Wasm</title>
     <base href="/Luthetus.Website/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
 
-    <link href="_content/Luthetus.Website.RazorLib/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="_content/Luthetus.Website.RazorLib/css/app.css" rel="stylesheet" />
-    <link href="_content/Luthetus.Website.RazorLib/css/appSizes.css" rel="stylesheet" />
-    <link href="_content/Luthetus.Website.RazorLib/css/appColors.css" rel="stylesheet" />
-
+    <!-- Luthetus Common -->
     <link href="_content/Luthetus.Common/luthetusCommon.css" rel="stylesheet" />
 
+    <!-- Luthetus Text Editor -->
     <link href="_content/Luthetus.TextEditor/luthetusTextEditor.css" rel="stylesheet" />
 
     <!-- Luthetus Ide -->
@@ -22,9 +21,10 @@
     <link href="_content/Luthetus.Ide.RazorLib/luthetusIdeColors.css" rel="stylesheet" />
     <link href="_content/Luthetus.Ide.RazorLib/Themes/luthetusIdeLightTheme.css" rel="stylesheet" />
 
-    <link href="Luthetus.Website.Host.Wasm.styles.css" rel="stylesheet" />
-
-    <link href="https://fonts.cdnfonts.com/css/chiller" rel="stylesheet">
+    <link href="Luthetus.Ide.Wasm.styles.css" rel="stylesheet" />
+    <link href="manifest.json" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
 </head>
 
 <body>
@@ -35,13 +35,17 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
 
+    <!-- Luthetus Common -->
     <script src="_content/Luthetus.Common/luthetusCommon.js"></script>
+
+    <!-- Luthetus Text Editor -->
     <script src="_content/Luthetus.TextEditor/luthetusTextEditor.js"></script>
 
     <!-- Luthetus Ide -->
     <script src="_content/Luthetus.Ide.RazorLib/luthetusIde.js"></script>
 </body>
+
 </html>
