@@ -23,4 +23,8 @@
       <ProjectReference Include="..\..\..\..\Luthetus.TextEditor\Source\Lib\Luthetus.TextEditor.RazorLib\Luthetus.TextEditor.RazorLib.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Store\ReplCase\Facts\BlazorWasmAppCase\" />
+    </ItemGroup>
+
 </Project>

@@ -24,8 +24,4 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\Lib\Luthetus.Website.RazorLib\Luthetus.Website.RazorLib.csproj" />
-    </ItemGroup>
-
 </Project>

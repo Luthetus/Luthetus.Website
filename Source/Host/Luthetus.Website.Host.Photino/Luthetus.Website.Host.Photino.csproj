@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Host\Photino.Blazor\Photino.Blazor\Photino.Blazor.csproj" />
-    <ProjectReference Include="..\..\Lib\Luthetus.Website.RazorLib\Luthetus.Website.RazorLib.csproj" />
   </ItemGroup>
 
 </Project>

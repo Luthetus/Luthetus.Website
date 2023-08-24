@@ -21,8 +21,4 @@
       <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\Lib\Luthetus.Website.RazorLib\Luthetus.Website.RazorLib.csproj" />
-    </ItemGroup>
-
 </Project>

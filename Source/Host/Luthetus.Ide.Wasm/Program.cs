@@ -3,7 +3,6 @@ using Luthetus.Ide.RazorLib;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
-using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
 using Luthetus.Ide.ClassLib.HostedServiceCase.FileSystem;
 using Luthetus.Ide.ClassLib.HostedServiceCase.Terminal;
@@ -12,6 +11,7 @@ using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
 using Fluxor;
 using Luthetus.Common.RazorLib;
 using Luthetus.TextEditor.RazorLib;
+using Luthetus.Ide.Wasm.FileSystem;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -21,8 +21,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddLuthetusIdeRazorLibServices(false);
 
-builder.Services.AddScoped<IEnvironmentProvider, ReplEnvironmentProvider>();
-builder.Services.AddScoped<IFileSystemProvider, ReplFileSystemProvider>();
+builder.Services.AddScoped<IEnvironmentProvider, InMemoryEnvironmentProvider>();
+builder.Services.AddScoped<IFileSystemProvider, InMemoryFileSystemProvider>();
 
 builder.Services.AddSingleton<ICommonBackgroundTaskQueue, CommonBackgroundTaskQueueSingleThreaded>();
 builder.Services.AddSingleton<ITextEditorBackgroundTaskQueue, TextEditorBackgroundTaskQueueSingleThreaded>();
@@ -38,7 +38,6 @@ builder.Services.AddSingleton<TerminalQueuedHostedService>();
 
 builder.Services.AddFluxor(options =>
     options.ScanAssemblies(
-        typeof(Luthetus.Website.RazorLib.ServiceCollectionExtensions).Assembly,
         typeof(LuthetusCommonOptions).Assembly,
         typeof(LuthetusTextEditorOptions).Assembly,
         typeof(Luthetus.Ide.ClassLib.ServiceCollectionExtensions).Assembly));
