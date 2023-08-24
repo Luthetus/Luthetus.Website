@@ -31,6 +31,12 @@ public class InMemoryEnvironmentProvider : IEnvironmentProvider
 
     public string JoinPaths(string pathOne, string pathTwo)
     {
+        if (pathOne.EndsWith(DirectorySeparatorChar) ||
+            pathOne.EndsWith(AltDirectorySeparatorChar))
+        {
+            return pathOne + pathTwo;
+        }
+
         return string.Join(DirectorySeparatorChar, pathOne, pathTwo);
     }
 }

@@ -256,6 +256,12 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             string destinationAbsoluteFilePathString,
             CancellationToken cancellationToken = default)
         {
+            if (sourceAbsoluteFilePathString == _environmentProvider.RootDirectoryAbsoluteFilePath.GetAbsoluteFilePathString() ||
+                sourceAbsoluteFilePathString == _environmentProvider.HomeDirectoryAbsoluteFilePath.GetAbsoluteFilePathString())
+            {
+                return;
+            }
+
             var indexOfExistingFile = _inMemoryFileSystemProvider._files.FindIndex(
                 f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == sourceAbsoluteFilePathString);
 
