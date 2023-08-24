@@ -136,21 +136,19 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
                 imf => imf.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString));
         }
 
-        public async Task DoDeleteAsync(
+        public Task DoDeleteAsync(
             string absoluteFilePathString,
             CancellationToken cancellationToken = default)
         {
-            await _inMemoryFileSystemProvider._modificationSemaphore.WaitAsync();
-
             var indexOfExistingFile = _inMemoryFileSystemProvider._files.FindIndex(
                 f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString);
 
             if (indexOfExistingFile == -1)
-                return;
+                return Task.CompletedTask;
 
             _inMemoryFileSystemProvider._files.RemoveAt(indexOfExistingFile);
 
-            return;
+            return Task.CompletedTask;
         }
 
         public async Task DoCopyAsync(
