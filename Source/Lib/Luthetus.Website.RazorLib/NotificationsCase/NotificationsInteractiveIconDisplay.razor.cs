@@ -1,7 +1,6 @@
 using Fluxor;
 using Fluxor.Blazor.Web.Components;
 using Luthetus.Common.RazorLib.Dialog;
-using Luthetus.Common.RazorLib.Notification;
 using Luthetus.Common.RazorLib.Store.NotificationCase;
 using Microsoft.AspNetCore.Components;
 
