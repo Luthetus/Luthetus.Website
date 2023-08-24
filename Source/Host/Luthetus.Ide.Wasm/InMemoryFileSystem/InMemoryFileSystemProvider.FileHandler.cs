@@ -132,8 +132,8 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             string absoluteFilePathString,
             CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(_inMemoryFileSystemProvider.Files.Any(
-                imf => imf.AbsoluteFilePath.Value == absoluteFilePathString));
+            return Task.FromResult(_inMemoryFileSystemProvider._files.Any(
+                imf => imf.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString));
         }
 
         public async Task DoDeleteAsync(
@@ -143,7 +143,7 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             await _inMemoryFileSystemProvider._modificationSemaphore.WaitAsync();
 
             var indexOfExistingFile = _inMemoryFileSystemProvider._files.FindIndex(
-                f => f.AbsoluteFilePath.Value == absoluteFilePathString);
+                f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString);
 
             if (indexOfExistingFile == -1)
                 return;
@@ -161,7 +161,7 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             // Source
             {
                 var indexOfSource = _inMemoryFileSystemProvider._files.FindIndex(
-                f => f.AbsoluteFilePath.Value == sourceAbsoluteFilePathString);
+                f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == sourceAbsoluteFilePathString);
 
                 if (indexOfSource == -1)
                     throw new ApplicationException($"Source file: {sourceAbsoluteFilePathString} was not found.");
@@ -170,7 +170,7 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             // Destination
             { 
                 var indexOfDestination = _inMemoryFileSystemProvider._files.FindIndex(
-                    f => f.AbsoluteFilePath.Value == destinationAbsoluteFilePathString);
+                    f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == destinationAbsoluteFilePathString);
 
                 if (indexOfDestination != -1)
                     throw new ApplicationException($"A file already exists with the path: {sourceAbsoluteFilePathString}.");
@@ -205,8 +205,8 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             string absoluteFilePathString,
             CancellationToken cancellationToken = default)
         {
-            var existingFile = _inMemoryFileSystemProvider.Files.FirstOrDefault(
-                f => f.AbsoluteFilePath.Value == absoluteFilePathString);
+            var existingFile = _inMemoryFileSystemProvider._files.FirstOrDefault(
+                f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString);
 
             if (existingFile is null)
                 return Task.FromResult(default(DateTime));
@@ -218,8 +218,8 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             string absoluteFilePathString,
             CancellationToken cancellationToken = default)
         {
-            var existingFile = _inMemoryFileSystemProvider.Files.FirstOrDefault(
-                f => f.AbsoluteFilePath.Value == absoluteFilePathString);
+            var existingFile = _inMemoryFileSystemProvider._files.FirstOrDefault(
+                f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString);
 
             if (existingFile is null)
                 return Task.FromResult(string.Empty);
@@ -232,8 +232,8 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             string contents,
             CancellationToken cancellationToken = default)
         {
-            var existingFile = _inMemoryFileSystemProvider.Files.FirstOrDefault(
-                f => f.AbsoluteFilePath.Value == absoluteFilePathString);
+            var existingFile = _inMemoryFileSystemProvider._files.FirstOrDefault(
+                f => f.AbsoluteFilePath.GetAbsoluteFilePathString() == absoluteFilePathString);
 
             // Ensure Parent Directories Exist
             {

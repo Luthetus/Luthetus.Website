@@ -27,6 +27,14 @@ public partial class InMemoryFileSystemProvider : IFileSystemProvider
             this,
             _environmentProvider,
             _dispatcher);
+
+        Directory
+            .CreateDirectoryAsync(_environmentProvider.RootDirectoryAbsoluteFilePath.GetAbsoluteFilePathString())
+            .Wait();
+
+        Directory
+            .CreateDirectoryAsync(_environmentProvider.HomeDirectoryAbsoluteFilePath.GetAbsoluteFilePathString())
+            .Wait();
     }
 
     public ImmutableArray<InMemoryFile> Files => _files.ToImmutableArray();
