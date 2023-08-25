@@ -11,7 +11,7 @@ using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
 using Fluxor;
 using Luthetus.Common.RazorLib;
 using Luthetus.TextEditor.RazorLib;
-using Luthetus.Ide.Wasm.FileSystem;
+using Luthetus.Common.RazorLib.FileSystem.Classes.InMemoryFileSystem;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
