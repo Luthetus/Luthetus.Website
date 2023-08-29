@@ -4,7 +4,7 @@ using Luthetus.Common.RazorLib.Dialog;
 using Luthetus.Common.RazorLib.Store.NotificationCase;
 using Microsoft.AspNetCore.Components;
 
-namespace Luthetus.Website.RazorLib.NotificationsCase;
+namespace Luthetus.Ide.Wasm.NotificationsCase;
 
 public partial class NotificationsInteractiveIconDisplay : FluxorComponent
 {

@@ -5,8 +5,6 @@ using Luthetus.Common.RazorLib.ComponentRenderers;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
-using Luthetus.Common.RazorLib.Namespaces;
-using Luthetus.Common.RazorLib.TreeView.TreeViewClasses;
 using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.TextEditor.RazorLib.Lexing;
@@ -20,19 +18,12 @@ using Luthetus.CompilerServices.Lang.Json;
 using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Xml;
-using Luthetus.CompilerServices.Lang.DotNetSolution;
 using Luthetus.Ide.ClassLib.ComponentRenderers;
 using Luthetus.Ide.ClassLib.FileConstants;
-using Luthetus.Ide.ClassLib.TreeViewImplementations;
-using Luthetus.Website.RazorLib.Store.ReplCase.Facts.ConsoleAppCase;
-using Luthetus.Website.RazorLib.Store.ReplCase.Facts.BlazorWasmAppCase;
-using Luthetus.Website.RazorLib.Store.ReplCase.Facts;
-using Luthetus.Website.RazorLib.Store.ReplCase;
-using Luthetus.Website.RazorLib.Facts;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Immutable;
 using Luthetus.Ide.ClassLib.Store.DotNetSolutionCase;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
+using Luthetus.Ide.Wasm.Facts;
 
 namespace Luthetus.Ide.Wasm;
 
@@ -90,13 +81,20 @@ public partial class App : ComponentBase
 
                     // Display a file from the get-go so the user is less confused on what the website is.
                     var absoluteFilePath = new AbsoluteFilePath(
-                        BlazorWasmAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
+                        InitialSolutionFacts.PROGRAM_ABSOLUTE_FILE_PATH,
                         false,
                         EnvironmentProvider);
 
                     Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
                         absoluteFilePath,
                         false));
+
+                    // This code block is hacky. I want the Solution Explorer to from the get-go be fully expanded, so the user can see 'Program.cs'
+                    {
+                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
+                    }
                 },
                 "Parsing Solution",
                 string.Empty,
@@ -113,122 +111,26 @@ public partial class App : ComponentBase
 
     private async Task WriteFileSystemInMemoryAsync()
     {
-        // BlazorWasmAppFacts
-        {
-            // AppCss
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_CSS_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_CSS_CONTENTS);
-
-            // AppJs
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_JS_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_JS_CONTENTS);
-
-            // AppRazor
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_RAZOR_FILE_CONTENTS);
-
-            // AppTs
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.APP_TS_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.APP_TS_CONTENTS);
-
-            // CounterTest
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.COUNTER_TEST_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.COUNTER_TEST_CONTENTS);
-
-            // Csproj
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.BLAZOR_WASM_APP_C_SHARP_PROJECT_CONTENTS);
-
-            // Imports
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.IMPORTS_RAZOR_FILE_CONTENTS);
-
-            // IndexHtml
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.INDEX_HTML_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.INDEX_HTML_FILE_CONTENTS);
-
-            // IndexRazor
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.INDEX_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.INDEX_RAZOR_FILE_CONTENTS);
-
-            // IPersonModel
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.IPERSON_MODEL_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.IPERSON_MODEL_CONTENTS);
-
-            // IPersonRepository
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.IPERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.IPERSON_REPOSITORY_CONTENTS);
-
-            // LaunchSettingsJson
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.LAUNCH_SETTINGS_JSON_CONTENTS);
-
-            // MainLayout
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.MAIN_LAYOUT_RAZOR_FILE_CONTENTS);
-
-            // PersonDisplayMarkup
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_DISPLAY_MARKUP_CONTENTS);
-
-            // PersonDisplayCodebehind
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_DISPLAY_CODEBEHIND_CONTENTS);
-
-            // PersonModel
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_MODEL_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_MODEL_CONTENTS);
-
-            // PersonRepository
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PERSON_REPOSITORY_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PERSON_REPOSITORY_CONTENTS);
-
-            // Program
-            await FileSystemProvider.File.WriteAllTextAsync(
-                BlazorWasmAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
-                BlazorWasmAppFacts.PROGRAM_CS_FILE_CONTENTS);
-        }
-
-        // ConsoleAppFacts
-        {
-            // Csproj
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ConsoleAppFacts.CONSOLE_APP_C_SHARP_PROJECT_ABSOLUTE_FILE_PATH,
-                ConsoleAppFacts.CONSOLE_APP_C_SHARP_PROJECT_CONTENTS);
-
-            // Program
-            await FileSystemProvider.File.WriteAllTextAsync(
-                ConsoleAppFacts.PROGRAM_CS_FILE_ABSOLUTE_FILE_PATH,
-                ConsoleAppFacts.PROGRAM_CS_FILE_CONTENTS);
-        }
-
-        // Sln
+        // Program.cs
         await FileSystemProvider.File.WriteAllTextAsync(
-            ReplStateFacts.SLN_ABSOLUTE_FILE_PATH,
-            ReplStateFacts.SLN_CONTENTS);
+            InitialSolutionFacts.PROGRAM_ABSOLUTE_FILE_PATH,
+            InitialSolutionFacts.PROGRAM_CONTENTS);
+        
+        // ConsoleApp1.csproj
+        await FileSystemProvider.File.WriteAllTextAsync(
+            InitialSolutionFacts.CSPROJ_ABSOLUTE_FILE_PATH,
+            InitialSolutionFacts.CSPROJ_CONTENTS);
+
+        // ConsoleApp1.sln
+        await FileSystemProvider.File.WriteAllTextAsync(
+            InitialSolutionFacts.SLN_ABSOLUTE_FILE_PATH,
+            InitialSolutionFacts.SLN_CONTENTS);
     }
 
     private void InitializeDotNetSolutionAndExplorer()
     {
         var solutionAbsoluteFilePath = new AbsoluteFilePath(
-            ReplStateFacts.SLN_ABSOLUTE_FILE_PATH,
+            InitialSolutionFacts.SLN_ABSOLUTE_FILE_PATH,
             false,
             EnvironmentProvider);
 
