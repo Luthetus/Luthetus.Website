@@ -21,9 +21,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddLuthetusIdeRazorLibServices(false);
 
-builder.Services.AddScoped<IEnvironmentProvider, InMemoryEnvironmentProvider>();
-builder.Services.AddScoped<IFileSystemProvider, InMemoryFileSystemProvider>();
-
 builder.Services.AddSingleton<ICommonBackgroundTaskQueue, CommonBackgroundTaskQueueSingleThreaded>();
 builder.Services.AddSingleton<ITextEditorBackgroundTaskQueue, TextEditorBackgroundTaskQueueSingleThreaded>();
 builder.Services.AddSingleton<ICompilerServiceBackgroundTaskQueue, CompilerServiceBackgroundTaskQueueSingleThreaded>();
