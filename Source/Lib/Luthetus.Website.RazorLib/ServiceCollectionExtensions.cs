@@ -1,51 +1,64 @@
-﻿using Luthetus.Website.RazorLib.Settings;
-using Luthetus.Website.RazorLib.Repl.FileSystem;
 using Microsoft.Extensions.DependencyInjection;
-using Luthetus.TextEditor.RazorLib;
 using Fluxor;
-using Luthetus.Common.RazorLib.FileSystem.Interfaces;
-using Luthetus.Ide.RazorLib;
 using Luthetus.Common.RazorLib;
+using Luthetus.TextEditor.RazorLib;
+using Luthetus.Ide.RazorLib;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
+using Luthetus.Ide.ClassLib.HostedServiceCase.FileSystem;
+using Luthetus.Ide.ClassLib.HostedServiceCase.Terminal;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase.CompilerServiceCase;
+using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
 
 namespace Luthetus.Website.RazorLib;
 
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddLuthetusWebsiteServices(
+        this IServiceCollection services,
+        bool isServerSide)
+    {
+        services.AddLuthetusIdeRazorLibServices(options => options with
+        {
+            IsNativeApplication = false
+        });
+
+        if (isServerSide)
+            services.AddLuthetusWebsiteServerSideServices();
+        else
+            services.AddLuthetusWebsiteWasmServices();
+
+        return services.AddFluxor(options => options.ScanAssemblies(
+            typeof(LuthetusCommonOptions).Assembly,
+            typeof(LuthetusTextEditorOptions).Assembly,
+            typeof(Luthetus.Ide.ClassLib.ServiceCollectionExtensions).Assembly));
+    }
+    
+    private static IServiceCollection AddLuthetusWebsiteServerSideServices(
         this IServiceCollection services)
     {
-        services.AddLuthetusIdeRazorLibServices(
-            false,
-            options =>
-            {
-                var heightOfNavbarInPixels = 64;
+        return services
+            .AddSingleton<LuthetusCommonBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusTextEditorTextEditorBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusIdeFileSystemBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusIdeTerminalBackgroundTaskServiceWorker>();
 
-                var luthetusCommonOptions = options.LuthetusCommonOptions ?? new();
-
-                luthetusCommonOptions = luthetusCommonOptions with
-                {
-                    DialogServiceOptions = luthetusCommonOptions.DialogServiceOptions with
-                    {
-                        IsMaximizedStyleCssString = $"width: 100vw; height: calc(100vh - {heightOfNavbarInPixels}px); left: 0; top: {heightOfNavbarInPixels}px;"
-                    }
-                };
-
-                return options with
-                {
-                    SettingsComponentRendererType = typeof(SettingsDisplay),
-                    SettingsDialogComponentIsResizable = true,
-                    LuthetusCommonOptions = luthetusCommonOptions
-                };
-            });
-
-        services.AddScoped<IEnvironmentProvider, ReplEnvironmentProvider>();
-        services.AddScoped<IFileSystemProvider, ReplFileSystemProvider>();
-
-        return services.AddFluxor(options =>
-            options.ScanAssemblies(
-                typeof(ServiceCollectionExtensions).Assembly,
-                typeof(LuthetusCommonOptions).Assembly,
-                typeof(LuthetusTextEditorOptions).Assembly,
-                typeof(Ide.ClassLib.ServiceCollectionExtensions).Assembly));
+        //return services
+        //    .AddHostedService<LuthetusCommonBackgroundTaskServiceWorker>()
+        //    .AddHostedService<LuthetusTextEditorTextEditorBackgroundTaskServiceWorker>()
+        //    .AddHostedService<LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker>()
+        //    .AddHostedService<LuthetusIdeFileSystemBackgroundTaskServiceWorker>()
+        //    .AddHostedService<LuthetusIdeTerminalBackgroundTaskServiceWorker>();
+    }
+    
+    private static IServiceCollection AddLuthetusWebsiteWasmServices(
+        this IServiceCollection services)
+    {
+        return services
+            .AddSingleton<LuthetusCommonBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusTextEditorTextEditorBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusIdeFileSystemBackgroundTaskServiceWorker>()
+            .AddSingleton<LuthetusIdeTerminalBackgroundTaskServiceWorker>();
     }
 }

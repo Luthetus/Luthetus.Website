@@ -45,7 +45,7 @@ public partial class IconBadgeDisplay : FluxorComponent
 
             horizontalStyle = $"{horizontalPropertyName}: {rightInPixelsCssValue}px;";
         }
-        
+
         string verticalStyle;
         {
             var verticalPropertyName = IconBadgeVerticalPositionKind
