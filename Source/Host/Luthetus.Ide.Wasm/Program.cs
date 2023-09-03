@@ -1,3 +1,4 @@
+using Luthetus.Common.RazorLib;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
 using Luthetus.Ide.ClassLib.HostedServiceCase.FileSystem;
 using Luthetus.Ide.ClassLib.HostedServiceCase.Terminal;
@@ -13,23 +14,10 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddLuthetusWebsiteServices(false);
+
+var hostingInformation = new LuthetusHostingInformation(LuthetusHostingKind.Wasm);
+builder.Services.AddLuthetusWebsiteServices(hostingInformation);
 
 var host = builder.Build();
-
-var backgroundTasksCancellationTokenSource = new CancellationTokenSource();
-var cancellationToken = backgroundTasksCancellationTokenSource.Token;
-
-var commonQueuedHostedService = host.Services.GetRequiredService<LuthetusCommonBackgroundTaskServiceWorker>();
-var textEditorQueuedHostedService = host.Services.GetRequiredService<LuthetusTextEditorTextEditorBackgroundTaskServiceWorker>();
-var compilerServiceQueuedHostedService = host.Services.GetRequiredService<LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker>();
-var fileSystemQueuedHostedService = host.Services.GetRequiredService<LuthetusIdeFileSystemBackgroundTaskServiceWorker>();
-var terminalQueuedHostedService = host.Services.GetRequiredService<LuthetusIdeTerminalBackgroundTaskServiceWorker>();
-
-//_ = Task.Run(async () => await commonQueuedHostedService.StartAsync(cancellationToken));
-//_ = Task.Run(async () => await textEditorQueuedHostedService.StartAsync(cancellationToken));
-//_ = Task.Run(async () => await compilerServiceQueuedHostedService.StartAsync(cancellationToken));
-//_ = Task.Run(async () => await fileSystemQueuedHostedService.StartAsync(cancellationToken));
-//_ = Task.Run(async () => await terminalQueuedHostedService.StartAsync(cancellationToken));
 
 await host.RunAsync();

@@ -1,3 +1,4 @@
+using Luthetus.Common.RazorLib;
 using Luthetus.Website.RazorLib;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,8 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddHttpClient();
 
-builder.Services.AddLuthetusWebsiteServices(true);
+var hostingInformation = new LuthetusHostingInformation(LuthetusHostingKind.ServerSide);
+builder.Services.AddLuthetusWebsiteServices(hostingInformation);
 
 var app = builder.Build();
 

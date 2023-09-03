@@ -29,6 +29,7 @@ using Luthetus.TextEditor.RazorLib.HostedServiceCase.CompilerServiceCase;
 using Luthetus.TextEditor.RazorLib.HostedServiceCase.TextEditorCase;
 using Luthetus.Ide.ClassLib.HostedServiceCase.FileSystem;
 using Luthetus.Ide.ClassLib.HostedServiceCase.Terminal;
+using Luthetus.Common.RazorLib;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -44,10 +45,6 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private ITreeViewService TreeViewService { get; set; } = null!;
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
-    [Inject]
-    private ILuthetusIdeComponentRenderers LuthetusIdeComponentRenderers { get; set; } = null!;
-    [Inject]
-    private ILuthetusCommonComponentRenderers LuthetusCommonComponentRenderers { get; set; } = null!;
     [Inject]
     private ILuthetusCommonBackgroundTaskService LuthetusCommonBackgroundTaskService { get; set; } = null!;
     [Inject]
@@ -71,27 +68,10 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     [Inject]
     private JsonCompilerService JsonCompilerService { get; set; } = null!;
 
-    [Inject]
-    private LuthetusCommonBackgroundTaskServiceWorker LuthetusCommonBackgroundTaskServiceWorker { get; set; } = null!;
-    [Inject]
-    private LuthetusTextEditorTextEditorBackgroundTaskServiceWorker LuthetusTextEditorTextEditorBackgroundTaskServiceWorker { get; set; } = null!;
-    [Inject]
-    private LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker { get; set; } = null!;
-    [Inject]
-    private LuthetusIdeFileSystemBackgroundTaskServiceWorker LuthetusIdeFileSystemBackgroundTaskServiceWorker { get; set; } = null!;
-    [Inject]
-    private LuthetusIdeTerminalBackgroundTaskServiceWorker LuthetusIdeTerminalBackgroundTaskServiceWorker { get; set; } = null!;
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _ = Task.Run(async () => await LuthetusCommonBackgroundTaskServiceWorker.StartAsync(CancellationToken.None));
-            _ = Task.Run(async () => await LuthetusTextEditorTextEditorBackgroundTaskServiceWorker.StartAsync(CancellationToken.None));
-            _ = Task.Run(async () => await LuthetusTextEditorCompilerServiceBackgroundTaskServiceWorker.StartAsync(CancellationToken.None));
-            _ = Task.Run(async () => await LuthetusIdeFileSystemBackgroundTaskServiceWorker.StartAsync(CancellationToken.None));
-            _ = Task.Run(async () => await LuthetusIdeTerminalBackgroundTaskServiceWorker.StartAsync(CancellationToken.None));
-
             var backgroundTask = new BackgroundTask(
                 async cancellationToken =>
                 {
