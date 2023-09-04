@@ -1,0 +1,27 @@
+/* _content/Luthetus.Website.RazorLib/IconBadgeCase/IconBadgeDisplay.razor.rz.scp.css */
+.luth_web_icon-badge[b-b9w3z4743a] {
+    position: absolute;
+    top: 0;
+    line-height: 0.6;
+    color: var(--luth_link-foreground-color);
+}
+/* _content/Luthetus.Website.RazorLib/NotificationsCase/NotificationsInteractiveIconDisplay.razor.rz.scp.css */
+.luth_web_notifications-interactive-icon[b-yzmb4yd0ck] {
+    position: relative;
+}
+/* _content/Luthetus.Website.RazorLib/NotificationsCase/NotificationsViewDisplay.razor.rz.scp.css */
+.luth_web_notifications-view-tabs[b-mobz8ep0iq] {
+    margin-top: 8px;
+    display: flex;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--luth_primary-border-color);
+}
+
+    .luth_web_notifications-view-tabs .luth_button[b-mobz8ep0iq] {
+        margin-right: 8px !important;
+    }
+
+.luth_web_notifications-view-tab-entry-count[b-mobz8ep0iq] {
+    margin: 0 5px;
+}

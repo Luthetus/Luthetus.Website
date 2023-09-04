@@ -1,3 +1,7 @@
+/* _content/Luthetus.Ide.RazorLib/BackgroundServiceCase/BackgroundServicesDisplay.razor.rz.scp.css */
+.luth_ide_background-services[b-kzs27e99wn] {
+    height: 100%;
+}
 /* _content/Luthetus.Ide.RazorLib/CompilerServiceCase/CompilerServiceDisplay.razor.rz.scp.css */
 .luth_ide_compiler-service-body[b-qs5dubd4to] {
 }
@@ -53,6 +57,10 @@
     .luth_ide_project-template-title.luth_active[b-64q8o79x83] {
         background-color: var(--luth_active-with-focus-background-color);
     }
+/* _content/Luthetus.Ide.RazorLib/Notification/NotificationsDisplay.razor.rz.scp.css */
+.luth_ide_folder-notifications[b-v4rwn0e2oc] {
+    height: 100%;
+}
 /* _content/Luthetus.Ide.RazorLib/Settings/SettingsDisplay.razor.rz.scp.css */
 .luth_ide_settings[b-euthw03sde] {
     padding: 5px;
