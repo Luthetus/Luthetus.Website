@@ -101,7 +101,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-GFbmu1PbJ1kj\/WfpU5q0Euc+MpOwomm6XW+PMlnQTL0=",
+      "hash": "sha256-oXYPrcqSYDMNWM0XF8JLCna\/56HYokiud3oUQwyISpA=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -133,7 +133,7 @@
       "url": "_framework\/Luthetus.CompilerServices.Lang.CSharp.dll"
     },
     {
-      "hash": "sha256-D0lTaLr\/3TPw5XZ6nRxAVXWCnVRg82vAbmp7l238xSY=",
+      "hash": "sha256-\/1Q9\/LcO4Cz9tBGIHL240+kipo2ZqEQYPDJ9yT2LInc=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.CSharpProject.dll"
     },
     {
@@ -141,7 +141,7 @@
       "url": "_framework\/Luthetus.CompilerServices.Lang.Css.dll"
     },
     {
-      "hash": "sha256-vGhiNrDWBxxg6lqiReakk6\/PKMurKgrNL1I1HfJLi20=",
+      "hash": "sha256-9fjDJq\/hIlD1fj1IjlXoD7hd3mJYF0bDv6rcVJi9EXg=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.DotNetSolution.dll"
     },
     {
@@ -169,15 +169,15 @@
       "url": "_framework\/Luthetus.CompilerServices.Lang.Xml.dll"
     },
     {
-      "hash": "sha256-jT+qyoxrldt+fcqJ2vmk0HJGZrsiDcHKVyFPYyXykEk=",
+      "hash": "sha256-7pBpZ6mkNoT7vCBRd5UnBICnX8xhuK8nQQq\/78R+ctQ=",
       "url": "_framework\/Luthetus.Ide.ClassLib.dll"
     },
     {
-      "hash": "sha256-kN4SEcj5fQWeTuWwkltWgu+tYZiv2ZE\/1HMX\/sHHZgM=",
+      "hash": "sha256-K3ok7N0EV591KFmszOG322HsAyoxt005BYxzdhhS8cE=",
       "url": "_framework\/Luthetus.Ide.RazorLib.dll"
     },
     {
-      "hash": "sha256-phFb8hN+kzgsj4xp+KtDLZB2V8MYdHs1xSCVS\/1Bcgk=",
+      "hash": "sha256-XM3zFVZwRGD3qh5ELpJlr+szLbOmeQ7hl4LPZR21p7A=",
       "url": "_framework\/Luthetus.Ide.Wasm.dll"
     },
     {
@@ -185,7 +185,7 @@
       "url": "_framework\/Luthetus.TextEditor.RazorLib.dll"
     },
     {
-      "hash": "sha256-JK\/t9EpX\/9r\/aTGkt21qwNQ0OIERKMAruFjs4i\/8VHc=",
+      "hash": "sha256-9+FsmpfR+38BkA+mPqnWZZPVt0+qxZ80SXOiq1GfQTU=",
       "url": "_framework\/Luthetus.Website.RazorLib.dll"
     },
     {
@@ -573,5 +573,5 @@
       "url": "_content\/Luthetus.Website.RazorLib\/Luthetus.Website.RazorLib.bundle.scp.css"
     }
   ],
-  "version": "KAiHZslr"
+  "version": "yxvo+E0O"
 };
