@@ -28,7 +28,7 @@ public partial class NotificationFabricatorDisplay : ComponentBase
         var parameterName = _isError
             ? nameof(IErrorNotificationRendererType.Message)
             : nameof(IInformativeNotificationRendererType.Message);
-        
+
         var cssClassString = _isError
             ? IErrorNotificationRendererType.CSS_CLASS_STRING
             : null;

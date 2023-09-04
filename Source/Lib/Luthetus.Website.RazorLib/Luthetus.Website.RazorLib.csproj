@@ -1,30 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
 
 
-    <ItemGroup>
-        <SupportedPlatform Include="browser" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.RazorLib\Luthetus.Ide.RazorLib.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.14" />
-        <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.0.2" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.21" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\..\Luthetus.CompilerServices\Source\DotNetSolution\Source\Luthetus.CompilerServices.Lang.DotNetSolution.csproj" />
-      <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.ClassLib\Luthetus.Ide.ClassLib.csproj" />
-      <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.RazorLib\Luthetus.Ide.RazorLib.csproj" />
-      <ProjectReference Include="..\..\..\..\Luthetus.TextEditor\Source\Lib\Luthetus.TextEditor.RazorLib\Luthetus.TextEditor.RazorLib.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Store\ReplCase\Facts\BlazorWasmAppCase\" />
-    </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
 
 </Project>
