@@ -22,6 +22,7 @@ using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
+using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -197,6 +198,10 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             textEditorModel.CompilerService.RegisterModel(textEditorModel);
 
             TextEditorService.Model.RegisterCustom(textEditorModel);
+
+            TextEditorService.Model.RegisterPresentationModel(
+                    textEditorModel.ModelKey,
+                    CompilerServiceDiagnosticPresentationFacts.EmptyPresentationModel);
 
             await textEditorModel.ApplySyntaxHighlightingAsync();
         }
