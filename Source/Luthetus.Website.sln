@@ -103,11 +103,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.TextEditor.BlazorT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.Ide.Wasm", "Host\Luthetus.Ide.Wasm\Luthetus.Ide.Wasm.csproj", "{13403AD5-D5E0-4E7F-ADB7-A1473458513B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.Ide.ServerSide", "Host\Luthetus.Ide.ServerSide\Luthetus.Ide.ServerSide.csproj", "{713CB040-7C9F-493B-8795-0CB30B08439D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.Ide.ServerSide", "Host\Luthetus.Ide.ServerSide\Luthetus.Ide.ServerSide.csproj", "{713CB040-7C9F-493B-8795-0CB30B08439D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Luthetus.Website", "Luthetus.Website", "{038DC9C5-D247-4A6B-8C1F-0C9FC1C686EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luthetus.Website.RazorLib", "Lib\Luthetus.Website.RazorLib\Luthetus.Website.RazorLib.csproj", "{7B3625D0-EBDC-4C5B-B4F5-DCD8D8605725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luthetus.Website.RazorLib", "Lib\Luthetus.Website.RazorLib\Luthetus.Website.RazorLib.csproj", "{7B3625D0-EBDC-4C5B-B4F5-DCD8D8605725}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
