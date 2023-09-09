@@ -2,10 +2,18 @@
 .luth_ide_background-services[b-kzs27e99wn] {
     height: 100%;
 }
-/* _content/Luthetus.Ide.RazorLib/CompilerServiceCase/CompilerServiceDisplay.razor.rz.scp.css */
-.luth_ide_compiler-service-body[b-qs5dubd4to] {
+/* _content/Luthetus.Ide.RazorLib/CompilerServiceExplorer/Graphical/Obsolete/ObsoleteCompilerServiceExplorerGraphicalDisplay.razor.rz.scp.css */
+.luth_ide_compiler-service-body[b-lggdvayc1l] {
 }
 
+/* _content/Luthetus.Ide.RazorLib/CompilerServiceExplorer/TreeView/CompilerServiceExplorerTreeViewDisplay.razor.rz.scp.css */
+.luth_ide_compiler-explorer-tree-view[b-1irrvti8t8] {
+    height: calc(100% - 32px);
+}
+
+.luth_ide_compiler-explorer-tree-view-body[b-1irrvti8t8] {
+    height: calc(100% - 32px);
+}
 /* _content/Luthetus.Ide.RazorLib/CSharpProjectForm/CSharpProjectFormDisplay.razor.rz.scp.css */
 .luth_ide_graphical-project-template-inputs[b-411oudgupt] {
     display: flex;

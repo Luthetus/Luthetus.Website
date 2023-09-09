@@ -92,17 +92,17 @@
     color: var(--luth_active-button-primary-font-color);
 }
 
-.luth_button.luth_disabled {
+.luth_button:disabled {
     background-color: var(--luth_primary-disabled-background-color);
     color: var(--luth_primary-disabled-foreground-color);
 }
 
-.luth_button.luth_disabled:hover {
+.luth_button:disabled:hover {
     background-color: var(--luth_primary-disabled-hover-background-color);
     color: var(--luth_primary-disabled-hover-foreground-color);
 }
 
-.luth_button.luth_disabled:focus {
+.luth_button:disabled:focus {
     background-color: var(--luth_primary-disabled-hover-background-color);
     color: var(--luth_primary-disabled-hover-foreground-color);
 }

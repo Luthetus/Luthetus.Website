@@ -119,6 +119,12 @@
 .luth_menu-option-display:focus[b-7be8q7qs7b] {
     outline: solid var(--luth_menu-option-display-focus-outline-size) var(--luth_outline-with-focus-color);
 }
+/* _content/Luthetus.Common/Notification/IconBadgeCase/IconBadgeDisplay.razor.rz.scp.css */
+.luth_web_icon-badge[b-9svaewqx8j] {
+    position: absolute;
+    top: 0;
+    line-height: 0.6;
+}
 /* _content/Luthetus.Common/Notification/NotificationDisplay.razor.rz.scp.css */
 .luth_notification[b-85qfgzfq2f] {
     position: fixed;
@@ -166,6 +172,26 @@
     overflow: auto;
     padding: var(--luth_notification-body-padding);
 }
+/* _content/Luthetus.Common/Notification/NotificationsInteractiveIconDisplay.razor.rz.scp.css */
+.luth_web_notifications-interactive-icon[b-pz9pss3g8f] {
+    position: relative;
+}
+/* _content/Luthetus.Common/Notification/NotificationsViewDisplay.razor.rz.scp.css */
+.luth_web_notifications-view-tabs[b-psovbalnci] {
+    margin-top: 8px;
+    display: flex;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--luth_primary-border-color);
+}
+
+    .luth_web_notifications-view-tabs .luth_button[b-psovbalnci] {
+        margin-right: 8px !important;
+    }
+
+.luth_web_notifications-view-tab-entry-count[b-psovbalnci] {
+    margin: 0 5px;
+}
 /* _content/Luthetus.Common/OutOfBoundsClick/OutOfBoundsClickDisplay.razor.rz.scp.css */
 .luth_out-of-bounds-click-display[b-hd5ghl0efo] {
     width: 100vw;
@@ -185,6 +211,10 @@
     background-color: var(--luth_resize-row-background-color);
     width: 100%;
     cursor: n-resize;
+}
+/* _content/Luthetus.Common/TabGroups/TabGroupDisplay.razor.rz.scp.css */
+.luth_tab-group[b-m0dw4g7as2] {
+    display: flex;
 }
 /* _content/Luthetus.Common/TreeView/Displays/TreeViewDisplay.razor.rz.scp.css */
 .luth_tree-view-title[b-ccukjws8lf] {
