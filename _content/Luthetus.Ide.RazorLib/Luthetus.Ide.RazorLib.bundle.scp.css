@@ -14,10 +14,6 @@
 .luth_ide_compiler-explorer-tree-view-body[b-1irrvti8t8] {
     height: calc(100% - 32px);
 }
-/* _content/Luthetus.Ide.RazorLib/ContextCase/ContextBoundary.razor.rz.scp.css */
-.luth_ide_context-boundary[b-c2yinwxtdp] {
-    position: relative;
-}
 /* _content/Luthetus.Ide.RazorLib/ContextCase/ContextBoundaryOverlay.razor.rz.scp.css */
 .luth_ide_context-boundary-overlay[b-7mw0z0ivoi] {
     position: fixed;
