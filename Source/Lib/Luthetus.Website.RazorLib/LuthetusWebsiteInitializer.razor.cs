@@ -80,15 +80,15 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                         false,
                         EnvironmentProvider);
 
-                    Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
+                    Dispatcher.Dispatch(new EditorRegistry.OpenInEditorAction(
                         absoluteFilePath,
                         false));
 
                     // This code block is hacky. I want the Solution Explorer to from the get-go be fully expanded, so the user can see 'Program.cs'
                     {
-                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
-                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
-                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
                     }
                 },
                 "Parsing Solution",
@@ -129,7 +129,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             false,
             EnvironmentProvider);
 
-        Dispatcher.Dispatch(new DotNetSolutionState.SetDotNetSolutionAction(
+        Dispatcher.Dispatch(new DotNetSolutionRegistry.SetDotNetSolutionAction(
             solutionAbsoluteFilePath));
     }
 
@@ -192,7 +192,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 decorationMapper,
                 null,
                 new(),
-                TextEditorModelKey.NewTextEditorModelKey()
+                TextEditorModelKey.NewKey()
             );
 
             textEditorModel.CompilerService.RegisterModel(textEditorModel);
