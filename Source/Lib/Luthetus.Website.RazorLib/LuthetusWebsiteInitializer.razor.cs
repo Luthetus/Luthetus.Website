@@ -1,7 +1,6 @@
 using Fluxor;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
-using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.CompilerServices.Lang.CSharp.CompilerServiceCase;
@@ -23,6 +22,7 @@ using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
+using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -75,13 +75,13 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                     await ParseSolutionAsync();
 
                     // Display a file from the get-go so the user is less confused on what the website is.
-                    var absoluteFilePath = new AbsolutePath(
+                    var absolutePath = new AbsolutePath(
                         InitialSolutionFacts.PROGRAM_ABSOLUTE_FILE_PATH,
                         false,
                         EnvironmentProvider);
 
                     Dispatcher.Dispatch(new EditorRegistry.OpenInEditorAction(
-                        absoluteFilePath,
+                        absolutePath,
                         false));
 
                     // This code block is hacky. I want the Solution Explorer to from the get-go be fully expanded, so the user can see 'Program.cs'
@@ -124,13 +124,13 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
     private void InitializeDotNetSolutionAndExplorer()
     {
-        var solutionAbsoluteFilePath = new AbsolutePath(
+        var solutionAbsolutePath = new AbsolutePath(
             InitialSolutionFacts.SLN_ABSOLUTE_FILE_PATH,
             false,
             EnvironmentProvider);
 
         Dispatcher.Dispatch(new DotNetSolutionRegistry.SetDotNetSolutionAction(
-            solutionAbsoluteFilePath));
+            solutionAbsolutePath));
     }
 
     private async Task ParseSolutionAsync()
@@ -157,7 +157,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
         foreach (var file in allFiles)
         {
-            var absoluteFilePath = new AbsolutePath(file, false, EnvironmentProvider);
+            var absolutePath = new AbsolutePath(file, false, EnvironmentProvider);
 
             var resourceUri = new ResourceUri(file);
 
@@ -168,7 +168,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 file);
 
             var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
-                absoluteFilePath.ExtensionNoPeriod,
+                absolutePath.ExtensionNoPeriod,
                 XmlCompilerService,
                 DotNetCompilerService,
                 CSharpProjectCompilerService,
@@ -181,12 +181,12 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 JsonCompilerService);
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
-                absoluteFilePath.ExtensionNoPeriod);
+                absolutePath.ExtensionNoPeriod);
 
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
-                absoluteFilePath.ExtensionNoPeriod,
+                absolutePath.ExtensionNoPeriod,
                 content,
                 compilerService,
                 decorationMapper,
