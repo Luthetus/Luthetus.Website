@@ -98,7 +98,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 Dispatcher,
                 CancellationToken.None);
 
-            LuthetusCommonBackgroundTaskService.QueueBackgroundWorkItem(backgroundTask);
+            LuthetusCommonBackgroundTaskService.Queue(backgroundTask);
         }
 
         await base.OnAfterRenderAsync(firstRender);
