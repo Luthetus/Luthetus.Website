@@ -75,7 +75,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                     await ParseSolutionAsync();
 
                     // Display a file from the get-go so the user is less confused on what the website is.
-                    var absoluteFilePath = new AbsoluteFilePath(
+                    var absoluteFilePath = new AbsolutePath(
                         InitialSolutionFacts.PROGRAM_ABSOLUTE_FILE_PATH,
                         false,
                         EnvironmentProvider);
@@ -124,7 +124,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
     private void InitializeDotNetSolutionAndExplorer()
     {
-        var solutionAbsoluteFilePath = new AbsoluteFilePath(
+        var solutionAbsoluteFilePath = new AbsolutePath(
             InitialSolutionFacts.SLN_ABSOLUTE_FILE_PATH,
             false,
             EnvironmentProvider);
@@ -157,7 +157,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
         foreach (var file in allFiles)
         {
-            var absoluteFilePath = new AbsoluteFilePath(file, false, EnvironmentProvider);
+            var absoluteFilePath = new AbsolutePath(file, false, EnvironmentProvider);
 
             var resourceUri = new ResourceUri(file);
 
