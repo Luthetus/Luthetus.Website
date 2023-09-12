@@ -39,7 +39,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
-    private ILuthetusCommonBackgroundTaskService LuthetusCommonBackgroundTaskService { get; set; } = null!;
+    private IBackgroundTaskService BackgroundTaskService { get; set; } = null!;
     [Inject]
     private XmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
@@ -65,8 +65,11 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     {
         if (firstRender)
         {
-            var backgroundTask = new BackgroundTask(
-                async cancellationToken =>
+            BackgroundTaskService.Enqueue(
+                BackgroundTaskKey.NewKey(),
+                CommonBackgroundTaskWorker.Queue.Key,
+                "Initialize Website",
+                async () =>
                 {
                     await WriteFileSystemInMemoryAsync();
 
@@ -90,15 +93,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                         TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
                         TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
                     }
-                },
-                "Parsing Solution",
-                string.Empty,
-                true,
-                _ => Task.CompletedTask,
-                Dispatcher,
-                CancellationToken.None);
-
-            LuthetusCommonBackgroundTaskService.Queue(backgroundTask);
+                });
         }
 
         await base.OnAfterRenderAsync(firstRender);

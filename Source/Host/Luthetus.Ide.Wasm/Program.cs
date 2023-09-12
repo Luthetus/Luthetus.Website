@@ -1,4 +1,5 @@
 using Luthetus.Common.RazorLib;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
 using Luthetus.Ide.Wasm;
 using Luthetus.Website.RazorLib;
 using Microsoft.AspNetCore.Components.Web;
@@ -10,7 +11,10 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-var hostingInformation = new LuthetusHostingInformation(LuthetusHostingKind.Wasm);
+var hostingInformation = new LuthetusHostingInformation(
+    LuthetusHostingKind.Wasm,
+    new BackgroundTaskService());
+
 builder.Services.AddLuthetusWebsiteServices(hostingInformation);
 
 var host = builder.Build();
