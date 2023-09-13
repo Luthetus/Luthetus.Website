@@ -22,6 +22,7 @@ using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
 using Luthetus.Ide.RazorLib.FileSystemCase;
 using Luthetus.Ide.RazorLib.EditorCase;
 using Luthetus.Ide.RazorLib.DotNetSolutionCase;
+using Luthetus.Ide.RazorLib.DotNetSolutionCase.States;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -86,9 +87,9 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
                     // This code block is hacky. I want the Solution Explorer to from the get-go be fully expanded, so the user can see 'Program.cs'
                     {
-                        TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
-                        TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
-                        TreeViewService.MoveRight(DotNetSolutionRegistry.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
+                        TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
                     }
                 });
         }
@@ -121,7 +122,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             false,
             EnvironmentProvider);
 
-        Dispatcher.Dispatch(new DotNetSolutionRegistry.SetDotNetSolutionAction(
+        Dispatcher.Dispatch(new DotNetSolutionState.SetDotNetSolutionTask(
             solutionAbsolutePath));
     }
 
