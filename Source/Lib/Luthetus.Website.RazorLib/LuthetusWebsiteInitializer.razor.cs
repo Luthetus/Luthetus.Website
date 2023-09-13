@@ -20,8 +20,8 @@ using Microsoft.AspNetCore.Components;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
 using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
 using Luthetus.Ide.RazorLib.FileSystemCase;
-using Luthetus.Ide.ClassLib.Store.EditorCase;
-using Luthetus.Ide.ClassLib.Store.DotNetSolutionCase;
+using Luthetus.Ide.RazorLib.EditorCase;
+using Luthetus.Ide.RazorLib.DotNetSolutionCase;
 
 namespace Luthetus.Website.RazorLib;
 
