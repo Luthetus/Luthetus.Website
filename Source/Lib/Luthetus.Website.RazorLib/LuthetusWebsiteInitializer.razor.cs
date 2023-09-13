@@ -12,7 +12,7 @@ using Luthetus.CompilerServices.Lang.Json;
 using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Xml;
-using Luthetus.Ide.ClassLib.FileConstants;
+using Luthetus.Ide.ClassLib.FileConstantsCase;
 using Luthetus.Ide.ClassLib.Store.DotNetSolutionCase;
 using Luthetus.Ide.Wasm.Facts;
 using Luthetus.TextEditor.RazorLib.Lexing;
