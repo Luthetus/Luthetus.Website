@@ -60,6 +60,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private TypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
     [Inject]
     private JsonCompilerService JsonCompilerService { get; set; } = null!;
+    [Inject]
+    private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -123,7 +125,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             EnvironmentProvider);
 
         Dispatcher.Dispatch(new DotNetSolutionState.SetDotNetSolutionTask(
-            solutionAbsolutePath));
+            solutionAbsolutePath,
+            DotNetSolutionSync));
     }
 
     private async Task ParseSolutionAsync()
