@@ -1,7 +1,5 @@
 using Fluxor;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
-using Luthetus.Common.RazorLib.BackgroundTaskCase.Usage;
-using Luthetus.Common.RazorLib.FileSystem.Classes.FilePath;
 using Luthetus.Common.RazorLib.FileSystem.Interfaces;
 using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.CompilerServices.Lang.CSharp.CompilerServiceCase;
@@ -14,15 +12,17 @@ using Luthetus.CompilerServices.Lang.Json;
 using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Xml;
-using Luthetus.Ide.ClassLib.FileConstants;
-using Luthetus.Ide.ClassLib.Store.DotNetSolutionCase;
 using Luthetus.Ide.Wasm.Facts;
 using Luthetus.TextEditor.RazorLib.Lexing;
 using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
-using Luthetus.Ide.ClassLib.Store.EditorCase;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
+using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
+using Luthetus.Ide.RazorLib.FileSystemCase;
+using Luthetus.Ide.RazorLib.EditorCase;
+using Luthetus.Ide.RazorLib.DotNetSolutionCase;
+using Luthetus.Ide.RazorLib.DotNetSolutionCase.States;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -39,7 +39,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
-    private ILuthetusCommonBackgroundTaskService LuthetusCommonBackgroundTaskService { get; set; } = null!;
+    private IBackgroundTaskService BackgroundTaskService { get; set; } = null!;
     [Inject]
     private XmlCompilerService XmlCompilerService { get; set; } = null!;
     [Inject]
@@ -60,13 +60,16 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private TypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
     [Inject]
     private JsonCompilerService JsonCompilerService { get; set; } = null!;
+    [Inject]
+    private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            var backgroundTask = new BackgroundTask(
-                async cancellationToken =>
+            BackgroundTaskService.Enqueue(BackgroundTaskKey.NewKey(), ContinuousBackgroundTaskWorker.Queue.Key,
+                "Initialize Website",
+                async () =>
                 {
                     await WriteFileSystemInMemoryAsync();
 
@@ -75,13 +78,13 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                     await ParseSolutionAsync();
 
                     // Display a file from the get-go so the user is less confused on what the website is.
-                    var absoluteFilePath = new AbsoluteFilePath(
+                    var absolutePath = new AbsolutePath(
                         InitialSolutionFacts.PROGRAM_ABSOLUTE_FILE_PATH,
                         false,
                         EnvironmentProvider);
 
-                    Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
-                        absoluteFilePath,
+                    Dispatcher.Dispatch(new EditorRegistry.OpenInEditorAction(
+                        absolutePath,
                         false));
 
                     // This code block is hacky. I want the Solution Explorer to from the get-go be fully expanded, so the user can see 'Program.cs'
@@ -90,15 +93,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                         TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
                         TreeViewService.MoveRight(DotNetSolutionState.TreeViewSolutionExplorerStateKey, false);
                     }
-                },
-                "Parsing Solution",
-                string.Empty,
-                true,
-                _ => Task.CompletedTask,
-                Dispatcher,
-                CancellationToken.None);
-
-            LuthetusCommonBackgroundTaskService.QueueBackgroundWorkItem(backgroundTask);
+                });
         }
 
         await base.OnAfterRenderAsync(firstRender);
@@ -124,13 +119,14 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
     private void InitializeDotNetSolutionAndExplorer()
     {
-        var solutionAbsoluteFilePath = new AbsoluteFilePath(
+        var solutionAbsolutePath = new AbsolutePath(
             InitialSolutionFacts.SLN_ABSOLUTE_FILE_PATH,
             false,
             EnvironmentProvider);
 
-        Dispatcher.Dispatch(new DotNetSolutionState.SetDotNetSolutionAction(
-            solutionAbsoluteFilePath));
+        Dispatcher.Dispatch(new DotNetSolutionState.SetDotNetSolutionTask(
+            solutionAbsolutePath,
+            DotNetSolutionSync));
     }
 
     private async Task ParseSolutionAsync()
@@ -157,7 +153,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
 
         foreach (var file in allFiles)
         {
-            var absoluteFilePath = new AbsoluteFilePath(file, false, EnvironmentProvider);
+            var absolutePath = new AbsolutePath(file, false, EnvironmentProvider);
 
             var resourceUri = new ResourceUri(file);
 
@@ -168,7 +164,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 file);
 
             var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
-                absoluteFilePath.ExtensionNoPeriod,
+                absolutePath.ExtensionNoPeriod,
                 XmlCompilerService,
                 DotNetCompilerService,
                 CSharpProjectCompilerService,
@@ -181,18 +177,18 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 JsonCompilerService);
 
             var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
-                absoluteFilePath.ExtensionNoPeriod);
+                absolutePath.ExtensionNoPeriod);
 
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
-                absoluteFilePath.ExtensionNoPeriod,
+                absolutePath.ExtensionNoPeriod,
                 content,
                 compilerService,
                 decorationMapper,
                 null,
                 new(),
-                TextEditorModelKey.NewTextEditorModelKey()
+                TextEditorModelKey.NewKey()
             );
 
             textEditorModel.CompilerService.RegisterModel(textEditorModel);

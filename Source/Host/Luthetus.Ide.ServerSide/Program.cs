@@ -1,4 +1,5 @@
 using Luthetus.Common.RazorLib;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
 using Luthetus.Website.RazorLib;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,10 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddHttpClient();
 
-var hostingInformation = new LuthetusHostingInformation(LuthetusHostingKind.ServerSide);
+var hostingInformation = new LuthetusHostingInformation(
+    LuthetusHostingKind.ServerSide,
+    new BackgroundTaskService());
+
 builder.Services.AddLuthetusWebsiteServices(hostingInformation);
 
 var app = builder.Build();
