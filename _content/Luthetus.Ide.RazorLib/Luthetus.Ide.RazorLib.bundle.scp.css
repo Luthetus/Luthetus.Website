@@ -1,17 +1,13 @@
-/* _content/Luthetus.Ide.RazorLib/BackgroundServiceCase/BackgroundServicesDisplay.razor.rz.scp.css */
-.luth_ide_background-services[b-kzs27e99wn] {
-    height: 100%;
-}
-/* _content/Luthetus.Ide.RazorLib/CompilerServiceExplorer/Graphical/Obsolete/ObsoleteCompilerServiceExplorerGraphicalDisplay.razor.rz.scp.css */
-.luth_ide_compiler-service-body[b-lggdvayc1l] {
+/* _content/Luthetus.Ide.RazorLib/CompilerServiceExplorerCase/Graphical/Obsolete/ObsoleteCompilerServiceExplorerGraphicalDisplay.razor.rz.scp.css */
+.luth_ide_compiler-service-body[b-zknvq95jz4] {
 }
 
-/* _content/Luthetus.Ide.RazorLib/CompilerServiceExplorer/TreeView/CompilerServiceExplorerTreeViewDisplay.razor.rz.scp.css */
-.luth_ide_compiler-explorer-tree-view[b-1irrvti8t8] {
+/* _content/Luthetus.Ide.RazorLib/CompilerServiceExplorerCase/TreeView/CompilerServiceExplorerTreeViewDisplay.razor.rz.scp.css */
+.luth_ide_compiler-explorer-tree-view[b-dtyp2zrw2b] {
     height: calc(100% - 32px);
 }
 
-.luth_ide_compiler-explorer-tree-view-body[b-1irrvti8t8] {
+.luth_ide_compiler-explorer-tree-view-body[b-dtyp2zrw2b] {
     height: calc(100% - 32px);
 }
 /* _content/Luthetus.Ide.RazorLib/ContextCase/ContextBoundaryOverlay.razor.rz.scp.css */
@@ -26,21 +22,21 @@
     opacity: 0.6;
     cursor: default;
 }
-/* _content/Luthetus.Ide.RazorLib/CSharpProjectForm/CSharpProjectFormDisplay.razor.rz.scp.css */
-.luth_ide_graphical-project-template-inputs[b-411oudgupt] {
+/* _content/Luthetus.Ide.RazorLib/CSharpProjectFormCase/CSharpProjectFormDisplay.razor.rz.scp.css */
+.luth_ide_graphical-project-template-inputs[b-dayrcn7xxe] {
     display: flex;
     flex-direction: column;
     align-items: end;
 }
 
-.luth_ide_c-sharp-project-form-graphical-panel .luth_ide_c-sharp-project-form-middle-inputs[b-411oudgupt] {
+.luth_ide_c-sharp-project-form-graphical-panel .luth_ide_c-sharp-project-form-middle-inputs[b-dayrcn7xxe] {
     height: 50%;
     min-height: 200px;
     overflow-y: auto;
     position: relative;
 }
 
-.luth_ide_c-sharp-project-form-sticky[b-411oudgupt] {
+.luth_ide_c-sharp-project-form-sticky[b-dayrcn7xxe] {
     position: sticky;
     top: 0;
     right: 0;
@@ -50,43 +46,43 @@
     color: var(--luth_secondary-foreground-color);
 }
 
-.luth_ide_graphical-project-template-container[b-411oudgupt] {
+.luth_ide_graphical-project-template-container[b-dayrcn7xxe] {
     width: 100%;
 }
 
-.luth_ide_disable-display-flex[b-411oudgupt] {
+.luth_ide_disable-display-flex[b-dayrcn7xxe] {
     display: unset;
 }
 
-/* _content/Luthetus.Ide.RazorLib/CSharpProjectForm/ProjectTemplateDisplay.razor.rz.scp.css */
-.luth_ide_project-template[b-64q8o79x83] {
+/* _content/Luthetus.Ide.RazorLib/CSharpProjectFormCase/ProjectTemplateDisplay.razor.rz.scp.css */
+.luth_ide_project-template[b-o87886jrd4] {
     margin-bottom: 12px;
     background-color: var(--luth_tertiary-background-color);
     color: var(--luth_tertiary-foreground-color);
 }
 
-.luth_ide_project-template-title[b-64q8o79x83] {
+.luth_ide_project-template-title[b-o87886jrd4] {
     background-color: var(--luth_ide_section-title-background-color);
     color: var(--luth_primary-foreground-color);
     cursor: pointer;
 }
-    .luth_ide_project-template-title:hover[b-64q8o79x83] {
+    .luth_ide_project-template-title:hover[b-o87886jrd4] {
         background-color: var(--luth_active-no-focus-background-color);
     }
 
-    .luth_ide_project-template-title.luth_active[b-64q8o79x83] {
+    .luth_ide_project-template-title.luth_active[b-o87886jrd4] {
         background-color: var(--luth_active-with-focus-background-color);
     }
-/* _content/Luthetus.Ide.RazorLib/Notification/NotificationsDisplay.razor.rz.scp.css */
-.luth_ide_folder-notifications[b-v4rwn0e2oc] {
+/* _content/Luthetus.Ide.RazorLib/NotificationCase/NotificationsDisplay.razor.rz.scp.css */
+.luth_ide_folder-notifications[b-8expycnlka] {
     height: 100%;
 }
-/* _content/Luthetus.Ide.RazorLib/Settings/SettingsDisplay.razor.rz.scp.css */
-.luth_ide_settings[b-euthw03sde] {
+/* _content/Luthetus.Ide.RazorLib/SettingsCase/SettingsDisplay.razor.rz.scp.css */
+.luth_ide_settings[b-mdg046tus0] {
     padding: 5px;
 }
 
-.luth_ide_settings-scope-border[b-euthw03sde] {
+.luth_ide_settings-scope-border[b-mdg046tus0] {
     padding: 0 !important;
     background-color: var(--luth_primary-border-color);
     opacity: 0.7;
@@ -98,16 +94,16 @@
     margin-left: 6px;
 }
 
-.luth_ide_settings-scope-title[b-euthw03sde] {
+.luth_ide_settings-scope-title[b-mdg046tus0] {
     color: var(--luth_primary-emphasis-foreground-color);
 }
 
-.luth_ide_settings-scope-body[b-euthw03sde] {
+.luth_ide_settings-scope-body[b-mdg046tus0] {
     position: relative;
     padding-left: 12px;
 }
 
-.luth_ide_settings-scope-body > div[b-euthw03sde] {
+.luth_ide_settings-scope-body > div[b-mdg046tus0] {
     padding: 7px 5px;
     margin-bottom: 7px;
 }
