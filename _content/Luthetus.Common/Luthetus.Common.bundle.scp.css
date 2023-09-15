@@ -1,12 +1,12 @@
-/* _content/Luthetus.Common/Dialog/DialogDisplay.razor.rz.scp.css */
-.luth_dialog-display[b-v807rd6wyu] {
+/* _content/Luthetus.Common/Dialog/Displays/DialogDisplay.razor.rz.scp.css */
+.luth_dialog-display[b-m6slko407w] {
     z-index: var(--luth_dialog-display-z-index);
     color: var(--luth_secondary-foreground-color);
     background-color: var(--luth_secondary-background-color);
     box-shadow: 0 0 var(--luth_dialog-display-box-shadow-blur-radius) var(--luth_primary-box-shadow-color);
 }
 
-.luth_dialog-display-toolbar[b-v807rd6wyu] {
+.luth_dialog-display-toolbar[b-m6slko407w] {
     height: var(--luth_dialog-display-toolbar-height);
     display: flex;
     justify-content: space-between;
@@ -17,38 +17,38 @@
     padding: var(--luth_dialog-display-toolbar-padding);
 }
 
-.luth_dialog-display-title[b-v807rd6wyu] {
+.luth_dialog-display-title[b-m6slko407w] {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.luth_error .luth_dialog-display-toolbar[b-v807rd6wyu] {
+.luth_error .luth_dialog-display-toolbar[b-m6slko407w] {
     background-color: var(--luth_error-background-color);
 }
 
-.luth_dialog-display-buttons[b-v807rd6wyu] {
+.luth_dialog-display-buttons[b-m6slko407w] {
     display: flex;
     align-items: center;
 }
 
-.luth_dialog-display-button-entry[b-v807rd6wyu] {
+.luth_dialog-display-button-entry[b-m6slko407w] {
     padding: var(--luth_dialog-display-button-entry-padding);
     display: inline-flex;
     height: fit-content;
 }
 
-.luth_dialog-display-button-entry:not(:last-of-type)[b-v807rd6wyu] {
+.luth_dialog-display-button-entry:not(:last-of-type)[b-m6slko407w] {
     margin-right: var(--luth_dialog-display-button-entry-margin-right);
 }
 
-.luth_dialog-display-body[b-v807rd6wyu] {
+.luth_dialog-display-body[b-m6slko407w] {
     height: calc(100% - var(--luth_dialog-display-toolbar-height));
     overflow: auto;
     padding: var(--luth_dialog-display-body-padding);
 }
-/* _content/Luthetus.Common/Drag/DragInitializer.razor.rz.scp.css */
-.luth_drag-initializer[b-6g6no3jxzu] {
+/* _content/Luthetus.Common/Drag/Displays/DragInitializer.razor.rz.scp.css */
+.luth_drag-initializer[b-i724ne6jc8] {
     z-index: var(--luth_drag-initializer-z-index);
     width: 100vw;
     height: 100vh;
@@ -56,22 +56,22 @@
     left: 0;
     top: 0;
 }
-/* _content/Luthetus.Common/Dropdown/DropdownDisplay.razor.rz.scp.css */
-.luth_dropdown-display[b-9d1hxrlhe2] {
+/* _content/Luthetus.Common/Dropdown/Displays/DropdownDisplay.razor.rz.scp.css */
+.luth_dropdown-display[b-odxvuy75vx] {
     z-index: var(--luth_dropdown-display-z-index);
     position: absolute;
     color: var(--luth_tertiary-foreground-color);
     background-color: var(--luth_tertiary-background-color);
     box-shadow: 0 0 var(--luth_dropdown-display-default-background-box-shadow-blur-radius) var(--luth_primary-box-shadow-color);
 }
-/* _content/Luthetus.Common/Icons/IconLoading.razor.rz.scp.css */
-.lds-dual-ring[b-ul80345djx] {
+/* _content/Luthetus.Common/Icons/Displays/IconLoading.razor.rz.scp.css */
+.lds-dual-ring[b-xvhigmhipw] {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.lds-dual-ring[b-ul80345djx]:after {
+.lds-dual-ring[b-xvhigmhipw]:after {
     content: " ";
     display: block;
     width: 1em;
@@ -80,10 +80,10 @@
     border-radius: 50%;
     border: .15em solid var(--luth_primary-font-color);
     border-color: var(--luth_primary-font-color) transparent var(--luth_primary-font-color) transparent;
-    animation: lds-dual-ring-b-ul80345djx 1.2s linear infinite;
+    animation: lds-dual-ring-b-xvhigmhipw 1.2s linear infinite;
 }
 
-@keyframes lds-dual-ring-b-ul80345djx {
+@keyframes lds-dual-ring-b-xvhigmhipw {
     0% {
         transform: rotate(0deg);
     }
@@ -92,41 +92,41 @@
         transform: rotate(360deg);
     }
 }
-/* _content/Luthetus.Common/Menu/MenuDisplay.razor.rz.scp.css */
-.luth_menu-display:focus[b-udplqdei86] {
+/* _content/Luthetus.Common/Menu/Displays/MenuDisplay.razor.rz.scp.css */
+.luth_menu-display:focus[b-nnimqtg65k] {
     outline: solid var(--luth_menu-display-focus-outline-size) var(--luth_outline-with-focus-color);
 }
-/* _content/Luthetus.Common/Menu/MenuOptionDisplay.razor.rz.scp.css */
-.luth_menu-option-widget[b-7be8q7qs7b] {
+/* _content/Luthetus.Common/Menu/Displays/MenuOptionDisplay.razor.rz.scp.css */
+.luth_menu-option-widget[b-xr5joue3ie] {
     padding-bottom: 10px;
 }
 
-.luth_menu-option-display[b-7be8q7qs7b] {
+.luth_menu-option-display[b-xr5joue3ie] {
     position: relative;
     white-space: nowrap;
     cursor: default;
     padding: 0 var(--luth_menu-option-display-padding-width);
 }
 
-.luth_menu-option-display.luth_active[b-7be8q7qs7b] {
+.luth_menu-option-display.luth_active[b-xr5joue3ie] {
     background-color: var(--luth_primary-hover-background-color);
 }
 
-.luth_menu-option-display:hover[b-7be8q7qs7b] {
+.luth_menu-option-display:hover[b-xr5joue3ie] {
     background-color: var(--luth_primary-hover-background-color);
 }
 
-.luth_menu-option-display:focus[b-7be8q7qs7b] {
+.luth_menu-option-display:focus[b-xr5joue3ie] {
     outline: solid var(--luth_menu-option-display-focus-outline-size) var(--luth_outline-with-focus-color);
 }
-/* _content/Luthetus.Common/Notification/IconBadgeCase/IconBadgeDisplay.razor.rz.scp.css */
-.luth_web_icon-badge[b-9svaewqx8j] {
+/* _content/Luthetus.Common/Notification/Displays/IconBadgeDisplay.razor.rz.scp.css */
+.luth_web_icon-badge[b-8ouzfwsuh1] {
     position: absolute;
     top: 0;
     line-height: 0.6;
 }
-/* _content/Luthetus.Common/Notification/NotificationDisplay.razor.rz.scp.css */
-.luth_notification[b-85qfgzfq2f] {
+/* _content/Luthetus.Common/Notification/Displays/NotificationDisplay.razor.rz.scp.css */
+.luth_notification[b-hpnse0jboc] {
     position: fixed;
     z-index: var(--luth_notification-display-z-index);
     color: var(--luth_secondary-foreground-color);
@@ -134,7 +134,7 @@
     box-shadow: 0 0 var(--luth_notification-display-box-shadow-blur-radius) var(--luth_primary-box-shadow-color);
 }
 
-.luth_notification-toolbar[b-85qfgzfq2f] {
+.luth_notification-toolbar[b-hpnse0jboc] {
     height: var(--luth_notification-display-toolbar-height);
     display: flex;
     justify-content: space-between;
@@ -145,39 +145,39 @@
     padding: var(--luth_notification-toolbar-padding);
 }
 
-.luth_notification-title[b-85qfgzfq2f] {
+.luth_notification-title[b-hpnse0jboc] {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.luth_error .luth_notification-toolbar[b-85qfgzfq2f] {
+.luth_error .luth_notification-toolbar[b-hpnse0jboc] {
     background-color: var(--luth_error-background-color);
 }
 
-.luth_notification-control-buttons[b-85qfgzfq2f] {
+.luth_notification-control-buttons[b-hpnse0jboc] {
     display: flex;
     align-items: center;
 }
 
-.luth_notification-button-entry[b-85qfgzfq2f] {
+.luth_notification-button-entry[b-hpnse0jboc] {
     margin-right: var(--luth_notification-button-entry-margin-right);
     padding: var(--luth_notification-button-entry-padding);
     display: inline-flex;
     height: fit-content;
 }
 
-.luth_notification-body[b-85qfgzfq2f] {
+.luth_notification-body[b-hpnse0jboc] {
     height: calc(100% - var(--luth_notification-display-toolbar-height));
     overflow: auto;
     padding: var(--luth_notification-body-padding);
 }
-/* _content/Luthetus.Common/Notification/NotificationsInteractiveIconDisplay.razor.rz.scp.css */
-.luth_web_notifications-interactive-icon[b-pz9pss3g8f] {
+/* _content/Luthetus.Common/Notification/Displays/NotificationsInteractiveIconDisplay.razor.rz.scp.css */
+.luth_web_notifications-interactive-icon[b-25oehu9ml0] {
     position: relative;
 }
-/* _content/Luthetus.Common/Notification/NotificationsViewDisplay.razor.rz.scp.css */
-.luth_web_notifications-view-tabs[b-psovbalnci] {
+/* _content/Luthetus.Common/Notification/Displays/NotificationsViewDisplay.razor.rz.scp.css */
+.luth_web_notifications-view-tabs[b-1tdqfzjg4b] {
     margin-top: 8px;
     display: flex;
     padding-bottom: 8px;
@@ -185,35 +185,35 @@
     border-bottom: 2px solid var(--luth_primary-border-color);
 }
 
-    .luth_web_notifications-view-tabs .luth_button[b-psovbalnci] {
+    .luth_web_notifications-view-tabs .luth_button[b-1tdqfzjg4b] {
         margin-right: 8px !important;
     }
 
-.luth_web_notifications-view-tab-entry-count[b-psovbalnci] {
+.luth_web_notifications-view-tab-entry-count[b-1tdqfzjg4b] {
     margin: 0 5px;
 }
-/* _content/Luthetus.Common/OutOfBoundsClick/OutOfBoundsClickDisplay.razor.rz.scp.css */
-.luth_out-of-bounds-click-display[b-hd5ghl0efo] {
+/* _content/Luthetus.Common/OutOfBoundsClick/Displays/OutOfBoundsClickDisplay.razor.rz.scp.css */
+.luth_out-of-bounds-click-display[b-6dtibz1bgd] {
     width: 100vw;
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
 }
-/* _content/Luthetus.Common/Resize/ResizableColumn.razor.rz.scp.css */
-.luth_resize-column[b-ebkj5w8xcm] {
+/* _content/Luthetus.Common/Resize/Displays/ResizableColumn.razor.rz.scp.css */
+.luth_resize-column[b-jykutvfzco] {
     background-color: var(--luth_resize-column-background-color);
     height: 100%;
     cursor: e-resize;
 }
-/* _content/Luthetus.Common/Resize/ResizableRow.razor.rz.scp.css */
-.luth_resize-row[b-cpxaa8pya4] {
+/* _content/Luthetus.Common/Resize/Displays/ResizableRow.razor.rz.scp.css */
+.luth_resize-row[b-5suh1il9lf] {
     background-color: var(--luth_resize-row-background-color);
     width: 100%;
     cursor: n-resize;
 }
-/* _content/Luthetus.Common/TabCase/TabGroupDisplay.razor.rz.scp.css */
-.luth_tab-group[b-x21kfls6nm] {
+/* _content/Luthetus.Common/TabCase/Displays/TabGroupDisplay.razor.rz.scp.css */
+.luth_tab-group[b-q0jk83titd] {
     display: flex;
 }
 /* _content/Luthetus.Common/TreeView/Displays/TreeViewDisplay.razor.rz.scp.css */
