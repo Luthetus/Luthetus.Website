@@ -63,6 +63,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private JsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
     private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
+    [Inject]
+    private EditorSync EditorSync { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -84,7 +86,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                         false,
                         EnvironmentProvider);
 
-                    Dispatcher.Dispatch(new EditorRegistry.OpenInEditorAction(
+                    Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
+                        EditorSync,
                         absolutePath,
                         false));
 
