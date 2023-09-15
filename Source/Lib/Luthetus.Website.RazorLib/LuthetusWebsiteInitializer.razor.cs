@@ -19,10 +19,10 @@ using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
 using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
-using Luthetus.Ide.RazorLib.FileSystemCase;
 using Luthetus.Ide.RazorLib.EditorCase;
 using Luthetus.Ide.RazorLib.DotNetSolutionCase;
 using Luthetus.Ide.RazorLib.DotNetSolutionCase.States;
+using Luthetus.Ide.RazorLib.FileSystemCase.Models;
 
 namespace Luthetus.Website.RazorLib;
 

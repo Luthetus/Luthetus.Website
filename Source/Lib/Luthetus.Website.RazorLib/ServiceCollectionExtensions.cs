@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Fluxor;
 using Luthetus.Common.RazorLib;
 using Luthetus.TextEditor.RazorLib;
-using Luthetus.Ide.RazorLib.InstallationCase;
+using Luthetus.Ide.RazorLib.InstallationCase.Models;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -17,6 +17,6 @@ public static class ServiceCollectionExtensions
         return services.AddFluxor(options => options.ScanAssemblies(
             typeof(LuthetusCommonOptions).Assembly,
             typeof(LuthetusTextEditorOptions).Assembly,
-            typeof(Ide.RazorLib.InstallationCase.ServiceCollectionExtensions).Assembly));
+            typeof(Ide.RazorLib.InstallationCase.Models.ServiceCollectionExtensions).Assembly));
     }
 }
