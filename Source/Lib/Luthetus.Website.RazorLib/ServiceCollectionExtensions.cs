@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Fluxor;
-using Luthetus.Common.RazorLib;
 using Luthetus.TextEditor.RazorLib;
 using Luthetus.Ide.RazorLib.InstallationCase.Models;
+using Luthetus.Common.RazorLib.Installation.Models;
 
 namespace Luthetus.Website.RazorLib;
 

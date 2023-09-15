@@ -1,9 +1,9 @@
 using Fluxor;
-using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.Models;
 using Luthetus.Common.RazorLib.Dimensions;
 using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
-using Luthetus.Common.RazorLib.FileSystem.Interfaces;
-using Luthetus.Common.RazorLib.Options;
+using Luthetus.Common.RazorLib.FileSystem.Models;
+using Luthetus.Common.RazorLib.Options.Models;
 using Luthetus.Common.RazorLib.Resize;
 using Luthetus.Common.RazorLib.StateHasChangedBoundaryCase;
 using Luthetus.Common.RazorLib.Store.AppOptionsCase;
