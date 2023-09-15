@@ -1,7 +1,4 @@
 using Fluxor;
-using Luthetus.Common.RazorLib.BackgroundTaskCase.BaseTypes;
-using Luthetus.Common.RazorLib.FileSystem.Interfaces;
-using Luthetus.Common.RazorLib.TreeView;
 using Luthetus.CompilerServices.Lang.CSharp.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.Css;
@@ -13,16 +10,17 @@ using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Xml;
 using Luthetus.Ide.Wasm.Facts;
-using Luthetus.TextEditor.RazorLib.Lexing;
-using Luthetus.TextEditor.RazorLib.Model;
 using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Luthetus.TextEditor.RazorLib.CompilerServiceCase;
-using Luthetus.Common.RazorLib.FileSystem.Classes.LuthetusPath;
-using Luthetus.Ide.RazorLib.FileSystemCase;
-using Luthetus.Ide.RazorLib.EditorCase;
-using Luthetus.Ide.RazorLib.DotNetSolutionCase;
 using Luthetus.Ide.RazorLib.DotNetSolutionCase.States;
+using Luthetus.Ide.RazorLib.EditorCase.States;
+using Luthetus.Ide.RazorLib.FileSystemCase.Models;
+using Luthetus.Common.RazorLib.BackgroundTaskCase.Models;
+using Luthetus.Common.RazorLib.FileSystem.Models;
+using Luthetus.Common.RazorLib.TreeView.Models;
+using Luthetus.TextEditor.RazorLib.TextEditorCase.Model;
+using Luthetus.TextEditor.RazorLib.Lexing.Models;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -62,6 +60,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private JsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
     private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
+    [Inject]
+    private EditorSync EditorSync { get; set; } = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -83,7 +83,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                         false,
                         EnvironmentProvider);
 
-                    Dispatcher.Dispatch(new EditorRegistry.OpenInEditorAction(
+                    Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
+                        EditorSync,
                         absolutePath,
                         false));
 
