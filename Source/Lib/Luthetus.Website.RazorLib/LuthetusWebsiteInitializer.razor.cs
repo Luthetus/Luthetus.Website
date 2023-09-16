@@ -190,7 +190,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 decorationMapper,
                 null,
                 new(),
-                TextEditorModelKey.NewKey()
+                Key<TextEditorModel>.NewKey()
             );
 
             textEditorModel.CompilerService.RegisterModel(textEditorModel);
