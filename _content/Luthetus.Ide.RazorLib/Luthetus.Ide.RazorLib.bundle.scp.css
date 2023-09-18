@@ -6,18 +6,6 @@
 .luth_ide_compiler-explorer-tree-view-body[b-fi1bss85xm] {
     height: calc(100% - 32px);
 }
-/* _content/Luthetus.Ide.RazorLib/ContextCase/Displays/ContextBoundaryOverlay.razor.rz.scp.css */
-.luth_ide_context-boundary-overlay[b-47bs8lgf8a] {
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.luth_ide_context-boundary-overlay:hover[b-47bs8lgf8a] {
-    background-color: aqua;
-    opacity: 0.6;
-    cursor: default;
-}
 /* _content/Luthetus.Ide.RazorLib/CSharpProjectFormCase/Displays/CSharpProjectFormDisplay.razor.rz.scp.css */
 .luth_ide_graphical-project-template-inputs[b-n5hnbheb73] {
     display: flex;

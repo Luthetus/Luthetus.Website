@@ -1,3 +1,15 @@
+/* _content/Luthetus.Common/ContextCase/Displays/ContextBoundaryOverlay.razor.rz.scp.css */
+.luth_ide_context-boundary-overlay[b-iq5x4sskzp] {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.luth_ide_context-boundary-overlay:hover[b-iq5x4sskzp] {
+    background-color: aqua;
+    opacity: 0.6;
+    cursor: default;
+}
 /* _content/Luthetus.Common/Dialog/Displays/DialogDisplay.razor.rz.scp.css */
 .luth_dialog-display[b-m6slko407w] {
     z-index: var(--luth_dialog-display-z-index);

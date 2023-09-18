@@ -101,7 +101,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-bEKBUexRtguaoLfMwFeGXx0Kux7CCnyP8hTBM01y1\/Q=",
+      "hash": "sha256-pdGVqUmYploLxgwcDaDXPRxDPlo4hTZ7nLDNQDal+Pg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -117,63 +117,63 @@
       "url": "_framework\/Fluxor.dll"
     },
     {
-      "hash": "sha256-JO4n9jy4FMDjw\/ya4B\/iv8NmGsFuA7NQoOv22URGVds=",
+      "hash": "sha256-NC3S4Q8rJdHCbxOT7LOjVyEePoI4REOZEdiJJi9ZIEw=",
       "url": "_framework\/Luthetus.Common.RazorLib.dll"
     },
     {
-      "hash": "sha256-+pmS\/HY1B2tsvjdNNMrTtCI93Y3KG4odOhrGy1IJN2g=",
+      "hash": "sha256-2vY0C9vNO+dN7v1WUXJuLIqPFIW2cwGFsTKK3ZtEv8s=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.CSharp.dll"
     },
     {
-      "hash": "sha256-Wev9RUFhC+3XRsZAVP0LPwhKY6Lc7iS\/oK1eSHnzYqU=",
+      "hash": "sha256-Ui14EZvkj4NoCKFR7N5Qth9adFogZARSYeU189rx5R8=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.CSharpProject.dll"
     },
     {
-      "hash": "sha256-FpSbG0KZe3Mq88UUZkZAp515uOvGxC87JrTdienZya4=",
+      "hash": "sha256-bZB0eGVMFp8lmD6KjpAF6\/I0notLtYpHu6O7kBgk\/uA=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Css.dll"
     },
     {
-      "hash": "sha256-AIuD5xBWAnfZ9ZT0q5XMVceEYudmPF\/WkD+dUJ38fSY=",
+      "hash": "sha256-K8BrxCSrvwRBG0KuUPSeWKTjPobFK+KEVWAIKMP4U78=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.DotNetSolution.dll"
     },
     {
-      "hash": "sha256-FBWp14K7W+M9P6y9Jye+S8dJqoyvx2JcRIfcO+v9I\/s=",
+      "hash": "sha256-E6208dbID2w9sXtq9PnIcG0bk8T8MFOD4jDMkDM7YcI=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.FSharp.dll"
     },
     {
-      "hash": "sha256-hjCoFLWOyViUHANYbEe6vIML385MT8KaPxaUPZE4wD0=",
+      "hash": "sha256-1q\/IcTzElQ9nAQ3oARmwBIAZg2zfxcxp++w7De3plc4=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.JavaScript.dll"
     },
     {
-      "hash": "sha256-n\/\/riuYFnsrez\/IxM\/46gDdtm6WsN69OccXhJ8Ta8cM=",
+      "hash": "sha256-OSyA0cIpXraElsBGEm+tHrLD7FT840Qm3invYBGUi6M=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Json.dll"
     },
     {
-      "hash": "sha256-RL2UMR9NgI6LL\/VjNLcEQ5l8sHdomrva8aO5s12ZvsU=",
+      "hash": "sha256-TRkmYEZwi\/Dg8dcH9qKDh\/UAqftI2sQKLa1hVRnti7s=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Razor.dll"
     },
     {
-      "hash": "sha256-HmaDiEh4pevwEgN+8+Ocnt2YwplrgYui5SMpW6Xx1No=",
+      "hash": "sha256-PViLkJ5mf0RL\/eZ1oESoc0dfuG8T74bf7XQUAKY76RQ=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.TypeScript.dll"
     },
     {
-      "hash": "sha256-BAICTJu3aOKO8crpArUOpHK64EE\/l+xQTZcMi3EKzKM=",
+      "hash": "sha256-taLzuI3FbYTB2lRwcBQRFS6iafiJ8nz3jdkclwvaU80=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Xml.dll"
     },
     {
-      "hash": "sha256-bh9XXSCH0BWyu8APbJq7Uxo5T99rmIraq8D4bK7hYdc=",
+      "hash": "sha256-E6JNXkwbiU1Cvi+EpzeNcYt4lEWPij7mjHL82dYX6CU=",
       "url": "_framework\/Luthetus.Ide.RazorLib.dll"
     },
     {
-      "hash": "sha256-UhDVltz00bdUsE0O\/5Lj3SLj5H7NrM7n2iiJu8EDgU4=",
+      "hash": "sha256-Ot8+tP7CqmRpwTEWskXF1PEQ9\/YniO+YBtNmgtI0n\/c=",
       "url": "_framework\/Luthetus.Ide.Wasm.dll"
     },
     {
-      "hash": "sha256-ySxDsBJkSlRdTL94NmQdgBrhmDB4ZZQqLONSucYzjdA=",
+      "hash": "sha256-0q61DkSQA4Dil5C+Vr296NS3IrJQSgPg6JZpxlH7jNs=",
       "url": "_framework\/Luthetus.TextEditor.RazorLib.dll"
     },
     {
-      "hash": "sha256-TG6P8oQrKZWjsxw28CqUHPInskhYRp4KyuY0uUjghGY=",
+      "hash": "sha256-XhwmGqIuDYhbcicMZwdPYHsiyyq+NIUTu0WvFmTunCU=",
       "url": "_framework\/Luthetus.Website.RazorLib.dll"
     },
     {
@@ -457,13 +457,13 @@
       "url": "_content\/Luthetus.TextEditor\/luthetusTextEditor.js"
     },
     {
-      "hash": "sha256-8eJObYB0R1wyQb0U9zSV0qNZY03LmQwFqPheqnM72Tw=",
+      "hash": "sha256-CvxlRoImwu8QJm2OIXxj4Ny8QQuKJ0TFYvwIij8oYn0=",
       "url": "_content\/Luthetus.Common\/Luthetus.Common.bundle.scp.css"
     },
     {
-      "hash": "sha256-1SFDOFBQkH2fWq+tvvdrs+2ivT7XEB5+x6nMmgbGgTQ=",
+      "hash": "sha256-JCV8P9gTuI+ffMYEgJtIqtFY8X5aNEMUiU5FhaH41Bw=",
       "url": "_content\/Luthetus.Ide.RazorLib\/Luthetus.Ide.RazorLib.bundle.scp.css"
     }
   ],
-  "version": "DTLYIrOH"
+  "version": "Wo2vbiRs"
 };
