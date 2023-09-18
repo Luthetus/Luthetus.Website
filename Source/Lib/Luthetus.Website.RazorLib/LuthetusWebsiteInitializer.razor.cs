@@ -21,6 +21,7 @@ using Luthetus.Common.RazorLib.FileSystem.Models;
 using Luthetus.Common.RazorLib.TreeView.Models;
 using Luthetus.TextEditor.RazorLib.TextEditorCase.Model;
 using Luthetus.TextEditor.RazorLib.Lexing.Models;
+using Luthetus.Common.RazorLib.KeyCase;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -67,7 +68,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     {
         if (firstRender)
         {
-            BackgroundTaskService.Enqueue(BackgroundTaskKey.NewKey(), ContinuousBackgroundTaskWorker.Queue.Key,
+            BackgroundTaskService.Enqueue(Key<BackgroundTask>.NewKey(), ContinuousBackgroundTaskWorker.Queue.Key,
                 "Initialize Website",
                 async () =>
                 {
@@ -189,7 +190,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 decorationMapper,
                 null,
                 new(),
-                TextEditorModelKey.NewKey()
+                Key<TextEditorModel>.NewKey()
             );
 
             textEditorModel.CompilerService.RegisterModel(textEditorModel);
