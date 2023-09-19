@@ -21,8 +21,6 @@ public partial class Test : LayoutComponentBase, IDisposable
     [Inject]
     private IState<AppOptionsState> AppOptionsStateWrap { get; set; } = null!;
     [Inject]
-    private IState<PanelsState> PanelsStateWrap { get; set; } = null!;
-    [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
     private IAppOptionsService AppOptionsService { get; set; } = null!;
@@ -34,8 +32,6 @@ public partial class Test : LayoutComponentBase, IDisposable
     private IFileSystemProvider FileSystemProvider { get; set; } = null!;
     [Inject]
     private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
-    [Inject]
-    private IBackgroundTaskService BackgroundTaskService { get; set; } = null!;
 
     private string UnselectableClassCss => DragStateWrap.Value.ShouldDisplay
         ? "balc_unselectable"
@@ -43,7 +39,6 @@ public partial class Test : LayoutComponentBase, IDisposable
 
     private bool _previousDragStateWrapShouldDisplay;
     private ElementDimensions _bodyElementDimensions = new();
-    private StateHasChangedBoundary _bodyAndFooterStateHasChangedBoundaryComponent = null!;
     private int _count;
     private string[] _fileBag = Array.Empty<string>();
     private string _absolutePathString = string.Empty;
@@ -122,23 +117,6 @@ public partial class Test : LayoutComponentBase, IDisposable
             _previousDragStateWrapShouldDisplay = DragStateWrap.Value.ShouldDisplay;
             await InvokeAsync(StateHasChanged);
         }
-    }
-
-    private async Task ReRenderAsync()
-    {
-        await InvokeAsync(StateHasChanged);
-    }
-
-    private void IncrementCount()
-    {
-        _count++;
-    }
-    
-    private async Task ReadDirectoryAsync()
-    {
-        _fileBag = (await FileSystemProvider.Directory.EnumerateFileSystemEntriesAsync(
-            _absolutePathString))
-            .ToArray();
     }
 
     public void Dispose()
