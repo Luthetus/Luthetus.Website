@@ -17,11 +17,11 @@ namespace Luthetus.Website.RazorLib;
 public partial class Test : LayoutComponentBase, IDisposable
 {
     [Inject]
-    private IState<DragRegistry> DragRegistryWrap { get; set; } = null!;
+    private IState<DragState> DragRegistryWrap { get; set; } = null!;
     [Inject]
-    private IState<AppOptionsRegistry> AppOptionsRegistryWrap { get; set; } = null!;
+    private IState<AppOptionsState> AppOptionsRegistryWrap { get; set; } = null!;
     [Inject]
-    private IState<PanelsRegistry> PanelsCollectionWrap { get; set; } = null!;
+    private IState<PanelsState> PanelsCollectionWrap { get; set; } = null!;
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
