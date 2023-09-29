@@ -1,3 +1,15 @@
+/* _content/Luthetus.Common/ComponentRunner/ComponentRunnerDisplay.razor.rz.scp.css */
+.luth_component-runner[b-z5cro3eo6v] {
+    padding: 8px;
+}
+/* _content/Luthetus.Common/ComponentRunner/Internals/ComponentRunnerConstructor.razor.rz.scp.css */
+.luth_component-runner-constructor[b-x1e2u6h8ac] {
+    display: flex;
+}
+
+.luth_component-runner-argument-list[b-x1e2u6h8ac] {
+    display: inline-flex;
+}
 /* _content/Luthetus.Common/ContextCase/Displays/ContextBoundaryOverlay.razor.rz.scp.css */
 .luth_ide_context-boundary-overlay[b-iq5x4sskzp] {
     position: fixed;
