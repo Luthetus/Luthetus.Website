@@ -123,9 +123,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             false,
             EnvironmentProvider);
 
-        Dispatcher.Dispatch(new DotNetSolutionState.SetDotNetSolutionTask(
-            solutionAbsolutePath,
-            DotNetSolutionSync));
+        DotNetSolutionSync.SetDotNetSolution(solutionAbsolutePath);
     }
 
     private async Task ParseSolutionAsync()
