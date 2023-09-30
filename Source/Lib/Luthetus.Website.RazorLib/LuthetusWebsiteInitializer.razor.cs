@@ -84,10 +84,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                         false,
                         EnvironmentProvider);
 
-                    Dispatcher.Dispatch(new EditorState.OpenInEditorAction(
-                        EditorSync,
-                        absolutePath,
-                        false));
+                    EditorSync.OpenInEditor(absolutePath, false);
 
                     // This code block is hacky. I want the Solution Explorer to from the get-go be fully expanded, so the user can see 'Program.cs'
                     {
