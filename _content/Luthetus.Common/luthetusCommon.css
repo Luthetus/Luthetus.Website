@@ -370,6 +370,7 @@ ul.luth_indent-child-content {
     --luth_link-hover-foreground-color: #e49021;
     --luth_tree-view-expansion-chevron-color: currentColor;
     --luth_tree-view-children-border-color: currentColor;
+    --luth_ide_context-boundary-overlay-background-color: var(--luth_active-with-focus-background-color);
 }
 
 .luth_visual-studio-light-theme-clone {
@@ -448,4 +449,5 @@ ul.luth_indent-child-content {
     --luth_link-hover-foreground-color: red;
     --luth_tree-view-expansion-chevron-color: currentColor;
     --luth_tree-view-children-border-color: currentColor;
+    --luth_ide_context-boundary-overlay-background-color: var(--luth_active-with-focus-background-color);
 }
