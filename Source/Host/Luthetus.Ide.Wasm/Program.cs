@@ -1,5 +1,6 @@
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Models;
 using Luthetus.Common.RazorLib.Installation.Models;
+using Luthetus.Common.RazorLib.Installations.Models;
 using Luthetus.Ide.Wasm;
 using Luthetus.Website.RazorLib;
 using Microsoft.AspNetCore.Components.Web;

@@ -1,5 +1,6 @@
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Models;
 using Luthetus.Common.RazorLib.Installation.Models;
+using Luthetus.Common.RazorLib.Installations.Models;
 using Luthetus.Website.RazorLib;
 
 var builder = WebApplication.CreateBuilder(args);
