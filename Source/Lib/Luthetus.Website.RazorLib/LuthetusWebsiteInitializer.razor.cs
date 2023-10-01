@@ -14,7 +14,6 @@ using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Luthetus.Ide.RazorLib.DotNetSolutionCase.States;
 using Luthetus.Ide.RazorLib.EditorCase.States;
-using Luthetus.Ide.RazorLib.FileSystemCase.Models;
 using Luthetus.TextEditor.RazorLib.TextEditors.Models;
 using Luthetus.TextEditor.RazorLib.Lexes.Models;
 using Luthetus.TextEditor.RazorLib.CompilerServices;
@@ -23,6 +22,7 @@ using Luthetus.Common.RazorLib.FileSystems.Models;
 using Luthetus.Common.RazorLib.BackgroundTasks.Models;
 using Luthetus.Common.RazorLib.TreeViews.Models;
 using Luthetus.Common.RazorLib.Keys.Models;
+using Luthetus.Ide.RazorLib.FileSystems.Models;
 
 namespace Luthetus.Website.RazorLib;
 
