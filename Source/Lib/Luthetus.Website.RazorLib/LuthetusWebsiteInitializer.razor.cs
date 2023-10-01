@@ -19,7 +19,7 @@ using Luthetus.Ide.RazorLib.FileSystemCase.Models;
 using Luthetus.Common.RazorLib.BackgroundTaskCase.Models;
 using Luthetus.Common.RazorLib.FileSystem.Models;
 using Luthetus.Common.RazorLib.TreeView.Models;
-using Luthetus.TextEditor.RazorLib.TextEditorCase.Model;
+using Luthetus.TextEditor.RazorLib.TextEditorCase.Models;
 using Luthetus.TextEditor.RazorLib.Lexing.Models;
 using Luthetus.Common.RazorLib.KeyCase.Models;
 
