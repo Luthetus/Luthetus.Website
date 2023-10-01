@@ -10,7 +10,6 @@ using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
 using Luthetus.CompilerServices.Lang.TypeScript;
 using Luthetus.CompilerServices.Lang.Xml;
 using Luthetus.Ide.Wasm.Facts;
-using Luthetus.TextEditor.RazorLib;
 using Microsoft.AspNetCore.Components;
 using Luthetus.Ide.RazorLib.DotNetSolutions.States;
 using Luthetus.Ide.RazorLib.Editors.States;
