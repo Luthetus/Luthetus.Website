@@ -407,6 +407,10 @@ window.luthetusTextEditor = {
             let intersectionObserverMapValue = this.cursorIntersectionObserverMap
                 .get(intersectionObserverMapKey);
 
+            if (!intersectionObserverMapValue) {
+                return;
+            }
+
             for (let i = 0; i < entries.length; i++) {
 
                 let entry = entries[i];
