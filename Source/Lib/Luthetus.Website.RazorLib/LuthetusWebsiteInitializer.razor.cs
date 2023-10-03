@@ -16,19 +16,16 @@ using Luthetus.Ide.RazorLib.Editors.States;
 using Luthetus.TextEditor.RazorLib.TextEditors.Models;
 using Luthetus.TextEditor.RazorLib.Lexes.Models;
 using Luthetus.TextEditor.RazorLib.CompilerServices;
-using Luthetus.TextEditor.RazorLib.Installations.Models;
 using Luthetus.Common.RazorLib.FileSystems.Models;
 using Luthetus.Common.RazorLib.BackgroundTasks.Models;
 using Luthetus.Common.RazorLib.TreeViews.Models;
 using Luthetus.Common.RazorLib.Keys.Models;
-using Luthetus.Ide.RazorLib.FileSystems.Models;
+using Luthetus.TextEditor.RazorLib.Decorations.Models;
 
 namespace Luthetus.Website.RazorLib;
 
 public partial class LuthetusWebsiteInitializer : ComponentBase
 {
-    [Inject]
-    private IDispatcher Dispatcher { get; set; } = null!;
     [Inject]
     private IEnvironmentProvider EnvironmentProvider { get; set; } = null!;
     [Inject]
@@ -38,27 +35,11 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
     [Inject]
+    private IDecorationMapperRegistry DecorationMapperRegistry { get; set; } = null!;
+    [Inject]
+    private ICompilerServiceRegistry CompilerServiceRegistry { get; set; } = null!;
+    [Inject]
     private IBackgroundTaskService BackgroundTaskService { get; set; } = null!;
-    [Inject]
-    private XmlCompilerService XmlCompilerService { get; set; } = null!;
-    [Inject]
-    private DotNetSolutionCompilerService DotNetCompilerService { get; set; } = null!;
-    [Inject]
-    private CSharpProjectCompilerService CSharpProjectCompilerService { get; set; } = null!;
-    [Inject]
-    private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
-    [Inject]
-    private RazorCompilerService RazorCompilerService { get; set; } = null!;
-    [Inject]
-    private CssCompilerService CssCompilerService { get; set; } = null!;
-    [Inject]
-    private FSharpCompilerService FSharpCompilerService { get; set; } = null!;
-    [Inject]
-    private JavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
-    [Inject]
-    private TypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
-    [Inject]
-    private JsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
     private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
     [Inject]
@@ -151,49 +132,29 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
         foreach (var file in allFiles)
         {
             var absolutePath = new AbsolutePath(file, false, EnvironmentProvider);
-
             var resourceUri = new ResourceUri(file);
-
-            var fileLastWriteTime = await FileSystemProvider.File.GetLastWriteTimeAsync(
-                file);
-
-            var content = await FileSystemProvider.File.ReadAllTextAsync(
-                file);
-
-            var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
-                absolutePath.ExtensionNoPeriod,
-                XmlCompilerService,
-                DotNetCompilerService,
-                CSharpProjectCompilerService,
-                CSharpCompilerService,
-                RazorCompilerService,
-                CssCompilerService,
-                FSharpCompilerService,
-                JavaScriptCompilerService,
-                TypeScriptCompilerService,
-                JsonCompilerService);
-
-            var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
-                absolutePath.ExtensionNoPeriod);
+            var fileLastWriteTime = await FileSystemProvider.File.GetLastWriteTimeAsync(file);
+            var content = await FileSystemProvider.File.ReadAllTextAsync(file);
+            
+            var decorationMapper = DecorationMapperRegistry.GetDecorationMapper(absolutePath.ExtensionNoPeriod);
+            var compilerService = CompilerServiceRegistry.GetCompilerService(absolutePath.ExtensionNoPeriod);
 
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
                 absolutePath.ExtensionNoPeriod,
                 content,
-                compilerService,
                 decorationMapper,
+                compilerService,
                 null,
-                new(),
-                Key<TextEditorModel>.NewKey()
-            );
+                new());
 
-            textEditorModel.CompilerService.RegisterModel(textEditorModel);
+            textEditorModel.CompilerService.RegisterResource(textEditorModel.ResourceUri);
 
             TextEditorService.Model.RegisterCustom(textEditorModel);
 
             TextEditorService.Model.RegisterPresentationModel(
-                    textEditorModel.ModelKey,
+                    textEditorModel.ResourceUri,
                     CompilerServiceDiagnosticPresentationFacts.EmptyPresentationModel);
 
             await textEditorModel.ApplySyntaxHighlightingAsync();
