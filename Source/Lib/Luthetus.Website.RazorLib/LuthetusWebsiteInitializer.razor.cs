@@ -167,15 +167,14 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
                 decorationMapper,
                 compilerService,
                 null,
-                new(),
-                Key<TextEditorModel>.NewKey());
+                new());
 
-            textEditorModel.CompilerService.RegisterModel(textEditorModel);
+            textEditorModel.CompilerService.RegisterResource(textEditorModel.ResourceUri);
 
             TextEditorService.Model.RegisterCustom(textEditorModel);
 
             TextEditorService.Model.RegisterPresentationModel(
-                    textEditorModel.ModelKey,
+                    textEditorModel.ResourceUri,
                     CompilerServiceDiagnosticPresentationFacts.EmptyPresentationModel);
 
             await textEditorModel.ApplySyntaxHighlightingAsync();
