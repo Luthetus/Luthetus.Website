@@ -21,7 +21,6 @@ using Luthetus.Common.RazorLib.FileSystems.Models;
 using Luthetus.Common.RazorLib.BackgroundTasks.Models;
 using Luthetus.Common.RazorLib.TreeViews.Models;
 using Luthetus.Common.RazorLib.Keys.Models;
-using Luthetus.Ide.RazorLib.FileSystems.Models;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -151,42 +150,26 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
         foreach (var file in allFiles)
         {
             var absolutePath = new AbsolutePath(file, false, EnvironmentProvider);
-
             var resourceUri = new ResourceUri(file);
+            var fileLastWriteTime = await FileSystemProvider.File.GetLastWriteTimeAsync(file);
+            var content = await FileSystemProvider.File.ReadAllTextAsync(file);
+            
+            var decorationMapper = TextEditorService.Model.GetDecorationMapper(absolutePath.ExtensionNoPeriod)
+                ?? TextEditorService.DecorationMapperRegistry.DefaultDecorationMapper;
 
-            var fileLastWriteTime = await FileSystemProvider.File.GetLastWriteTimeAsync(
-                file);
-
-            var content = await FileSystemProvider.File.ReadAllTextAsync(
-                file);
-
-            var compilerService = ExtensionNoPeriodFacts.GetCompilerService(
-                absolutePath.ExtensionNoPeriod,
-                XmlCompilerService,
-                DotNetCompilerService,
-                CSharpProjectCompilerService,
-                CSharpCompilerService,
-                RazorCompilerService,
-                CssCompilerService,
-                FSharpCompilerService,
-                JavaScriptCompilerService,
-                TypeScriptCompilerService,
-                JsonCompilerService);
-
-            var decorationMapper = ExtensionNoPeriodFacts.GetDecorationMapper(
-                absolutePath.ExtensionNoPeriod);
+            var compilerService = TextEditorService.Model.GetCompilerService(absolutePath.ExtensionNoPeriod)
+                ?? TextEditorService.CompilerServiceRegistry.DefaultCompilerService;
 
             var textEditorModel = new TextEditorModel(
                 resourceUri,
                 fileLastWriteTime,
                 absolutePath.ExtensionNoPeriod,
                 content,
-                compilerService,
                 decorationMapper,
+                compilerService,
                 null,
                 new(),
-                Key<TextEditorModel>.NewKey()
-            );
+                Key<TextEditorModel>.NewKey());
 
             textEditorModel.CompilerService.RegisterModel(textEditorModel);
 
