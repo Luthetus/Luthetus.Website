@@ -27,8 +27,6 @@ namespace Luthetus.Website.RazorLib;
 public partial class LuthetusWebsiteInitializer : ComponentBase
 {
     [Inject]
-    private IDispatcher Dispatcher { get; set; } = null!;
-    [Inject]
     private IEnvironmentProvider EnvironmentProvider { get; set; } = null!;
     [Inject]
     private IFileSystemProvider FileSystemProvider { get; set; } = null!;
@@ -42,26 +40,6 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private ICompilerServiceRegistry CompilerServiceRegistry { get; set; } = null!;
     [Inject]
     private IBackgroundTaskService BackgroundTaskService { get; set; } = null!;
-    [Inject]
-    private XmlCompilerService XmlCompilerService { get; set; } = null!;
-    [Inject]
-    private DotNetSolutionCompilerService DotNetCompilerService { get; set; } = null!;
-    [Inject]
-    private CSharpProjectCompilerService CSharpProjectCompilerService { get; set; } = null!;
-    [Inject]
-    private CSharpCompilerService CSharpCompilerService { get; set; } = null!;
-    [Inject]
-    private RazorCompilerService RazorCompilerService { get; set; } = null!;
-    [Inject]
-    private CssCompilerService CssCompilerService { get; set; } = null!;
-    [Inject]
-    private FSharpCompilerService FSharpCompilerService { get; set; } = null!;
-    [Inject]
-    private JavaScriptCompilerService JavaScriptCompilerService { get; set; } = null!;
-    [Inject]
-    private TypeScriptCompilerService TypeScriptCompilerService { get; set; } = null!;
-    [Inject]
-    private JsonCompilerService JsonCompilerService { get; set; } = null!;
     [Inject]
     private DotNetSolutionSync DotNetSolutionSync { get; set; } = null!;
     [Inject]
