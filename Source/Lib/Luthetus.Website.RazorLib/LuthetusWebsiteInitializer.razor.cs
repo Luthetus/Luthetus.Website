@@ -20,6 +20,7 @@ using Luthetus.Common.RazorLib.FileSystems.Models;
 using Luthetus.Common.RazorLib.BackgroundTasks.Models;
 using Luthetus.Common.RazorLib.TreeViews.Models;
 using Luthetus.Common.RazorLib.Keys.Models;
+using Luthetus.TextEditor.RazorLib.Decorations.Models;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -35,6 +36,10 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     private ITreeViewService TreeViewService { get; set; } = null!;
     [Inject]
     private ITextEditorService TextEditorService { get; set; } = null!;
+    [Inject]
+    private IDecorationMapperRegistry DecorationMapperRegistry { get; set; } = null!;
+    [Inject]
+    private ICompilerServiceRegistry CompilerServiceRegistry { get; set; } = null!;
     [Inject]
     private IBackgroundTaskService BackgroundTaskService { get; set; } = null!;
     [Inject]
@@ -153,11 +158,8 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             var fileLastWriteTime = await FileSystemProvider.File.GetLastWriteTimeAsync(file);
             var content = await FileSystemProvider.File.ReadAllTextAsync(file);
             
-            var decorationMapper = TextEditorService.Model.GetDecorationMapper(absolutePath.ExtensionNoPeriod)
-                ?? TextEditorService.DecorationMapperRegistry.DefaultDecorationMapper;
-
-            var compilerService = TextEditorService.Model.GetCompilerService(absolutePath.ExtensionNoPeriod)
-                ?? TextEditorService.CompilerServiceRegistry.DefaultCompilerService;
+            var decorationMapper = DecorationMapperRegistry.GetDecorationMapper(absolutePath.ExtensionNoPeriod);
+            var compilerService = CompilerServiceRegistry.GetCompilerService(absolutePath.ExtensionNoPeriod);
 
             var textEditorModel = new TextEditorModel(
                 resourceUri,
