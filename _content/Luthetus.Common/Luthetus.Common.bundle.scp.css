@@ -10,6 +10,12 @@
 .luth_component-runner-argument-list[b-44ekkpjc7j] {
     display: inline-flex;
 }
+/* _content/Luthetus.Common/Contexts/Displays/ContextBoundary.razor.rz.scp.css */
+.luth_ide_context-boundary:focus[b-h3a6e2rd8v] {
+    box-shadow: 0 0 8px var(--luth_primary-overlay-box-shadow-color) inset;
+    outline: 8px solid var(--luth_toggled-on-hover-background-color);
+    outline-offset: -8px;
+}
 /* _content/Luthetus.Common/Contexts/Displays/ContextBoundaryOverlay.razor.rz.scp.css */
 .luth_ide_context-boundary-overlay[b-3kwqjioiky] {
     position: fixed;

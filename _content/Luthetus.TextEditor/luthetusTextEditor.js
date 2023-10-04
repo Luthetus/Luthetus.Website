@@ -620,4 +620,21 @@ window.luthetusTextEditor = {
 
         intersectionObserver.disconnect();
     },
+    getBoundingClientRect: function (elementId) {
+        let element = document.getElementById(elementId);
+
+        if (!element) {
+            return {
+                Left: -1,
+                Top: -1,
+            };
+        }
+
+        let boundingClientRect = element.getBoundingClientRect();
+
+        return {
+            Left: boundingClientRect.left,
+            Top: boundingClientRect.top,
+        };
+    }
 }
