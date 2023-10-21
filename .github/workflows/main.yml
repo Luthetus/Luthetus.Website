@@ -17,39 +17,6 @@ jobs:
         # uses GitHub's checkout action to checkout code form the main branch
         - uses: actions/checkout@v2
         
-        - name: Clone Luthetus/Luthetus.Common
-          uses: GuillaumeFalourd/clone-github-repo-action@v2
-          with:
-            # Repository Owner
-            owner: Luthetus
-            # Repository name
-            repository: Luthetus.Common
-            
-        - name: Move Luthetus.Common
-          run: mv Luthetus.Common ../
-            
-        - name: Clone Luthetus/Luthetus.TextEditor
-          uses: GuillaumeFalourd/clone-github-repo-action@v2
-          with:
-            # Repository Owner
-            owner: Luthetus
-            # Repository name
-            repository: Luthetus.TextEditor
-            
-        - name: Move Luthetus.TextEditor
-          run: mv Luthetus.TextEditor ../
-
-        - name: Clone Luthetus/Luthetus.CompilerServices
-          uses: GuillaumeFalourd/clone-github-repo-action@v2
-          with:
-            # Repository Owner
-            owner: Luthetus
-            # Repository name
-            repository: Luthetus.CompilerServices
-            
-        - name: Move Luthetus.CompilerServices
-          run: mv Luthetus.CompilerServices ../
-
         - name: Clone Luthetus/Luthetus.Ide
           uses: GuillaumeFalourd/clone-github-repo-action@v2
           with:
