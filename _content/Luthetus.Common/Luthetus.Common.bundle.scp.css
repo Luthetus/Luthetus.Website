@@ -149,6 +149,11 @@
 .luth_menu-option-display:focus[b-rw1e46gy8l] {
     outline: solid var(--luth_menu-option-display-focus-outline-size) var(--luth_outline-with-focus-color);
 }
+
+.luth_menu-option-icon[b-rw1e46gy8l] {
+    margin-right: var(--luth_menu-option-display-padding-width);
+    display: inline;
+}
 /* _content/Luthetus.Common/Notifications/Displays/IconBadgeDisplay.razor.rz.scp.css */
 .luth_web_icon-badge[b-totavoeyx8] {
     position: absolute;
