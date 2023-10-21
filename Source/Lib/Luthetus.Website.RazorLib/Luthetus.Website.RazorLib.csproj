@@ -8,7 +8,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Luthetus.Ide\Source\Lib\Luthetus.Ide.RazorLib\Luthetus.Ide.RazorLib.csproj" />
+    <ProjectReference Include="..\..\..\..\Luthetus.Ide\Luthetus.Ide\Source\Lib\Luthetus.Ide.RazorLib\Luthetus.Ide.RazorLib.csproj" />
   </ItemGroup>
   
   <ItemGroup>
