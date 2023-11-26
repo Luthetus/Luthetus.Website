@@ -1,0 +1,45 @@
+/* _content/Luthetus.TextEditor/Diffs/Displays/DiffDetailsDisplay.razor.rz.scp.css */
+.luth_diff-details-visualization-grid[b-53fxoteowt] {
+    position: relative;
+    width: 375px;
+    height: 375px;
+}
+
+[b-53fxoteowt] .luth_diff-details-visualization-character {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* _content/Luthetus.TextEditor/Diffs/Displays/Internals/DiffDetailsInTextDisplay.razor.rz.scp.css */
+.luth_diff-details-visualization-in[b-78dov4nmc9] {
+    position: absolute;
+    left: 0;
+    top: 2em;
+    height: calc(100% - 2em);
+    width: 2em;
+}
+/* _content/Luthetus.TextEditor/Diffs/Displays/Internals/DiffDetailsMatrixDisplay.razor.rz.scp.css */
+.luth_diff-details-visualization-cell[b-j789wpiioa] {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    outline: 1px solid var(--luth_primary-border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .luth_diff-details-visualization-cell.luth_active[b-j789wpiioa] {
+        background-color: green;
+    }
+/* _content/Luthetus.TextEditor/Diffs/Displays/Internals/DiffDetailsOutTextDisplay.razor.rz.scp.css */
+.luth_diff-details-visualization-out[b-azhhja29m2] {
+    position: absolute;
+    left: 2em;
+    top: 0;
+    height: 2em;
+    width: calc(100% - 2em);
+}
