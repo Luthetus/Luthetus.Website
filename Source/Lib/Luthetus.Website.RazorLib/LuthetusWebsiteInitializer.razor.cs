@@ -1,14 +1,3 @@
-using Fluxor;
-using Luthetus.CompilerServices.Lang.CSharp.CompilerServiceCase;
-using Luthetus.CompilerServices.Lang.CSharpProject.CompilerServiceCase;
-using Luthetus.CompilerServices.Lang.Css;
-using Luthetus.CompilerServices.Lang.DotNetSolution.CompilerServiceCase;
-using Luthetus.CompilerServices.Lang.FSharp;
-using Luthetus.CompilerServices.Lang.JavaScript;
-using Luthetus.CompilerServices.Lang.Json;
-using Luthetus.CompilerServices.Lang.Razor.CompilerServiceCase;
-using Luthetus.CompilerServices.Lang.TypeScript;
-using Luthetus.CompilerServices.Lang.Xml;
 using Luthetus.Ide.Wasm.Facts;
 using Microsoft.AspNetCore.Components;
 using Luthetus.Ide.RazorLib.DotNetSolutions.States;
@@ -21,6 +10,7 @@ using Luthetus.Common.RazorLib.BackgroundTasks.Models;
 using Luthetus.Common.RazorLib.TreeViews.Models;
 using Luthetus.Common.RazorLib.Keys.Models;
 using Luthetus.TextEditor.RazorLib.Decorations.Models;
+using Luthetus.TextEditor.RazorLib.Diffs.Models;
 
 namespace Luthetus.Website.RazorLib;
 
@@ -49,7 +39,7 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
     {
         if (firstRender)
         {
-            BackgroundTaskService.Enqueue(Key<BackgroundTask>.NewKey(), ContinuousBackgroundTaskWorker.Queue.Key,
+            BackgroundTaskService.Enqueue(Key<BackgroundTask>.NewKey(), ContinuousBackgroundTaskWorker.GetQueueKey(),
                 "Initialize Website",
                 async () =>
                 {
@@ -156,6 +146,14 @@ public partial class LuthetusWebsiteInitializer : ComponentBase
             TextEditorService.Model.RegisterPresentationModel(
                     textEditorModel.ResourceUri,
                     CompilerServiceDiagnosticPresentationFacts.EmptyPresentationModel);
+
+            TextEditorService.Model.RegisterPresentationModel(
+                textEditorModel.ResourceUri,
+                DiffPresentationFacts.EmptyInPresentationModel);
+            
+            TextEditorService.Model.RegisterPresentationModel(
+                textEditorModel.ResourceUri,
+                DiffPresentationFacts.EmptyOutPresentationModel);
 
             await textEditorModel.ApplySyntaxHighlightingAsync();
         }
