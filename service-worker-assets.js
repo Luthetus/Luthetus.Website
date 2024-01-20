@@ -101,7 +101,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-K3tMKa1hZZtSsHvlU7+K2sDW3Iz79DD6PFocpBAluYQ=",
+      "hash": "sha256-kTjmjnSX9FDAidBJcJSMg0\/R5lrwSKKnE36FiMcQzqM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -117,63 +117,63 @@
       "url": "_framework\/Fluxor.dll"
     },
     {
-      "hash": "sha256-K1Uzr5jMWY4Gqa3BXBdFss+YTnxHBADl8Pb2vIuV0js=",
+      "hash": "sha256-ZI\/viG9KscAtf3EKo1CFxEJBddKLfUNDCbP0K5Wde1A=",
       "url": "_framework\/Luthetus.Common.RazorLib.dll"
     },
     {
-      "hash": "sha256-AD4KuG3L8Z\/IAow6\/HkQCy8HMVnWxm18nFd2znTah4w=",
+      "hash": "sha256-gO5\/+OdlPD49kFMRtEc\/ixq6vgKyHy+HpZh6O8ZaKi4=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.CSharp.dll"
     },
     {
-      "hash": "sha256-5adlfGKrpTVzA\/wOnylPo8MmhfeV\/BRGajZU8bERafg=",
+      "hash": "sha256-82vYmPYCy+M1Mt0yVhpGVJwj4Uj0WgP\/grfuuXg2QWI=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.CSharpProject.dll"
     },
     {
-      "hash": "sha256-uItgYxW9utwYSstyWgVziIYBhrrWNjDpDh9P5DDwvso=",
+      "hash": "sha256-VnxGLsmWdoegFM2pLnyV4pRqmZP5nzARkfHUPEPjvxc=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Css.dll"
     },
     {
-      "hash": "sha256-jPlm2jMc\/q+2DYbFn2kGs42dSep8npC2GadEADG7xTY=",
+      "hash": "sha256-YBywlR7toh0mNgm+FzEMYfK+REBLhZX2RGJkSgiXoT0=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.DotNetSolution.dll"
     },
     {
-      "hash": "sha256-vPzZLthyv7EpM+EZ0HMy37we88ln4Yj9aVSFj9CHPXM=",
+      "hash": "sha256-j1quy5\/+JoAn6WbwLWUJQjUJS3ei+kN8BDQexwgOB4o=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.FSharp.dll"
     },
     {
-      "hash": "sha256-52cHAfhyPgD5J3SGljBAaX5QYPIuW+t5v3SqIsSG3Js=",
+      "hash": "sha256-LQDBwbCcOCmsq6gzPpFLUNQtgu0UiALw554y1FOoJLU=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.JavaScript.dll"
     },
     {
-      "hash": "sha256-qQh0WTJp0NASguu5OryVWqWXJFdSf63hPMiQNaU\/xHA=",
+      "hash": "sha256-qXGJoKsWcN\/Bv4TaYYx0WkGQK7YmvngtqEfRUUKHUfc=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Json.dll"
     },
     {
-      "hash": "sha256-C6rC2RQccoz5zczKi4msQbtffZ4kIrsBW\/67OI3DKNM=",
+      "hash": "sha256-d2exsnvwpJuXEMKtHd\/JLGYbis8IuivF5JjUmXHTo+Y=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Razor.dll"
     },
     {
-      "hash": "sha256-pLIQjBa41fMoctZeffE2Mg27OXaLMwDSmU2HoC4p72E=",
+      "hash": "sha256-3vaE\/Hs3RuCGDexGpa1JJ0Pwt9Sj5WHMu+37ENenw5A=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.TypeScript.dll"
     },
     {
-      "hash": "sha256-+k7Q2UNrMZ0ONZID\/aIWP8NOIIVf8OY6ZQDK33BlhY8=",
+      "hash": "sha256-cJomsJtq1Y6g1PqXbf12gSQtFBIw7mC+lxiDvbOf7Bg=",
       "url": "_framework\/Luthetus.CompilerServices.Lang.Xml.dll"
     },
     {
-      "hash": "sha256-PWRttuEW9yh56IYrttChcl1o5BDSGNl1MqTKNDVJYgU=",
+      "hash": "sha256-Py3sWrQhSbaivNxp\/JG5tcNRxmCGyjNBDkngO48fJag=",
       "url": "_framework\/Luthetus.Ide.RazorLib.dll"
     },
     {
-      "hash": "sha256-KxxaETkF8LQ1LMdzeVHlb9TUBF7aPRuP98uj8w7yohA=",
+      "hash": "sha256-V27tH4p0yvdnhR86Wk2\/tYPVNwcFIc+n7th1\/nP51CI=",
       "url": "_framework\/Luthetus.Ide.Wasm.dll"
     },
     {
-      "hash": "sha256-nwq3UmXknTNLkWdvWz9s5NxlnHmKFS0NKesQdVUPMlA=",
+      "hash": "sha256-R92JGLX30EilJei6ZuAIzKgl4pT6wJvYCKiUuf6MPmY=",
       "url": "_framework\/Luthetus.TextEditor.RazorLib.dll"
     },
     {
-      "hash": "sha256-kEzsfDqDvTteYgISygmLsOoywoQF6TZmY068mK7uzsU=",
+      "hash": "sha256-2fEUc6LnKuYmOKY3Wl4HcQrb+7aXztRxHzQ9XKcw48I=",
       "url": "_framework\/Luthetus.Website.RazorLib.dll"
     },
     {
@@ -305,7 +305,7 @@
       "url": "_framework\/System.IO.MemoryMappedFiles.dll"
     },
     {
-      "hash": "sha256-+rAUUzWSYisbfasir+eTSM+Cmvts9EibY8q7VDsbsdA=",
+      "hash": "sha256-+6jeOhjMEHTbjYP1g1S1RKrEtMxwBmWQjmrvjRJWXmU=",
       "url": "_framework\/System.Linq.dll"
     },
     {
@@ -457,5 +457,5 @@
       "url": "_content\/Luthetus.TextEditor\/Luthetus.TextEditor.bundle.scp.css"
     }
   ],
-  "version": "mN6FXg1R"
+  "version": "Y15y\/77J"
 };
