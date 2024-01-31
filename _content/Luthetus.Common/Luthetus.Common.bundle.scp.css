@@ -82,6 +82,12 @@
     background-color: var(--luth_tertiary-background-color);
     box-shadow: 0 0 var(--luth_dropdown-display-default-background-box-shadow-blur-radius) var(--luth_primary-box-shadow-color);
 }
+/* _content/Luthetus.Common/FileSystems/Displays/PermissionsDisplay.razor.rz.scp.css */
+.luth_permissions-body[b-wou5ymu60z] {
+    margin: 10px;
+    padding: 10px;
+    border-left: 1px solid var(--luth_primary-border-color);
+}
 /* _content/Luthetus.Common/Icons/Displays/IconLoading.razor.rz.scp.css */
 .lds-dual-ring[b-xvhigmhipw] {
     display: flex;
