@@ -66,3 +66,16 @@
 .luth_te_find-bottom > .luth_te_find-horizontal-list[b-9w3s2sr8ka] {
     margin-bottom: 12px;
 }
+/* _content/Luthetus.TextEditor/TextEditors/Displays/Internals/FindOverlayDisplay.razor.rz.scp.css */
+.luth_te_find-overlay[b-vqz5xh3qbb] {
+    overflow: hidden;
+    position: absolute;
+    right: var(--luth_te_scrollbar-size);
+    top: 0;
+    width: 25%;
+    min-width: calc(22ch + 16px);
+    padding: 7px;
+    z-index: 1;
+    cursor: default;
+    background-color: var(--luth_te_scrollbar-background-color);
+}
