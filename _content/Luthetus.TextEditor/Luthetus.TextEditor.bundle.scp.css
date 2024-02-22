@@ -43,29 +43,6 @@
     height: 2em;
     width: calc(100% - 2em);
 }
-/* _content/Luthetus.TextEditor/SearchEngines/Displays/TextEditorSearchEngineDisplay.razor.rz.scp.css */
-.luth_te_find-top-bottom-section[b-9w3s2sr8ka] {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.luth_te_find-left-right-section[b-9w3s2sr8ka] {
-    display: flex;
-}
-
-.luth_te_find-horizontal-list[b-9w3s2sr8ka] {
-    display: flex;
-    justify-content: end;
-}
-
-    .luth_te_find-horizontal-list > button:not(:last-child)[b-9w3s2sr8ka] {
-        margin-right: 10px;
-    }
-
-.luth_te_find-bottom > .luth_te_find-horizontal-list[b-9w3s2sr8ka] {
-    margin-bottom: 12px;
-}
 /* _content/Luthetus.TextEditor/TextEditors/Displays/Internals/FindOverlayDisplay.razor.rz.scp.css */
 .luth_te_find-overlay[b-vqz5xh3qbb] {
     overflow: hidden;
