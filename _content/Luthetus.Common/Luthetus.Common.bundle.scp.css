@@ -84,6 +84,17 @@
     left: 0;
     top: 0;
 }
+
+.luth_dropzone[b-eqb73b22x5] {
+	background-color: var(--luth_ide_context-boundary-overlay-background-color);
+    opacity: 0.6;
+    cursor: default;
+}
+
+	.luth_dropzone.luth_active[b-eqb73b22x5] {
+        background-color: var(--luth_button-hover-background-color);
+        box-shadow: 0 0 2px var(--luth_primary-overlay-box-shadow-color);
+    }
 /* _content/Luthetus.Common/Dropdowns/Displays/DropdownDisplay.razor.rz.scp.css */
 .luth_dropdown-display[b-vgeu01loue] {
     z-index: var(--luth_dropdown-display-z-index);
@@ -97,6 +108,12 @@
     margin: 10px;
     padding: 10px;
     border-left: 1px solid var(--luth_primary-border-color);
+}
+/* _content/Luthetus.Common/Icons/Displays/IconBadgeDisplay.razor.rz.scp.css */
+.luth_web_icon-badge[b-rqnwk7zmda] {
+    position: absolute;
+    top: 0;
+    line-height: 0.6;
 }
 /* _content/Luthetus.Common/Icons/Displays/IconLoading.razor.rz.scp.css */
 .lds-dual-ring[b-xvhigmhipw] {
@@ -157,12 +174,6 @@
 .luth_menu-option-icon[b-rw1e46gy8l] {
     margin-right: var(--luth_menu-option-display-padding-width);
     display: inline;
-}
-/* _content/Luthetus.Common/Notifications/Displays/IconBadgeDisplay.razor.rz.scp.css */
-.luth_web_icon-badge[b-totavoeyx8] {
-    position: absolute;
-    top: 0;
-    line-height: 0.6;
 }
 /* _content/Luthetus.Common/Notifications/Displays/NotificationDisplay.razor.rz.scp.css */
 .luth_notification[b-eq7t8538lg] {
@@ -238,6 +249,20 @@
     position: fixed;
     left: 0;
     top: 0;
+}
+/* _content/Luthetus.Common/PolymorphicUis/Displays/PolymorphicTabDisplay.razor.rz.scp.css */
+button.luth_polymorphic-tab.luth_drag[b-x9knxbjolz] {
+	overflow: hidden;
+	cursor: default;
+	background-color: var(--luth_button-hover-background-color);
+}
+
+button.luth_polymorphic-tab.luth_drag.luth_active[b-x9knxbjolz] {
+	background-color: var(--luth_toggled-on-hover-background-color);
+}
+/* _content/Luthetus.Common/PolymorphicUis/Displays/PolymorphicTabListDisplay.razor.rz.scp.css */
+.luth_polymorphic-tab-list[b-6yf5huwkib] {
+	display: flex;
 }
 /* _content/Luthetus.Common/Reflectives/Displays/ReflectiveConstructor.razor.rz.scp.css */
 .luth_reflective-constructor[b-gcn31l7m78] {
