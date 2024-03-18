@@ -95,6 +95,13 @@
         background-color: var(--luth_button-hover-background-color);
         box-shadow: 0 0 2px var(--luth_primary-overlay-box-shadow-color);
     }
+
+.luth_dropzone.luth_dropzone-fallback[b-eqb73b22x5] {
+	background-color: transparent;
+    box-shadow: none;
+    opacity: 0;
+	cursor: pointer;
+}
 /* _content/Luthetus.Common/Dropdowns/Displays/DropdownDisplay.razor.rz.scp.css */
 .luth_dropdown-display[b-vgeu01loue] {
     z-index: var(--luth_dropdown-display-z-index);
@@ -250,20 +257,6 @@
     left: 0;
     top: 0;
 }
-/* _content/Luthetus.Common/PolymorphicUis/Displays/PolymorphicTabDisplay.razor.rz.scp.css */
-button.luth_polymorphic-tab.luth_drag[b-x9knxbjolz] {
-	overflow: hidden;
-	cursor: default;
-	background-color: var(--luth_button-hover-background-color);
-}
-
-button.luth_polymorphic-tab.luth_drag.luth_active[b-x9knxbjolz] {
-	background-color: var(--luth_toggled-on-hover-background-color);
-}
-/* _content/Luthetus.Common/PolymorphicUis/Displays/PolymorphicTabListDisplay.razor.rz.scp.css */
-.luth_polymorphic-tab-list[b-6yf5huwkib] {
-	display: flex;
-}
 /* _content/Luthetus.Common/Reflectives/Displays/ReflectiveConstructor.razor.rz.scp.css */
 .luth_reflective-constructor[b-gcn31l7m78] {
     display: flex;
@@ -288,9 +281,86 @@ button.luth_polymorphic-tab.luth_drag.luth_active[b-x9knxbjolz] {
     width: 100%;
     cursor: n-resize;
 }
-/* _content/Luthetus.Common/Tabs/Displays/TabGroupDisplay.razor.rz.scp.css */
-.luth_tab-group[b-itxdri5el2] {
-    display: flex;
+/* _content/Luthetus.Common/Tabs/Displays/TabDisplay.razor.rz.scp.css */
+button.luth_polymorphic-tab.luth_drag[b-y15tx19giz] {
+	overflow: hidden;
+	cursor: default;
+	background-color: var(--luth_button-hover-background-color);
+}
+
+button.luth_polymorphic-tab.luth_drag.luth_active[b-y15tx19giz] {
+	background-color: var(--luth_toggled-on-hover-background-color);
+}
+/* _content/Luthetus.Common/Tabs/Displays/TabListDisplay.razor.rz.scp.css */
+.luth_polymorphic-tab-list[b-kuslrmfbrr] {
+	display: flex;
+}
+
+/* ----------------------------------------- */
+
+.luth_panel-tabs-justify-end[b-kuslrmfbrr] {
+    position: absolute;
+    right: calc(3ch + 3px);
+    top: 0;
+}
+
+.luth_panel-tab[b-kuslrmfbrr] {
+    padding: 1px;
+    font-size: var(--luth_panel-tabs-font-size);
+    display: inline-flex !important;
+    border: none !important;
+    position: relative;
+}
+
+.luth_panel_left .luth_panel-tabs .luth_panel-tab span[b-kuslrmfbrr] {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.luth_panel_right[b-kuslrmfbrr] {
+    flex-direction: row-reverse;
+}
+
+.luth_panel_right .luth_panel-tabs .luth_panel-tab span[b-kuslrmfbrr] {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.luth_panel_bottom[b-kuslrmfbrr] {
+    flex-direction: column-reverse;
+}
+
+.luth_panel_left .luth_panel-tabs[b-kuslrmfbrr] {
+    width: calc(var(--luth_panel-tabs-font-size) + var(--luth_panel-tabs-margin) + var(--luth_panel-tabs-bug-are-not-aligning-need-to-fix-todo));
+}
+
+.luth_panel_left .luth_panel-body[b-kuslrmfbrr] {
+    width: calc(100% - var(--luth_panel-tabs-font-size) - var(--luth_panel-tabs-margin) - var(--luth_panel-tabs-bug-are-not-aligning-need-to-fix-todo));
+}
+
+.luth_panel_right .luth_panel-tabs[b-kuslrmfbrr] {
+    width: calc(var(--luth_panel-tabs-font-size) + var(--luth_panel-tabs-margin) + var(--luth_panel-tabs-bug-are-not-aligning-need-to-fix-todo));
+}
+
+.luth_panel_right .luth_panel-body[b-kuslrmfbrr] {
+    width: calc(100% - var(--luth_panel-tabs-font-size) - var(--luth_panel-tabs-margin) - var(--luth_panel-tabs-bug-are-not-aligning-need-to-fix-todo));
+}
+
+.luth_ide_panel_bottom .luth_ide_panel-tabs[b-kuslrmfbrr] {
+    height: calc(var(--luth_ide_panel-tabs-font-size) + var(--luth_ide_panel-tabs-margin) + var(--luth_ide_panel-tabs-bug-are-not-aligning-need-to-fix-todo));
+}
+
+.luth_ide_panel_bottom .luth_ide_panel-body[b-kuslrmfbrr] {
+    height: calc(100% - var(--luth_ide_panel-tabs-font-size) - var(--luth_ide_panel-tabs-margin) - var(--luth_ide_panel-tabs-bug-are-not-aligning-need-to-fix-todo));
+}
+
+.luth_ide_panel_bottom .luth_ide_panel-tab:not(:first-of-type)[b-kuslrmfbrr] {
+    border-left: 2px solid var(--luth_primary-border-color) !important;
 }
 /* _content/Luthetus.Common/TreeViews/Displays/TreeViewContainerDisplay.razor.rz.scp.css */
 .luth_tree-view-state[b-7urdzrsn5p] {
